@@ -9,6 +9,7 @@ Things to look into:
 * spotify API vs embedding youtube music links 
 * upvote downvote system for ranking songs 
 
+Members: 
 * Lily Ou - oulily
 * Samhita Honnavalli - samhita-h
 * Jennifer Lo - jenny353
