@@ -5,6 +5,10 @@ Music queue
 This app will allow multiple people to queue songs to a group queue instead of having only one person play the music. 
 It wouldn't be first in first out though, there will be a voting/ranking system that allows people to up/agree with other suggestions.
 
+Things to look into: 
+* spotify API vs embedding youtube music links 
+* upvote downvote system for ranking songs 
+
 * Lily Ou - oulily
 * Samhita Honnavalli - samhita-h
 * Jennifer Lo - jenny353
