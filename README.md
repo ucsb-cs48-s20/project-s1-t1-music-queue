@@ -1,6 +1,6 @@
 # project-s1-t1-music-queue
 
-Music queue 
+MusicQ
 
 Tech-stack: next.js
 
