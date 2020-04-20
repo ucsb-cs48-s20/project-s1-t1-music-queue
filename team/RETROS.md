@@ -3,6 +3,7 @@
 * Led by:Samhita
 * Present: Jennifer, Ori, Gautam, Lily, David 
 
+link to things discussed in retro: https://docs.google.com/document/d/1vQuCS8ngQC8W2v7mLjtU7CwNxJcePieRc_oaXQip8lI/edit?usp=sharing
 ## Action item
 
 a goal: each iteration of the app is functional and/or testable on its own 
@@ -16,7 +17,6 @@ a change: constant communication on slack (ex: progress updates) - written stand
 * friday update 
 
 a measurement: re-evaluate at next retro if this written slack updates are helpful 
-
 
 ## Retro Assessment
 
