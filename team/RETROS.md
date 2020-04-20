@@ -16,3 +16,10 @@ a change: constant communication on slack (ex: progress updates) - written stand
 * friday update 
 
 a measurement: re-evaluate at next retro if this written slack updates are helpful 
+
+
+## Retro Assessment
+
+* I combined both the sailboat and 4Ls template.
+* I think its went pretty well, at first it was a little slow but the discussion later picked up 
+* Trying to get everyone to talk was kind of difficult, so if there are any questions you can ask each memeber or give each member some time to come up with stuff and then discuss it might help in getting everyone to talk. 
