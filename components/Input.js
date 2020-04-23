@@ -101,7 +101,7 @@ class Input extends React.Component {
 
         {/* Gather name of song */}
         <form className>
-          <label for="sname">Song Name </label>
+          <label form="sname">Song Name </label>
           <input
             type="text"
             id="sname"

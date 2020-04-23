@@ -242,7 +242,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         columnNumber: 9
       }
     }, __jsx("label", {
-      for: "sname",
+      form: "sname",
       __self: this,
       __source: {
         fileName: _jsxFileName,

@@ -111,16 +111,18 @@ var Input = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "submit",
     value: function submit() {
-      // // save songName and score to send to mongoDB database
-      // const songName = this.state.name;
-      // const score = this.state.score;
-      // const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
-      // // Note that the password for the MongoClient is "MusicQ"
-      // const uri =
-      //   "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
-      // const client = new MongoClient(uri, { useNewUrlParser: true });
-      // // create a new listing in the database
-      // this.createListing(client, { hello: "test" });
+      /* Errors with connecting to MongoDB Database
+       // save songName and score to send to mongoDB database
+      const songName = this.state.name;
+      const score = this.state.score;
+       const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
+      // Note that the password for the MongoClient is "MusicQ"
+      const uri =
+        "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
+      const client = new MongoClient(uri, { useNewUrlParser: true });
+      // create a new listing in the database
+      this.createListing(client, { hello: "test" });
+       */
       // update state to conditional render message to user
       this.setState(function (prevState) {
         return {
@@ -160,14 +162,14 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99,
+          lineNumber: 103,
           columnNumber: 7
         }
       }, __jsx("h1", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100,
+          lineNumber: 104,
           columnNumber: 9
         }
       }, "Input to MongoDB Database"), __jsx("form", {
@@ -175,15 +177,15 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 103,
+          lineNumber: 107,
           columnNumber: 9
         }
       }, __jsx("label", {
-        "for": "sname",
+        form: "sname",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104,
+          lineNumber: 108,
           columnNumber: 11
         }
       }, "Song Name "), __jsx("input", {
@@ -196,14 +198,14 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105,
+          lineNumber: 109,
           columnNumber: 11
         }
       })), __jsx("h1", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116,
+          lineNumber: 120,
           columnNumber: 9
         }
       }, this.state.score), __jsx("button", {
@@ -211,7 +213,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117,
+          lineNumber: 121,
           columnNumber: 9
         }
       }, "Upvote"), __jsx("button", {
@@ -219,24 +221,10 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118,
+          lineNumber: 122,
           columnNumber: 9
         }
-      }, "Downvote"), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 119,
-          columnNumber: 9
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 120,
-          columnNumber: 9
-        }
-      }), __jsx("button", {
+      }, "Downvote"), __jsx("button", {
         onClick: this.submit,
         className: "button",
         style: {
@@ -245,14 +233,14 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123,
+          lineNumber: 125,
           columnNumber: 9
         }
       }, " ", __jsx("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129,
+          lineNumber: 131,
           columnNumber: 11
         }
       }, " Save to Database ")), __jsx("h1", {
@@ -262,7 +250,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133,
+          lineNumber: 135,
           columnNumber: 9
         }
       }, " ", this.state.name, " saved to MongoDB Database", " "));
@@ -274,16 +262,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
 
-/***/ }),
-
-/***/ "./node_modules/next-connect/lib/index.js":
-false,
-
-/***/ "./node_modules/regexparam/dist/regexparam.js":
-false,
-
-/***/ "./node_modules/trouter/index.mjs":
-false
+/***/ })
 
 })
-//# sourceMappingURL=index.js.69c29c49318900257f25.hot-update.js.map
+//# sourceMappingURL=index.js.4237635982a2cf28eb29.hot-update.js.map

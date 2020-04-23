@@ -179,7 +179,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
           columnNumber: 9
         }
       }, __jsx("label", {
-        "for": "sname",
+        form: "sname",
         __self: this,
         __source: {
           fileName: _jsxFileName,
