@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -192,6 +192,17 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 
   submit() {
+    // // save songName and score to send to mongoDB database
+    // const songName = this.state.name;
+    // const score = this.state.score;
+    // const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
+    // // Note that the password for the MongoClient is "MusicQ"
+    // const uri =
+    //   "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
+    // const client = new MongoClient(uri, { useNewUrlParser: true });
+    // // create a new listing in the database
+    // this.createListing(client, { hello: "test" });
+    // update state to conditional render message to user
     this.setState(prevState => {
       return {
         score: prevState.score,
@@ -199,7 +210,12 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         sent_to_database: true
       };
     });
-    print(this.state);
+  } // create a lisiting of a song to the MongoDB Database.
+
+
+  async createListing(client, newListing) {
+    const result = await client.db("test").collection("devices").insertOne(newListing);
+    console.log(`New listing created with the following id: ${result.insertedId}`);
   }
 
   render() {
@@ -207,14 +223,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 76,
+        lineNumber: 99,
         columnNumber: 7
       }
     }, __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77,
+        lineNumber: 100,
         columnNumber: 9
       }
     }, "Input to MongoDB Database"), __jsx("form", {
@@ -222,7 +238,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80,
+        lineNumber: 103,
         columnNumber: 9
       }
     }, __jsx("label", {
@@ -230,7 +246,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81,
+        lineNumber: 104,
         columnNumber: 11
       }
     }, "Song Name "), __jsx("input", {
@@ -243,14 +259,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82,
+        lineNumber: 105,
         columnNumber: 11
       }
     })), __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93,
+        lineNumber: 116,
         columnNumber: 9
       }
     }, this.state.score), __jsx("button", {
@@ -258,7 +274,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94,
+        lineNumber: 117,
         columnNumber: 9
       }
     }, "Upvote"), __jsx("button", {
@@ -266,21 +282,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95,
+        lineNumber: 118,
         columnNumber: 9
       }
     }, "Downvote"), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96,
+        lineNumber: 119,
         columnNumber: 9
       }
     }), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97,
+        lineNumber: 120,
         columnNumber: 9
       }
     }), __jsx("button", {
@@ -292,14 +308,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100,
+        lineNumber: 123,
         columnNumber: 9
       }
     }, " ", __jsx("span", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 129,
         columnNumber: 11
       }
     }, " Save to Database ")), __jsx("h1", {
@@ -309,7 +325,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108,
+        lineNumber: 133,
         columnNumber: 9
       }
     }, " ", this.state.name, " saved to MongoDB Database", " "));
@@ -2150,7 +2166,7 @@ const index = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

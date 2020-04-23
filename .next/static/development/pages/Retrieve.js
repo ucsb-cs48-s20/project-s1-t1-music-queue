@@ -4664,14 +4664,14 @@ var Retrive = /*#__PURE__*/function (_React$Component) {
           lineNumber: 8,
           columnNumber: 11
         }
-      }, "About BitzPrice"), __jsx("p", {
+      }, "Data from the Mongo DB Database (WIP)"), __jsx("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 9,
           columnNumber: 11
         }
-      }, "Application to view Bitcoin prices")));
+      }, "Storing song_name and score ... ")));
     }
   }]);
 
@@ -4682,7 +4682,7 @@ var Retrive = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /*!****************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FRetrieve&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FRetrieve.js ***!
   \****************************************************************************************************************************************************************/
@@ -4705,5 +4705,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=Retrieve.js.map

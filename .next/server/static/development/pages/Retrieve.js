@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1943,14 +1943,14 @@ class Retrive extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         lineNumber: 8,
         columnNumber: 11
       }
-    }, "About BitzPrice"), __jsx("p", {
+    }, "Data from the Mongo DB Database (WIP)"), __jsx("p", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 9,
         columnNumber: 11
       }
-    }, "Application to view Bitcoin prices")));
+    }, "Storing song_name and score ... ")));
   }
 
 }
@@ -1959,7 +1959,7 @@ class Retrive extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!*********************************!*\
   !*** multi ./pages/Retrieve.js ***!
   \*********************************/

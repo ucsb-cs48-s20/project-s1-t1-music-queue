@@ -61,6 +61,19 @@ class Input extends React.Component {
 
   // submit information to the MongoDB Database
   submit() {
+    // // save songName and score to send to mongoDB database
+    // const songName = this.state.name;
+    // const score = this.state.score;
+
+    // const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
+    // // Note that the password for the MongoClient is "MusicQ"
+    // const uri =
+    //   "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
+    // const client = new MongoClient(uri, { useNewUrlParser: true });
+    // // create a new listing in the database
+    // this.createListing(client, { hello: "test" });
+
+    // update state to conditional render message to user
     this.setState(prevState => {
       return {
         score: prevState.score,
@@ -68,7 +81,17 @@ class Input extends React.Component {
         sent_to_database: true
       };
     });
-    print(this.state);
+  }
+
+  // create a lisiting of a song to the MongoDB Database.
+  async createListing(client, newListing) {
+    const result = await client
+      .db("test")
+      .collection("devices")
+      .insertOne(newListing);
+    console.log(
+      `New listing created with the following id: ${result.insertedId}`
+    );
   }
 
   render() {
@@ -105,6 +128,8 @@ class Input extends React.Component {
           {" "}
           <span> Save to Database </span>
         </button>
+
+        {/* Conditional rendering to display data sent to MongoDB Database*/}
         <h1 style={{ display: this.state.sent_to_database ? "block" : "none" }}>
           {" "}
           {this.state.name} saved to MongoDB Database{" "}
