@@ -88,10 +88,175 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./pages/components/Input.js":
+/*!***********************************!*\
+  !*** ./pages/components/Input.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/components/Input.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  render() {
+    return __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 7
+      }
+    }, __jsx("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 9
+      }
+    }, "Vote for the songs you like!"), __jsx("p", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13,
+        columnNumber: 9
+      }
+    }, "If you like a song, click thumbs up. If dont like a song, click thumbs down."), __jsx("button", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 9
+      }
+    }, "thumbs up"), __jsx("button", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 9
+      }
+    }, "thumbs down"));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Input);
+
+/***/ }),
+
+/***/ "./pages/components/Layout.js":
+/*!************************************!*\
+  !*** ./pages/components/Layout.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar */ "./pages/components/Navbar.js");
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/components/Layout.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+function Layout(props) {
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }, __jsx(_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 7
+    }
+  }), props.children);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./pages/components/Navbar.js":
+/*!************************************!*\
+  !*** ./pages/components/Navbar.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./pages/components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/components/Navbar.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const Navbar = () => __jsx("div", {
+  class: "navbar",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5,
+    columnNumber: 3
+  }
+}, __jsx("a", {
+  class: "active",
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 6,
+    columnNumber: 5
+  }
+}, "Input to MongoDB Database"), __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 5
+  }
+}, "Retrive Data"));
+
+/* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./pages/components/style.css":
+/*!************************************!*\
+  !*** ./pages/components/style.css ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
 
 /***/ "./pages/index.js":
 /*!************************!*\
@@ -104,59 +269,44 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js";
-
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Layout */ "./pages/components/Layout.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Input */ "./pages/components/Input.js");
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const App = () => __jsx("div", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 2,
-    columnNumber: 5
-  }
-}, __jsx("h1", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 3,
-    columnNumber: 7
-  }
-}, "Vote for the songs you like!"), __jsx("p", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 6,
-    columnNumber: 7
-  }
-}, "If you like a song, click thumbs up. If dont like a song, click thumbs down."), __jsx("button", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9,
-    columnNumber: 7
-  }
-}, "thumbs up"), __jsx("button", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13,
-    columnNumber: 7
-  }
-}, "thumbs down"));
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
+
+
+const index = () => {
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 5
+    }
+  }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 7
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
 
 
 /***/ }),

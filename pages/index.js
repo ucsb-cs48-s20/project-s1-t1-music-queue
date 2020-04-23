@@ -1,19 +1,13 @@
-const App = () => (
-    <div>
-      <h1>
-      Vote for the songs you like!
-      </h1>
-      <p>If you like a song, click thumbs up. 
-        If dont like a song, click thumbs down.
-      </p>
-      <button>
-        thumbs up
-      </button>
-      
-      <button>
-        thumbs down
-      </button>
-    </div>
-);
+import React from "react";
+import Layout from "./components/Layout";
+import Input from "./components/Input";
 
-export default App;
+const index = () => {
+  return (
+    <Layout>
+      <Input />
+    </Layout>
+  );
+};
+
+export default index;
