@@ -100,7 +100,7 @@ class Input extends React.Component {
         <h1>Input to MongoDB Database</h1>
 
         {/* Gather name of song */}
-        <form className>
+        <form>
           <label form="sname">Song Name </label>
           <input
             type="text"

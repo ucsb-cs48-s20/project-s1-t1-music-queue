@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112,227 +112,6 @@ module.exports = require("next/dist/next-server/lib/router-context.js");
 /***/ (function(module, exports) {
 
 module.exports = require("next/dist/next-server/lib/utils.js");
-
-/***/ }),
-
-/***/ "./components/Input.js":
-/*!*****************************!*\
-  !*** ./components/Input.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  constructor() {
-    super();
-    this.state = {
-      score: 0,
-      name: "",
-      sent_to_database: false
-    };
-    this.incrementScore = this.incrementScore.bind(this);
-    this.decrementScore = this.decrementScore.bind(this);
-    this.nameChange = this.nameChange.bind(this);
-    this.submit = this.submit.bind(this);
-  } // increments the score of the particular song
-
-
-  incrementScore() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score + 1,
-        name: prevState.name,
-        sent_to_database: false
-      };
-    });
-  } // decrements the score of the particular song
-
-
-  decrementScore() {
-    this.setState(prevState => {
-      // if the score is 0; don't go negative!
-      if (prevState.score == 0) {
-        return {
-          score: 0,
-          name: prevState.name,
-          sent_to_database: false
-        };
-      } // score is not 0; subtract 1
-      else {
-          return {
-            score: prevState.score - 1,
-            name: prevState.name,
-            sent_to_database: false
-          };
-        }
-    });
-  } // handles changes to name of song dynamically
-
-
-  nameChange() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: event.target.value,
-        sent_to_database: false
-      };
-    });
-  } // submit information to the MongoDB Database
-
-
-  submit() {
-    // // save songName and score to send to mongoDB database
-    // const songName = this.state.name;
-    // const score = this.state.score;
-    // const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
-    // // Note that the password for the MongoClient is "MusicQ"
-    // const uri =
-    //   "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
-    // const client = new MongoClient(uri, { useNewUrlParser: true });
-    // // create a new listing in the database
-    // this.createListing(client, { hello: "test" });
-    // update state to conditional render message to user
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
-    });
-  } // create a lisiting of a song to the MongoDB Database.
-
-
-  async createListing(client, newListing) {
-    const result = await client.db("test").collection("devices").insertOne(newListing);
-    console.log(`New listing created with the following id: ${result.insertedId}`);
-  }
-
-  render() {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 99,
-        columnNumber: 7
-      }
-    }, __jsx("h1", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 100,
-        columnNumber: 9
-      }
-    }, "Input to MongoDB Database"), __jsx("form", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 103,
-        columnNumber: 9
-      }
-    }, __jsx("label", {
-      form: "sname",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 104,
-        columnNumber: 11
-      }
-    }, "Song Name "), __jsx("input", {
-      type: "text",
-      id: "sname",
-      name: "sname",
-      value: this.state.name,
-      onChange: this.nameChange,
-      placeholder: "enter song name",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 105,
-        columnNumber: 11
-      }
-    })), __jsx("h1", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 116,
-        columnNumber: 9
-      }
-    }, this.state.score), __jsx("button", {
-      onClick: this.incrementScore,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 117,
-        columnNumber: 9
-      }
-    }, "Upvote"), __jsx("button", {
-      onClick: this.decrementScore,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 118,
-        columnNumber: 9
-      }
-    }, "Downvote"), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 119,
-        columnNumber: 9
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 120,
-        columnNumber: 9
-      }
-    }), __jsx("button", {
-      onClick: this.submit,
-      className: "button",
-      style: {
-        verticalAlign: "middle"
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 123,
-        columnNumber: 9
-      }
-    }, " ", __jsx("span", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 129,
-        columnNumber: 11
-      }
-    }, " Save to Database ")), __jsx("h1", {
-      style: {
-        display: this.state.sent_to_database ? "block" : "none"
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 133,
-        columnNumber: 9
-      }
-    }, " ", this.state.name, " saved to MongoDB Database", " "));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Input);
 
 /***/ }),
 
@@ -2124,10 +1903,10 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/Retrieve.js":
+/*!***************************!*\
+  !*** ./pages/Retrieve.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2136,43 +1915,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Input */ "./components/Input.js");
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js";
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/Retrieve.js";
+
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+class Retrive extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  render() {
+    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 7
+      }
+    }, __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 9
+      }
+    }, __jsx("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 11
+      }
+    }, "Data from the Mongo DB Database (WIP)"), __jsx("p", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9,
+        columnNumber: 11
+      }
+    }, "Storing song_name and score ... ")));
+  }
 
+}
 
-const index = () => {
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 5
-    }
-  }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 7
-    }
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (index);
+/* harmony default export */ __webpack_exports__["default"] = (Retrive);
 
 /***/ }),
 
-/***/ 4:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
+/***/ 5:
+/*!*********************************!*\
+  !*** multi ./pages/Retrieve.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/Retrieve.js */"./pages/Retrieve.js");
 
 
 /***/ }),
@@ -2233,4 +2027,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=Retrieve.js.map
