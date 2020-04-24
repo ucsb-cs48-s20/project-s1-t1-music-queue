@@ -67,10 +67,13 @@ class Input extends React.Component {
     await fetch("/api", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json" // QUESTION: what is this contect type?
+        "Content-Type": "application/json"
       },
-      // the body of this message is a song. FOR NOW, simply test: 0
-      body: JSON.stringify({ test: 0 })
+      // the body of this message is built from state
+      body: JSON.stringify({
+        song: this.state.name,
+        score: this.state.score
+      })
     });
 
     // update state to conditionally render message to user

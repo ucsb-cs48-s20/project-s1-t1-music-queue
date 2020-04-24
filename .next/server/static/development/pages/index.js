@@ -202,12 +202,12 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json" // QUESTION: what is this contect type?
-
+        "Content-Type": "application/json"
       },
-      // the body of this message is a song. FOR NOW, simply test: 0
+      // the body of this message is built from state
       body: JSON.stringify({
-        test: 0
+        song: this.state.name,
+        score: this.state.score
       })
     }); // update state to conditionally render message to user
 
@@ -225,21 +225,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88,
+        lineNumber: 91,
         columnNumber: 7
       }
     }, __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89,
+        lineNumber: 92,
         columnNumber: 9
       }
     }, "Input to MongoDB Database"), __jsx("form", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92,
+        lineNumber: 95,
         columnNumber: 9
       }
     }, __jsx("label", {
@@ -247,7 +247,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93,
+        lineNumber: 96,
         columnNumber: 11
       }
     }, "Song Name "), __jsx("input", {
@@ -260,14 +260,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94,
+        lineNumber: 97,
         columnNumber: 11
       }
     })), __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105,
+        lineNumber: 108,
         columnNumber: 9
       }
     }, this.state.score), __jsx("button", {
@@ -275,7 +275,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 109,
         columnNumber: 9
       }
     }, "Upvote"), __jsx("button", {
@@ -283,21 +283,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 107,
+        lineNumber: 110,
         columnNumber: 9
       }
     }, "Downvote"), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108,
+        lineNumber: 111,
         columnNumber: 9
       }
     }), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 112,
         columnNumber: 9
       }
     }), __jsx("button", {
@@ -309,14 +309,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112,
+        lineNumber: 115,
         columnNumber: 9
       }
     }, " ", __jsx("span", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 118,
+        lineNumber: 121,
         columnNumber: 11
       }
     }, " Save to Database ")), __jsx("h1", {
@@ -326,7 +326,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122,
+        lineNumber: 125,
         columnNumber: 9
       }
     }, " ", this.state.name, " saved to MongoDB Database", " "));

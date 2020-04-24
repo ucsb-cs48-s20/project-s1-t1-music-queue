@@ -103,15 +103,12 @@ module.exports =
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSongs", function() { return getSongs; });
-// async api endpoint to retrieve all songs
-async function getSongs() {
-  const MongoClient = __webpack_require__(/*! mongodb */ "mongodb").MongoClient;
+/* harmony import */ var _utils_mongodb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/mongodb */ "./utils/mongodb.js");
+ // async api endpoint to retrieve all songs
 
-  const uri = "mongodb+srv://gautam_mundewadi:123@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true
-  });
-  const users = client.db("Titles").collection("song_name");
+async function getSongs() {
+  const client = await Object(_utils_mongodb__WEBPACK_IMPORTED_MODULE_0__["initDatabase"])();
+  const users = client.collection("song_name");
   return users.find({}).toArray(); // { } document returns ALL documents in database
 } // async api endpoint to create a new song
 // handles the case where a dupicate song is attempted to be added
@@ -128,16 +125,12 @@ async function createSong(req) {
   } // create MongoDB client as well as reference to MongoDB collection
 
 
-  const MongoClient = __webpack_require__(/*! mongodb */ "mongodb").MongoClient;
+  const client = await Object(_utils_mongodb__WEBPACK_IMPORTED_MODULE_0__["initDatabase"])();
+  const users = client.collection("song_name"); // set name to be of song
 
-  const uri = "mongodb+srv://gautam_mundewadi:123@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true
-  });
-  const users = client.db("Titles").collection("song_name"); // set query to be of song
-
-  const query = {
-    song
+  const toAdd = {
+    song,
+    _id: song.song
   };
   const mutation = {
     // if a document with this song already exisits, simply over-write it for now;
@@ -149,22 +142,25 @@ async function createSong(req) {
   // If none is found, document with mutation is added as it is simply
   // either adding a tag to an exisiting document or creating a new one.
 
-  const result = await users.findOneAndUpdate(query, mutation, {
+  const result = await users.findOneAndUpdate(toAdd, mutation, {
     upsert: true,
     // allows for insertion of new document
     returnOriginal: false
   });
+  console.log(result.value);
   return result.value; // return the song object
 }
 
 async function performAction(req) {
+  console.log("server got the request! " + req.method);
+
   if (req.method == "GET") {
     return getSongs();
   } else if (req.method == "POST") {
     return createSong(req);
   }
 
-  console.log("req:" + req.method); // request is not a GET or POST;
+  console.log("requesting endpoing " + req.method); // request is not a GET or POST;
   // in the context of this spike throw an exception but
   // in the full application you should also write out a delete
   // note: status 405 stands for indicating that the specified request HTTP method was received and recognized by the server,
@@ -176,6 +172,73 @@ async function performAction(req) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (performAction);
+
+/***/ }),
+
+/***/ "./utils/config.js":
+/*!*************************!*\
+  !*** ./utils/config.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if (true) {
+  /**
+   * MongoDB URI exposed to the server.
+   */
+  module.exports = {
+    MONGODB_URI: process.env.MONGODB_URI
+  };
+}
+
+/***/ }),
+
+/***/ "./utils/mongodb.js":
+/*!**************************!*\
+  !*** ./utils/mongodb.js ***!
+  \**************************/
+/*! exports provided: initDatabase, serializeDocument */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDatabase", function() { return initDatabase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeDocument", function() { return serializeDocument; });
+/* harmony import */ var mongodb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongodb */ "mongodb");
+/* harmony import */ var mongodb__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongodb__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./utils/config.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_config__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const client = new mongodb__WEBPACK_IMPORTED_MODULE_0__["MongoClient"](_config__WEBPACK_IMPORTED_MODULE_1___default.a.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+let connected = false;
+async function initDatabase() {
+  if (!connected) {
+    await client.connect();
+    connected = true;
+  }
+
+  return client.db("Titles");
+} // converts JSON object into BSON
+
+function serializeDocument(doc, options = {}) {
+  // TODO remove side effects
+  const {
+    idFields = ["_id"]
+  } = options;
+  console.log(idFields);
+
+  for (const idField of idFields) {
+    if (doc[idField]) {
+      doc[idField] = doc[idField].toString();
+    }
+  }
+
+  return doc;
+}
 
 /***/ }),
 
