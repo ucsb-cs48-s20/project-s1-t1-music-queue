@@ -1,11 +1,10 @@
-import { authenticatedAction } from "../../../utils/api";
-import { initDatabase } from "../../../utils/mongodb";
-
 // async api endpoint to retrieve all songs
 export async function getSongs() {
-  const client = await initDatabase();
-  const users = client.collection("song_name");
-
+  const MongoClient = require("mongodb").MongoClient;
+  const uri =
+    "mongodb+srv://gautam_mundewadi:123@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
+  const client = new MongoClient(uri, { useNewUrlParser: true });
+  const users = client.db("Titles").collection("song_name");
   return users.find({}).toArray(); // { } document returns ALL documents in database
 }
 
@@ -23,8 +22,11 @@ async function createSong(req) {
   }
 
   // create MongoDB client as well as reference to MongoDB collection
-  const client = await initDatabase();
-  const users = client.collection("song_name");
+  const MongoClient = require("mongodb").MongoClient;
+  const uri =
+    "mongodb+srv://gautam_mundewadi:123@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
+  const client = new MongoClient(uri, { useNewUrlParser: true });
+  const users = client.db("Titles").collection("song_name");
 
   // set query to be of song
   const query = {
@@ -51,11 +53,12 @@ async function createSong(req) {
 }
 
 async function performAction(req) {
-  if (request == "GET") {
+  if (req.method == "GET") {
     return getSongs();
-  } else if (request == "POST") {
+  } else if (req.method == "POST") {
     return createSong(req);
   }
+  console.log("req:" + req.method);
 
   // request is not a GET or POST;
   // in the context of this spike throw an exception but
@@ -65,6 +68,4 @@ async function performAction(req) {
   throw { status: 405 };
 }
 
-// authenticated action checks if current call to api
-// is from our app. If it isn't toss this connection
-export default authenticatedAction(performAction);
+export default performAction;

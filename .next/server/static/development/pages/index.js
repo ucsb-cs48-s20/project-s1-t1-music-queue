@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -126,10 +126,17 @@ module.exports = require("next/dist/next-server/lib/utils.js");
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! q */ "q");
+/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(q__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
 
 
 
@@ -191,18 +198,19 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   } // submit information to the MongoDB Database
 
 
-  submit() {
-    // // save songName and score to send to mongoDB database
-    // const songName = this.state.name;
-    // const score = this.state.score;
-    // const MongoClient = require("mongodb").MongoClient; // MongoDB module that is required to connect to a MongoDB database
-    // // Note that the password for the MongoClient is "MusicQ"
-    // const uri =
-    //   "mongodb+srv://gautam_mundewadi:<MusicQ>@cluster0-yxuih.azure.mongodb.net/test?retryWrites=true&w=majority";
-    // const client = new MongoClient(uri, { useNewUrlParser: true });
-    // // create a new listing in the database
-    // this.createListing(client, { hello: "test" });
-    // update state to conditional render message to user
+  async submit() {
+    await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" // QUESTION: what is this contect type?
+
+      },
+      // the body of this message is a song. FOR NOW, simply test: 0
+      body: JSON.stringify({
+        test: 0
+      })
+    }); // update state to conditionally render message to user
+
     this.setState(prevState => {
       return {
         score: prevState.score,
@@ -210,12 +218,6 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         sent_to_database: true
       };
     });
-  } // create a lisiting of a song to the MongoDB Database.
-
-
-  async createListing(client, newListing) {
-    const result = await client.db("test").collection("devices").insertOne(newListing);
-    console.log(`New listing created with the following id: ${result.insertedId}`);
   }
 
   render() {
@@ -223,21 +225,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99,
+        lineNumber: 88,
         columnNumber: 7
       }
     }, __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100,
+        lineNumber: 89,
         columnNumber: 9
       }
     }, "Input to MongoDB Database"), __jsx("form", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103,
+        lineNumber: 92,
         columnNumber: 9
       }
     }, __jsx("label", {
@@ -245,7 +247,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 104,
+        lineNumber: 93,
         columnNumber: 11
       }
     }, "Song Name "), __jsx("input", {
@@ -258,14 +260,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105,
+        lineNumber: 94,
         columnNumber: 11
       }
     })), __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 116,
+        lineNumber: 105,
         columnNumber: 9
       }
     }, this.state.score), __jsx("button", {
@@ -273,7 +275,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 117,
+        lineNumber: 106,
         columnNumber: 9
       }
     }, "Upvote"), __jsx("button", {
@@ -281,21 +283,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 118,
+        lineNumber: 107,
         columnNumber: 9
       }
     }, "Downvote"), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 119,
+        lineNumber: 108,
         columnNumber: 9
       }
     }), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120,
+        lineNumber: 109,
         columnNumber: 9
       }
     }), __jsx("button", {
@@ -307,14 +309,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123,
+        lineNumber: 112,
         columnNumber: 9
       }
     }, " ", __jsx("span", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 129,
+        lineNumber: 118,
         columnNumber: 11
       }
     }, " Save to Database ")), __jsx("h1", {
@@ -324,7 +326,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 133,
+        lineNumber: 122,
         columnNumber: 9
       }
     }, " ", this.state.name, " saved to MongoDB Database", " "));
@@ -2165,7 +2167,7 @@ const index = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -2174,6 +2176,17 @@ const index = () => {
 
 module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "isomorphic-unfetch":
+/*!*************************************!*\
+  !*** external "isomorphic-unfetch" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
@@ -2196,6 +2209,17 @@ module.exports = require("prop-types");
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types-exact");
+
+/***/ }),
+
+/***/ "q":
+/*!********************!*\
+  !*** external "q" ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("q");
 
 /***/ }),
 
