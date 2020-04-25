@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './login.css';
+//import './login.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = "ca71e6fb2d354ce3a88e314add851724";
-const redirectUri = "https://spike-s1-t1-tryspotifyapi.now.sh/callback/";
+const clientId = "1e8d5de1ecae449c848c0a2b909044b7";
+const redirectUri = "http://localhost:8000/App";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
@@ -32,4 +32,4 @@ class Login extends Component {
   }
 }
 
-export default App;
+export default Login;
