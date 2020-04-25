@@ -1,16 +1,10 @@
 import { initDatabase } from "../../utils/mongodb";
 
-// async api endpoint to retrieve all songs
-export async function getSongs() {
-  const client = await initDatabase();
-  const users = client.collection("song_name");
-  return users.find({}).toArray(); // { } document returns ALL documents in database
-}
-
 // async api endpoint to create a new song
 // handles the case where a dupicate song is attempted to be added
 async function createSong(req) {
   const song = req.body;
+  console.log("adding:" + song);
   // if the song passed is null
   // deal with this edge case
   if (!song) {
@@ -45,19 +39,14 @@ async function createSong(req) {
     upsert: true, // allows for insertion of new document
     returnOriginal: false
   });
-  console.log(result.value);
   return result.value; // return the song object
 }
 
 async function performAction(req) {
   console.log("server got the request! " + req.method);
-  if (req.method == "GET") {
-    return getSongs();
-  } else if (req.method == "POST") {
+  if (req.method == "POST") {
     return createSong(req);
   }
-  console.log("requesting endpoing " + req.method);
-
   // request is not a GET or POST;
   // in the context of this spike throw an exception but
   // in the full application you should also write out a delete

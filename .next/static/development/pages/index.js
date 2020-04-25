@@ -122,8 +122,16 @@ var Input = /*#__PURE__*/function (_React$Component) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8___default()("/api", {
+              // update state to conditionally render message to user
+              this.setState(function (prevState) {
+                return {
+                  score: prevState.score,
+                  name: prevState.name,
+                  sent_to_database: true
+                };
+              });
+              _context.next = 3;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8___default()("/api/add", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
@@ -134,16 +142,6 @@ var Input = /*#__PURE__*/function (_React$Component) {
                   score: this.state.score
                 })
               }));
-
-            case 2:
-              // update state to conditionally render message to user
-              this.setState(function (prevState) {
-                return {
-                  score: prevState.score,
-                  name: prevState.name,
-                  sent_to_database: true
-                };
-              });
 
             case 3:
             case "end":

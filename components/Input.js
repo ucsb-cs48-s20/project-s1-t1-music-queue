@@ -64,7 +64,16 @@ class Input extends React.Component {
 
   // submit information to the MongoDB Database
   async submit() {
-    await fetch("/api", {
+    // update state to conditionally render message to user
+    this.setState(prevState => {
+      return {
+        score: prevState.score,
+        name: prevState.name,
+        sent_to_database: true
+      };
+    });
+
+    await fetch("/api/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -74,15 +83,6 @@ class Input extends React.Component {
         song: this.state.name,
         score: this.state.score
       })
-    });
-
-    // update state to conditionally render message to user
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
     });
   }
 

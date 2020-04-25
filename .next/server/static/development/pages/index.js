@@ -199,7 +199,15 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 
   async submit() {
-    await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api", {
+    // update state to conditionally render message to user
+    this.setState(prevState => {
+      return {
+        score: prevState.score,
+        name: prevState.name,
+        sent_to_database: true
+      };
+    });
+    await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -209,14 +217,6 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         song: this.state.name,
         score: this.state.score
       })
-    }); // update state to conditionally render message to user
-
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
     });
   }
 

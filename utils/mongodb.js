@@ -19,7 +19,6 @@ export async function initDatabase() {
 export function serializeDocument(doc, options = {}) {
   // TODO remove side effects
   const { idFields = ["_id"] } = options;
-  console.log(idFields);
 
   for (const idField of idFields) {
     if (doc[idField]) {
