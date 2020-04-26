@@ -2,7 +2,7 @@ import { initDatabase } from "../../utils/mongodb";
 
 // async api endpoint to create a new song
 // handles the case where a dupicate song is attempted to be added
-async function createSong(req) {
+async function createSong(req, res) {
   const song = req.body;
   console.log("adding:" + song);
   // if the song passed is null
@@ -39,13 +39,17 @@ async function createSong(req) {
     upsert: true, // allows for insertion of new document
     returnOriginal: false
   });
-  return result.value; // return the song object
+
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify({ result }));
+  //return result.value; // return the song object
 }
 
-async function performAction(req) {
+async function performAction(req, res) {
   console.log("server got the request! " + req.method);
   if (req.method == "POST") {
-    return createSong(req);
+    return createSong(req, res);
   }
   // request is not a GET or POST;
   // in the context of this spike throw an exception but
