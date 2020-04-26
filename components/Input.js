@@ -89,8 +89,6 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-        <h1>Input to MongoDB Database</h1>
-
         {/* Gather name of song */}
         <form>
           <label form="sname">Song Name </label>

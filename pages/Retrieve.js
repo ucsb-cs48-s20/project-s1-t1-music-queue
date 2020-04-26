@@ -1,6 +1,7 @@
-import Layout from "../components/Layout";
 import useSWR from "swr";
 import { fetch } from "../utils/fetch";
+import Table from "../components/Table";
+import "./style.css";
 
 export default function Retrieve() {
   // swr returns a data and error parameter
@@ -13,27 +14,33 @@ export default function Retrieve() {
   });
 
   if (error) {
-    return (
-      <Layout>
-        {" "}
-        <div>Failed to load</div>
-      </Layout>
-    );
+    return <div>Failed to load</div>;
   }
 
   if (!data) {
-    return (
-      <Layout>
-        {" "}
-        <div>Loading</div>
-      </Layout>
-    );
+    return <div>Loading</div>;
   }
+
+  let obj = JSON.parse(JSON.stringify(data.result));
+
+  const tableComponents = obj.map(item => {
+    return (
+      <Table key={item._id} song={item.song.song} score={item.song.score} />
+    );
+  });
 
   // {data} can't do this with Javascript objects
   return (
-    <Layout>
-      <div>{JSON.stringify(data)}</div>
-    </Layout>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <th>Song</th>
+            <th>Score</th>
+          </tr>
+          {tableComponents}
+        </tbody>
+      </table>
+    </div>
   );
 }

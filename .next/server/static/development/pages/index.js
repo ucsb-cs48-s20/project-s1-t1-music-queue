@@ -228,18 +228,11 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         lineNumber: 91,
         columnNumber: 7
       }
-    }, __jsx("h1", {
+    }, __jsx("form", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92,
-        columnNumber: 9
-      }
-    }, "Input to MongoDB Database"), __jsx("form", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95,
+        lineNumber: 93,
         columnNumber: 9
       }
     }, __jsx("label", {
@@ -247,7 +240,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96,
+        lineNumber: 94,
         columnNumber: 11
       }
     }, "Song Name "), __jsx("input", {
@@ -260,14 +253,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97,
+        lineNumber: 95,
         columnNumber: 11
       }
     })), __jsx("h1", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108,
+        lineNumber: 106,
         columnNumber: 9
       }
     }, this.state.score), __jsx("button", {
@@ -275,7 +268,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 107,
         columnNumber: 9
       }
     }, "Upvote"), __jsx("button", {
@@ -283,21 +276,21 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110,
+        lineNumber: 108,
         columnNumber: 9
       }
     }, "Downvote"), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111,
+        lineNumber: 109,
         columnNumber: 9
       }
     }), __jsx("br", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112,
+        lineNumber: 110,
         columnNumber: 9
       }
     }), __jsx("button", {
@@ -309,14 +302,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 115,
+        lineNumber: 113,
         columnNumber: 9
       }
     }, " ", __jsx("span", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121,
+        lineNumber: 119,
         columnNumber: 11
       }
     }, " Save to Database ")), __jsx("h1", {
@@ -326,7 +319,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 125,
+        lineNumber: 123,
         columnNumber: 9
       }
     }, " ", this.state.name, " saved to MongoDB Database", " "));
@@ -398,51 +391,82 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const Navbar = () => __jsx("div", {
-  className: "navbar",
+const Navbar = () => // <div className="navbar">
+//   <Link href="/">
+//     <a className="active" href="#">
+//       Input to MongoDB Database
+//     </a>
+//   </Link>
+//   <Link href="/Retrieve">
+//     <a className="hover" href="#">
+//       Retrieve from MongoDB Database
+//     </a>
+//   </Link>
+// </div>
+__jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 6,
+    lineNumber: 19,
     columnNumber: 3
   }
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/",
+}, __jsx("h1", {
+  style: {
+    textAlign: "center"
+  },
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 7,
+    lineNumber: 20,
     columnNumber: 5
   }
-}, __jsx("a", {
-  className: "active",
-  href: "#",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8,
-    columnNumber: 7
-  }
-}, "Input to MongoDB Database")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/Retrieve",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13,
-    columnNumber: 5
-  }
-}, __jsx("a", {
-  className: "hover",
-  href: "#",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 14,
-    columnNumber: 7
-  }
-}, "Retrieve from MongoDB Database")));
+}, "MusicQ"));
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./components/Table.js":
+/*!*****************************!*\
+  !*** ./components/Table.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function Table(props) {
+  return __jsx("tr", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3,
+      columnNumber: 5
+    }
+  }, __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4,
+      columnNumber: 7
+    }
+  }, props.song), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 7
+    }
+  }, props.score));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Table);
 
 /***/ }),
 
@@ -2126,6 +2150,128 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
+/***/ "./pages/Retrieve.js":
+/*!***************************!*\
+  !*** ./pages/Retrieve.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _components_Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Table */ "./components/Table.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./pages/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/Retrieve.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+function Retrieve() {
+  // swr returns a data and error parameter
+  const {
+    data,
+    error
+  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
+    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
+    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
+    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false
+  });
+
+  if (error) {
+    return __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 12
+      }
+    }, "Failed to load");
+  }
+
+  if (!data) {
+    return __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21,
+        columnNumber: 12
+      }
+    }, "Loading");
+  }
+
+  let obj = JSON.parse(JSON.stringify(data.result));
+  const tableComponents = obj.map(item => {
+    return __jsx(_components_Table__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: item._id,
+      song: item.song.song,
+      score: item.song.score,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 7
+      }
+    });
+  }); // {data} can't do this with Javascript objects
+
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 5
+    }
+  }, __jsx("table", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 7
+    }
+  }, __jsx("tbody", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 9
+    }
+  }, __jsx("tr", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 11
+    }
+  }, __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 13
+    }
+  }, "Song"), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 13
+    }
+  }, "Score")), tableComponents)));
+}
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -2139,8 +2285,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Input */ "./components/Input.js");
+/* harmony import */ var _pages_Retrieve__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Retrieve */ "./pages/Retrieve.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2150,20 +2298,58 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 8,
       columnNumber: 5
     }
   }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 9,
+      columnNumber: 7
+    }
+  }), __jsx(_pages_Retrieve__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
       columnNumber: 7
     }
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
+
+/***/ }),
+
+/***/ "./pages/style.css":
+/*!*************************!*\
+  !*** ./pages/style.css ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./utils/fetch.js":
+/*!************************!*\
+  !*** ./utils/fetch.js ***!
+  \************************/
+/*! exports provided: fetch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetch", function() { return fetch; });
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__);
+
+async function fetch(url, options) {
+  const response = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0___default()(url, options);
+  return response.json();
+}
 
 /***/ }),
 
@@ -2242,6 +2428,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "swr":
+/*!**********************!*\
+  !*** external "swr" ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("swr");
 
 /***/ }),
 
