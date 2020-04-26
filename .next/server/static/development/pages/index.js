@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -130,8 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! q */ "q");
-/* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(q__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
+/* harmony import */ var _Populate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Populate */ "./components/Populate.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -199,14 +199,6 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 
   async submit() {
-    // update state to conditionally render message to user
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
-    });
     await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api/add", {
       method: "POST",
       headers: {
@@ -217,6 +209,14 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         song: this.state.name,
         score: this.state.score
       })
+    }); // update state to conditionally render message to user
+
+    this.setState(prevState => {
+      return {
+        score: prevState.score,
+        name: prevState.name,
+        sent_to_database: true
+      };
     });
   }
 
@@ -322,7 +322,15 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         lineNumber: 123,
         columnNumber: 9
       }
-    }, " ", this.state.name, " saved to MongoDB Database", " "));
+    }, " ", this.state.name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      update: this.state.sent_to_database,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 127,
+        columnNumber: 9
+      }
+    }));
   }
 
 }
@@ -423,6 +431,177 @@ __jsx("div", {
 }, "MusicQ"));
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./components/Populate.js":
+/*!********************************!*\
+  !*** ./components/Populate.js ***!
+  \********************************/
+/*! exports provided: Populate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Populate", function() { return Populate; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+
+
+
+function Populate(props) {
+  // swr returns a data and error parameter
+  const {
+    data,
+    error
+  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
+    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
+    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
+    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false
+  });
+
+  if (error) {
+    return null;
+  }
+
+  return data;
+}
+
+/***/ }),
+
+/***/ "./components/Retrieve.js":
+/*!********************************!*\
+  !*** ./components/Retrieve.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Retrieve.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+ // //create your forceUpdate hook
+// function useForceUpdate() {
+//   console.log("updating...");
+//   const [value, setValue] = useState(0); // integer state
+//   return () => setValue(value => ++value); // update the state to force render
+// }
+
+function Retrieve(props) {
+  // swr returns a data and error parameter
+  // const forceUpdate = useForceUpdate();
+  const {
+    data,
+    error
+  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
+    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
+    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
+    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false
+  });
+
+  if (error) {
+    return __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 12
+      }
+    }, "Failed to load");
+  }
+
+  if (!data) {
+    return __jsx("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31,
+        columnNumber: 12
+      }
+    }, "Loading");
+  }
+
+  let obj = JSON.parse(JSON.stringify(data.result));
+  console.log("Retrieve: " + obj);
+  const tableComponents = obj.map(item => {
+    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: item._id,
+      song: item.song.song,
+      score: item.song.score,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 7
+      }
+    });
+  }); // {data} can't do this with Javascript objects
+
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 5
+    }
+  }, __jsx("table", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 7
+    }
+  }, __jsx("tbody", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 9
+    }
+  }, __jsx("tr", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 11
+    }
+  }, __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 13
+    }
+  }, "Song"), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 13
+    }
+  }, "Score")), tableComponents)));
+}
 
 /***/ }),
 
@@ -2150,128 +2329,6 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/Retrieve.js":
-/*!***************************!*\
-  !*** ./pages/Retrieve.js ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-/* harmony import */ var _components_Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Table */ "./components/Table.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./pages/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/Retrieve.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-function Retrieve() {
-  // swr returns a data and error parameter
-  const {
-    data,
-    error
-  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
-    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
-    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  });
-
-  if (error) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 17,
-        columnNumber: 12
-      }
-    }, "Failed to load");
-  }
-
-  if (!data) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21,
-        columnNumber: 12
-      }
-    }, "Loading");
-  }
-
-  let obj = JSON.parse(JSON.stringify(data.result));
-  const tableComponents = obj.map(item => {
-    return __jsx(_components_Table__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      key: item._id,
-      song: item.song.song,
-      score: item.song.score,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 28,
-        columnNumber: 7
-      }
-    });
-  }); // {data} can't do this with Javascript objects
-
-  return __jsx("div", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 5
-    }
-  }, __jsx("table", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 7
-    }
-  }, __jsx("tbody", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 9
-    }
-  }, __jsx("tr", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
-  }, __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 13
-    }
-  }, "Song"), __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 13
-    }
-  }, "Score")), tableComponents)));
-}
-
-/***/ }),
-
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -2285,10 +2342,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Input */ "./components/Input.js");
-/* harmony import */ var _pages_Retrieve__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Retrieve */ "./pages/Retrieve.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
 
 
 
@@ -2298,38 +2353,20 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 7,
       columnNumber: 5
     }
   }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 7
-    }
-  }), __jsx(_pages_Retrieve__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 8,
       columnNumber: 7
     }
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
-
-/***/ }),
-
-/***/ "./pages/style.css":
-/*!*************************!*\
-  !*** ./pages/style.css ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -2353,7 +2390,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -2395,17 +2432,6 @@ module.exports = require("prop-types");
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types-exact");
-
-/***/ }),
-
-/***/ "q":
-/*!********************!*\
-  !*** external "q" ***!
-  \********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("q");
 
 /***/ }),
 

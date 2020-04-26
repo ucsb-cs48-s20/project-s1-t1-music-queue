@@ -80,6 +80,10 @@
   right: 0;
 }
 
+/*
+ Styling for table-view
+*/
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;

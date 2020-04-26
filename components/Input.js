@@ -1,8 +1,8 @@
 import React from "react";
-import { useCallback } from "react";
 import fetch from "isomorphic-unfetch";
 import "./style.css";
-import { async } from "q";
+import Retrieve from "./Retrieve";
+import { Populate } from "./Populate";
 
 class Input extends React.Component {
   constructor() {
@@ -64,15 +64,6 @@ class Input extends React.Component {
 
   // submit information to the MongoDB Database
   async submit() {
-    // update state to conditionally render message to user
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
-    });
-
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -83,6 +74,15 @@ class Input extends React.Component {
         song: this.state.name,
         score: this.state.score
       })
+    });
+
+    // update state to conditionally render message to user
+    this.setState(prevState => {
+      return {
+        score: prevState.score,
+        name: prevState.name,
+        sent_to_database: true
+      };
     });
   }
 
@@ -124,6 +124,7 @@ class Input extends React.Component {
           {" "}
           {this.state.name} saved to MongoDB Database{" "}
         </h1>
+        <Retrieve update={this.state.sent_to_database} />
       </div>
     );
   }
