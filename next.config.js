@@ -17,15 +17,15 @@ const {
   
     const env = {
       REDIRECT_URI: (() => {
-        if (isDev) return 'http://localhost:3000/App'
-        if (isProd) return 'https://cs48-s20-s1-t1-qa.herokuapp.com/App'
-        if (isStaging) return 'http://localhost:3000/App'
+        if (isDev) return process.env.REDIRECT_URI
+        if (isProd) return process.env.REDIRECT_URI
+        if (isStaging) return process.env.REDIRECT_URI
         return 'REDIRECT_URI:not (isDev,isProd && !isStaging,isProd && isStaging)'
       })(),
       CLIENT_ID: (() => {
-        if (isDev) return '1e8d5de1ecae449c848c0a2b909044b7'
-        if (isProd) return '1e8d5de1ecae449c848c0a2b909044b7'
-        if (isStaging) return '1e8d5de1ecae449c848c0a2b909044b7'
+        if (isDev) return process.env.CLIENT_ID
+        if (isProd) return process.env.CLIENT_ID
+        if (isStaging) return process.env.CLIENT_ID
         return 'CLIENT_ID:not (isDev,isProd && !isStaging,isProd && isStaging)'
       })(),
     }
