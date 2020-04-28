@@ -93,6 +93,64 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/Login.js":
+/*!*****************************!*\
+  !*** ./components/Login.js ***!
+  \*****************************/
+/*! exports provided: authEndpoint, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authEndpoint", function() { return authEndpoint; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Login.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ //import './login.css';
+
+const authEndpoint = 'https://accounts.spotify.com/authorize'; // Replace with your app's client ID, redirect URI and desired scopes
+
+const clientId = "1e8d5de1ecae449c848c0a2b909044b7";
+const redirectUri = "http://localhost:3000/App";
+const scopes = ["user-read-currently-playing", "user-read-playback-state"];
+
+class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  render() {
+    return __jsx("div", {
+      className: "Login",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 7
+      }
+    }, __jsx("header", {
+      className: "Login-header",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 9
+      }
+    }, __jsx("a", {
+      className: "btn btn--Login-link",
+      href: `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 13
+      }
+    }, "Login to Spotify")));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -104,48 +162,36 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js";
+/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login */ "./components/Login.js");
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+//import React from 'react';
+//import ReactDOM from 'react-dom';
+//import './index.css';
+//import App from './App'
+ //import * as serviceWorker from './serviceWorker';
 
-const App = () => __jsx("div", {
+const Homepage = () => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 2,
-    columnNumber: 5
+    lineNumber: 8,
+    columnNumber: 3
   }
-}, __jsx("h1", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 3,
-    columnNumber: 7
-  }
-}, "Vote for the songs you like!"), __jsx("p", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 6,
-    columnNumber: 7
-  }
-}, "If you like a song, click thumbs up. If dont like a song, click thumbs down."), __jsx("button", {
+}, __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 9,
-    columnNumber: 7
+    columnNumber: 5
   }
-}, "thumbs up"), __jsx("button", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13,
-    columnNumber: 7
-  }
-}, "thumbs down"));
+}));
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
+/* harmony default export */ __webpack_exports__["default"] = (Homepage); // If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+//serviceWorker.unregister();
 
 /***/ }),
 
@@ -156,7 +202,7 @@ const App = () => __jsx("div", {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
 
 
 /***/ }),
