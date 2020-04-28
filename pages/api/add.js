@@ -4,7 +4,6 @@ import { initDatabase } from "../../utils/mongodb";
 // handles the case where a dupicate song is attempted to be added
 async function createSong(req, res) {
   const song = req.body;
-  console.log("adding:" + song);
   // if the song passed is null
   // deal with this edge case
   if (!song) {
@@ -43,11 +42,9 @@ async function createSong(req, res) {
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ result }));
-  //return result.value; // return the song object
 }
 
 async function performAction(req, res) {
-  console.log("server got the request! " + req.method);
   if (req.method == "POST") {
     return createSong(req, res);
   }

@@ -1,133 +1,104 @@
 import React from "react";
-import fetch from "isomorphic-unfetch";
+import { useState, useCallback, useEffect } from "react";
+import useSWR from "swr";
+import { fetch } from "../utils/fetch";
 import "./style.css";
 import Retrieve from "./Retrieve";
-import { Populate } from "./Populate";
 
-class Input extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      score: 0,
-      name: "",
-      sent_to_database: false
-    };
-    this.incrementScore = this.incrementScore.bind(this);
-    this.decrementScore = this.decrementScore.bind(this);
-    this.nameChange = this.nameChange.bind(this);
-    this.submit = this.submit.bind(this);
-  }
+function Input() {
+  // set initial hooks to keep track of state
+  const [score, setScore] = useState(0);
+  const [name, setName] = useState("");
+  const [sentDatabase, setSent] = useState(false);
 
-  // increments the score of the particular song
-  incrementScore() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score + 1,
-        name: prevState.name,
-        sent_to_database: false
-      };
-    });
-  }
+  // useSWR is like your own state that is backed by an API call
+  // mutate w/out parameters just causes refetch of endpoint
+  // you can change the arguments with a parameter see repo
+  // for further documentation.
+  const { data, mutate } = useSWR("/api/all", fetch, {
+    // see example repo for explination about booleans
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    initialData: {
+      result: [
+        {
+          _id: "FETCHING DATA ... ",
+          song: { song: "FETCHING DATA ... ", score: 0 }
+        }
+      ]
+    }
+  });
 
-  // decrements the score of the particular song
-  decrementScore() {
-    this.setState(prevState => {
-      // if the score is 0; don't go negative!
-      if (prevState.score == 0) {
-        return {
-          score: 0,
-          name: prevState.name,
-          sent_to_database: false
-        };
-      }
-      // score is not 0; subtract 1
-      else {
-        return {
-          score: prevState.score - 1,
-          name: prevState.name,
-          sent_to_database: false
-        };
-      }
-    });
-  }
+  // re-fectch data from database for initial render
+  // React will call useEffect when any of the dependecies change.
+  // Because it an empty array; you call it the first time and never again
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  // useEffect --> changes to depen calls this function
 
   // handles changes to name of song dynamically
-  nameChange() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: event.target.value,
-        sent_to_database: false
-      };
-    });
-  }
+  const submit = useCallback(
+    async event => {
+      await fetch("/api/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // the body of this song is built from state
+        body: JSON.stringify({
+          song: name,
+          score: score
+        })
+      });
 
-  // submit information to the MongoDB Database
-  async submit() {
-    await fetch("/api/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this message is built from state
-      body: JSON.stringify({
-        song: this.state.name,
-        score: this.state.score
-      })
-    });
+      // forces a call to the hook useSWR
+      await mutate();
 
-    // update state to conditionally render message to user
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
-    });
-  }
+      // update sent
+      setSent(true);
+    },
+    [name, score]
+  );
 
-  render() {
-    return (
-      <div>
-        {/* Gather name of song */}
-        <form>
-          <label form="sname">Song Name </label>
-          <input
-            type="text"
-            id="sname"
-            name="sname"
-            value={this.state.name}
-            onChange={this.nameChange}
-            placeholder="enter song name"
-          ></input>
-        </form>
-
-        {/* Gather score of song */}
-        <h1>{this.state.score}</h1>
-        <button onClick={this.incrementScore}>Upvote</button>
-        <button onClick={this.decrementScore}>Downvote</button>
-        <br />
-        <br />
-
-        {/* sumbit name and score of song to MongoDB Database*/}
-        <button
-          onClick={this.submit}
-          className="button"
-          style={{ verticalAlign: "middle" }}
-        >
-          {" "}
-          <span> Save to Database </span>
-        </button>
-
-        {/* Conditional rendering to display data sent to MongoDB Database*/}
-        <h1 style={{ display: this.state.sent_to_database ? "block" : "none" }}>
-          {" "}
-          {this.state.name} saved to MongoDB Database{" "}
-        </h1>
-        <Retrieve update={this.state.sent_to_database} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      {/* Gather name of song */}
+      <form>
+        <label form="sname">Song Name </label>
+        <input
+          type="text"
+          id="sname"
+          name="sname"
+          value={name}
+          onChange={() => setName(event.target.value)}
+          placeholder="enter song name"
+        ></input>
+      </form>
+      {/* Gather score of song */}
+      <h1>{score}</h1>
+      <button onClick={() => setScore(score + 1)}>Upvote</button>
+      <button onClick={() => setScore(score - 1)}>Downvote</button>
+      <br />
+      <br />
+      {/* sumbit name and score of song to MongoDB Database*/}
+      <button
+        onClick={() => submit()}
+        className="button"
+        style={{ verticalAlign: "middle" }}
+      >
+        {" "}
+        <span> Save to Database </span>
+      </button>
+      {/* Conditional rendering to display data sent to MongoDB Database*/}
+      <h1 style={{ display: sentDatabase ? "block" : "none" }}>
+        {" "}
+        {name} saved to MongoDB Database{" "}
+      </h1>
+      <Retrieve data={data} />
+    </div>
+  );
 }
 
 export default Input;

@@ -126,12 +126,12 @@ module.exports = require("next/dist/next-server/lib/utils.js");
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
-/* harmony import */ var _Populate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Populate */ "./components/Populate.js");
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -140,199 +140,177 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-class Input extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  constructor() {
-    super();
-    this.state = {
-      score: 0,
-      name: "",
-      sent_to_database: false
-    };
-    this.incrementScore = this.incrementScore.bind(this);
-    this.decrementScore = this.decrementScore.bind(this);
-    this.nameChange = this.nameChange.bind(this);
-    this.submit = this.submit.bind(this);
-  } // increments the score of the particular song
 
+function Input() {
+  // set initial hooks to keep track of state
+  const {
+    0: score,
+    1: setScore
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
+  const {
+    0: name,
+    1: setName
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  const {
+    0: sentDatabase,
+    1: setSent
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false); // useSWR is like your own state that is backed by an API call
+  // mutate w/out parameters just causes refetch of endpoint
+  // you can change the arguments with a parameter see repo
+  // for further documentation.
 
-  incrementScore() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score + 1,
-        name: prevState.name,
-        sent_to_database: false
-      };
-    });
-  } // decrements the score of the particular song
-
-
-  decrementScore() {
-    this.setState(prevState => {
-      // if the score is 0; don't go negative!
-      if (prevState.score == 0) {
-        return {
-          score: 0,
-          name: prevState.name,
-          sent_to_database: false
-        };
-      } // score is not 0; subtract 1
-      else {
-          return {
-            score: prevState.score - 1,
-            name: prevState.name,
-            sent_to_database: false
-          };
+  const {
+    data,
+    mutate
+  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
+    // see example repo for explination about booleans
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    initialData: {
+      result: [{
+        _id: "FETCHING DATA ... ",
+        song: {
+          song: "FETCHING DATA ... ",
+          score: 0
         }
-    });
-  } // handles changes to name of song dynamically
+      }]
+    }
+  }); // re-fectch data from database for initial render
+  // React will call useEffect when any of the dependecies change.
+  // Because it an empty array; you call it the first time and never again
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    mutate();
+  }, []); // useEffect --> changes to depen calls this function
+  // handles changes to name of song dynamically
 
-  nameChange() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: event.target.value,
-        sent_to_database: false
-      };
-    });
-  } // submit information to the MongoDB Database
-
-
-  async submit() {
-    await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api/add", {
+  const submit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
+    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"])("/api/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      // the body of this message is built from state
+      // the body of this song is built from state
       body: JSON.stringify({
-        song: this.state.name,
-        score: this.state.score
+        song: name,
+        score: score
       })
-    }); // update state to conditionally render message to user
+    }); // forces a call to the hook useSWR
 
-    this.setState(prevState => {
-      return {
-        score: prevState.score,
-        name: prevState.name,
-        sent_to_database: true
-      };
-    });
-  }
+    await mutate(); // update sent
 
-  render() {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 91,
-        columnNumber: 7
-      }
-    }, __jsx("form", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 93,
-        columnNumber: 9
-      }
-    }, __jsx("label", {
-      form: "sname",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 94,
-        columnNumber: 11
-      }
-    }, "Song Name "), __jsx("input", {
-      type: "text",
-      id: "sname",
-      name: "sname",
-      value: this.state.name,
-      onChange: this.nameChange,
-      placeholder: "enter song name",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95,
-        columnNumber: 11
-      }
-    })), __jsx("h1", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 106,
-        columnNumber: 9
-      }
-    }, this.state.score), __jsx("button", {
-      onClick: this.incrementScore,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 107,
-        columnNumber: 9
-      }
-    }, "Upvote"), __jsx("button", {
-      onClick: this.decrementScore,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 108,
-        columnNumber: 9
-      }
-    }, "Downvote"), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 109,
-        columnNumber: 9
-      }
-    }), __jsx("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 110,
-        columnNumber: 9
-      }
-    }), __jsx("button", {
-      onClick: this.submit,
-      className: "button",
-      style: {
-        verticalAlign: "middle"
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 113,
-        columnNumber: 9
-      }
-    }, " ", __jsx("span", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 119,
-        columnNumber: 11
-      }
-    }, " Save to Database ")), __jsx("h1", {
-      style: {
-        display: this.state.sent_to_database ? "block" : "none"
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 123,
-        columnNumber: 9
-      }
-    }, " ", this.state.name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      update: this.state.sent_to_database,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 127,
-        columnNumber: 9
-      }
-    }));
-  }
-
+    setSent(true);
+  }, [name, score]);
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 5
+    }
+  }, __jsx("form", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 7
+    }
+  }, __jsx("label", {
+    form: "sname",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 9
+    }
+  }, "Song Name "), __jsx("input", {
+    type: "text",
+    id: "sname",
+    name: "sname",
+    value: name,
+    onChange: () => setName(event.target.value),
+    placeholder: "enter song name",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 9
+    }
+  })), __jsx("h1", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 7
+    }
+  }, score), __jsx("button", {
+    onClick: () => setScore(score + 1),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 7
+    }
+  }, "Upvote"), __jsx("button", {
+    onClick: () => setScore(score - 1),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82,
+      columnNumber: 7
+    }
+  }, "Downvote"), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83,
+      columnNumber: 7
+    }
+  }), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 7
+    }
+  }), __jsx("button", {
+    onClick: () => submit(),
+    className: "button",
+    style: {
+      verticalAlign: "middle"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 7
+    }
+  }, " ", __jsx("span", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 9
+    }
+  }, " Save to Database ")), __jsx("h1", {
+    style: {
+      display: sentDatabase ? "block" : "none"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95,
+      columnNumber: 7
+    }
+  }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    data: data,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 7
+    }
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
@@ -434,46 +412,6 @@ __jsx("div", {
 
 /***/ }),
 
-/***/ "./components/Populate.js":
-/*!********************************!*\
-  !*** ./components/Populate.js ***!
-  \********************************/
-/*! exports provided: Populate */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Populate", function() { return Populate; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-
-
-
-function Populate(props) {
-  // swr returns a data and error parameter
-  const {
-    data,
-    error
-  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
-    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
-    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  });
-
-  if (error) {
-    return null;
-  }
-
-  return data;
-}
-
-/***/ }),
-
 /***/ "./components/Retrieve.js":
 /*!********************************!*\
   !*** ./components/Retrieve.js ***!
@@ -486,73 +424,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Retrieve.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
-
- // //create your forceUpdate hook
-// function useForceUpdate() {
-//   console.log("updating...");
-//   const [value, setValue] = useState(0); // integer state
-//   return () => setValue(value => ++value); // update the state to force render
-// }
-
 function Retrieve(props) {
-  // swr returns a data and error parameter
-  // const forceUpdate = useForceUpdate();
-  const {
-    data,
-    error
-  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
-    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
-    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  });
-
-  if (error) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 27,
-        columnNumber: 12
-      }
-    }, "Failed to load");
-  }
-
-  if (!data) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 31,
-        columnNumber: 12
-      }
-    }, "Loading");
-  }
-
-  let obj = JSON.parse(JSON.stringify(data.result));
-  console.log("Retrieve: " + obj);
+  let obj = props.data.result;
+  console.log(props);
   const tableComponents = obj.map(item => {
-    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: item._id,
       song: item.song.song,
       score: item.song.score,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40,
+        lineNumber: 10,
         columnNumber: 7
       }
     });
@@ -562,42 +453,42 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 16,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 17,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 18,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 19,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 20,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 21,
       columnNumber: 13
     }
   }, "Score")), tableComponents)));

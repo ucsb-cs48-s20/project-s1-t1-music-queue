@@ -106,7 +106,6 @@ __webpack_require__.r(__webpack_exports__);
  // async api endpoint to retrieve all songs
 
 /* harmony default export */ __webpack_exports__["default"] = (async function (req, res) {
-  console.log("requesting all documents ... ");
   const client = await Object(_utils_mongodb__WEBPACK_IMPORTED_MODULE_0__["initDatabase"])();
   const users = client.collection("song_name");
   const result = await users.find().toArray();

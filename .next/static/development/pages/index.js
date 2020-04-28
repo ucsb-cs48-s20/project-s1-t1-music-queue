@@ -11,33 +11,16 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/next/dist/build/polyfills/fetch/index.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
-/* harmony import */ var _Populate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Populate */ "./components/Populate.js");
-
-
-
-
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swr */ "./node_modules/swr/esm/index.js");
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
 
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
-
-function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -45,231 +28,201 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var Input = /*#__PURE__*/function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Input, _React$Component);
+function Input() {
+  // set initial hooks to keep track of state
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
+      score = _useState[0],
+      setScore = _useState[1];
 
-  var _super = _createSuper(Input);
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      name = _useState2[0],
+      setName = _useState2[1];
 
-  function Input() {
-    var _this;
-
-    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Input);
-
-    _this = _super.call(this);
-    _this.state = {
-      score: 0,
-      name: "",
-      sent_to_database: false
-    };
-    _this.incrementScore = _this.incrementScore.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
-    _this.decrementScore = _this.decrementScore.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
-    _this.nameChange = _this.nameChange.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
-    _this.submit = _this.submit.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
-    return _this;
-  } // increments the score of the particular song
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      sentDatabase = _useState3[0],
+      setSent = _useState3[1]; // useSWR is like your own state that is backed by an API call
+  // mutate w/out parameters just causes refetch of endpoint
+  // you can change the arguments with a parameter see repo
+  // for further documentation.
 
 
-  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Input, [{
-    key: "incrementScore",
-    value: function incrementScore() {
-      this.setState(function (prevState) {
-        return {
-          score: prevState.score + 1,
-          name: prevState.name,
-          sent_to_database: false
-        };
-      });
-    } // decrements the score of the particular song
-
-  }, {
-    key: "decrementScore",
-    value: function decrementScore() {
-      this.setState(function (prevState) {
-        // if the score is 0; don't go negative!
-        if (prevState.score == 0) {
-          return {
-            score: 0,
-            name: prevState.name,
-            sent_to_database: false
-          };
-        } // score is not 0; subtract 1
-        else {
-            return {
-              score: prevState.score - 1,
-              name: prevState.name,
-              sent_to_database: false
-            };
-          }
-      });
-    } // handles changes to name of song dynamically
-
-  }, {
-    key: "nameChange",
-    value: function nameChange() {
-      this.setState(function (prevState) {
-        return {
-          score: prevState.score,
-          name: event.target.value,
-          sent_to_database: false
-        };
-      });
-    } // submit information to the MongoDB Database
-
-  }, {
-    key: "submit",
-    value: function submit() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function submit$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_8___default()("/api/add", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                // the body of this message is built from state
-                body: JSON.stringify({
-                  song: this.state.name,
-                  score: this.state.score
-                })
-              }));
-
-            case 2:
-              // update state to conditionally render message to user
-              this.setState(function (prevState) {
-                return {
-                  score: prevState.score,
-                  name: prevState.name,
-                  sent_to_database: true
-                };
-              });
-
-            case 3:
-            case "end":
-              return _context.stop();
-          }
+  var _useSWR = Object(swr__WEBPACK_IMPORTED_MODULE_2__["default"])("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_3__["fetch"], {
+    // see example repo for explination about booleans
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    initialData: {
+      result: [{
+        _id: "FETCHING DATA ... ",
+        song: {
+          song: "FETCHING DATA ... ",
+          score: 0
         }
-      }, null, this, null, Promise);
+      }]
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return __jsx("div", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 91,
-          columnNumber: 7
-        }
-      }, __jsx("form", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 93,
-          columnNumber: 9
-        }
-      }, __jsx("label", {
-        form: "sname",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 94,
-          columnNumber: 11
-        }
-      }, "Song Name "), __jsx("input", {
-        type: "text",
-        id: "sname",
-        name: "sname",
-        value: this.state.name,
-        onChange: this.nameChange,
-        placeholder: "enter song name",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 95,
-          columnNumber: 11
-        }
-      })), __jsx("h1", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 106,
-          columnNumber: 9
-        }
-      }, this.state.score), __jsx("button", {
-        onClick: this.incrementScore,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 107,
-          columnNumber: 9
-        }
-      }, "Upvote"), __jsx("button", {
-        onClick: this.decrementScore,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 108,
-          columnNumber: 9
-        }
-      }, "Downvote"), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 109,
-          columnNumber: 9
-        }
-      }), __jsx("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 110,
-          columnNumber: 9
-        }
-      }), __jsx("button", {
-        onClick: this.submit,
-        className: "button",
-        style: {
-          verticalAlign: "middle"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 113,
-          columnNumber: 9
-        }
-      }, " ", __jsx("span", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 119,
-          columnNumber: 11
-        }
-      }, " Save to Database ")), __jsx("h1", {
-        style: {
-          display: this.state.sent_to_database ? "block" : "none"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 123,
-          columnNumber: 9
-        }
-      }, " ", this.state.name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        update: this.state.sent_to_database,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 127,
-          columnNumber: 9
-        }
-      }));
-    }
-  }]);
+  }),
+      data = _useSWR.data,
+      mutate = _useSWR.mutate; // re-fectch data from database for initial render
+  // React will call useEffect when any of the dependecies change.
+  // Because it an empty array; you call it the first time and never again
 
-  return Input;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    mutate();
+  }, []); // useEffect --> changes to depen calls this function
+  // handles changes to name of song dynamically
+
+  var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_3__["fetch"])("/api/add", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              // the body of this song is built from state
+              body: JSON.stringify({
+                song: name,
+                score: score
+              })
+            }));
+
+          case 2:
+            _context.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(mutate());
+
+          case 4:
+            // update sent
+            setSent(true);
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, null, Promise);
+  }, [name, score]);
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 5
+    }
+  }, __jsx("form", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 7
+    }
+  }, __jsx("label", {
+    form: "sname",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 9
+    }
+  }, "Song Name "), __jsx("input", {
+    type: "text",
+    id: "sname",
+    name: "sname",
+    value: name,
+    onChange: function onChange() {
+      return setName(event.target.value);
+    },
+    placeholder: "enter song name",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 9
+    }
+  })), __jsx("h1", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 7
+    }
+  }, score), __jsx("button", {
+    onClick: function onClick() {
+      return setScore(score + 1);
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 7
+    }
+  }, "Upvote"), __jsx("button", {
+    onClick: function onClick() {
+      return setScore(score - 1);
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82,
+      columnNumber: 7
+    }
+  }, "Downvote"), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83,
+      columnNumber: 7
+    }
+  }), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 7
+    }
+  }), __jsx("button", {
+    onClick: function onClick() {
+      return submit();
+    },
+    className: "button",
+    style: {
+      verticalAlign: "middle"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 7
+    }
+  }, " ", __jsx("span", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 9
+    }
+  }, " Save to Database ")), __jsx("h1", {
+    style: {
+      display: sentDatabase ? "block" : "none"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95,
+      columnNumber: 7
+    }
+  }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    data: data,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 7
+    }
+  }));
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
 
@@ -375,44 +328,6 @@ var Navbar = function Navbar() {
 
 /***/ }),
 
-/***/ "./components/Populate.js":
-/*!********************************!*\
-  !*** ./components/Populate.js ***!
-  \********************************/
-/*! exports provided: Populate */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Populate", function() { return Populate; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "./node_modules/swr/esm/index.js");
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-
-
-
-function Populate(props) {
-  // swr returns a data and error parameter
-  var _useSWR = Object(swr__WEBPACK_IMPORTED_MODULE_1__["default"])("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
-    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
-    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  }),
-      data = _useSWR.data,
-      error = _useSWR.error;
-
-  if (error) {
-    return null;
-  }
-
-  return data;
-}
-
-/***/ }),
-
 /***/ "./components/Retrieve.js":
 /*!********************************!*\
   !*** ./components/Retrieve.js ***!
@@ -425,73 +340,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "./node_modules/swr/esm/index.js");
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Retrieve.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
-
- // //create your forceUpdate hook
-// function useForceUpdate() {
-//   console.log("updating...");
-//   const [value, setValue] = useState(0); // integer state
-//   return () => setValue(value => ++value); // update the state to force render
-// }
-
 function Retrieve(props) {
   var _this = this;
 
-  // swr returns a data and error parameter
-  // const forceUpdate = useForceUpdate();
-  var _useSWR = Object(swr__WEBPACK_IMPORTED_MODULE_1__["default"])("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // By default, useSWR will call the endpoint we specified (in this case, /api/all) every time we click away from
-    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
-    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  }),
-      data = _useSWR.data,
-      error = _useSWR.error;
-
-  if (error) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 27,
-        columnNumber: 12
-      }
-    }, "Failed to load");
-  }
-
-  if (!data) {
-    return __jsx("div", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 31,
-        columnNumber: 12
-      }
-    }, "Loading");
-  }
-
-  var obj = JSON.parse(JSON.stringify(data.result));
-  console.log("Retrieve: " + obj);
+  var obj = props.data.result;
+  console.log(props);
   var tableComponents = obj.map(function (item) {
-    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: item._id,
       song: item.song.song,
       score: item.song.score,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40,
+        lineNumber: 10,
         columnNumber: 7
       }
     });
@@ -501,42 +371,42 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 16,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 17,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 18,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 19,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 20,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 21,
       columnNumber: 13
     }
   }, "Score")), tableComponents)));
@@ -706,193 +576,6 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _classCallCheck; });
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/createClass.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/createClass.js ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _createClass; });
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _getPrototypeOf; });
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/inherits.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/inherits.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _inherits; });
-/* harmony import */ var _setPrototypeOf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object(_setPrototypeOf__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _possibleConstructorReturn; });
-/* harmony import */ var _helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var _assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (Object(_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__["default"])(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return Object(_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__["default"])(self);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _setPrototypeOf; });
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/typeof.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/typeof.js ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _typeof; });
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
 
 /***/ }),
 
