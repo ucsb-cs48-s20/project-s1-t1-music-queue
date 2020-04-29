@@ -82,7 +82,12 @@ function Input() {
       <button onClick={() => setScore(score + 1)} className="button_upvote">
         Upvote
       </button>
-      <button onClick={() => setScore(score - 1)} className="button_downvote">
+      <button
+        onClick={() => {
+          if (score > 0) setScore(score - 1);
+        }}
+        className="button_downvote"
+      >
         Downvote
       </button>
       {/* sumbit name and score of song to MongoDB Database*/}
