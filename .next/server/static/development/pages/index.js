@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -245,6 +245,7 @@ function Input() {
     }
   }, score), __jsx("button", {
     onClick: () => setScore(score + 1),
+    className: "button_upvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -253,27 +254,14 @@ function Input() {
     }
   }, "Upvote"), __jsx("button", {
     onClick: () => setScore(score - 1),
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 7
-    }
-  }, "Downvote"), __jsx("br", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }), __jsx("br", {
+    className: "button_downvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 84,
       columnNumber: 7
     }
-  }), __jsx("button", {
+  }, "Downvote"), __jsx("button", {
     onClick: () => submit(),
     className: "button",
     style: {
@@ -282,32 +270,22 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 88,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 94,
       columnNumber: 9
     }
-  }, " Save to Database ")), __jsx("h1", {
-    style: {
-      display: sentDatabase ? "block" : "none"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 95,
-      columnNumber: 7
-    }
-  }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: data,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 96,
       columnNumber: 7
     }
   }));
@@ -2281,7 +2259,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

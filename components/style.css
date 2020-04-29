@@ -1,49 +1,41 @@
-/* Style the navigation menu */
-.navbar {
-  width: 100%;
-  background-color: #555;
-  overflow: auto;
-}
-
-/* Navigation links */
-.navbar a {
-  float: left;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-  width: 100%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
-  text-align: center; /* If you want the text to be centered */
-}
-
-/* Add a background color on mouse-over */
-.navbar a:hover {
-  background-color: #555;
-}
-
-/* Style the current/active link */
-.navbar a.active {
-  background-color: #4caf50;
-}
-
-/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-    width: 100%;
-    text-align: left; /* If you want the text to be left-aligned on small screens */
-  }
-}
-
 /*
- Button css from w3schools.com
+ Buttons css from w3schools.com
 */
+
+.button_upvote {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: green;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button_downvote {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: red;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
 
 .button {
   display: inline-block;
   border-radius: 4px;
-  background-color: #f4511e;
+  background-color: lightblue;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -102,4 +94,15 @@ tr:nth-child(even) {
 }
 tr:hover {
   background-color: #ffff99;
+}
+
+/*
+ Styling for input form
+*/
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }

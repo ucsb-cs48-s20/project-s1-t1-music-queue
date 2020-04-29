@@ -78,10 +78,12 @@ function Input() {
       </form>
       {/* Gather score of song */}
       <h1>{score}</h1>
-      <button onClick={() => setScore(score + 1)}>Upvote</button>
-      <button onClick={() => setScore(score - 1)}>Downvote</button>
-      <br />
-      <br />
+      <button onClick={() => setScore(score + 1)} className="button_upvote">
+        Upvote
+      </button>
+      <button onClick={() => setScore(score - 1)} className="button_downvote">
+        Downvote
+      </button>
       {/* sumbit name and score of song to MongoDB Database*/}
       <button
         onClick={() => submit()}
@@ -91,11 +93,6 @@ function Input() {
         {" "}
         <span> Save to Database </span>
       </button>
-      {/* Conditional rendering to display data sent to MongoDB Database*/}
-      <h1 style={{ display: sentDatabase ? "block" : "none" }}>
-        {" "}
-        {name} saved to MongoDB Database{" "}
-      </h1>
       <Retrieve data={data} />
     </div>
   );

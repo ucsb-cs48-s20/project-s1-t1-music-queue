@@ -152,6 +152,7 @@ function Input() {
     onClick: function onClick() {
       return setScore(score + 1);
     },
+    className: "button_upvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -162,27 +163,14 @@ function Input() {
     onClick: function onClick() {
       return setScore(score - 1);
     },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 7
-    }
-  }, "Downvote"), __jsx("br", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }), __jsx("br", {
+    className: "button_downvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 84,
       columnNumber: 7
     }
-  }), __jsx("button", {
+  }, "Downvote"), __jsx("button", {
     onClick: function onClick() {
       return submit();
     },
@@ -193,32 +181,22 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 88,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 94,
       columnNumber: 9
     }
-  }, " Save to Database ")), __jsx("h1", {
-    style: {
-      display: sentDatabase ? "block" : "none"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 95,
-      columnNumber: 7
-    }
-  }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 96,
       columnNumber: 7
     }
   }));
@@ -5990,7 +5968,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6013,5 +5991,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

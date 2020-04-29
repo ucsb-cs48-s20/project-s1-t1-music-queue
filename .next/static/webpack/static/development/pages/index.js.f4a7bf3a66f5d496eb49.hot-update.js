@@ -28,7 +28,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-function Inpu() {
+function Input() {
   // set initial hooks to keep track of state
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
       score = _useState[0],
@@ -168,21 +168,7 @@ function Inpu() {
       lineNumber: 82,
       columnNumber: 7
     }
-  }, "Downvote"), __jsx("br", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }), __jsx("br", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84,
-      columnNumber: 7
-    }
-  }), __jsx("button", {
+  }, "Downvote"), __jsx("button", {
     onClick: function onClick() {
       return submit();
     },
@@ -193,14 +179,14 @@ function Inpu() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 84,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 90,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx("h1", {
@@ -210,7 +196,7 @@ function Inpu() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 93,
       columnNumber: 7
     }
   }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -218,7 +204,7 @@ function Inpu() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 97,
       columnNumber: 7
     }
   }));
@@ -229,4 +215,4 @@ function Inpu() {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.cf5c48581a90d1893987.hot-update.js.map
+//# sourceMappingURL=index.js.f4a7bf3a66f5d496eb49.hot-update.js.map

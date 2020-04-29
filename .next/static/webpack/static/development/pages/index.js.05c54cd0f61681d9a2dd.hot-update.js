@@ -152,6 +152,7 @@ function Input() {
     onClick: function onClick() {
       return setScore(score + 1);
     },
+    className: "button_upvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -162,27 +163,14 @@ function Input() {
     onClick: function onClick() {
       return setScore(score - 1);
     },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 7
-    }
-  }, "Downvote"), __jsx("br", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }), __jsx("br", {
+    className: "button_downvote",
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 84,
       columnNumber: 7
     }
-  }), __jsx("button", {
+  }, "Downvote"), __jsx("button", {
     onClick: function onClick() {
       return submit();
     },
@@ -193,14 +181,14 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 88,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 94,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx("h1", {
@@ -210,7 +198,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 97,
       columnNumber: 7
     }
   }, " ", name, " saved to MongoDB Database", " "), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -218,7 +206,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 101,
       columnNumber: 7
     }
   }));
@@ -229,4 +217,4 @@ function Input() {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.4f128a50047b46685a19.hot-update.js.map
+//# sourceMappingURL=index.js.05c54cd0f61681d9a2dd.hot-update.js.map
