@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -175,7 +175,8 @@ function Input() {
         }
       }]
     }
-  }); // re-fectch data from database for initial render
+  }); // re-fectch data from database for initial render. mutate() does this
+  // because it is the function that references the data hook above
   // React will call useEffect when any of the dependecies change.
   // Because it an empty array; you call it the first time and never again
 
@@ -205,14 +206,14 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 67,
       columnNumber: 5
     }
   }, __jsx("form", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 69,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -220,7 +221,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 70,
       columnNumber: 9
     }
   }, "Song Name "), __jsx("input", {
@@ -233,14 +234,14 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 71,
       columnNumber: 9
     }
   })), __jsx("h1", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 81,
       columnNumber: 7
     }
   }, score), __jsx("button", {
@@ -249,7 +250,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 82,
       columnNumber: 7
     }
   }, "Upvote"), __jsx("button", {
@@ -258,7 +259,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 85,
       columnNumber: 7
     }
   }, "Downvote"), __jsx("button", {
@@ -270,14 +271,14 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 89,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94,
+      lineNumber: 95,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -285,7 +286,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 97,
       columnNumber: 7
     }
   }));
@@ -411,62 +412,70 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 function Retrieve(props) {
-  let obj = props.data.result;
-  console.log(props);
-  const tableComponents = obj.map(item => {
-    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  let obj = props.data.result; // create another array of songs so that you can sort it later
+
+  const songArr = obj.map(item => {
+    return {
       key: item._id,
       song: item.song.song,
-      score: item.song.score,
+      score: item.song.score
+    };
+  }); // sort array of songs; highest scores first and lowest scores last
+
+  songArr.sort((a, b) => a.score > b.score ? -1 : 1);
+  const tableComponents = songArr.map(item => {
+    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: item._id,
+      song: item.song,
+      score: item.score,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10,
-        columnNumber: 7
+        lineNumber: 21,
+        columnNumber: 12
       }
     });
-  }); // {data} can't do this with Javascript objects
-
+  });
   return __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 25,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 26,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 27,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 28,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 29,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 30,
       columnNumber: 13
     }
   }, "Score")), tableComponents)));
@@ -2259,7 +2268,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

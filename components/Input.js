@@ -29,7 +29,8 @@ function Input() {
     }
   });
 
-  // re-fectch data from database for initial render
+  // re-fectch data from database for initial render. mutate() does this
+  // because it is the function that references the data hook above
   // React will call useEffect when any of the dependecies change.
   // Because it an empty array; you call it the first time and never again
   useEffect(() => {
