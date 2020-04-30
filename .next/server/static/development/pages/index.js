@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authEndpoint", function() { return authEndpoint; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Login.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Login.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  //import './login.css';
 
@@ -116,13 +116,30 @@ const redirectUri = "http://localhost:3000/App";
 const scopes = ["user-read-currently-playing", "user-read-playback-state"];
 
 class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  // .btn:hover {
+  //     background-color: #fff;
+  //     color: #000;
+  //     opacity: 0.5;
+  //     transition: 0.6s ease;
+  // }
   render() {
+    const styles = {
+      border: "none",
+      padding: "10px 20px",
+      textAlign: "center",
+      textDecoration: "none",
+      display: "inline-block",
+      fontSize: "16px"
+    };
     return __jsx("div", {
       className: "Login",
+      style: {
+        textAlign: "center"
+      },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17,
+        lineNumber: 34,
         columnNumber: 7
       }
     }, __jsx("header", {
@@ -130,23 +147,24 @@ class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18,
+        lineNumber: 35,
         columnNumber: 9
       }
     }, __jsx("button", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19,
+        lineNumber: 36,
         columnNumber: 13
       }
     }, __jsx("a", {
+      style: styles,
       className: "btn btn--Login-link",
       href: `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
+        lineNumber: 37,
         columnNumber: 13
       }
     }, "Login to Spotify"))));
@@ -170,7 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login */ "./components/Login.js");
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  //import ReactDOM from 'react-dom';
 //import './index.css';
@@ -186,11 +204,28 @@ function Homepage() {
       lineNumber: 9,
       columnNumber: 3
     }
-  }, __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, __jsx("header", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10,
+      columnNumber: 5
+    }
+  }, __jsx("h1", {
+    style: {
+      textAlign: "center"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, "Welcome to MusicQ!")), __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
       columnNumber: 5
     }
   }));
@@ -204,14 +239,14 @@ function Homepage() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/lilyou/Desktop/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
 
 
 /***/ }),

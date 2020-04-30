@@ -7,6 +7,9 @@ import Login from '../components/Login';
 function Homepage (){
   return(
   <div>
+    <header>
+      <h1 style={{textAlign: "center"}}>Welcome to MusicQ!</h1>
+    </header>
     <Login />
   </div>
   )
@@ -18,4 +21,3 @@ export default Homepage;
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 //serviceWorker.unregister();
-

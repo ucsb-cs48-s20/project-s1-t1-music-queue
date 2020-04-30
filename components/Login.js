@@ -12,12 +12,30 @@ const scopes = [
 
 class Login extends Component {
 
+// .btn:hover {
+//     background-color: #fff;
+//     color: #000;
+//     opacity: 0.5;
+//     transition: 0.6s ease;
+// }
+
   render() {
+
+    const styles = {
+      border: "none",
+      padding: "10px 20px",
+      textAlign: "center",
+      textDecoration: "none",
+      display: "inline-block",
+      fontSize: "16px",
+    }
+
     return (
-      <div className="Login">
+      <div className="Login" style={{textAlign: "center"}}>
         <header className="Login-header">
           {(<button>
             <a
+              style={styles}
               className="btn btn--Login-link"
               href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
                 "%20"
