@@ -97,7 +97,7 @@ function Input() {
         {" "}
         <span> Save to Database </span>
       </button>
-      <Retrieve data={data} subtmit={() => submit()} />
+      <Retrieve data={data} />
     </div>
   );
 }

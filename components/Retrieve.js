@@ -7,6 +7,7 @@ export default function Retrieve(props) {
 
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
+    console.log(item);
     return {
       key: item._id,
       song: item.song.song,

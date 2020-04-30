@@ -1,12 +1,15 @@
-import { useState, useCallBack } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../utils/fetch";
 
 export default function Table(props) {
-  const [name, setName] = useState(props.song);
   const [score, setScore] = useState(props.score);
 
+  useEffect(() => {
+    setScore(props.score);
+  }, [score, props.score]);
+
   // // handles changes when upvoting score of each of song dynamically
-  // const upvote = useCallBack(
+  // const updateScore = useCallback(
   //   async event => {
   //     await fetch("/api/add", {
   //       method: "POST",
@@ -26,13 +29,32 @@ export default function Table(props) {
 
   return (
     <tr>
-      <td>{name}</td>
+      {/* output name and score of song*/}
+      <td>{props.song}</td>
       <td>{score}</td>
       <td>
-        <button onClick={() => setScore(score + 1)}> upvote</button>
+        {/* button to upvote*/}
+        <button
+          onClick={() => {
+            setScore(score + 1);
+            //updateScore();
+          }}
+        >
+          {" "}
+          upvote
+        </button>
       </td>
       <td>
-        <button onClick={() => setScore(score - 1)}> downvote</button>
+        {/* button to downvote. Cannot be < 0*/}
+        <button
+          onClick={() => {
+            if (score > 0) setScore(score - 1);
+            //updateScore();
+          }}
+        >
+          {" "}
+          downvote
+        </button>
       </td>
     </tr>
   );
