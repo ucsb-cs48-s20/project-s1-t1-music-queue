@@ -23,7 +23,8 @@ function Input() {
       result: [
         {
           _id: "FETCHING DATA ... ",
-          song: { song: "FETCHING DATA ... ", score: 0 }
+          name: "FETCHING DATA ... ",
+          score: "FETCHING DATA ... "
         }
       ]
     }
@@ -47,7 +48,7 @@ function Input() {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          song: name,
+          name: name,
           score: score
         })
       });

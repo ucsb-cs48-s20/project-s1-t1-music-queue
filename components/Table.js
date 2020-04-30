@@ -4,9 +4,15 @@ import { fetch } from "../utils/fetch";
 export default function Table(props) {
   const [score, setScore] = useState(props.score);
 
+  // this callback renders the score when intially
+  // rendered
   useEffect(() => {
     setScore(props.score);
-  }, [score, props.score]);
+  }, [props.score]);
+
+  // this callback renders changes to score
+  // dynmaically and updates it for all users
+  useEffect(() => {}, [score]);
 
   // // handles changes when upvoting score of each of song dynamically
   // const updateScore = useCallback(
@@ -30,7 +36,7 @@ export default function Table(props) {
   return (
     <tr>
       {/* output name and score of song*/}
-      <td>{props.song}</td>
+      <td>{props.name}</td>
       <td>{score}</td>
       <td>
         {/* button to upvote*/}

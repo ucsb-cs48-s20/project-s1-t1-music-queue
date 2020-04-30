@@ -107,8 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 // handles the case where a dupicate song is attempted to be added
 
 async function createSong(req, res) {
-  const song = req.body;
-  console.log("adding: " + song.song); // if the song passed is null
+  const song = req.body; // if the song passed is null
   // deal with this edge case
 
   if (!song) {
@@ -122,10 +121,9 @@ async function createSong(req, res) {
   const client = await Object(_utils_mongodb__WEBPACK_IMPORTED_MODULE_0__["initDatabase"])();
   const users = client.collection("song_name");
   const mutation = {
-    // if a document with this song already exisits, simply over-write it for now;
-    // this is functionality only for the spike
     $setOnInsert: {
-      song
+      name: song.name,
+      score: song.score
     }
   }; // first search for document in MongoDB database that matches query.
   // If none is found, document with mutation is added as it is simply

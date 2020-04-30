@@ -4,14 +4,12 @@ import "./style.css";
 
 export default function Retrieve(props) {
   let obj = props.data.result;
-
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
-    console.log(item);
     return {
       key: item._id,
-      song: item.song.song,
-      score: item.song.score
+      name: item.name,
+      score: item.score
     };
   });
 
@@ -22,7 +20,7 @@ export default function Retrieve(props) {
     return (
       <Table
         key={item._id}
-        song={item.song}
+        name={item.name}
         score={item.score}
         useEffect={props.useEffect}
       />

@@ -18,10 +18,9 @@ async function createSong(req, res) {
   const users = client.collection("song_name");
 
   const mutation = {
-    // if a document with this song already exisits, simply over-write it for now;
-    // this is functionality only for the spike
     $setOnInsert: {
-      song
+      name: song.name,
+      score: song.score
     }
   };
 
