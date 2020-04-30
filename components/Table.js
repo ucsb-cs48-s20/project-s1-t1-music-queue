@@ -12,7 +12,9 @@ export default function Table(props) {
 
   // this callback renders changes to score
   // dynmaically and updates it for all users
-  useEffect(() => {}, [score]);
+  useEffect(() => {
+    // call useEffect of props
+  }, [score]);
 
   // // handles changes when upvoting score of each of song dynamically
   // const updateScore = useCallback(

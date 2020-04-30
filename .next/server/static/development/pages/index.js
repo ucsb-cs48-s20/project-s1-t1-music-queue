@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -412,7 +412,7 @@ function Retrieve(props) {
   songArr.sort((a, b) => a.score > b.score ? -1 : 1);
   const tableComponents = songArr.map(item => {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item._id,
+      key: item.name,
       name: item.name,
       score: item.score,
       useEffect: props.useEffect,
@@ -432,7 +432,6 @@ function Retrieve(props) {
       columnNumber: 5
     }
   }, __jsx("table", {
-    id: "songQueue",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -516,7 +515,8 @@ function Table(props) {
   }, [props.score]); // this callback renders changes to score
   // dynmaically and updates it for all users
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {}, [score]); // // handles changes when upvoting score of each of song dynamically
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {// call useEffect of props
+  }, [score]); // // handles changes when upvoting score of each of song dynamically
   // const updateScore = useCallback(
   //   async event => {
   //     await fetch("/api/add", {
@@ -539,28 +539,28 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 39,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 41,
       columnNumber: 7
     }
   }, props.name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 42,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 43,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -570,14 +570,14 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 45,
       columnNumber: 9
     }
   }, " ", "upvote")), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -587,7 +587,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 57,
       columnNumber: 9
     }
   }, " ", "downvote")));
@@ -2336,7 +2336,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

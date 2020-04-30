@@ -19,7 +19,7 @@ export default function Retrieve(props) {
   const tableComponents = songArr.map(item => {
     return (
       <Table
-        key={item._id}
+        key={item.name}
         name={item.name}
         score={item.score}
         useEffect={props.useEffect}
@@ -29,7 +29,7 @@ export default function Retrieve(props) {
 
   return (
     <div>
-      <table id="songQueue">
+      <table>
         <tbody>
           <tr>
             <th>Song</th>

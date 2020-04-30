@@ -4,6 +4,7 @@ import { initDatabase } from "../../utils/mongodb";
 // handles the case where a dupicate song is attempted to be added
 async function createSong(req, res) {
   const song = req.body;
+  console.log("adding " + song.name);
   // if the song passed is null
   // deal with this edge case
   if (!song) {
@@ -12,14 +13,15 @@ async function createSong(req, res) {
       message: "song was not found"
     };
   }
-
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
   const users = client.collection("song_name");
 
+  const query = song.name;
+
   const mutation = {
-    $setOnInsert: {
-      name: song.name,
+    // The $set operator replaces the value of a field with the specified value.
+    $set: {
       score: song.score
     }
   };
@@ -27,7 +29,7 @@ async function createSong(req, res) {
   // first search for document in MongoDB database that matches query.
   // If none is found, document with mutation is added as it is simply
   // either adding a tag to an exisiting document or creating a new one.
-  const result = await users.findOneAndUpdate(song, mutation, {
+  const result = await users.findOneAndUpdate({ name: song.name }, mutation, {
     upsert: true, // allows for insertion of new document
     returnOriginal: false
   });

@@ -329,7 +329,7 @@ function Retrieve(props) {
   });
   var tableComponents = songArr.map(function (item) {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item._id,
+      key: item.name,
       name: item.name,
       score: item.score,
       useEffect: props.useEffect,
@@ -349,7 +349,6 @@ function Retrieve(props) {
       columnNumber: 5
     }
   }, __jsx("table", {
-    id: "songQueue",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -433,7 +432,8 @@ function Table(props) {
   }, [props.score]); // this callback renders changes to score
   // dynmaically and updates it for all users
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {}, [score]); // // handles changes when upvoting score of each of song dynamically
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// call useEffect of props
+  }, [score]); // // handles changes when upvoting score of each of song dynamically
   // const updateScore = useCallback(
   //   async event => {
   //     await fetch("/api/add", {
@@ -456,28 +456,28 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 39,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 41,
       columnNumber: 7
     }
   }, props.name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 42,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 43,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -487,14 +487,14 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 45,
       columnNumber: 9
     }
   }, " ", "upvote")), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -504,7 +504,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 57,
       columnNumber: 9
     }
   }, " ", "downvote")));
@@ -6044,7 +6044,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6067,5 +6067,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
