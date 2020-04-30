@@ -17,11 +17,6 @@ async function createSong(req, res) {
   const client = await initDatabase();
   const users = client.collection("song_name");
 
-  // set name to be of song
-  const toAdd = {
-    song
-  };
-
   const mutation = {
     // if a document with this song already exisits, simply over-write it for now;
     // this is functionality only for the spike
@@ -33,7 +28,7 @@ async function createSong(req, res) {
   // first search for document in MongoDB database that matches query.
   // If none is found, document with mutation is added as it is simply
   // either adding a tag to an exisiting document or creating a new one.
-  const result = await users.findOneAndUpdate(toAdd, mutation, {
+  const result = await users.findOneAndUpdate(song, mutation, {
     upsert: true, // allows for insertion of new document
     returnOriginal: false
   });

@@ -35,9 +35,7 @@ function Input() {
   // Because it an empty array; you call it the first time and never again
   useEffect(() => {
     mutate();
-  }, [score]);
-
-  // useEffect --> changes to depen calls this function
+  }, []);
 
   // handles changes to name of song dynamically
   const submit = useCallback(
@@ -74,7 +72,7 @@ function Input() {
           name="sname"
           value={name}
           onChange={() => setName(event.target.value)}
-          placeholder="enter song name"
+          placeholder="enter song name ... "
         ></input>
       </form>
       {/* Gather score of song */}
@@ -99,13 +97,7 @@ function Input() {
         {" "}
         <span> Save to Database </span>
       </button>
-      <Retrieve
-        data={data}
-        upvote={() => setScore(score + 1)}
-        downvote={() => {
-          if (score > 0) setScore(score - 1);
-        }}
-      />
+      <Retrieve data={data} subtmit={() => submit()} />
     </div>
   );
 }

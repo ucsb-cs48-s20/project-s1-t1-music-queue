@@ -18,18 +18,25 @@ export default function Retrieve(props) {
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
 
   const tableComponents = songArr.map(item => {
-    return <Table key={item._id} song={item.song} score={item.score} />;
+    return (
+      <Table
+        key={item._id}
+        song={item.song}
+        score={item.score}
+        useEffect={props.useEffect}
+      />
+    );
   });
 
   return (
     <div>
-      <table>
+      <table id="songQueue">
         <tbody>
           <tr>
             <th>Song</th>
             <th>Score</th>
-            <th></th>
-            <th></th>
+            <th>Upvote</th>
+            <th>Downvote</th>
           </tr>
           {tableComponents}
         </tbody>

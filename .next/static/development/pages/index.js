@@ -69,8 +69,7 @@ function Input() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     mutate();
-  }, [score]); // useEffect --> changes to depen calls this function
-  // handles changes to name of song dynamically
+  }, []); // handles changes to name of song dynamically
 
   var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
@@ -109,14 +108,14 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 65,
       columnNumber: 5
     }
   }, __jsx("form", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 67,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -124,7 +123,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 68,
       columnNumber: 9
     }
   }, "Song Name "), __jsx("input", {
@@ -135,18 +134,18 @@ function Input() {
     onChange: function onChange() {
       return setName(event.target.value);
     },
-    placeholder: "enter song name",
+    placeholder: "enter song name ... ",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 69,
       columnNumber: 9
     }
   })), __jsx("h1", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 79,
       columnNumber: 7
     }
   }, score), __jsx("button", {
@@ -157,7 +156,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 80,
       columnNumber: 7
     }
   }, "Upvote"), __jsx("button", {
@@ -168,7 +167,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 83,
       columnNumber: 7
     }
   }, "Downvote"), __jsx("button", {
@@ -182,28 +181,25 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94,
+      lineNumber: 92,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 98,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
-    upvote: function upvote() {
-      return setScore(score + 1);
-    },
-    downvote: function downvote() {
-      if (score > 0) setScore(score - 1);
+    subtmit: function subtmit() {
+      return submit();
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 100,
       columnNumber: 7
     }
   }));
@@ -341,11 +337,12 @@ function Retrieve(props) {
       key: item._id,
       song: item.song,
       score: item.score,
+      useEffect: props.useEffect,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21,
-        columnNumber: 12
+        lineNumber: 22,
+        columnNumber: 7
       }
     });
   });
@@ -353,59 +350,60 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 32,
       columnNumber: 5
     }
   }, __jsx("table", {
+    id: "songQueue",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 33,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 34,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 35,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 36,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 37,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 38,
       columnNumber: 13
     }
-  }), __jsx("th", {
+  }, "Upvote"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 39,
       columnNumber: 13
     }
-  })), tableComponents)));
+  }, "Downvote")), tableComponents)));
 }
 
 /***/ }),
@@ -419,66 +417,99 @@ function Retrieve(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Table; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 function Table(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.song),
+      name = _useState[0],
+      setName = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.score),
+      score = _useState2[0],
+      setScore = _useState2[1]; // // handles changes when upvoting score of each of song dynamically
+  // const upvote = useCallBack(
+  //   async event => {
+  //     await fetch("/api/add", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       // the body of this song is built from state
+  //       body: JSON.stringify({
+  //         song: name,
+  //         score: score
+  //       })
+  //     });
+  //     // forces a call to the hook useSWR
+  //   },
+  //   [name, score]
+  // );
+
+
   return __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 3,
+      lineNumber: 28,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4,
+      lineNumber: 29,
       columnNumber: 7
     }
-  }, props.song), __jsx("td", {
+  }, name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 30,
       columnNumber: 7
     }
-  }, props.score), __jsx("td", {
+  }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 7
-    }
-  }, __jsx("button", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 9
-    }
-  }, "upvote")), __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 31,
       columnNumber: 7
     }
   }, __jsx("button", {
+    onClick: function onClick() {
+      return setScore(score + 1);
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 32,
       columnNumber: 9
     }
-  }, "downvote")));
+  }, " upvote")), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 7
+    }
+  }, __jsx("button", {
+    onClick: function onClick() {
+      return setScore(score - 1);
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 9
+    }
+  }, " downvote")));
 }
-
-/* harmony default export */ __webpack_exports__["default"] = (Table);
 
 /***/ }),
 
@@ -6014,7 +6045,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6037,5 +6068,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
