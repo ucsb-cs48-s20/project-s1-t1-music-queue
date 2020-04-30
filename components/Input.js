@@ -98,7 +98,7 @@ function Input() {
         {" "}
         <span> Save to Database </span>
       </button>
-      <Retrieve data={data} />
+      <Retrieve data={data} useEffect={() => useEffect()} />
     </div>
   );
 }

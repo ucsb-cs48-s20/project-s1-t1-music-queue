@@ -282,6 +282,7 @@ function Input() {
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: data,
+    useEffect: () => Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(),
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -415,7 +416,7 @@ function Retrieve(props) {
       key: item.name,
       name: item.name,
       score: item.score,
-      useEffect: props.useEffect,
+      useEffect: () => props.useEffect(),
       __self: this,
       __source: {
         fileName: _jsxFileName,
@@ -512,82 +513,91 @@ function Table(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     setScore(props.score);
-  }, [props.score]); // this callback renders changes to score
-  // dynmaically and updates it for all users
+  }, [props.score]); // handles changes when upvoting score of each of song dynamically
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {// call useEffect of props
-  }, [score]); // // handles changes when upvoting score of each of song dynamically
-  // const updateScore = useCallback(
-  //   async event => {
-  //     await fetch("/api/add", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       // the body of this song is built from state
-  //       body: JSON.stringify({
-  //         song: name,
-  //         score: score
-  //       })
-  //     });
-  //     // forces a call to the hook useSWR
-  //   },
-  //   [name, score]
-  // );
+  const increment = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
+    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_1__["fetch"])("/api/increment", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        name: props.name
+      })
+    }); // forces a call to the hook useSWR
+  }, [score]); // handles changes when downvoting score of each of song dynamically
 
+  const decrement = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
+    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_1__["fetch"])("/api/decrement", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        name: props.name
+      })
+    }); // forces a call to the hook useSWR
+  }, [score]);
   return __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 50,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 52,
       columnNumber: 7
     }
   }, props.name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 53,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, __jsx("button", {
     onClick: () => {
-      setScore(score + 1); //updateScore();
+      setScore(score + 1);
+      increment();
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 56,
       columnNumber: 9
     }
-  }, " ", "upvote")), __jsx("td", {
+  }, "upvote")), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 65,
       columnNumber: 7
     }
   }, __jsx("button", {
     onClick: () => {
-      if (score > 0) setScore(score - 1); //updateScore();
+      if (score > 0) {
+        setScore(score - 1);
+      }
+
+      decrement();
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, " ", "downvote")));

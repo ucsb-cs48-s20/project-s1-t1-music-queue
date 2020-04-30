@@ -22,7 +22,7 @@ export default function Retrieve(props) {
         key={item.name}
         name={item.name}
         score={item.score}
-        useEffect={props.useEffect}
+        useEffect={() => props.useEffect()}
       />
     );
   });

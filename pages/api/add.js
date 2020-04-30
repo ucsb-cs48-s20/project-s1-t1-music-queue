@@ -17,8 +17,6 @@ async function createSong(req, res) {
   const client = await initDatabase();
   const users = client.collection("song_name");
 
-  const query = song.name;
-
   const mutation = {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
