@@ -133,6 +133,13 @@ class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 18,
         columnNumber: 9
       }
+    }, __jsx("button", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 13
+      }
     }, __jsx("a", {
       className: "btn btn--Login-link",
       href: `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`,
@@ -142,7 +149,7 @@ class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 20,
         columnNumber: 13
       }
-    }, "Login to Spotify")));
+    }, "Login to Spotify"))));
   }
 
 }
@@ -164,30 +171,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login */ "./components/Login.js");
 var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-//import React from 'react';
-//import ReactDOM from 'react-dom';
+ //import ReactDOM from 'react-dom';
 //import './index.css';
 //import App from './App'
+
  //import * as serviceWorker from './serviceWorker';
 
-const Homepage = () => __jsx("div", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8,
-    columnNumber: 3
-  }
-}, __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9,
-    columnNumber: 5
-  }
-}));
+function Homepage() {
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 3
+    }
+  }, __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 5
+    }
+  }));
+}
 
+;
 /* harmony default export */ __webpack_exports__["default"] = (Homepage); // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

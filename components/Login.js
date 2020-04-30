@@ -16,7 +16,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <header className="Login-header">
-          {(
+          {(<button>
             <a
               className="btn btn--Login-link"
               href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
@@ -24,7 +24,7 @@ class Login extends Component {
               )}&response_type=token&show_dialog=true`}
             >
               Login to Spotify
-            </a>
+            </a></button>
           )}
         </header>
       </div>
