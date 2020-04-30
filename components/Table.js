@@ -3,6 +3,12 @@ function Table(props) {
     <tr>
       <td>{props.song}</td>
       <td>{props.score}</td>
+      <td>
+        <button>upvote</button>
+      </td>
+      <td>
+        <button>downvote</button>
+      </td>
     </tr>
   );
 }

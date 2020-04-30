@@ -35,7 +35,7 @@ function Input() {
   // Because it an empty array; you call it the first time and never again
   useEffect(() => {
     mutate();
-  }, []);
+  }, [score]);
 
   // useEffect --> changes to depen calls this function
 
@@ -99,7 +99,13 @@ function Input() {
         {" "}
         <span> Save to Database </span>
       </button>
-      <Retrieve data={data} />
+      <Retrieve
+        data={data}
+        upvote={() => setScore(score + 1)}
+        downvote={() => {
+          if (score > 0) setScore(score - 1);
+        }}
+      />
     </div>
   );
 }

@@ -69,7 +69,7 @@ function Input() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     mutate();
-  }, []); // useEffect --> changes to depen calls this function
+  }, [score]); // useEffect --> changes to depen calls this function
   // handles changes to name of song dynamically
 
   var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
@@ -162,7 +162,7 @@ function Input() {
     }
   }, "Upvote"), __jsx("button", {
     onClick: function onClick() {
-      return setScore(score - 1);
+      if (score > 0) setScore(score - 1);
     },
     className: "button_downvote",
     __self: this,
@@ -182,22 +182,28 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 94,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 100,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
+    upvote: function upvote() {
+      return setScore(score + 1);
+    },
+    downvote: function downvote() {
+      if (score > 0) setScore(score - 1);
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 102,
       columnNumber: 7
     }
   }));
@@ -270,37 +276,24 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var Navbar = function Navbar() {
-  return (// <div className="navbar">
-    //   <Link href="/">
-    //     <a className="active" href="#">
-    //       Input to MongoDB Database
-    //     </a>
-    //   </Link>
-    //   <Link href="/Retrieve">
-    //     <a className="hover" href="#">
-    //       Retrieve from MongoDB Database
-    //     </a>
-    //   </Link>
-    // </div>
-    __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 19,
-        columnNumber: 3
-      }
-    }, __jsx("h1", {
-      style: {
-        textAlign: "center"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20,
-        columnNumber: 5
-      }
-    }, "MusicQ"))
-  );
+  return __jsx("div", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx("h1", {
+    style: {
+      textAlign: "center"
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 5
+    }
+  }, "MusicQ"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
@@ -398,7 +391,21 @@ function Retrieve(props) {
       lineNumber: 30,
       columnNumber: 13
     }
-  }, "Score")), tableComponents)));
+  }, "Score"), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 13
+    }
+  }), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 13
+    }
+  })), tableComponents)));
 }
 
 /***/ }),
@@ -440,7 +447,35 @@ function Table(props) {
       lineNumber: 5,
       columnNumber: 7
     }
-  }, props.score));
+  }, props.score), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 7
+    }
+  }, __jsx("button", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }, "upvote")), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 7
+    }
+  }, __jsx("button", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }
+  }, "downvote")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Table);
@@ -5979,7 +6014,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6002,5 +6037,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

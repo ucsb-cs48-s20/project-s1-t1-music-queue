@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -182,7 +182,7 @@ function Input() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     mutate();
-  }, []); // useEffect --> changes to depen calls this function
+  }, [score]); // useEffect --> changes to depen calls this function
   // handles changes to name of song dynamically
 
   const submit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
@@ -254,7 +254,9 @@ function Input() {
       columnNumber: 7
     }
   }, "Upvote"), __jsx("button", {
-    onClick: () => setScore(score - 1),
+    onClick: () => {
+      if (score > 0) setScore(score - 1);
+    },
     className: "button_downvote",
     __self: this,
     __source: {
@@ -271,22 +273,26 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 94,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 100,
       columnNumber: 9
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: data,
+    upvote: () => setScore(score + 1),
+    downvote: () => {
+      if (score > 0) setScore(score - 1);
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 102,
       columnNumber: 7
     }
   }));
@@ -356,23 +362,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const Navbar = () => // <div className="navbar">
-//   <Link href="/">
-//     <a className="active" href="#">
-//       Input to MongoDB Database
-//     </a>
-//   </Link>
-//   <Link href="/Retrieve">
-//     <a className="hover" href="#">
-//       Retrieve from MongoDB Database
-//     </a>
-//   </Link>
-// </div>
-__jsx("div", {
+const Navbar = () => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 19,
+    lineNumber: 6,
     columnNumber: 3
   }
 }, __jsx("h1", {
@@ -382,7 +376,7 @@ __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 20,
+    lineNumber: 7,
     columnNumber: 5
   }
 }, "MusicQ"));
@@ -478,7 +472,21 @@ function Retrieve(props) {
       lineNumber: 30,
       columnNumber: 13
     }
-  }, "Score")), tableComponents)));
+  }, "Score"), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 13
+    }
+  }), __jsx("th", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 13
+    }
+  })), tableComponents)));
 }
 
 /***/ }),
@@ -520,7 +528,35 @@ function Table(props) {
       lineNumber: 5,
       columnNumber: 7
     }
-  }, props.score));
+  }, props.score), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 7
+    }
+  }, __jsx("button", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }, "upvote")), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 7
+    }
+  }, __jsx("button", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }
+  }, "downvote")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Table);
@@ -2268,7 +2304,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

@@ -19,8 +19,7 @@ async function createSong(req, res) {
 
   // set name to be of song
   const toAdd = {
-    song,
-    _id: song.song
+    song
   };
 
   const mutation = {
