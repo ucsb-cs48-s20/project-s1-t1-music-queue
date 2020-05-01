@@ -4,28 +4,33 @@
 /*!*****************************!*\
   !*** ./components/Login.js ***!
   \*****************************/
-/*! exports provided: authEndpoint, default */
+/*! exports provided: authEndpoint, spotifyWebApiURL, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authEndpoint", function() { return authEndpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "spotifyWebApiURL", function() { return spotifyWebApiURL; });
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
 
 
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Login.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
-function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
+
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Login.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -36,35 +41,71 @@ var authEndpoint = 'https://accounts.spotify.com/authorize'; // Replace with you
 var clientId = "1e8d5de1ecae449c848c0a2b909044b7";
 var redirectUri = "http://localhost:3000/App";
 var scopes = ["user-read-currently-playing", "user-read-playback-state"];
+var spotifyWebApiURL = "https://accounts.spotify.com/authorize/?client_id=".concat(clientId, "&response_type=token&redirect_uri=").concat(redirectUri, "&scope=").concat(scopes);
 
 var Login = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(Login, _Component);
+  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(Login, _Component);
 
   var _super = _createSuper(Login);
 
-  function Login() {
+  function Login(props) {
+    var _this;
+
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Login);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this), "componentDidMount", function () {
+      var url = window.location.href;
+
+      if (url.indexOf('_token') > -1) {
+        var access_token = url.split('_token=')[1].split("&")[0].trim();
+
+        _this.setState({
+          access_token: access_token
+        });
+      }
+    });
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this), "makeSpotifyCall", function (event) {
+      event.preventDefault();
+      var access_token = _this.state.access_token;
+
+      if (access_token === '') {
+        document.location = spotifyWebApiURL;
+      } else {
+        Router.push({
+          pathname: '/user',
+          query: {
+            access_token: access_token
+          }
+        });
+      }
+    });
+
+    _this.state = {
+      access_token: ''
+    };
+    return _this;
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Login, [{
     key: "render",
-    // .btn:hover {
-    //     background-color: #fff;
-    //     color: #000;
-    //     opacity: 0.5;
-    //     transition: 0.6s ease;
-    // }
     value: function render() {
-      var styles = {
-        border: "none",
-        padding: "10px 20px",
+      var _styles,
+          _this2 = this;
+
+      var styles = (_styles = {
+        border: "0.2em solid #1ecd97",
         textAlign: "center",
-        textDecoration: "none",
         display: "inline-block",
-        fontSize: "16px"
-      };
+        fontSize: "16px",
+        backgroundColor: "transparent",
+        borderRadius: "2em",
+        color: "#1ecd97",
+        cursor: "pointer"
+      }, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(_styles, "fontSize", "3vmin"), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(_styles, "padding", "0.7em 1.5em"), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(_styles, "textTransform", "uppercase"), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(_styles, "transition", "all 0.25s ease"), _styles);
+      var access_token = this.state.access_token;
       return __jsx("div", {
         className: "Login",
         style: {
@@ -73,7 +114,7 @@ var Login = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 65,
           columnNumber: 7
         }
       }, __jsx("header", {
@@ -81,32 +122,27 @@ var Login = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
-          columnNumber: 9
+          lineNumber: 66,
+          columnNumber: 8
         }
-      }, __jsx("button", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36,
-          columnNumber: 13
-        }
-      }, __jsx("a", {
-        style: styles,
+      }, access_token !== '' ? 'You are logged in' : __jsx("button", {
+        onClick: function onClick(event) {
+          return _this2.makeSpotifyCall(event);
+        },
         className: "btn btn--Login-link",
-        href: "".concat(authEndpoint, "?client_id=").concat(clientId, "&redirect_uri=").concat(redirectUri, "&scope=").concat(scopes.join("%20"), "&response_type=token&show_dialog=true"),
+        style: styles,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
-          columnNumber: 13
+          lineNumber: 69,
+          columnNumber: 14
         }
-      }, "Login to Spotify"))));
+      }, access_token !== '' ? '' : 'Login to Spotify')));
     }
   }]);
 
   return Login;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Login);
 
@@ -174,6 +210,33 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 /***/ }),
@@ -299,10 +362,10 @@ function _typeof(obj) {
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js!./":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
-  \***************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjenniferlo%2Fcs%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js!./":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjenniferlo%2Fcs%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -345,7 +408,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login */ "./components/Login.js");
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/index.js";
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  //import ReactDOM from 'react-dom';
 //import './index.css';
@@ -396,14 +459,14 @@ function Homepage() {
 
 /***/ }),
 
-/***/ 2:
-/*!*******************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
-  \*******************************************************************************************************************************************/
+/***/ 1:
+/*!*************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjenniferlo%2Fcs%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjenniferlo%2Fcs%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjenniferlo%2Fcs%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js!./");
 
 
 /***/ }),
@@ -419,5 +482,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

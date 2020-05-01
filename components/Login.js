@@ -9,41 +9,67 @@ const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
 ];
+export const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId
+}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
 
 class Login extends Component {
 
-// .btn:hover {
-//     background-color: #fff;
-//     color: #000;
-//     opacity: 0.5;
-//     transition: 0.6s ease;
-// }
+  constructor(props) {
+    super(props);
+    this.state = {
+        access_token: ''
+    }
+}
+componentDidMount = () => {
+  let url = window.location.href
+  if(url.indexOf('_token')>-1){            
+      let access_token = url.split('_token=')[1].split("&")[0].trim()
+      this.setState({ access_token })
+  }
+}
+
+makeSpotifyCall = (event) => {
+  event.preventDefault()
+  const { access_token } = this.state
+  if(access_token===''){
+      document.location = spotifyWebApiURL
+  }else{
+      Router.push({
+          pathname: '/user',
+          query: { access_token }
+      })
+  }  
+}
+
 
   render() {
 
     const styles = {
-      border: "none",
-      padding: "10px 20px",
+      border: "0.2em solid #1ecd97",
       textAlign: "center",
-      textDecoration: "none",
       display: "inline-block",
       fontSize: "16px",
+      backgroundColor: "transparent",
+      borderRadius: "2em",
+      color: "#1ecd97",
+      cursor: "pointer",
+      fontSize: "3vmin",
+      padding: "0.7em 1.5em",
+      textTransform: "uppercase",
+      transition: "all 0.25s ease",
     }
+
+    const { access_token } = this.state
 
     return (
       <div className="Login" style={{textAlign: "center"}}>
-        <header className="Login-header">
-          {(<button>
-            <a
-              style={styles}
-              className="btn btn--Login-link"
-              href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                "%20"
-              )}&response_type=token&show_dialog=true`}
-            >
-              Login to Spotify
-            </a></button>
-          )}
+       <header className="Login-header">
+            {
+                access_token !== '' ? 'You are logged in' : 
+            (<button onClick={event => this.makeSpotifyCall(event)} className="btn btn--Login-link" style={styles}>
+            {access_token !== '' ? '' : 'Login to Spotify'}
+            </button>
+            )}
         </header>
       </div>
     );
