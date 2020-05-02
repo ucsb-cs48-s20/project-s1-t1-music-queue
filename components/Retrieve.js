@@ -34,8 +34,7 @@ export default function Retrieve(props) {
           <tr>
             <th>Song</th>
             <th>Score</th>
-            <th>Upvote</th>
-            <th>Downvote</th>
+            <th>Rate</th>
           </tr>
           {tableComponents}
         </tbody>

@@ -64,6 +64,9 @@ function Input() {
 
   return (
     <div>
+      {/* Display current queue of music */}
+      <Retrieve data={data} mutate={async () => await mutate()} />
+
       {/* Gather name of song */}
       <form>
         <label form="sname">Song Name </label>
@@ -76,19 +79,6 @@ function Input() {
           placeholder="enter song name ... "
         ></input>
       </form>
-      {/* Gather score of song */}
-      <h1>{score}</h1>
-      <button onClick={() => setScore(score + 1)} className="button_upvote">
-        Upvote
-      </button>
-      <button
-        onClick={() => {
-          if (score > 0) setScore(score - 1);
-        }}
-        className="button_downvote"
-      >
-        Downvote
-      </button>
       {/* sumbit name and score of song to MongoDB Database*/}
       <button
         onClick={() => submit()}
@@ -96,9 +86,8 @@ function Input() {
         style={{ verticalAlign: "middle" }}
       >
         {" "}
-        <span> Save to Database </span>
+        <span> Add to Queue </span>
       </button>
-      <Retrieve data={data} mutate={async () => await mutate()} />
     </div>
   );
 }

@@ -206,11 +206,20 @@ function Input() {
       lineNumber: 66,
       columnNumber: 5
     }
-  }, __jsx("form", {
+  }, __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    data: data,
+    mutate: async () => await mutate(),
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 68,
+      columnNumber: 7
+    }
+  }), __jsx("form", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -218,7 +227,7 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 72,
       columnNumber: 9
     }
   }, "Song Name "), __jsx("input", {
@@ -231,37 +240,10 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 73,
       columnNumber: 9
     }
-  })), __jsx("h1", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 80,
-      columnNumber: 7
-    }
-  }, score), __jsx("button", {
-    onClick: () => setScore(score + 1),
-    className: "button_upvote",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 7
-    }
-  }, "Upvote"), __jsx("button", {
-    onClick: () => {
-      if (score > 0) setScore(score - 1);
-    },
-    className: "button_downvote",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84,
-      columnNumber: 7
-    }
-  }, "Downvote"), __jsx("button", {
+  })), __jsx("button", {
     onClick: () => submit(),
     className: "button",
     style: {
@@ -270,26 +252,17 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93,
+      lineNumber: 83,
       columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 89,
       columnNumber: 9
     }
-  }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    data: data,
-    mutate: async () => await mutate(),
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 101,
-      columnNumber: 7
-    }
-  }));
+  }, " Add to Queue ")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
@@ -474,14 +447,7 @@ function Retrieve(props) {
       lineNumber: 37,
       columnNumber: 13
     }
-  }, "Upvote"), __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 13
-    }
-  }, "Downvote")), tableComponents)));
+  }, "Rate")), tableComponents)));
 }
 
 /***/ }),
@@ -573,6 +539,7 @@ function Table(props) {
       columnNumber: 7
     }
   }, __jsx("button", {
+    className: "button_upvote",
     onClick: () => {
       setScore(score + 1);
       increment();
@@ -583,14 +550,8 @@ function Table(props) {
       lineNumber: 58,
       columnNumber: 9
     }
-  }, "upvote")), __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 7
-    }
-  }, __jsx("button", {
+  }, "\u2191"), __jsx("button", {
+    className: "button_downvote",
     onClick: () => {
       if (score > 0) {
         setScore(score - 1);
@@ -601,10 +562,10 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 68,
       columnNumber: 9
     }
-  }, " ", "downvote")));
+  }, " ", "\u2193")));
 }
 
 /***/ }),

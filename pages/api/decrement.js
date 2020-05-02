@@ -4,7 +4,6 @@ import { initDatabase } from "../../utils/mongodb";
 // handles the case where a dupicate song is attempted to be added
 async function decrementSong(req, res) {
   const song = req.body;
-  console.log("downvoting " + song.name);
   // if the song passed is null
   // deal with this edge case
   if (!song) {

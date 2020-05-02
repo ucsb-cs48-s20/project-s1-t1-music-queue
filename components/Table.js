@@ -56,17 +56,17 @@ export default function Table(props) {
       <td>
         {/* button to upvote*/}
         <button
+          className="button_upvote"
           onClick={() => {
             setScore(score + 1);
             increment();
           }}
         >
-          upvote
+          &uarr;
         </button>
-      </td>
-      <td>
         {/* button to downvote. Cannot be < 0*/}
         <button
+          className="button_downvote"
           onClick={() => {
             if (score > 0) {
               setScore(score - 1);
@@ -75,7 +75,7 @@ export default function Table(props) {
           }}
         >
           {" "}
-          downvote
+          &darr;
         </button>
       </td>
     </tr>

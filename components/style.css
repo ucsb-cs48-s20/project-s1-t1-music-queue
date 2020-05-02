@@ -10,8 +10,8 @@
   color: #ffffff;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  padding: 5px;
+  width: fill;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -25,8 +25,8 @@
   color: #ffffff;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  padding: 5px;
+  width: fill;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -40,7 +40,7 @@
   color: #ffffff;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
+  padding: 5px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
@@ -87,6 +87,7 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  width: 25%;
 }
 tr:nth-child(even) {
   background-color: #dddddd;
@@ -100,7 +101,7 @@ tr:hover {
 */
 
 input[type="text"] {
-  width: 100%;
+  width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
