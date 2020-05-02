@@ -215,6 +215,14 @@ function Input() {
       lineNumber: 68,
       columnNumber: 7
     }
+  }), __jsx("hr", {
+    className: "linebreak",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 7
+    }
   }), __jsx("form", {
     __self: this,
     __source: {
@@ -222,15 +230,7 @@ function Input() {
       lineNumber: 71,
       columnNumber: 7
     }
-  }, __jsx("label", {
-    form: "sname",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 9
-    }
-  }, "Song Name "), __jsx("input", {
+  }, __jsx("input", {
     type: "text",
     id: "sname",
     name: "sname",
@@ -240,10 +240,10 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 72,
       columnNumber: 9
     }
-  })), __jsx("button", {
+  }), __jsx("button", {
     onClick: () => submit(),
     className: "button",
     style: {
@@ -252,17 +252,17 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
+      lineNumber: 81,
+      columnNumber: 9
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
-      columnNumber: 9
+      lineNumber: 87,
+      columnNumber: 11
     }
-  }, " Add to Queue ")));
+  }, " Add Song "))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);

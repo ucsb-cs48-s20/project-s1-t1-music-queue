@@ -9,7 +9,7 @@
   border: none;
   color: #ffffff;
   text-align: center;
-  font-size: 28px;
+  font-size: 25px;
   padding: 5px;
   width: fill;
   transition: all 0.5s;
@@ -24,7 +24,7 @@
   border: none;
   color: #ffffff;
   text-align: center;
-  font-size: 28px;
+  font-size: 25px;
   padding: 5px;
   width: fill;
   transition: all 0.5s;
@@ -101,10 +101,19 @@ tr:hover {
 */
 
 input[type="text"] {
-  width: 70%;
+  width: 80%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+}
+
+/*
+ Styling for line break and making sure button and form
+ on the same line
+*/
+.linebreak {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 

@@ -66,10 +66,9 @@ function Input() {
     <div>
       {/* Display current queue of music */}
       <Retrieve data={data} mutate={async () => await mutate()} />
-
+      <hr className="linebreak" />
       {/* Gather name of song */}
       <form>
-        <label form="sname">Song Name </label>
         <input
           type="text"
           id="sname"
@@ -78,16 +77,16 @@ function Input() {
           onChange={() => setName(event.target.value)}
           placeholder="enter song name ... "
         ></input>
+        {/* sumbit name and score of song to MongoDB Database*/}
+        <button
+          onClick={() => submit()}
+          className="button"
+          style={{ verticalAlign: "middle" }}
+        >
+          {" "}
+          <span> Add Song </span>
+        </button>
       </form>
-      {/* sumbit name and score of song to MongoDB Database*/}
-      <button
-        onClick={() => submit()}
-        className="button"
-        style={{ verticalAlign: "middle" }}
-      >
-        {" "}
-        <span> Add to Queue </span>
-      </button>
     </div>
   );
 }
