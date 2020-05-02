@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -282,7 +282,7 @@ function Input() {
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: data,
-    useEffect: () => Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(),
+    mutate: async () => await mutate(),
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -416,7 +416,7 @@ function Retrieve(props) {
       key: item.name,
       name: item.name,
       score: item.score,
-      useEffect: () => props.useEffect(),
+      mutate: props.mutate,
       __self: this,
       __source: {
         fileName: _jsxFileName,
@@ -526,6 +526,8 @@ function Table(props) {
         name: props.name
       })
     }); // forces a call to the hook useSWR
+
+    props.mutate();
   }, [score]); // handles changes when downvoting score of each of song dynamically
 
   const decrement = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
@@ -539,33 +541,35 @@ function Table(props) {
         name: props.name
       })
     }); // forces a call to the hook useSWR
+
+    props.mutate();
   }, [score]);
   return __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 52,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, props.name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 56,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -576,14 +580,14 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, "upvote")), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 67,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -597,7 +601,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 69,
       columnNumber: 9
     }
   }, " ", "downvote")));
@@ -2346,7 +2350,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

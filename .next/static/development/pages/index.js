@@ -69,7 +69,6 @@ function Input() {
     mutate();
   }, []); // handles changes to name of song dynamically
 
-
   var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
       while (1) {
@@ -192,8 +191,23 @@ function Input() {
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
-    useEffect: function useEffect() {
-      return Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])();
+    mutate: function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(mutate());
+
+            case 2:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, null, null, null, Promise);
     },
     __self: this,
     __source: {
@@ -336,9 +350,7 @@ function Retrieve(props) {
       key: item.name,
       name: item.name,
       score: item.score,
-      useEffect: function useEffect() {
-        return props.useEffect();
-      },
+      mutate: props.mutate,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -458,6 +470,10 @@ function Table(props) {
             }));
 
           case 2:
+            // forces a call to the hook useSWR
+            props.mutate();
+
+          case 3:
           case "end":
             return _context.stop();
         }
@@ -483,6 +499,10 @@ function Table(props) {
             }));
 
           case 2:
+            // forces a call to the hook useSWR
+            props.mutate();
+
+          case 3:
           case "end":
             return _context2.stop();
         }
@@ -493,28 +513,28 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 52,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, props.name), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 56,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -525,14 +545,14 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, "upvote")), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 67,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -546,7 +566,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 69,
       columnNumber: 9
     }
   }, " ", "downvote")));
@@ -6086,7 +6106,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6109,5 +6129,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

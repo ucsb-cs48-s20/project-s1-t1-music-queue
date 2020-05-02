@@ -24,6 +24,7 @@ export default function Table(props) {
         })
       });
       // forces a call to the hook useSWR
+      props.mutate();
     },
     [score]
   );
@@ -42,6 +43,7 @@ export default function Table(props) {
         })
       });
       // forces a call to the hook useSWR
+      props.mutate();
     },
     [score]
   );
