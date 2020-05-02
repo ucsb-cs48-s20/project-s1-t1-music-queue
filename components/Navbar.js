@@ -4,7 +4,7 @@ import "./style.css";
 
 const Navbar = () => (
   <div>
-    <h1 style={{ textAlign: "center" }}>MusicQ</h1>
+    <img className="logo" src="logo.png" alt="MusicQ"></img>
   </div>
 );
 

@@ -165,7 +165,7 @@ function Input() {
       lineNumber: 72,
       columnNumber: 9
     }
-  }), __jsx("button", {
+  })), __jsx("button", {
     onClick: function onClick() {
       return submit();
     },
@@ -176,17 +176,17 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 9
+      lineNumber: 82,
+      columnNumber: 7
     }
   }, " ", __jsx("span", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
-      columnNumber: 11
+      lineNumber: 88,
+      columnNumber: 9
     }
-  }, " Add Song "))));
+  }, " Add Song ")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
@@ -263,17 +263,17 @@ var Navbar = function Navbar() {
       lineNumber: 6,
       columnNumber: 3
     }
-  }, __jsx("h1", {
-    style: {
-      textAlign: "center"
-    },
+  }, __jsx("img", {
+    className: "logo",
+    src: "logo.png",
+    alt: "MusicQ",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7,
       columnNumber: 5
     }
-  }, "MusicQ"));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
