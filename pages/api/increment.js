@@ -20,7 +20,7 @@ async function incrementSong(req, res) {
   // find document with song name and decrement the score
   const result = await users.findOneAndUpdate(
     { name: song.name },
-    { $inc: { score: -1 } }
+    { $inc: { score: 1 } }
   );
 
   res.statusCode = 200;

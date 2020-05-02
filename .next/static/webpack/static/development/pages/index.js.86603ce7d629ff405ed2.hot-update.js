@@ -69,6 +69,7 @@ function Input() {
     mutate();
   }, []); // handles changes to name of song dynamically
 
+
   var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
       while (1) {
@@ -191,7 +192,9 @@ function Input() {
     }
   }, " Save to Database ")), __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
-    useEffect: this.useEffect,
+    useEffect: function useEffect() {
+      return Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])();
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -206,4 +209,4 @@ function Input() {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.b236aa7609ad098f86cf.hot-update.js.map
+//# sourceMappingURL=index.js.86603ce7d629ff405ed2.hot-update.js.map

@@ -6086,7 +6086,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************************************/
@@ -6109,5 +6109,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
