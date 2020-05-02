@@ -77,16 +77,16 @@ function Input() {
           onChange={() => setName(event.target.value)}
           placeholder="enter song name ... "
         ></input>
-        {/* sumbit name and score of song to MongoDB Database*/}
-        <button
-          onClick={() => submit()}
-          className="button"
-          style={{ verticalAlign: "middle" }}
-        >
-          {" "}
-          <span> Add Song </span>
-        </button>
       </form>
+      {/* sumbit name and score of song to MongoDB Database*/}
+      <button
+        onClick={() => submit()}
+        className="button"
+        style={{ verticalAlign: "middle" }}
+      >
+        {" "}
+        <span> Add Song </span>
+      </button>
     </div>
   );
 }
