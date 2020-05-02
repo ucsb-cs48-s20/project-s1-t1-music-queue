@@ -93,6 +93,127 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/Login.js":
+/*!*****************************!*\
+  !*** ./components/Login.js ***!
+  \*****************************/
+/*! exports provided: authEndpoint, spotifyWebApiURL, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authEndpoint", function() { return authEndpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "spotifyWebApiURL", function() { return spotifyWebApiURL; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Login.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ //import './login.css';
+
+const authEndpoint = 'https://accounts.spotify.com/authorize'; // Replace with your app's client ID, redirect URI and desired scopes
+
+const clientId = "1e8d5de1ecae449c848c0a2b909044b7";
+const redirectUri = "http://localhost:3000/App";
+const scopes = ["user-read-currently-playing", "user-read-playback-state"];
+const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
+
+class Login extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "componentDidMount", () => {
+      let url = window.location.href;
+
+      if (url.indexOf('_token') > -1) {
+        let access_token = url.split('_token=')[1].split("&")[0].trim();
+        this.setState({
+          access_token
+        });
+      }
+    });
+
+    _defineProperty(this, "makeSpotifyCall", event => {
+      event.preventDefault();
+      const {
+        access_token
+      } = this.state;
+
+      if (access_token === '') {
+        document.location = spotifyWebApiURL;
+      } else {
+        Router.push({
+          pathname: '/user',
+          query: {
+            access_token
+          }
+        });
+      }
+    });
+
+    this.state = {
+      access_token: ''
+    };
+  }
+
+  render() {
+    const styles = {
+      border: "0.2em solid #1ecd97",
+      textAlign: "center",
+      display: "inline-block",
+      fontSize: "16px",
+      backgroundColor: "transparent",
+      borderRadius: "2em",
+      color: "#1ecd97",
+      cursor: "pointer",
+      fontSize: "3vmin",
+      padding: "0.7em 1.5em",
+      textTransform: "uppercase",
+      transition: "all 0.25s ease"
+    };
+    const {
+      access_token
+    } = this.state;
+    return __jsx("div", {
+      className: "Login",
+      style: {
+        textAlign: "center"
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65,
+        columnNumber: 7
+      }
+    }, __jsx("header", {
+      className: "Login-header",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66,
+        columnNumber: 8
+      }
+    }, access_token !== '' ? 'You are logged in' : __jsx("button", {
+      onClick: event => this.makeSpotifyCall(event),
+      className: "btn btn--Login-link",
+      style: styles,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 69,
+        columnNumber: 14
+      }
+    }, access_token !== '' ? '' : 'Login to Spotify')));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -104,48 +225,55 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js";
-
+/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login */ "./components/Login.js");
+var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ //import ReactDOM from 'react-dom';
+//import './index.css';
+//import App from './App'
 
-const App = () => __jsx("div", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 2,
-    columnNumber: 5
-  }
-}, __jsx("h1", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 3,
-    columnNumber: 7
-  }
-}, "Vote for the songs you like!"), __jsx("p", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 6,
-    columnNumber: 7
-  }
-}, "If you like a song, click thumbs up. If dont like a song, click thumbs down."), __jsx("button", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9,
-    columnNumber: 7
-  }
-}, "thumbs up"), __jsx("button", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13,
-    columnNumber: 7
-  }
-}, "thumbs down"));
+ //import * as serviceWorker from './serviceWorker';
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
+function Homepage() {
+  return __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 3
+    }
+  }, __jsx("header", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 5
+    }
+  }, __jsx("h1", {
+    style: {
+      textAlign: "center"
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, "Welcome to MusicQ!")), __jsx(_components_Login__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 5
+    }
+  }));
+}
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Homepage); // If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+//serviceWorker.unregister();
 
 /***/ }),
 
@@ -156,7 +284,7 @@ const App = () => __jsx("div", {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shonnavalli/cs48/learn/spike-s1-t1-try-voting-songs/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/index.js */"./pages/index.js");
 
 
 /***/ }),

@@ -1,0 +1,1 @@
+{"ast":null,"code":"function redirect() {\n  return {\n    redirectTo: \"/\"\n  };\n}\n\nexport default redirect;","map":null,"metadata":{},"sourceType":"module"}
