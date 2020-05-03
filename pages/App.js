@@ -13,6 +13,8 @@ class SearchArtists extends Component {
           search_term: '',
           artists: []
       }
+      this.submitArtistForm = this.submitArtistForm.bind(this);
+      this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
   componentDidMount = () => {
@@ -26,6 +28,8 @@ class SearchArtists extends Component {
       event.preventDefault()
       const { search_term } = this.state
       const { access_token } = this.props.url.query
+      console.log(access_token)
+      
       if(search_term!=''){
         fetch(`${spotifySearchURL}${search_term}&type=artist&access_token=${access_token}`)
           .then(response => response.json())
@@ -100,5 +104,6 @@ class SearchArtists extends Component {
       );
   }
 }
+
 
 export default SearchArtists;
