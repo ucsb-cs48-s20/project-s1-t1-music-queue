@@ -5,8 +5,9 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import Results from '../components/Results'
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
+const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
 
-class SearchArtists extends Component {
+class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -19,7 +20,7 @@ class SearchArtists extends Component {
 
   componentDidMount = () => {
       if(window.location.href.indexOf('_token')==-1){
-          Router.push('/spotify')
+          Router.push('/Login')
       }
       console.log('cdm ran')
   }
@@ -28,7 +29,6 @@ class SearchArtists extends Component {
       event.preventDefault()
       const { search_term } = this.state
       const { access_token } = this.props.url.query
-      console.log(access_token)
       
       if(search_term!=''){
         fetch(`${spotifySearchURL}${search_term}&type=artist&access_token=${access_token}`)
@@ -69,8 +69,12 @@ class SearchArtists extends Component {
   
   render() {
       console.log('this.state', this.state)
+      const {user} = this.props
       return (
           <Layout>
+                <div className="row mt-5 justify-content-center">
+                    <h3>Welcome {user.display_name.split(" ")[0]}!</h3>
+                </div>
               <div className="row mt-5 justify-content-center">
                   <h3>
                       {
@@ -105,5 +109,14 @@ class SearchArtists extends Component {
   }
 }
 
+App.getInitialProps = async function(context) {
+    const { access_token } = context.query
+    const res = await fetch(spotifyProfileURL+access_token)
+    const user = await res.json()
+    return { 
+        user,
+    }
+}
 
-export default SearchArtists;
+
+export default App;

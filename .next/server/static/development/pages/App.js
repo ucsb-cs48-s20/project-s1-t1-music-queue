@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Header.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -209,14 +209,25 @@ const Header = props => __jsx("div", {
   }
 }, __jsx("a", {
   className: "navbar-brand",
-  href: "/",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 15,
     columnNumber: 13
   }
-}, "spotifyNext"), __jsx("button", {
+}, __jsx("img", {
+  src: "/musicQ.png",
+  alt: "musicQ",
+  style: {
+    width: '150px'
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15,
+    columnNumber: 41
+  }
+})), __jsx("button", {
   className: "navbar-toggler",
   type: "button",
   "data-toggle": "collapse",
@@ -227,7 +238,7 @@ const Header = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 16,
+    lineNumber: 18,
     columnNumber: 13
   }
 }, __jsx("span", {
@@ -235,51 +246,10 @@ const Header = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 17,
+    lineNumber: 19,
     columnNumber: 17
   }
-})), __jsx("div", {
-  className: "collapse navbar-collapse",
-  id: "navbarSupportedContent",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 20,
-    columnNumber: 13
-  }
-}, __jsx("ul", {
-  className: "navbar-nav mr-auto",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 21,
-    columnNumber: 17
-  }
-}, __jsx("li", {
-  className: "nav-item",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 22,
-    columnNumber: 21
-  }
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-  href: "/spotify",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 23,
-    columnNumber: 25
-  }
-}, __jsx("a", {
-  className: "nav-link",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 24,
-    columnNumber: 29
-  }
-}, "Spotify")))))));
+}))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
 
@@ -297,7 +267,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Layout.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -349,7 +319,7 @@ const Layout = props => __jsx("div", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Results.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Results.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2093,7 +2063,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _components_Results__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Results */ "./components/Results.js");
-var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/App.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2105,14 +2075,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
+const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
 
-class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
 
     _defineProperty(this, "componentDidMount", () => {
       if (window.location.href.indexOf('_token') == -1) {
-        next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/spotify');
+        next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/Login');
       }
 
       console.log('cdm ran');
@@ -2126,7 +2097,6 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       const {
         access_token
       } = this.props.url.query;
-      console.log(access_token);
 
       if (search_term != '') {
         isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(`${spotifySearchURL}${search_term}&type=artist&access_token=${access_token}`).then(response => response.json()).then(json => {
@@ -2195,11 +2165,14 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
   render() {
     console.log('this.state', this.state);
+    const {
+      user
+    } = this.props;
     return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 73,
+        lineNumber: 74,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -2207,14 +2180,29 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74,
+        lineNumber: 75,
+        columnNumber: 17
+      }
+    }, __jsx("h3", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 76,
+        columnNumber: 21
+      }
+    }, "Welcome ", user.display_name.split(" ")[0], "!")), __jsx("div", {
+      className: "row mt-5 justify-content-center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78,
         columnNumber: 15
       }
     }, __jsx("h3", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 75,
+        lineNumber: 79,
         columnNumber: 19
       }
     }, this.state.artists.length > 1 ? `Search results for "${this.state.search_term}"` : 'Search the Spotify API for your favorite artist')), __jsx("div", {
@@ -2222,7 +2210,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 85,
+        lineNumber: 89,
         columnNumber: 15
       }
     }, __jsx("form", {
@@ -2230,7 +2218,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 86,
+        lineNumber: 90,
         columnNumber: 19
       }
     }, __jsx("div", {
@@ -2238,7 +2226,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 87,
+        lineNumber: 91,
         columnNumber: 23
       }
     }, __jsx("input", {
@@ -2251,7 +2239,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88,
+        lineNumber: 92,
         columnNumber: 27
       }
     })), __jsx("div", {
@@ -2259,7 +2247,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95,
+        lineNumber: 99,
         columnNumber: 23
       }
     }, __jsx("button", {
@@ -2268,7 +2256,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96,
+        lineNumber: 100,
         columnNumber: 27
       }
     }, "Search")))), __jsx("div", {
@@ -2276,7 +2264,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100,
+        lineNumber: 104,
         columnNumber: 15
       }
     }, this.renderSearchResults()));
@@ -2284,7 +2272,18 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (SearchArtists);
+App.getInitialProps = async function (context) {
+  const {
+    access_token
+  } = context.query;
+  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(spotifyProfileURL + access_token);
+  const user = await res.json();
+  return {
+    user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (App);
 
 /***/ }),
 
@@ -2295,7 +2294,7 @@ class SearchArtists extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/App.js */"./pages/App.js");
+module.exports = __webpack_require__(/*! /Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js */"./pages/App.js");
 
 
 /***/ }),

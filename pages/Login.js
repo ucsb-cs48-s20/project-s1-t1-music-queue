@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Router from 'next/router'
+import Layout from '../components/Layout'
 //import './login.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -10,8 +11,8 @@ const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
 ];
-export const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId
-}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
+export const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
+
 
 class Login extends Component {
 
@@ -36,7 +37,7 @@ makeSpotifyCall = (event) => {
       document.location = spotifyWebApiURL
   }else{
       Router.push({
-          pathname: '/User',
+          pathname: '/App',
           query: { access_token }
       })
   }  
@@ -63,10 +64,13 @@ makeSpotifyCall = (event) => {
     const { access_token } = this.state
 
     return (
+      <Layout>
       <div className="Login" style={{textAlign: "center"}}>
+        <br/>
         <h3>
         {access_token !== '' ? 'You are logged in' : "Please Log in "}
         </h3>
+        <br/>
        <header className="Login-header">
             {
             (<button onClick={event => this.makeSpotifyCall(event)} className="btn btn--Login-link" style={styles}>
@@ -75,6 +79,7 @@ makeSpotifyCall = (event) => {
             )}
         </header>
       </div>
+      </Layout>
     );
   }
 }

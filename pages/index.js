@@ -2,18 +2,19 @@ import React from 'react';
 //import ReactDOM from 'react-dom';
 //import './index.css';
 //import App from './App'
+import Header from '../components/Header'
 import Login from './Login';
+import Layout from '../components/Layout';
 //import * as serviceWorker from './serviceWorker';
 function Homepage (){
   
   return(
-  <div>
-    <img src="/musicQ.png" alt="musicQ" style = {{width:'200px'}} />
-    <header>
-      <h1 style={{textAlign: "center"}}></h1>
-    </header>
-    <Login />
-  </div>
+    <div>
+      <header>
+        <h1 style={{textAlign: "center"}}></h1>
+      </header>
+      <Login />
+    </div>
   )
 };
 
