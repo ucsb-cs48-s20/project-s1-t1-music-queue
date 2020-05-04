@@ -12,9 +12,9 @@ class App extends Component {
       super(props);
       this.state = {
           search_term: '',
-          artists: []
+          tracks: []
       }
-      this.submitArtistForm = this.submitArtistForm.bind(this);
+      this.submitTrackForm = this.submitTrackForm.bind(this);
       this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
@@ -25,44 +25,45 @@ class App extends Component {
       console.log('cdm ran')
   }
 
-  submitArtistForm = (event) => {
+  submitTrackForm = (event) => {
       event.preventDefault()
       const { search_term } = this.state
       const { access_token } = this.props.url.query
       
       if(search_term!=''){
-        fetch(`${spotifySearchURL}${search_term}&type=artist&access_token=${access_token}`)
+        fetch(`${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`)
           .then(response => response.json())
           .then(json => {
-              this.setState({ artists: json.artists.items })
-              return json.artists
+              this.setState({ tracks: json.tracks.items })
+              return json.tracks
           })
       }
   }
 
   renderSearchResults = () => {
-      if(this.state.artists.length > 1){
-          const { artists } = this.state
+      if(this.state.tracks.length > 1){
+          const { tracks } = this.state
           const { access_token } = this.props.url.query 
           let allResults = []
-          artists.forEach((artist, index) => {
-              if(artist.images[0]!=undefined){
-                  let hasImage = artist.images[0]
+          tracks.forEach((track, index) => {
+             if(track.album !=undefined && track.album.images[0] !=undefined){
+                  let hasImage = track.album.images[0]
                   allResults.push(
                       <Results
-                          key={artist.id} 
+                          key={track.id} 
                           imageURL={hasImage.url}
-                          name={artist.name} 
+                          name={track.name} 
                       >                         
-                       <Link href={`/artist-albums?id=${artist.id}&access_token=${access_token}`}>
-                          <a className="text-muted">View {artist.name} albums</a>
+                       <Link href={`/track-albums?id=${track.id}&access_token=${access_token}`}>
+                          <a className="text-muted">View {track.name} albums</a>
                        </Link>
                       </Results>
                   )
               }
           })
           return allResults
-      }else{
+      }
+      else{
           return ''
       }
   }
@@ -78,21 +79,21 @@ class App extends Component {
               <div className="row mt-5 justify-content-center">
                   <h3>
                       {
-                          this.state.artists.length > 1 
+                          this.state.tracks.length > 1 
                           ? 
                           `Search results for "${this.state.search_term}"` 
                           : 
-                          'Search the Spotify API for your favorite artist'
+                          'Search the Spotify API for your favorite track'
                       }
                   </h3>
               </div>
               <div className="row mt-5 justify-content-center">
-                  <form onSubmit={event => this.submitArtistForm(event)}>
+                  <form onSubmit={event => this.submitTrackForm(event)}>
                       <div className="form-group">
                           <input 
                               type="text" 
                               className="form-control text-center" 
-                              placeholder="enter artist name"
+                              placeholder="enter track name"
                               onChange={event => this.setState({ search_term: event.target.value })} 
                           /> 
                       </div>

@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 var _this = undefined,
-    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Header.js";
+    _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Header.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -157,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 var _this = undefined,
-    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Layout.js";
+    _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Layout.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 var _this = undefined,
-    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Results.js";
+    _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Results.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -1091,12 +1091,12 @@ var e,t=(e=__webpack_require__(/*! querystring */ "./node_modules/querystring-es
 
 /***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
 /*!***********************************************************************************************************************!*\
-  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
   \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/next/dist/build/polyfills/object-assign.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/next/dist/build/polyfills/object-assign.js");
 
 /***/ }),
 
@@ -1112,10 +1112,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fshonnavalli%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fshonnavalli%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
+  \******************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3404,12 +3404,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -4044,12 +4044,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -4520,12 +4520,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -5305,7 +5305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js";
+var _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/pages/App.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
@@ -5341,36 +5341,36 @@ var App = /*#__PURE__*/function (_Component) {
       console.log('cdm ran');
     });
 
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "submitArtistForm", function (event) {
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "submitTrackForm", function (event) {
       event.preventDefault();
       var search_term = _this.state.search_term;
       var access_token = _this.props.url.query.access_token;
 
       if (search_term != '') {
-        isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(spotifySearchURL).concat(search_term, "&type=artist&access_token=").concat(access_token)).then(function (response) {
+        isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(spotifySearchURL).concat(search_term, "&type=track&access_token=").concat(access_token)).then(function (response) {
           return response.json();
         }).then(function (json) {
           _this.setState({
-            artists: json.artists.items
+            tracks: json.tracks.items
           });
 
-          return json.artists;
+          return json.tracks;
         });
       }
     });
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "renderSearchResults", function () {
-      if (_this.state.artists.length > 1) {
-        var artists = _this.state.artists;
+      if (_this.state.tracks.length > 1) {
+        var tracks = _this.state.tracks;
         var access_token = _this.props.url.query.access_token;
         var allResults = [];
-        artists.forEach(function (artist, index) {
-          if (artist.images[0] != undefined) {
-            var hasImage = artist.images[0];
+        tracks.forEach(function (track, index) {
+          if (track.album != undefined && track.album.images[0] != undefined) {
+            var hasImage = track.album.images[0];
             allResults.push(__jsx(_components_Results__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              key: artist.id,
+              key: track.id,
               imageURL: hasImage.url,
-              name: artist.name,
+              name: track.name,
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
@@ -5378,7 +5378,7 @@ var App = /*#__PURE__*/function (_Component) {
                 columnNumber: 23
               }
             }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_11___default.a, {
-              href: "/artist-albums?id=".concat(artist.id, "&access_token=").concat(access_token),
+              href: "/track-albums?id=".concat(track.id, "&access_token=").concat(access_token),
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
@@ -5393,7 +5393,7 @@ var App = /*#__PURE__*/function (_Component) {
                 lineNumber: 58,
                 columnNumber: 27
               }
-            }, "View ", artist.name, " albums"))));
+            }, "View ", track.name, " albums"))));
           }
         });
         return allResults;
@@ -5404,9 +5404,9 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       search_term: '',
-      artists: []
+      tracks: []
     };
-    _this.submitArtistForm = _this.submitArtistForm.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
+    _this.submitTrackForm = _this.submitTrackForm.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
     _this.renderSearchResults = _this.renderSearchResults.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
     return _this;
   }
@@ -5422,7 +5422,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74,
+          lineNumber: 75,
           columnNumber: 11
         }
       }, __jsx("div", {
@@ -5430,14 +5430,14 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75,
+          lineNumber: 76,
           columnNumber: 17
         }
       }, __jsx("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76,
+          lineNumber: 77,
           columnNumber: 21
         }
       }, "Welcome ", user.display_name.split(" ")[0], "!")), __jsx("div", {
@@ -5445,32 +5445,32 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78,
+          lineNumber: 79,
           columnNumber: 15
         }
       }, __jsx("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79,
+          lineNumber: 80,
           columnNumber: 19
         }
-      }, this.state.artists.length > 1 ? "Search results for \"".concat(this.state.search_term, "\"") : 'Search the Spotify API for your favorite artist')), __jsx("div", {
+      }, this.state.tracks.length > 1 ? "Search results for \"".concat(this.state.search_term, "\"") : 'Search the Spotify API for your favorite track')), __jsx("div", {
         className: "row mt-5 justify-content-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89,
+          lineNumber: 90,
           columnNumber: 15
         }
       }, __jsx("form", {
         onSubmit: function onSubmit(event) {
-          return _this2.submitArtistForm(event);
+          return _this2.submitTrackForm(event);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90,
+          lineNumber: 91,
           columnNumber: 19
         }
       }, __jsx("div", {
@@ -5478,13 +5478,13 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91,
+          lineNumber: 92,
           columnNumber: 23
         }
       }, __jsx("input", {
         type: "text",
         className: "form-control text-center",
-        placeholder: "enter artist name",
+        placeholder: "enter track name",
         onChange: function onChange(event) {
           return _this2.setState({
             search_term: event.target.value
@@ -5493,7 +5493,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92,
+          lineNumber: 93,
           columnNumber: 27
         }
       })), __jsx("div", {
@@ -5501,7 +5501,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99,
+          lineNumber: 100,
           columnNumber: 23
         }
       }, __jsx("button", {
@@ -5510,7 +5510,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100,
+          lineNumber: 101,
           columnNumber: 27
         }
       }, "Search")))), __jsx("div", {
@@ -5518,7 +5518,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104,
+          lineNumber: 105,
           columnNumber: 15
         }
       }, this.renderSearchResults()));
@@ -5562,25 +5562,25 @@ App.getInitialProps = function _callee(context) {
 /***/ }),
 
 /***/ 4:
-/*!********************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
-  \********************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fshonnavalli%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fshonnavalli%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fshonnavalli%2Fcs48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_2adc2403d89adc16ead0":
+/***/ "dll-reference dll_c2e10d183b950a67d9e7":
 /*!*******************************************!*\
-  !*** external "dll_2adc2403d89adc16ead0" ***!
+  !*** external "dll_c2e10d183b950a67d9e7" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_2adc2403d89adc16ead0;
+module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 

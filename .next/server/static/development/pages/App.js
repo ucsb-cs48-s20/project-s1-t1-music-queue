@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Header.js";
+var _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -267,7 +267,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Layout.js";
+var _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -319,7 +319,7 @@ const Layout = props => __jsx("div", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Results.js";
+var _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/components/Results.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2063,7 +2063,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _components_Results__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Results */ "./components/Results.js");
-var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js";
+var _jsxFileName = "/Users/shonnavalli/cs48/project-s1-t1-music-queue/pages/App.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2089,7 +2089,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       console.log('cdm ran');
     });
 
-    _defineProperty(this, "submitArtistForm", event => {
+    _defineProperty(this, "submitTrackForm", event => {
       event.preventDefault();
       const {
         search_term
@@ -2099,31 +2099,31 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       } = this.props.url.query;
 
       if (search_term != '') {
-        isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(`${spotifySearchURL}${search_term}&type=artist&access_token=${access_token}`).then(response => response.json()).then(json => {
+        isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(`${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`).then(response => response.json()).then(json => {
           this.setState({
-            artists: json.artists.items
+            tracks: json.tracks.items
           });
-          return json.artists;
+          return json.tracks;
         });
       }
     });
 
     _defineProperty(this, "renderSearchResults", () => {
-      if (this.state.artists.length > 1) {
+      if (this.state.tracks.length > 1) {
         const {
-          artists
+          tracks
         } = this.state;
         const {
           access_token
         } = this.props.url.query;
         let allResults = [];
-        artists.forEach((artist, index) => {
-          if (artist.images[0] != undefined) {
-            let hasImage = artist.images[0];
+        tracks.forEach((track, index) => {
+          if (track.album != undefined && track.album.images[0] != undefined) {
+            let hasImage = track.album.images[0];
             allResults.push(__jsx(_components_Results__WEBPACK_IMPORTED_MODULE_5__["default"], {
-              key: artist.id,
+              key: track.id,
               imageURL: hasImage.url,
-              name: artist.name,
+              name: track.name,
               __self: this,
               __source: {
                 fileName: _jsxFileName,
@@ -2131,7 +2131,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
                 columnNumber: 23
               }
             }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-              href: `/artist-albums?id=${artist.id}&access_token=${access_token}`,
+              href: `/track-albums?id=${track.id}&access_token=${access_token}`,
               __self: this,
               __source: {
                 fileName: _jsxFileName,
@@ -2146,7 +2146,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
                 lineNumber: 58,
                 columnNumber: 27
               }
-            }, "View ", artist.name, " albums"))));
+            }, "View ", track.name, " albums"))));
           }
         });
         return allResults;
@@ -2157,9 +2157,9 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
     this.state = {
       search_term: '',
-      artists: []
+      tracks: []
     };
-    this.submitArtistForm = this.submitArtistForm.bind(this);
+    this.submitTrackForm = this.submitTrackForm.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
@@ -2172,7 +2172,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74,
+        lineNumber: 75,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -2180,14 +2180,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 75,
+        lineNumber: 76,
         columnNumber: 17
       }
     }, __jsx("h3", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 76,
+        lineNumber: 77,
         columnNumber: 21
       }
     }, "Welcome ", user.display_name.split(" ")[0], "!")), __jsx("div", {
@@ -2195,30 +2195,30 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78,
+        lineNumber: 79,
         columnNumber: 15
       }
     }, __jsx("h3", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79,
+        lineNumber: 80,
         columnNumber: 19
       }
-    }, this.state.artists.length > 1 ? `Search results for "${this.state.search_term}"` : 'Search the Spotify API for your favorite artist')), __jsx("div", {
+    }, this.state.tracks.length > 1 ? `Search results for "${this.state.search_term}"` : 'Search the Spotify API for your favorite track')), __jsx("div", {
       className: "row mt-5 justify-content-center",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89,
+        lineNumber: 90,
         columnNumber: 15
       }
     }, __jsx("form", {
-      onSubmit: event => this.submitArtistForm(event),
+      onSubmit: event => this.submitTrackForm(event),
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90,
+        lineNumber: 91,
         columnNumber: 19
       }
     }, __jsx("div", {
@@ -2226,20 +2226,20 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 91,
+        lineNumber: 92,
         columnNumber: 23
       }
     }, __jsx("input", {
       type: "text",
       className: "form-control text-center",
-      placeholder: "enter artist name",
+      placeholder: "enter track name",
       onChange: event => this.setState({
         search_term: event.target.value
       }),
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92,
+        lineNumber: 93,
         columnNumber: 27
       }
     })), __jsx("div", {
@@ -2247,7 +2247,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99,
+        lineNumber: 100,
         columnNumber: 23
       }
     }, __jsx("button", {
@@ -2256,7 +2256,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100,
+        lineNumber: 101,
         columnNumber: 27
       }
     }, "Search")))), __jsx("div", {
@@ -2264,7 +2264,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 104,
+        lineNumber: 105,
         columnNumber: 15
       }
     }, this.renderSearchResults()));
@@ -2294,7 +2294,7 @@ App.getInitialProps = async function (context) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js */"./pages/App.js");
+module.exports = __webpack_require__(/*! /Users/shonnavalli/cs48/project-s1-t1-music-queue/pages/App.js */"./pages/App.js");
 
 
 /***/ }),
