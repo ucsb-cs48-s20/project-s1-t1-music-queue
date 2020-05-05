@@ -5,6 +5,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import Results from "../components/Results";
 import Input from "../components/Input";
+import "./style.css";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -75,16 +76,7 @@ class App extends Component {
     return (
       <Layout>
         <Input />
-        <div className="row mt-5 justify-content-center">
-          <h3>Welcome {user.display_name.split(" ")[0]}!</h3>
-        </div>
-        <div className="row mt-5 justify-content-center">
-          <h3>
-            {this.state.tracks.length > 1
-              ? `Search results for "${this.state.search_term}"`
-              : "Search the Spotify API for your favorite track"}
-          </h3>
-        </div>
+        <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">
           <form onSubmit={event => this.submitTrackForm(event)}>
             <div className="form-group">
