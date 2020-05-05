@@ -1,13 +1,16 @@
 import React from "react";
+//import ReactDOM from 'react-dom';
+//import './index.css';
+//import App from './App'
+import Header from "../components/Header";
+import Login from "./Login";
 import Layout from "../components/Layout";
-import Input from "../components/Input";
-
-const index = () => {
+function Homepage() {
   return (
-    <Layout>
-      <Input />
-    </Layout>
+    <div>
+      <Login />
+    </div>
   );
-};
+}
 
-export default index;
+export default Homepage;
