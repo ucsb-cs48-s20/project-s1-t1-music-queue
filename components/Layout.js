@@ -1,6 +1,5 @@
 import Header from "./Header";
 import Icon from "./Icon";
-import Input from "./Input";
 
 const Layout = props => (
   <div>

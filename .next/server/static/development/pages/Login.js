@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -241,160 +241,6 @@ const Navbar = () => __jsx("div", {
 
 /***/ }),
 
-/***/ "./components/Input.js":
-/*!*****************************!*\
-  !*** ./components/Input.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swr */ "swr");
-/* harmony import */ var swr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swr__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-
-function Input() {
-  // set initial hooks to keep track of state
-  const {
-    0: score,
-    1: setScore
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
-  const {
-    0: name,
-    1: setName
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  const {
-    0: sentDatabase,
-    1: setSent
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false); // useSWR is like your own state that is backed by an API call
-  // mutate w/out parameters just causes refetch of endpoint
-  // you can change the arguments with a parameter see repo
-  // for further documentation.
-
-  const {
-    data,
-    mutate
-  } = swr__WEBPACK_IMPORTED_MODULE_1___default()("/api/all", _utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"], {
-    // see example repo for explination about booleans
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    initialData: {
-      result: [{
-        _id: "FETCHING DATA ... ",
-        name: "FETCHING DATA ... ",
-        score: "FETCHING DATA ... "
-      }]
-    }
-  }); // re-fectch data from database for initial render. mutate() does this
-  // because it is the function that references the data hook above
-  // React will call useEffect when any of the dependecies change.
-  // Because it an empty array; you call it the first time and never again
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    mutate();
-  }, []); // handles changes to name of song dynamically
-
-  const submit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
-    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"])("/api/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        name: name,
-        score: score
-      })
-    }); // forces a call to the hook useSWR
-
-    await mutate(); // update sent
-
-    setSent(true);
-  }, [name, score]);
-  return __jsx("div", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 5
-    }
-  }, __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    data: data,
-    mutate: async () => await mutate(),
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 7
-    }
-  }), __jsx("hr", {
-    className: "linebreak",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69,
-      columnNumber: 7
-    }
-  }), __jsx("form", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 7
-    }
-  }, __jsx("input", {
-    type: "text",
-    id: "sname",
-    name: "sname",
-    value: name,
-    onChange: () => setName(event.target.value),
-    placeholder: "enter song name ... ",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 9
-    }
-  })), __jsx("button", {
-    onClick: () => submit(),
-    className: "button",
-    style: {
-      verticalAlign: "middle"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 7
-    }
-  }, " ", __jsx("span", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 88,
-      columnNumber: 9
-    }
-  }, " Add Song ")));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Input);
-
-/***/ }),
-
 /***/ "./components/Layout.js":
 /*!******************************!*\
   !*** ./components/Layout.js ***!
@@ -408,11 +254,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 /* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon */ "./components/Icon.js");
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Input */ "./components/Input.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
 
 
 
@@ -420,21 +264,21 @@ const Layout = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 6,
+    lineNumber: 5,
     columnNumber: 3
   }
 }, __jsx(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8,
+    lineNumber: 7,
     columnNumber: 5
   }
 }), __jsx(_Icon__WEBPACK_IMPORTED_MODULE_2__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10,
+    lineNumber: 9,
     columnNumber: 5
   }
 }), __jsx("div", {
@@ -442,7 +286,7 @@ const Layout = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12,
+    lineNumber: 11,
     columnNumber: 5
   }
 }, __jsx("div", {
@@ -450,230 +294,12 @@ const Layout = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13,
+    lineNumber: 12,
     columnNumber: 7
   }
 }, props.children)));
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
-
-/***/ }),
-
-/***/ "./components/Retrieve.js":
-/*!********************************!*\
-  !*** ./components/Retrieve.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Retrieve; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Retrieve.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-function Retrieve(props) {
-  let obj = props.data.result; // create another array of songs so that you can sort it later
-
-  const songArr = obj.map(item => {
-    return {
-      key: item._id,
-      name: item.name,
-      score: item.score
-    };
-  }); // sort array of songs; highest scores first and lowest scores last
-
-  songArr.sort((a, b) => a.score > b.score ? -1 : 1);
-  const tableComponents = songArr.map(item => {
-    return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.name,
-      name: item.name,
-      score: item.score,
-      mutate: props.mutate,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21,
-        columnNumber: 7
-      }
-    });
-  });
-  return __jsx("div", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 5
-    }
-  }, __jsx("table", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 7
-    }
-  }, __jsx("tbody", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 9
-    }
-  }, __jsx("tr", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 11
-    }
-  }, __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 13
-    }
-  }, "Song"), __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 13
-    }
-  }, "Score"), __jsx("th", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 13
-    }
-  }, "Rate")), tableComponents)));
-}
-
-/***/ }),
-
-/***/ "./components/Table.js":
-/*!*****************************!*\
-  !*** ./components/Table.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Table; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-function Table(props) {
-  const {
-    0: score,
-    1: setScore
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.score); // this callback renders the score when intially
-  // rendered
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    setScore(props.score);
-  }, [props.score]); // handles changes when upvoting score of each of song dynamically
-
-  const increment = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
-    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_1__["fetch"])("/api/increment", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        name: props.name
-      })
-    }); // forces a call to the hook useSWR
-
-    props.mutate();
-  }, [score]); // handles changes when downvoting score of each of song dynamically
-
-  const decrement = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
-    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_1__["fetch"])("/api/decrement", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        name: props.name
-      })
-    }); // forces a call to the hook useSWR
-
-    props.mutate();
-  }, [score]);
-  return __jsx("tr", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 5
-    }
-  }, __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 7
-    }
-  }, props.name), __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 7
-    }
-  }, score), __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 7
-    }
-  }, __jsx("button", {
-    className: "button_upvote",
-    onClick: () => {
-      setScore(score + 1);
-      increment();
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 9
-    }
-  }, "\u2191"), __jsx("button", {
-    className: "button_downvote",
-    onClick: () => {
-      if (score > 0) {
-        setScore(score - 1);
-      }
-
-      decrement();
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 9
-    }
-  }, " ", "\u2193")));
-}
 
 /***/ }),
 
@@ -2523,27 +2149,7 @@ if (true) {
 
 /***/ }),
 
-/***/ "./utils/fetch.js":
-/*!************************!*\
-  !*** ./utils/fetch.js ***!
-  \************************/
-/*! exports provided: fetch */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetch", function() { return fetch; });
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__);
-
-async function fetch(url, options) {
-  const response = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0___default()(url, options);
-  return response.json();
-}
-
-/***/ }),
-
-/***/ 6:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/Login.js ***!
   \******************************/
@@ -2552,17 +2158,6 @@ async function fetch(url, options) {
 
 module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/Login.js */"./pages/Login.js");
 
-
-/***/ }),
-
-/***/ "isomorphic-unfetch":
-/*!*************************************!*\
-  !*** external "isomorphic-unfetch" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
@@ -2629,17 +2224,6 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
-
-/***/ }),
-
-/***/ "swr":
-/*!**********************!*\
-  !*** external "swr" ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("swr");
 
 /***/ }),
 
