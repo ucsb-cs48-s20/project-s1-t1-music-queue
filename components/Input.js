@@ -17,8 +17,9 @@ function Input() {
   // for further documentation.
   const { data, mutate } = useSWR("/api/all", fetch, {
     // see example repo for explination about booleans
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+    refreshInterval: 3000,
     initialData: {
       result: [
         {
