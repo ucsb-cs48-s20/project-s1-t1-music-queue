@@ -19,12 +19,12 @@ function Input() {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
-    refreshInterval: 3000,
+    refreshInterval: 1500,
     initialData: {
       result: [
         {
-          _id: "FETCHING DATA ... ",
           name: "FETCHING DATA ... ",
+          uri: "FETCHING DATA ... ",
           score: "FETCHING DATA ... "
         }
       ]
@@ -39,55 +39,10 @@ function Input() {
     mutate();
   }, []);
 
-  // handles changes to name of song dynamically
-  const submit = useCallback(
-    async event => {
-      await fetch("/api/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        // the body of this song is built from state
-        body: JSON.stringify({
-          name: name,
-          score: score
-        })
-      });
-
-      // forces a call to the hook useSWR
-      await mutate();
-
-      // update sent
-      setSent(true);
-    },
-    [name, score]
-  );
-
   return (
     <div>
       {/* Display current queue of music */}
       <Retrieve data={data} mutate={async () => await mutate()} />
-      <hr className="linebreak" />
-      {/* Gather name of song */}
-      <form>
-        <input
-          type="text"
-          id="sname"
-          name="sname"
-          value={name}
-          onChange={() => setName(event.target.value)}
-          placeholder="enter song name ... "
-        ></input>
-      </form>
-      {/* sumbit name and score of song to MongoDB Database*/}
-      <button
-        onClick={() => submit()}
-        className="button"
-        style={{ verticalAlign: "middle" }}
-      >
-        {" "}
-        <span> Add Song </span>
-      </button>
     </div>
   );
 }

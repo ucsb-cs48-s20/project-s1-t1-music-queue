@@ -9,6 +9,8 @@ import "./style.css";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
+// songData keeps track of json information that will be rendered by the database
+let songData = [];
 
 class App extends Component {
   constructor(props) {
@@ -18,9 +20,12 @@ class App extends Component {
       tracks: []
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
+    this.addSong = this.addSong.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
+  // When the component first renders you either render the music queue
+  // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
     if (window.location.href.indexOf("_token") == -1) {
       Router.push("/Login");
@@ -28,6 +33,7 @@ class App extends Component {
     console.log("cdm ran");
   };
 
+  // Performs the query using the spotify api on the value in the form input
   submitTrackForm = event => {
     event.preventDefault();
     const { search_term } = this.state;
@@ -45,23 +51,46 @@ class App extends Component {
     }
   };
 
+  // add song to the database. Song is the json object that is passed
+  addSong = async song => {
+    await fetch("/api/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        name: song.name,
+        score: 0,
+        uri: song.id
+      })
+    });
+  };
+
   renderSearchResults = () => {
     if (this.state.tracks.length > 1) {
       const { tracks } = this.state;
       const { access_token } = this.props.url.query;
       let allResults = [];
+      // index to allow current song to be added.
       tracks.forEach((track, index) => {
         if (track.album != undefined && track.album.images[0] != undefined) {
           let hasImage = track.album.images[0];
           allResults.push(
-            <Results key={track.id} imageURL={hasImage.url} name={track.name}>
-              <Link
-                href={`/track-albums?id=${track.id}&access_token=${access_token}`}
-              >
-                <a className="text-muted">View {track.name} albums</a>
-              </Link>
+            // push information about this song to a result component
+            <Results key={index} imageURL={hasImage.url} name={track.name}>
+              {/*Button that allows user to add song to database*/}
+              <button
+                className="button"
+                value="Add Song"
+                onClick={() => {
+                  this.addSong(this.state.tracks[index]);
+                }}
+              ></button>
             </Results>
           );
+          // increment index of song being added
+          index++;
         }
       });
       return allResults;
@@ -71,7 +100,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("this.state", this.state);
     const { user } = this.props;
     return (
       <Layout>

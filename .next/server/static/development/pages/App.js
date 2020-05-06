@@ -115,6 +115,54 @@ module.exports = require("next/dist/next-server/lib/utils.js");
 
 /***/ }),
 
+/***/ "./components/Frame.js":
+/*!*****************************!*\
+  !*** ./components/Frame.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Frame.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ //creates a spotify player widget
+
+class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  render(props) {
+    return __jsx("div", {
+      align: "center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 7
+      }
+    }, __jsx("iframe", {
+      src: "https://open.spotify.com/track/" + this.props.id,
+      width: "800",
+      height: "80",
+      frameBorder: "0",
+      align: "middle",
+      allowtransparency: "true",
+      allow: "encrypted-media",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 9
+      }
+    }));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Frame);
+
+/***/ }),
+
 /***/ "./components/Header.js":
 /*!******************************!*\
   !*** ./components/Header.js ***!
@@ -292,11 +340,11 @@ function Input() {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
-    refreshInterval: 3000,
+    refreshInterval: 1500,
     initialData: {
       result: [{
-        _id: "FETCHING DATA ... ",
         name: "FETCHING DATA ... ",
+        uri: "FETCHING DATA ... ",
         score: "FETCHING DATA ... "
       }]
     }
@@ -307,30 +355,12 @@ function Input() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     mutate();
-  }, []); // handles changes to name of song dynamically
-
-  const submit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async event => {
-    await Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_2__["fetch"])("/api/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        name: name,
-        score: score
-      })
-    }); // forces a call to the hook useSWR
-
-    await mutate(); // update sent
-
-    setSent(true);
-  }, [name, score]);
+  }, []);
   return __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 43,
       columnNumber: 5
     }
   }, __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -339,57 +369,10 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 45,
       columnNumber: 7
     }
-  }), __jsx("hr", {
-    className: "linebreak",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 7
-    }
-  }), __jsx("form", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 7
-    }
-  }, __jsx("input", {
-    type: "text",
-    id: "sname",
-    name: "sname",
-    value: name,
-    onChange: () => setName(event.target.value),
-    placeholder: "enter song name ... ",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 73,
-      columnNumber: 9
-    }
-  })), __jsx("button", {
-    onClick: () => submit(),
-    className: "button",
-    style: {
-      verticalAlign: "middle"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }, " ", __jsx("span", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 89,
-      columnNumber: 9
-    }
-  }, " Add Song ")));
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
@@ -550,7 +533,8 @@ function Retrieve(props) {
 
   const songArr = obj.map(item => {
     return {
-      key: item._id,
+      key: item.uri,
+      uri: item.uri,
       name: item.name,
       score: item.score
     };
@@ -559,14 +543,15 @@ function Retrieve(props) {
   songArr.sort((a, b) => a.score > b.score ? -1 : 1);
   const tableComponents = songArr.map(item => {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.name,
+      key: item.uri,
+      uri: item.uri,
       name: item.name,
       score: item.score,
       mutate: props.mutate,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21,
+        lineNumber: 22,
         columnNumber: 7
       }
     });
@@ -575,49 +560,49 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 33,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 34,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 35,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 36,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 37,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 38,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, "Rate")), tableComponents)));
@@ -638,9 +623,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _Frame__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Frame */ "./components/Frame.js");
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 function Table(props) {
@@ -687,28 +674,36 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 53,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 7
     }
-  }, props.name), __jsx("td", {
+  }, __jsx(_Frame__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    id: props.id,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
+      columnNumber: 9
+    }
+  })), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 59,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -720,7 +715,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 61,
       columnNumber: 9
     }
   }, "\u2191"), __jsx("button", {
@@ -735,7 +730,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 71,
       columnNumber: 9
     }
   }, " ", "\u2193")));
@@ -2459,7 +2454,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
-const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
+const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token="; // songData keeps track of json information that will be rendered by the database
+
+let songData = [];
 
 class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
@@ -2492,6 +2489,21 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }
     });
 
+    _defineProperty(this, "addSong", async song => {
+      await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // the body of this song is built from state
+        body: JSON.stringify({
+          name: song.name,
+          score: 0,
+          uri: song.id
+        })
+      });
+    });
+
     _defineProperty(this, "renderSearchResults", () => {
       if (this.state.tracks.length > 1) {
         const {
@@ -2500,37 +2512,37 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         const {
           access_token
         } = this.props.url.query;
-        let allResults = [];
+        let allResults = []; // index to allow current song to be added.
+
         tracks.forEach((track, index) => {
           if (track.album != undefined && track.album.images[0] != undefined) {
             let hasImage = track.album.images[0];
-            allResults.push(__jsx(_components_Results__WEBPACK_IMPORTED_MODULE_5__["default"], {
-              key: track.id,
+            allResults.push( // push information about this song to a result component
+            __jsx(_components_Results__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              key: index,
               imageURL: hasImage.url,
               name: track.name,
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 57,
+                lineNumber: 81,
                 columnNumber: 13
               }
-            }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-              href: `/track-albums?id=${track.id}&access_token=${access_token}`,
+            }, __jsx("button", {
+              className: "button",
+              value: "Add Song",
+              onClick: () => {
+                this.addSong(this.state.tracks[index]);
+              },
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 58,
+                lineNumber: 83,
                 columnNumber: 15
               }
-            }, __jsx("a", {
-              className: "text-muted",
-              __self: this,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 61,
-                columnNumber: 17
-              }
-            }, "View ", track.name, " albums"))));
+            }))); // increment index of song being added
+
+            index++;
           }
         });
         return allResults;
@@ -2544,11 +2556,13 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       tracks: []
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
+    this.addSong = this.addSong.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
-  }
+  } // When the component first renders you either render the music queue
+  // or you don't render anything if the user is NOT logged in!
+
 
   render() {
-    console.log("this.state", this.state);
     const {
       user
     } = this.props;
@@ -2556,14 +2570,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77,
+        lineNumber: 105,
         columnNumber: 7
       }
     }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78,
+        lineNumber: 106,
         columnNumber: 9
       }
     }), __jsx("hr", {
@@ -2571,7 +2585,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79,
+        lineNumber: 107,
         columnNumber: 9
       }
     }), __jsx("div", {
@@ -2579,7 +2593,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80,
+        lineNumber: 108,
         columnNumber: 9
       }
     }, __jsx("form", {
@@ -2587,7 +2601,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81,
+        lineNumber: 109,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -2595,7 +2609,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82,
+        lineNumber: 110,
         columnNumber: 13
       }
     }, __jsx("input", {
@@ -2608,7 +2622,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83,
+        lineNumber: 111,
         columnNumber: 15
       }
     })), __jsx("div", {
@@ -2616,7 +2630,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92,
+        lineNumber: 120,
         columnNumber: 13
       }
     }, __jsx("button", {
@@ -2625,7 +2639,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93,
+        lineNumber: 121,
         columnNumber: 15
       }
     }, "Search")))), __jsx("div", {
@@ -2633,7 +2647,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102,
+        lineNumber: 130,
         columnNumber: 9
       }
     }, this.renderSearchResults()));

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../utils/fetch";
+import Frame from "./Frame";
 
 export default function Table(props) {
   const [score, setScore] = useState(props.score);
@@ -51,7 +52,9 @@ export default function Table(props) {
   return (
     <tr>
       {/* output name and score of song*/}
-      <td>{props.name}</td>
+      <td>
+        <Frame id={props.id} />
+      </td>
       <td>{score}</td>
       <td>
         {/* button to upvote*/}

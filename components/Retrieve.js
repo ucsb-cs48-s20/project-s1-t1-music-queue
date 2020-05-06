@@ -7,7 +7,8 @@ export default function Retrieve(props) {
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
     return {
-      key: item._id,
+      key: item.uri,
+      uri: item.uri,
       name: item.name,
       score: item.score
     };
@@ -19,7 +20,8 @@ export default function Retrieve(props) {
   const tableComponents = songArr.map(item => {
     return (
       <Table
-        key={item.name}
+        key={item.uri}
+        uri={item.uri}
         name={item.name}
         score={item.score}
         mutate={props.mutate}

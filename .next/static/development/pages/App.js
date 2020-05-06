@@ -1,5 +1,82 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/App.js"],{
 
+/***/ "./components/Frame.js":
+/*!*****************************!*\
+  !*** ./components/Frame.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Frame.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+ //creates a spotify player widget
+
+var Frame = /*#__PURE__*/function (_React$Component) {
+  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(Frame, _React$Component);
+
+  var _super = _createSuper(Frame);
+
+  function Frame() {
+    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Frame);
+
+    return _super.apply(this, arguments);
+  }
+
+  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Frame, [{
+    key: "render",
+    value: function render(props) {
+      return __jsx("div", {
+        align: "center",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 7
+        }
+      }, __jsx("iframe", {
+        src: "https://open.spotify.com/track/" + this.props.id,
+        width: "800",
+        height: "80",
+        frameBorder: "0",
+        align: "middle",
+        allowtransparency: "true",
+        allow: "encrypted-media",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 9
+        }
+      }));
+    }
+  }]);
+
+  return Frame;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Frame);
+
+/***/ }),
+
 /***/ "./components/Header.js":
 /*!******************************!*\
   !*** ./components/Header.js ***!
@@ -184,11 +261,11 @@ function Input() {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
-    refreshInterval: 3000,
+    refreshInterval: 1500,
     initialData: {
       result: [{
-        _id: "FETCHING DATA ... ",
         name: "FETCHING DATA ... ",
+        uri: "FETCHING DATA ... ",
         score: "FETCHING DATA ... "
       }]
     }
@@ -202,64 +279,30 @@ function Input() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     mutate();
-  }, []); // handles changes to name of song dynamically
-
-  var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function _callee(event) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_3__["fetch"])("/api/add", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              // the body of this song is built from state
-              body: JSON.stringify({
-                name: name,
-                score: score
-              })
-            }));
-
-          case 2:
-            _context.next = 4;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(mutate());
-
-          case 4:
-            // update sent
-            setSent(true);
-
-          case 5:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, null, null, null, Promise);
-  }, [name, score]);
+  }, []);
   return __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 43,
       columnNumber: 5
     }
   }, __jsx(_Retrieve__WEBPACK_IMPORTED_MODULE_5__["default"], {
     data: data,
-    mutate: function _callee2() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee2$(_context2) {
+    mutate: function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              _context2.next = 2;
+              _context.next = 2;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(mutate());
 
             case 2:
-              return _context2.abrupt("return", _context2.sent);
+              return _context.abrupt("return", _context.sent);
 
             case 3:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
       }, null, null, null, Promise);
@@ -267,61 +310,10 @@ function Input() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 45,
       columnNumber: 7
     }
-  }), __jsx("hr", {
-    className: "linebreak",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 7
-    }
-  }), __jsx("form", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 7
-    }
-  }, __jsx("input", {
-    type: "text",
-    id: "sname",
-    name: "sname",
-    value: name,
-    onChange: function onChange() {
-      return setName(event.target.value);
-    },
-    placeholder: "enter song name ... ",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 73,
-      columnNumber: 9
-    }
-  })), __jsx("button", {
-    onClick: function onClick() {
-      return submit();
-    },
-    className: "button",
-    style: {
-      verticalAlign: "middle"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83,
-      columnNumber: 7
-    }
-  }, " ", __jsx("span", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 89,
-      columnNumber: 9
-    }
-  }, " Add Song ")));
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);
@@ -492,7 +484,8 @@ function Retrieve(props) {
 
   var songArr = obj.map(function (item) {
     return {
-      key: item._id,
+      key: item.uri,
+      uri: item.uri,
       name: item.name,
       score: item.score
     };
@@ -503,14 +496,15 @@ function Retrieve(props) {
   });
   var tableComponents = songArr.map(function (item) {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.name,
+      key: item.uri,
+      uri: item.uri,
       name: item.name,
       score: item.score,
       mutate: props.mutate,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21,
+        lineNumber: 22,
         columnNumber: 7
       }
     });
@@ -519,49 +513,49 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 33,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 34,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 35,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 36,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 37,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 38,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, "Rate")), tableComponents)));
@@ -584,10 +578,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
+/* harmony import */ var _Frame__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Frame */ "./components/Frame.js");
 
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 function Table(props) {
@@ -662,28 +658,36 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 53,
       columnNumber: 5
     }
   }, __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 7
     }
-  }, props.name), __jsx("td", {
+  }, __jsx(_Frame__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: props.id,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
+      columnNumber: 9
+    }
+  })), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 59,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -695,7 +699,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 61,
       columnNumber: 9
     }
   }, "\u2191"), __jsx("button", {
@@ -710,7 +714,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 71,
       columnNumber: 9
     }
   }, " ", "\u2193")));
@@ -6910,7 +6914,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 var spotifySearchURL = "https://api.spotify.com/v1/search?q=";
-var spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
+var spotifyProfileURL = "https://api.spotify.com/v1/me?access_token="; // songData keeps track of json information that will be rendered by the database
+
+var songData = [];
 
 var App = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(App, _Component);
@@ -6950,41 +6956,68 @@ var App = /*#__PURE__*/function (_Component) {
       }
     });
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "addSong", function _callee(song) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("/api/add", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                // the body of this song is built from state
+                body: JSON.stringify({
+                  name: song.name,
+                  score: 0,
+                  uri: song.id
+                })
+              }));
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, null, null, Promise);
+    });
+
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "renderSearchResults", function () {
       if (_this.state.tracks.length > 1) {
         var tracks = _this.state.tracks;
         var access_token = _this.props.url.query.access_token;
-        var allResults = [];
+        var allResults = []; // index to allow current song to be added.
+
         tracks.forEach(function (track, index) {
           if (track.album != undefined && track.album.images[0] != undefined) {
             var hasImage = track.album.images[0];
-            allResults.push(__jsx(_components_Results__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              key: track.id,
+            allResults.push( // push information about this song to a result component
+            __jsx(_components_Results__WEBPACK_IMPORTED_MODULE_13__["default"], {
+              key: index,
               imageURL: hasImage.url,
               name: track.name,
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 57,
+                lineNumber: 81,
                 columnNumber: 13
               }
-            }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_11___default.a, {
-              href: "/track-albums?id=".concat(track.id, "&access_token=").concat(access_token),
+            }, __jsx("button", {
+              className: "button",
+              value: "Add Song",
+              onClick: function onClick() {
+                _this.addSong(_this.state.tracks[index]);
+              },
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 58,
+                lineNumber: 83,
                 columnNumber: 15
               }
-            }, __jsx("a", {
-              className: "text-muted",
-              __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 61,
-                columnNumber: 17
-              }
-            }, "View ", track.name, " albums"))));
+            }))); // increment index of song being added
+
+            index++;
           }
         });
         return allResults;
@@ -6998,29 +7031,31 @@ var App = /*#__PURE__*/function (_Component) {
       tracks: []
     };
     _this.submitTrackForm = _this.submitTrackForm.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
+    _this.addSong = _this.addSong.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
     _this.renderSearchResults = _this.renderSearchResults.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this));
     return _this;
-  }
+  } // When the component first renders you either render the music queue
+  // or you don't render anything if the user is NOT logged in!
+
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(App, [{
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      console.log("this.state", this.state);
       var user = this.props.user;
       return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77,
+          lineNumber: 105,
           columnNumber: 7
         }
       }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78,
+          lineNumber: 106,
           columnNumber: 9
         }
       }), __jsx("hr", {
@@ -7028,7 +7063,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79,
+          lineNumber: 107,
           columnNumber: 9
         }
       }), __jsx("div", {
@@ -7036,7 +7071,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 108,
           columnNumber: 9
         }
       }, __jsx("form", {
@@ -7046,7 +7081,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81,
+          lineNumber: 109,
           columnNumber: 11
         }
       }, __jsx("div", {
@@ -7054,7 +7089,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82,
+          lineNumber: 110,
           columnNumber: 13
         }
       }, __jsx("input", {
@@ -7069,7 +7104,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83,
+          lineNumber: 111,
           columnNumber: 15
         }
       })), __jsx("div", {
@@ -7077,7 +7112,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92,
+          lineNumber: 120,
           columnNumber: 13
         }
       }, __jsx("button", {
@@ -7086,7 +7121,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93,
+          lineNumber: 121,
           columnNumber: 15
         }
       }, "Search")))), __jsx("div", {
@@ -7094,7 +7129,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 102,
+          lineNumber: 130,
           columnNumber: 9
         }
       }, this.renderSearchResults()));
@@ -7104,30 +7139,30 @@ var App = /*#__PURE__*/function (_Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-App.getInitialProps = function _callee(context) {
+App.getInitialProps = function _callee2(context) {
   var access_token, res, user;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee2$(_context2) {
     while (1) {
-      switch (_context.prev = _context.next) {
+      switch (_context2.prev = _context2.next) {
         case 0:
           access_token = context.query.access_token;
-          _context.next = 3;
+          _context2.next = 3;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()(spotifyProfileURL + access_token));
 
         case 3:
-          res = _context.sent;
-          _context.next = 6;
+          res = _context2.sent;
+          _context2.next = 6;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(res.json());
 
         case 6:
-          user = _context.sent;
-          return _context.abrupt("return", {
+          user = _context2.sent;
+          return _context2.abrupt("return", {
             user: user
           });
 
         case 8:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
     }
   }, null, null, null, Promise);
