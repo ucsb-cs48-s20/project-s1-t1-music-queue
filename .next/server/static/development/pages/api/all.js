@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -186,14 +186,14 @@ function serializeDocument(doc, options = {}) {
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /*!********************************!*\
   !*** multi ./pages/api/all.js ***!
   \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/api/all.js */"./pages/api/all.js");
+module.exports = __webpack_require__(/*! /Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/pages/api/all.js */"./pages/api/all.js");
 
 
 /***/ }),

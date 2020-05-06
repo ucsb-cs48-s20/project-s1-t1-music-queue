@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Results from "../components/Results";
 import Input from "../components/Input";
 import "./style.css";
+import Frame from "../components/Frame"
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -75,6 +76,7 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
+        <Frame />
         <Input />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">
