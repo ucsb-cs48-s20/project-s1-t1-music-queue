@@ -76,7 +76,7 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
-        <Frame />
+        <Frame id="6rqhFgbbKwnb9MLmUQDhG6"/> {/*pass in song id here*/}
         <Input />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">

@@ -22,14 +22,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Frame.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-//creates a spotify player widget
+ //creates a spotify player widget
+
 var Frame = /*#__PURE__*/function (_React$Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(Frame, _React$Component);
 
@@ -49,11 +49,11 @@ var Frame = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7,
+          lineNumber: 8,
           columnNumber: 13
         }
       }, __jsx("iframe", {
-        src: "https://open.spotify.com/embed/track/1gVCEnryJhkdQcuC0Kbvor",
+        src: 'https://open.spotify.com/embed/track/' + this.props.id,
         width: "800",
         height: "80",
         frameBorder: "0",
@@ -63,7 +63,7 @@ var Frame = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8,
+          lineNumber: 9,
           columnNumber: 17
         }
       }));
@@ -7096,13 +7096,14 @@ var App = /*#__PURE__*/function (_Component) {
           columnNumber: 7
         }
       }, __jsx(_components_Frame__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        id: "6rqhFgbbKwnb9MLmUQDhG6",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 79,
           columnNumber: 9
         }
-      }), __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }), " ", __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,

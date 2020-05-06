@@ -127,10 +127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 var _jsxFileName = "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/components/Frame.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ //creates a spotify player widget
 
-//creates a spotify player widget
 class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
     return __jsx("div", {
@@ -138,11 +137,11 @@ class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7,
+        lineNumber: 8,
         columnNumber: 13
       }
     }, __jsx("iframe", {
-      src: "https://open.spotify.com/embed/track/1gVCEnryJhkdQcuC0Kbvor",
+      src: 'https://open.spotify.com/embed/track/' + this.props.id,
       width: "800",
       height: "80",
       frameBorder: "0",
@@ -152,7 +151,7 @@ class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 8,
+        lineNumber: 9,
         columnNumber: 17
       }
     }));
@@ -2611,13 +2610,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         columnNumber: 7
       }
     }, __jsx(_components_Frame__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      id: "6rqhFgbbKwnb9MLmUQDhG6",
       __self: this,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 79,
         columnNumber: 9
       }
-    }), __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), " ", __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
