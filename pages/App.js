@@ -62,7 +62,7 @@ class App extends Component {
       body: JSON.stringify({
         name: song.name,
         score: 0,
-        uri: song.id
+        id: song.id
       })
     });
   };

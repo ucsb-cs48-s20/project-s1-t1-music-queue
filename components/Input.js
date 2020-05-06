@@ -24,7 +24,7 @@ function Input() {
       result: [
         {
           name: "FETCHING DATA ... ",
-          uri: "FETCHING DATA ... ",
+          id: "FETCHING DATA ... ",
           score: "FETCHING DATA ... "
         }
       ]

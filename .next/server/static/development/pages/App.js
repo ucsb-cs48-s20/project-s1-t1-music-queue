@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -345,7 +345,7 @@ function Input() {
     initialData: {
       result: [{
         name: "FETCHING DATA ... ",
-        uri: "FETCHING DATA ... ",
+        id: "FETCHING DATA ... ",
         score: "FETCHING DATA ... "
       }]
     }
@@ -2501,7 +2501,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         body: JSON.stringify({
           name: song.name,
           score: 0,
-          uri: song.id
+          id: song.id
         })
       });
     });
@@ -2703,7 +2703,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!****************************!*\
   !*** multi ./pages/App.js ***!
   \****************************/

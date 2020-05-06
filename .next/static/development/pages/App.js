@@ -266,7 +266,7 @@ function Input() {
     initialData: {
       result: [{
         name: "FETCHING DATA ... ",
-        uri: "FETCHING DATA ... ",
+        id: "FETCHING DATA ... ",
         score: "FETCHING DATA ... "
       }]
     }
@@ -6973,7 +6973,7 @@ var App = /*#__PURE__*/function (_Component) {
                 body: JSON.stringify({
                   name: song.name,
                   score: 0,
-                  uri: song.id
+                  id: song.id
                 })
               }));
 
@@ -7213,7 +7213,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
   \******************************************************************************************************************************************************/
@@ -7236,5 +7236,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=App.js.map
