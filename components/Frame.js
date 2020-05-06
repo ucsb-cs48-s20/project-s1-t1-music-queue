@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 class Frame extends React.Component {
   render(props) {
+    console.log("https://open.spotify.com/track/" + this.props.id);
     return (
       <div align="center">
         <iframe

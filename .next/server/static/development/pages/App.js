@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -132,12 +132,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render(props) {
+    console.log("https://open.spotify.com/track/" + this.props.id);
     return __jsx("div", {
       align: "center",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7,
+        lineNumber: 8,
         columnNumber: 7
       }
     }, __jsx("iframe", {
@@ -151,7 +152,7 @@ class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 8,
+        lineNumber: 9,
         columnNumber: 9
       }
     }));
@@ -529,12 +530,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 function Retrieve(props) {
-  let obj = props.data.result; // create another array of songs so that you can sort it later
+  let obj = props.data.result;
+  console.log(obj); // create another array of songs so that you can sort it later
 
   const songArr = obj.map(item => {
     return {
-      key: item.uri,
-      uri: item.uri,
+      key: item._id,
+      id: item._id,
       name: item.name,
       score: item.score
     };
@@ -543,15 +545,15 @@ function Retrieve(props) {
   songArr.sort((a, b) => a.score > b.score ? -1 : 1);
   const tableComponents = songArr.map(item => {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.uri,
-      uri: item.uri,
+      key: item.id,
+      id: item.id,
       name: item.name,
       score: item.score,
       mutate: props.mutate,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
+        lineNumber: 23,
         columnNumber: 7
       }
     });
@@ -560,49 +562,49 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 37,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 13
     }
   }, "Rate")), tableComponents)));
@@ -2701,7 +2703,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!****************************!*\
   !*** multi ./pages/App.js ***!
   \****************************/

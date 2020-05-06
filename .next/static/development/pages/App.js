@@ -44,12 +44,13 @@ var Frame = /*#__PURE__*/function (_React$Component) {
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Frame, [{
     key: "render",
     value: function render(props) {
+      console.log("https://open.spotify.com/track/" + this.props.id);
       return __jsx("div", {
         align: "center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7,
+          lineNumber: 8,
           columnNumber: 7
         }
       }, __jsx("iframe", {
@@ -63,7 +64,7 @@ var Frame = /*#__PURE__*/function (_React$Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8,
+          lineNumber: 9,
           columnNumber: 9
         }
       }));
@@ -480,12 +481,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 function Retrieve(props) {
   var _this = this;
 
-  var obj = props.data.result; // create another array of songs so that you can sort it later
+  var obj = props.data.result;
+  console.log(obj); // create another array of songs so that you can sort it later
 
   var songArr = obj.map(function (item) {
     return {
-      key: item.uri,
-      uri: item.uri,
+      key: item._id,
+      id: item._id,
       name: item.name,
       score: item.score
     };
@@ -496,15 +498,15 @@ function Retrieve(props) {
   });
   var tableComponents = songArr.map(function (item) {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.uri,
-      uri: item.uri,
+      key: item.id,
+      id: item.id,
       name: item.name,
       score: item.score,
       mutate: props.mutate,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
+        lineNumber: 23,
         columnNumber: 7
       }
     });
@@ -513,49 +515,49 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 37,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 13
     }
   }, "Rate")), tableComponents)));
@@ -7211,7 +7213,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 1:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
   \******************************************************************************************************************************************************/
@@ -7234,5 +7236,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=App.js.map
