@@ -1,0 +1,145 @@
+/*
+ upvote and downvote button css from w3schools.com
+*/
+
+.button_upvote {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #00A024;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px;
+  padding: 0px 10px 0px 10px;
+  width: fill;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button_downvote {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #A00000;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px;
+  padding: 0px 10px 0px 10px;
+  width: fill;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* submit button css from w3schools */
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: lightblue;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 5px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\BB";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*
+ Styling for table-view
+*/
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  width: 25%;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+tr:hover {
+  background-color: #ffff99;
+}
+
+/*
+ Styling for input form
+*/
+
+input[type="text"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/*
+ Styling for line break and making sure button and form
+ on the same line
+*/
+.linebreak {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/*
+ Styling for logo
+*/
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50;
+  width: 15%;
+}
+
+/*
+ Styling for line break and making sure button and form
+ on the same line
+*/
+.linebreak {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+
+
+/*# sourceMappingURL=styles.chunk.css.map*/

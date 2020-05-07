@@ -1,19 +1,16 @@
-const App = () => (
+import React from "react";
+//import ReactDOM from 'react-dom';
+//import './index.css';
+//import App from './App'
+import Header from "../components/Header";
+import Login from "./Login";
+import Layout from "../components/Layout";
+function Homepage() {
+  return (
     <div>
-      <h1>
-      Vote for the songs you like!
-      </h1>
-      <p>If you like a song, click thumbs up. 
-        If dont like a song, click thumbs down.
-      </p>
-      <button>
-        thumbs up
-      </button>
-      
-      <button>
-        thumbs down
-      </button>
+      <Login />
     </div>
-);
+  );
+}
 
-export default App;
+export default Homepage;
