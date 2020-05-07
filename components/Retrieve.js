@@ -9,7 +9,7 @@ export default function Retrieve(props) {
   const songArr = obj.map(item => {
     return {
       key: item._id,
-      id: item._id,
+      albumID: item.albumID,
       name: item.name,
       score: item.score
     };
@@ -19,15 +19,7 @@ export default function Retrieve(props) {
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
 
   const tableComponents = songArr.map(item => {
-    return (
-      <Table
-        key={item.id}
-        id={item.id}
-        name={item.name}
-        score={item.score}
-        mutate={props.mutate}
-      />
-    );
+    return <Table name={item.name} score={item.score} mutate={props.mutate} />;
   });
 
   return (

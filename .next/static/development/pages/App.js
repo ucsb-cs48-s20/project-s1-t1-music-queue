@@ -44,7 +44,7 @@ var Frame = /*#__PURE__*/function (_React$Component) {
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Frame, [{
     key: "render",
     value: function render(props) {
-      console.log("https://open.spotify.com/track/" + this.props.id);
+      console.log("https://open.spotify.com/embed/album/" + this.props.albumID);
       return __jsx("div", {
         align: "center",
         __self: this,
@@ -54,7 +54,7 @@ var Frame = /*#__PURE__*/function (_React$Component) {
           columnNumber: 7
         }
       }, __jsx("iframe", {
-        src: "https://open.spotify.com/track/" + this.props.id,
+        src: "https://open.spotify.com/embed/album/" + this.props.albumID,
         width: "800",
         height: "80",
         frameBorder: "0",
@@ -487,7 +487,7 @@ function Retrieve(props) {
   var songArr = obj.map(function (item) {
     return {
       key: item._id,
-      id: item._id,
+      albumID: item.albumID,
       name: item.name,
       score: item.score
     };
@@ -498,16 +498,14 @@ function Retrieve(props) {
   });
   var tableComponents = songArr.map(function (item) {
     return __jsx(_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.id,
-      id: item.id,
       name: item.name,
       score: item.score,
       mutate: props.mutate,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23,
-        columnNumber: 7
+        lineNumber: 22,
+        columnNumber: 12
       }
     });
   });
@@ -515,49 +513,49 @@ function Retrieve(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 26,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 27,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 28,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 29,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 30,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 31,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 32,
       columnNumber: 13
     }
   }, "Rate")), tableComponents)));
@@ -671,7 +669,7 @@ function Table(props) {
       columnNumber: 7
     }
   }, __jsx(_Frame__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    id: props.id,
+    albumID: props.name,
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -6963,7 +6961,8 @@ var App = /*#__PURE__*/function (_Component) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              console.log(song.album.id);
+              _context.next = 3;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("/api/add", {
                 method: "POST",
                 headers: {
@@ -6971,13 +6970,12 @@ var App = /*#__PURE__*/function (_Component) {
                 },
                 // the body of this song is built from state
                 body: JSON.stringify({
-                  name: song.name,
-                  score: 0,
-                  id: song.id
+                  name: song.album.id,
+                  score: 0
                 })
               }));
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -7009,7 +7007,9 @@ var App = /*#__PURE__*/function (_Component) {
               className: "button",
               value: "Add Song",
               onClick: function onClick() {
-                _this.addSong(_this.state.tracks[index]);
+                console.log(track);
+
+                _this.addSong(track);
               },
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
@@ -7050,14 +7050,14 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105,
+          lineNumber: 106,
           columnNumber: 7
         }
       }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106,
+          lineNumber: 107,
           columnNumber: 9
         }
       }), __jsx("hr", {
@@ -7065,7 +7065,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107,
+          lineNumber: 108,
           columnNumber: 9
         }
       }), __jsx("div", {
@@ -7073,7 +7073,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108,
+          lineNumber: 109,
           columnNumber: 9
         }
       }, __jsx("form", {
@@ -7083,7 +7083,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109,
+          lineNumber: 110,
           columnNumber: 11
         }
       }, __jsx("div", {
@@ -7091,7 +7091,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110,
+          lineNumber: 111,
           columnNumber: 13
         }
       }, __jsx("input", {
@@ -7106,7 +7106,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111,
+          lineNumber: 112,
           columnNumber: 15
         }
       })), __jsx("div", {
@@ -7114,7 +7114,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120,
+          lineNumber: 121,
           columnNumber: 13
         }
       }, __jsx("button", {
@@ -7123,7 +7123,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121,
+          lineNumber: 122,
           columnNumber: 15
         }
       }, "Search")))), __jsx("div", {
@@ -7131,7 +7131,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130,
+          lineNumber: 131,
           columnNumber: 9
         }
       }, this.renderSearchResults()));

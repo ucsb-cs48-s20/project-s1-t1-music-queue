@@ -53,7 +53,7 @@ export default function Table(props) {
     <tr>
       {/* output name and score of song*/}
       <td>
-        <Frame id={props.id} />
+        <Frame albumID={props.name} />
       </td>
       <td>{score}</td>
       <td>

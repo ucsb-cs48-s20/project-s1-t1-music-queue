@@ -53,6 +53,7 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
+    console.log(song.album.id);
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -60,9 +61,8 @@ class App extends Component {
       },
       // the body of this song is built from state
       body: JSON.stringify({
-        name: song.name,
-        score: 0,
-        id: song.id
+        name: song.album.id,
+        score: 0
       })
     });
   };
@@ -84,7 +84,8 @@ class App extends Component {
                 className="button"
                 value="Add Song"
                 onClick={() => {
-                  this.addSong(this.state.tracks[index]);
+                  console.log(track);
+                  this.addSong(track);
                 }}
               ></button>
             </Results>

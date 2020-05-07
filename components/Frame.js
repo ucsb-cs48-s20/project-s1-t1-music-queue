@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 //creates a spotify player widget
 
 class Frame extends React.Component {
   render(props) {
-    console.log("https://open.spotify.com/track/" + this.props.id);
+    console.log("https://open.spotify.com/embed/album/" + this.props.albumID);
     return (
       <div align="center">
         <iframe
-          src={"https://open.spotify.com/track/" + this.props.id}
+          src={"https://open.spotify.com/embed/album/" + this.props.albumID}
           width="800"
           height="80"
           frameBorder="0"

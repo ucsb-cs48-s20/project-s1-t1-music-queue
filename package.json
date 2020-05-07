@@ -23,6 +23,5 @@
     "swr": "^0.2.0",
     "spotify-web-api-node": "^4.0.0",
     "heroku-dotenv": "^0.4.1"
-
   }
 }
