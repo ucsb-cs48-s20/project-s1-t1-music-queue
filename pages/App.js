@@ -81,13 +81,13 @@ class App extends Component {
             <Results key={index} imageURL={hasImage.url} name={track.name}>
               {/*Button that allows user to add song to database*/}
               <button
-                className="button"
+                className="form-control btn btn-outline-success"
                 value="Add Song"
                 onClick={() => {
                   console.log(track);
                   this.addSong(track);
                 }}
-              ></button>
+              >Add Song</button>
             </Results>
           );
           // increment index of song being added
@@ -108,17 +108,16 @@ class App extends Component {
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">
           <form onSubmit={event => this.submitTrackForm(event)}>
-            <div className="form-group">
+            <div className="form-group" style={{textAlign: "center"}}>
               <input
                 type="text"
-                className="form-control text-center"
                 placeholder="enter track name"
                 onChange={event =>
                   this.setState({ search_term: event.target.value })
                 }
               />
             </div>
-            <div className="form-group">
+            <div className="form-group" style={{textAlign: "center"}}>
               <button
                 type="submit"
                 className="form-control btn btn-outline-success"

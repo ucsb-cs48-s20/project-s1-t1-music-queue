@@ -47,40 +47,34 @@ class Login extends Component {
 
   render() {
     const styles = {
-      border: "0.2em solid #1ecd97",
+      border: "0.2em solid black",
       textAlign: "center",
-      display: "inline-block",
-      fontSize: "16px",
-      backgroundColor: "transparent",
-      borderRadius: "2em",
-      color: "#1ecd97",
-      cursor: "pointer",
-      fontSize: "3vmin",
-      padding: "0.7em 1.5em",
-      textTransform: "uppercase",
+      fontSize: "25px",
       transition: "all 0.25s ease"
     };
 
     const { access_token } = this.state;
 
     return (
-      <div className="Login" style={{ textAlign: "center" }}>
-        <br />
-        <br />
-        <header className="Login-header">
-          {
-            <button
-              onClick={() => {
-                this.makeSpotifyCall(event);
-              }}
-              className="btn btn--Login-link"
-              style={styles}
-            >
-              {access_token !== "" ? "Make a Room" : "Login to Spotify"}
-            </button>
-          }
-        </header>
-      </div>
+      <Layout>
+        <div className="Login" style={{ textAlign: "center" }}>
+          <br />
+          <br />
+          <header className="Login-header">
+            {
+              <button
+                onClick={() => {
+                  this.makeSpotifyCall(event);
+                }}
+                className="btn btn--Login-link"
+                style={styles}
+              >
+                {access_token !== "" ? "Make a Room" : "Login to Spotify"}
+              </button>
+            }
+          </header>
+        </div>
+      </Layout>
     );
   }
 }

@@ -5,12 +5,12 @@
 .button_upvote {
   display: inline-block;
   border-radius: 4px;
-  background-color: green;
+  background-color: #00A024;
   border: none;
   color: #ffffff;
   text-align: center;
   font-size: 25px;
-  padding: 5px;
+  padding: 0px 10px 0px 10px;
   width: fill;
   transition: all 0.5s;
   cursor: pointer;
@@ -20,12 +20,12 @@
 .button_downvote {
   display: inline-block;
   border-radius: 4px;
-  background-color: red;
+  background-color: #A00000;
   border: none;
   color: #ffffff;
   text-align: center;
   font-size: 25px;
-  padding: 5px;
+  padding: 0px 10px 0px 10px;
   width: fill;
   transition: all 0.5s;
   cursor: pointer;
@@ -87,7 +87,7 @@ table {
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
   width: 25%;
 }

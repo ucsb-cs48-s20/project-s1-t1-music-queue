@@ -1,5 +1,5 @@
 const Results = (props) => (
-    <div className={props.columnWidth ? props.columnWidth : "col-md-4"}>
+    <div className={props.columnWidth ? props.columnWidth : "col-md-3"}>
         <figure className="figure">
             {
                 props.imageURL ?
@@ -7,7 +7,7 @@ const Results = (props) => (
                     src={props.imageURL} 
                     className="figure-img img-fluid rounded" 
                     alt={props.name}
-                    style={{height: 300, width: 300 }} 
+                    style={{height: 200, width: 200 }} 
                 /> 
                 : ''
             }

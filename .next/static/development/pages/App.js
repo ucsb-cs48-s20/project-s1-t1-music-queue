@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Frame.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Frame.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
@@ -93,7 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon */ "./components/Icon.js");
 var _this = undefined,
-    _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Header.js";
+    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Header.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -180,7 +180,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
 var _this = undefined,
-    _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Icon.js";
+    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Icon.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -189,6 +189,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var Navbar = function Navbar() {
   return __jsx("div", {
+    style: {
+      backgroundColor: "black",
+      padding: "10px"
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -231,7 +235,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Retrieve__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Retrieve */ "./components/Retrieve.js");
 
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Input.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Input.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -335,7 +339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 /* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon */ "./components/Icon.js");
 var _this = undefined,
-    _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Layout.js";
+    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Layout.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -399,14 +403,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 var _this = undefined,
-    _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Results.js";
+    _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Results.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var Results = function Results(props) {
   return __jsx("div", {
-    className: props.columnWidth ? props.columnWidth : "col-md-4",
+    className: props.columnWidth ? props.columnWidth : "col-md-3",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -426,8 +430,8 @@ var Results = function Results(props) {
     className: "figure-img img-fluid rounded",
     alt: props.name,
     style: {
-      height: 300,
-      width: 300
+      height: 200,
+      width: 200
     },
     __self: _this,
     __source: {
@@ -473,7 +477,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./components/Table.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./components/style.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Retrieve.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Retrieve.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -558,7 +562,7 @@ function Retrieve(props) {
       lineNumber: 32,
       columnNumber: 13
     }
-  }, "Rate")), tableComponents)));
+  }, "Vote")), tableComponents)));
 }
 
 /***/ }),
@@ -580,7 +584,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetch */ "./utils/fetch.js");
 /* harmony import */ var _Frame__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Frame */ "./components/Frame.js");
 
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/components/Table.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/components/Table.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -1541,12 +1545,12 @@ var e,t=(e=__webpack_require__(/*! querystring */ "./node_modules/querystring-es
 
 /***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
 /*!***********************************************************************************************************************!*\
-  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_2adc2403d89adc16ead0 ***!
   \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/next/dist/build/polyfills/object-assign.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/next/dist/build/polyfills/object-assign.js");
 
 /***/ }),
 
@@ -1562,10 +1566,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
-  \**************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
+  \****************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3854,12 +3858,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_2adc2403d89adc16ead0 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -4494,12 +4498,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_2adc2403d89adc16ead0 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -4970,12 +4974,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_c2e10d183b950a67d9e7 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c2e10d183b950a67d9e7 */ "dll-reference dll_c2e10d183b950a67d9e7"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0 */ "dll-reference dll_2adc2403d89adc16ead0"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -6898,7 +6902,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/App.js";
+var _jsxFileName = "/Users/lilyou/Desktop/project-s1-t1-music-queue/pages/App.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
@@ -7004,7 +7008,7 @@ var App = /*#__PURE__*/function (_Component) {
                 columnNumber: 13
               }
             }, __jsx("button", {
-              className: "button",
+              className: "form-control btn btn-outline-success",
               value: "Add Song",
               onClick: function onClick() {
                 console.log(track);
@@ -7017,7 +7021,7 @@ var App = /*#__PURE__*/function (_Component) {
                 lineNumber: 83,
                 columnNumber: 15
               }
-            }))); // increment index of song being added
+            }, "Add Song"))); // increment index of song being added
 
             index++;
           }
@@ -7088,6 +7092,9 @@ var App = /*#__PURE__*/function (_Component) {
         }
       }, __jsx("div", {
         className: "form-group",
+        style: {
+          textAlign: "center"
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -7096,7 +7103,6 @@ var App = /*#__PURE__*/function (_Component) {
         }
       }, __jsx("input", {
         type: "text",
-        className: "form-control text-center",
         placeholder: "enter track name",
         onChange: function onChange(event) {
           return _this2.setState({
@@ -7111,10 +7117,13 @@ var App = /*#__PURE__*/function (_Component) {
         }
       })), __jsx("div", {
         className: "form-group",
+        style: {
+          textAlign: "center"
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121,
+          lineNumber: 120,
           columnNumber: 13
         }
       }, __jsx("button", {
@@ -7123,7 +7132,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122,
+          lineNumber: 121,
           columnNumber: 15
         }
       }, "Search")))), __jsx("div", {
@@ -7131,7 +7140,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131,
+          lineNumber: 130,
           columnNumber: 9
         }
       }, this.renderSearchResults()));
@@ -7213,28 +7222,28 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 2:
-/*!******************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
-  \******************************************************************************************************************************************************/
+/***/ 4:
+/*!********************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js!./");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_c2e10d183b950a67d9e7":
+/***/ "dll-reference dll_2adc2403d89adc16ead0":
 /*!*******************************************!*\
-  !*** external "dll_c2e10d183b950a67d9e7" ***!
+  !*** external "dll_2adc2403d89adc16ead0" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_c2e10d183b950a67d9e7;
+module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[4,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=App.js.map
