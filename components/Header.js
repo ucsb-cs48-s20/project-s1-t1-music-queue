@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Navbar from "./Icon";
 
 const Header = () => (
   <div>

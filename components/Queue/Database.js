@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
-import { fetch } from "../utils/fetch";
-import "./style.css";
-import Retrieve from "./Retrieve";
+import { fetch } from "../../utils/fetch";
+import "../style.css";
+import Table from "./Table";
 
-function Input() {
+function Database() {
   // set initial hooks to keep track of state
   const [score, setScore] = useState(0);
   const [name, setName] = useState("");
@@ -24,7 +24,7 @@ function Input() {
       result: [
         {
           name: "FETCHING DATA ... ",
-          id: "FETCHING DATA ... ",
+          albumID: "FETCHING DATA ... ",
           score: "FETCHING DATA ... "
         }
       ]
@@ -42,9 +42,9 @@ function Input() {
   return (
     <div>
       {/* Display current queue of music */}
-      <Retrieve data={data} mutate={async () => await mutate()} />
+      <Table data={data} mutate={async () => await mutate()} />
     </div>
   );
 }
 
-export default Input;
+export default Database;

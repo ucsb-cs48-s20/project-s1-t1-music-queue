@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import Link from "next/link";
 import Layout from "../components/Layout";
-import Results from "../components/Results";
-import Input from "../components/Input";
+import Results from "../components/Search/Results";
+import Database from "../components/Queue/Database";
 import "./style.css";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
@@ -53,7 +52,6 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
-    console.log(song.album.id);
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -87,7 +85,9 @@ class App extends Component {
                   console.log(track);
                   this.addSong(track);
                 }}
-              >Add Song</button>
+              >
+                Add Song
+              </button>
             </Results>
           );
           // increment index of song being added
@@ -104,11 +104,11 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
-        <Input />
+        <Database />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">
           <form onSubmit={event => this.submitTrackForm(event)}>
-            <div className="form-group" style={{textAlign: "center"}}>
+            <div className="form-group" style={{ textAlign: "center" }}>
               <input
                 type="text"
                 placeholder="enter track name"
@@ -117,7 +117,7 @@ class App extends Component {
                 }
               />
             </div>
-            <div className="form-group" style={{textAlign: "center"}}>
+            <div className="form-group" style={{ textAlign: "center" }}>
               <button
                 type="submit"
                 className="form-control btn btn-outline-success"

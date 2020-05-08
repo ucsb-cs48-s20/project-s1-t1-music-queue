@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetch } from "../utils/fetch";
+import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
 
 export default function Table(props) {

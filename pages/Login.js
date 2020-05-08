@@ -10,10 +10,6 @@ const redirectUri = config.REDIRECT_URI;
 const scopes = ["user-read-currently-playing", "user-read-playback-state"];
 const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
 
-console.log(clientId);
-console.log(redirectUri);
-console.log(spotifyWebApiURL);
-
 class Login extends Component {
   constructor(props) {
     super(props);
