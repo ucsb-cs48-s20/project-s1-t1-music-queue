@@ -3525,7 +3525,7 @@ function fromByteArray (uint8) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(/*! buffer */ 4).Buffer;
+    Buffer = __webpack_require__(/*! buffer */ 10).Buffer;
   } catch (e) {
   }
 
@@ -6967,7 +6967,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(/*! crypto */ 7);
+    var crypto = __webpack_require__(/*! crypto */ 11);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -26138,7 +26138,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 3);
+var util = __webpack_require__(/*! util */ 9);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -30522,18 +30522,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 3:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 4:
+/***/ 10:
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -30544,7 +30533,18 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 11:
+/*!************************!*\
+  !*** crypto (ignored) ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 6:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Fgautam%2FDesktop%2Fcs%2F48%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
   \******************************************************************************************************************************************************/
@@ -30556,10 +30556,10 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&ab
 
 /***/ }),
 
-/***/ 7:
-/*!************************!*\
-  !*** crypto (ignored) ***!
-  \************************/
+/***/ 8:
+/*!**********************!*\
+  !*** util (ignored) ***!
+  \**********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -30567,7 +30567,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FApp&ab
 
 /***/ }),
 
-/***/ 8:
+/***/ 9:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -30589,5 +30589,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js","styles"]]]);
+},[[6,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=App.js.map

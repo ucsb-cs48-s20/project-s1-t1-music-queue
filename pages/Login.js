@@ -28,14 +28,25 @@ class Login extends Component {
     }
   };
 
+  componentDidUpdate() {
+    const { access_token } = this.state;
+    if (access_token != "") {
+      Router.push({
+        pathname: "/CreateRoom",
+        query: { access_token }
+      });
+    }
+  }
+
   makeSpotifyCall = event => {
     event.preventDefault();
     const { access_token } = this.state;
+    console.log(access_token);
     if (access_token === "") {
       document.location = spotifyWebApiURL;
     } else {
       Router.push({
-        pathname: "/App",
+        pathname: "/CreateRoom",
         query: { access_token }
       });
     }
@@ -49,6 +60,8 @@ class Login extends Component {
       transition: "all 0.25s ease"
     };
 
+    // you have logged in and are returning to the main page, move forward to creating
+    // a new page instead of displaying the login screen
     const { access_token } = this.state;
 
     return (
@@ -65,7 +78,7 @@ class Login extends Component {
                 className="btn btn--Login-link"
                 style={styles}
               >
-                {access_token !== "" ? "Make a Room" : "Login to Spotify"}
+                Login to Spotify
               </button>
             }
           </header>
