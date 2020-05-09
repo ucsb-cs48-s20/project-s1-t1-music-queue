@@ -28,6 +28,8 @@ class Login extends Component {
     }
   };
 
+  // the purpose of this addition is to make sure that after the user logs in,
+  // the page that is displayed is CreateRoom.js and not the login page
   componentDidUpdate() {
     const { access_token } = this.state;
     if (access_token != "") {
@@ -44,12 +46,14 @@ class Login extends Component {
     console.log(access_token);
     if (access_token === "") {
       document.location = spotifyWebApiURL;
-    } else {
-      Router.push({
-        pathname: "/CreateRoom",
-        query: { access_token }
-      });
     }
+    // This is the code that I commented out
+    // else {
+    //   Router.push({
+    //     pathname: "/CreateRoom",
+    //     query: { access_token }
+    //   });
+    // }
   };
 
   render() {
