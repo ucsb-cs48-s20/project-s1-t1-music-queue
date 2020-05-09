@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -332,23 +332,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 function Database() {
-  // set initial hooks to keep track of state
-  const {
-    0: score,
-    1: setScore
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
-  const {
-    0: name,
-    1: setName
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  const {
-    0: sentDatabase,
-    1: setSent
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false); // useSWR is like your own state that is backed by an API call
+  // useSWR is like your own state that is backed by an API call
   // mutate w/out parameters just causes refetch of endpoint
   // you can change the arguments with a parameter see repo
   // for further documentation.
-
   const {
     data,
     mutate
@@ -361,7 +348,8 @@ function Database() {
       result: [{
         name: "FETCHING DATA ... ",
         albumID: "FETCHING DATA ... ",
-        score: "FETCHING DATA ... "
+        score: "FETCHING DATA ... ",
+        rank: 0
       }]
     }
   }); // re-fectch data from database for initial render. mutate() does this
@@ -376,7 +364,7 @@ function Database() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 39,
       columnNumber: 5
     }
   }, __jsx(_Table__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -385,7 +373,7 @@ function Database() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 41,
       columnNumber: 7
     }
   }));
@@ -414,6 +402,7 @@ class Frame extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render(props) {
     return __jsx("div", {
       align: "center",
+      pointerEvents: "none",
       __self: this,
       __source: {
         fileName: _jsxFileName,
@@ -471,20 +460,24 @@ function Table(props) {
       key: item._id,
       albumID: item.albumID,
       name: item.name,
-      score: item.score
+      score: item.score,
+      img: item.img
     };
   }); // sort array of songs; highest scores first and lowest scores last
 
   songArr.sort((a, b) => a.score > b.score ? -1 : 1);
-  const tableComponents = songArr.map(item => {
+  const tableComponents = songArr.map((item, index) => {
     return __jsx(_TableRow__WEBPACK_IMPORTED_MODULE_1__["default"], {
       name: item.name,
+      albumID: item.albumID,
       score: item.score,
+      img: item.img,
       mutate: props.mutate,
+      rank: index,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
+        lineNumber: 23,
         columnNumber: 7
       }
     });
@@ -493,49 +486,49 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 35,
       columnNumber: 5
     }
   }, __jsx("table", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 36,
       columnNumber: 7
     }
   }, __jsx("tbody", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 37,
       columnNumber: 9
     }
   }, __jsx("tr", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 38,
       columnNumber: 11
     }
   }, __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, "Song"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 40,
       columnNumber: 13
     }
   }, "Score"), __jsx("th", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 41,
       columnNumber: 13
     }
   }, "Vote")), tableComponents)));
@@ -552,7 +545,7 @@ function Table(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Table; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TableRow; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/fetch */ "./utils/fetch.js");
@@ -563,7 +556,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-function Table(props) {
+function TableRow(props) {
   const {
     0: score,
     1: setScore
@@ -610,33 +603,68 @@ function Table(props) {
       lineNumber: 53,
       columnNumber: 5
     }
-  }, __jsx("td", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 7
-    }
-  }, __jsx(_Frame__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    albumID: props.name,
+  }, props.rank == 0 ? __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 56,
       columnNumber: 9
     }
-  })), __jsx("td", {
+  }, __jsx(_Frame__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    albumID: props.albumID,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 57,
+      columnNumber: 11
+    }
+  })) : __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 11
+    }
+  }, __jsx("h3", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
+      columnNumber: 13
+    }
+  }, props.name), " ", __jsx("img", {
+    src: props.img,
+    className: "figure-img img-fluid rounded",
+    alt: props.name,
+    style: {
+      height: 100,
+      width: 100
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 13
+    }
+  }), " ")), __jsx("td", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
       columnNumber: 7
     }
   }, score), __jsx("td", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 74,
       columnNumber: 7
     }
   }, __jsx("button", {
@@ -648,7 +676,7 @@ function Table(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 76,
       columnNumber: 9
     }
   }, "\u2191"), __jsx("button", {
@@ -656,14 +684,13 @@ function Table(props) {
     onClick: () => {
       if (score > 0) {
         setScore(score - 1);
+        decrement();
       }
-
-      decrement();
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 86,
       columnNumber: 9
     }
   }, " ", "\u2193")));
@@ -2438,10 +2465,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Queue_Database__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Queue/Database */ "./components/Queue/Database.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.css */ "./pages/style.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! crypto */ "crypto");
+/* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(crypto__WEBPACK_IMPORTED_MODULE_7__);
 var _jsxFileName = "/Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/App.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2487,6 +2517,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     });
 
     _defineProperty(this, "addSong", async song => {
+      console.log(song);
       await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()("/api/add", {
         method: "POST",
         headers: {
@@ -2494,8 +2525,10 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: song.album.id,
-          score: 0
+          name: song.name,
+          score: 0,
+          albumID: song.album.id,
+          imgURL: song.album.images[2].url
         })
       });
     });
@@ -2512,6 +2545,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
         tracks.forEach((track, index) => {
           if (track.album != undefined && track.album.images[0] != undefined) {
+            console.log(track);
             let hasImage = track.album.images[0];
             allResults.push( // push information about this song to a result component
             __jsx(_components_Search_Results__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -2521,20 +2555,19 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 79,
+                lineNumber: 84,
                 columnNumber: 13
               }
             }, __jsx("button", {
               className: "form-control btn btn-outline-success",
               value: "Add Song",
               onClick: () => {
-                console.log(track);
                 this.addSong(track);
               },
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 81,
+                lineNumber: 86,
                 columnNumber: 15
               }
             }, "Add Song"))); // increment index of song being added
@@ -2567,14 +2600,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 110,
         columnNumber: 7
       }
     }, __jsx(_components_Queue_Database__WEBPACK_IMPORTED_MODULE_5__["default"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 107,
+        lineNumber: 111,
         columnNumber: 9
       }
     }), __jsx("hr", {
@@ -2582,7 +2615,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108,
+        lineNumber: 112,
         columnNumber: 9
       }
     }), __jsx("div", {
@@ -2590,7 +2623,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 113,
         columnNumber: 9
       }
     }, __jsx("form", {
@@ -2598,7 +2631,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110,
+        lineNumber: 114,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -2609,7 +2642,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111,
+        lineNumber: 115,
         columnNumber: 13
       }
     }, __jsx("input", {
@@ -2621,7 +2654,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112,
+        lineNumber: 116,
         columnNumber: 15
       }
     })), __jsx("div", {
@@ -2632,7 +2665,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120,
+        lineNumber: 124,
         columnNumber: 13
       }
     }, __jsx("button", {
@@ -2641,7 +2674,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121,
+        lineNumber: 125,
         columnNumber: 15
       }
     }, "Search")))), __jsx("div", {
@@ -2649,7 +2682,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 130,
+        lineNumber: 134,
         columnNumber: 9
       }
     }, this.renderSearchResults()));
@@ -2703,7 +2736,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!****************************!*\
   !*** multi ./pages/App.js ***!
   \****************************/
@@ -2712,6 +2745,17 @@ async function fetch(url, options) {
 
 module.exports = __webpack_require__(/*! /Users/gautam/Desktop/cs/48/project-s1-t1-music-queue/pages/App.js */"./pages/App.js");
 
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("crypto");
 
 /***/ }),
 

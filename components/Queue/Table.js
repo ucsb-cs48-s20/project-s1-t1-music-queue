@@ -10,16 +10,24 @@ export default function Table(props) {
       key: item._id,
       albumID: item.albumID,
       name: item.name,
-      score: item.score
+      score: item.score,
+      img: item.img
     };
   });
 
   // sort array of songs; highest scores first and lowest scores last
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
 
-  const tableComponents = songArr.map(item => {
+  const tableComponents = songArr.map((item, index) => {
     return (
-      <TableRow name={item.name} score={item.score} mutate={props.mutate} />
+      <TableRow
+        name={item.name}
+        albumID={item.albumID}
+        score={item.score}
+        img={item.img}
+        mutate={props.mutate}
+        rank={index}
+      />
     );
   });
 

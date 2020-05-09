@@ -19,7 +19,9 @@ async function createSong(req, res) {
   const mutation = {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
-      score: song.score
+      score: song.score,
+      albumID: song.albumID,
+      img: song.imgURL
     }
   };
 

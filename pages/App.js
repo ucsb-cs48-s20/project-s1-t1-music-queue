@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import "./style.css";
+import { sign } from "crypto";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -52,6 +53,7 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
+    console.log(song);
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -59,8 +61,10 @@ class App extends Component {
       },
       // the body of this song is built from state
       body: JSON.stringify({
-        name: song.album.id,
-        score: 0
+        name: song.name,
+        score: 0,
+        albumID: song.album.id,
+        imgURL: song.album.images[2].url
       })
     });
   };
@@ -73,6 +77,7 @@ class App extends Component {
       // index to allow current song to be added.
       tracks.forEach((track, index) => {
         if (track.album != undefined && track.album.images[0] != undefined) {
+          console.log(track);
           let hasImage = track.album.images[0];
           allResults.push(
             // push information about this song to a result component
@@ -82,7 +87,6 @@ class App extends Component {
                 className="form-control btn btn-outline-success"
                 value="Add Song"
                 onClick={() => {
-                  console.log(track);
                   this.addSong(track);
                 }}
               >

@@ -6,11 +6,6 @@ import "../style.css";
 import Table from "./Table";
 
 function Database() {
-  // set initial hooks to keep track of state
-  const [score, setScore] = useState(0);
-  const [name, setName] = useState("");
-  const [sentDatabase, setSent] = useState(false);
-
   // useSWR is like your own state that is backed by an API call
   // mutate w/out parameters just causes refetch of endpoint
   // you can change the arguments with a parameter see repo
@@ -25,7 +20,8 @@ function Database() {
         {
           name: "FETCHING DATA ... ",
           albumID: "FETCHING DATA ... ",
-          score: "FETCHING DATA ... "
+          score: "FETCHING DATA ... ",
+          rank: 0
         }
       ]
     }

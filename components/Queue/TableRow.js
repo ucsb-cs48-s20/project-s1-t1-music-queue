@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
 
-export default function Table(props) {
+export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
 
   // this callback renders the score when intially
@@ -52,9 +52,24 @@ export default function Table(props) {
   return (
     <tr>
       {/* output name and score of song*/}
-      <td>
-        <Frame albumID={props.name} />
-      </td>
+      {props.rank == 0 ? (
+        <td>
+          <Frame albumID={props.albumID} />
+        </td>
+      ) : (
+        <td>
+          <div>
+            <h3>{props.name}</h3>{" "}
+            <img
+              src={props.img}
+              className="figure-img img-fluid rounded"
+              alt={props.name}
+              style={{ height: 100, width: 100 }}
+            />{" "}
+          </div>
+        </td>
+      )}
+
       <td>{score}</td>
       <td>
         {/* button to upvote*/}
@@ -73,8 +88,8 @@ export default function Table(props) {
           onClick={() => {
             if (score > 0) {
               setScore(score - 1);
+              decrement();
             }
-            decrement();
           }}
         >
           {" "}
