@@ -14,7 +14,7 @@ function Database() {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
-    refreshInterval: 1500,
+    refreshInterval: 1000,
     initialData: {
       result: [
         {
