@@ -5,7 +5,6 @@ import { initDatabase } from "../../utils/mongodb";
 export default async function(req, res) {
   const db = await initDatabase();
   const collections = await db.listCollections().toArray();
-
   // map all names of collections to be returned
   const result = collections.map(item => item.name);
   res.statusCode = 200;

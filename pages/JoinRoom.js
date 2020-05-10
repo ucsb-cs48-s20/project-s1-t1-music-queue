@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useCallback } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
-import fetch from "isomorphic-unfetch";
+import { fetch } from "../utils/fetch";
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
@@ -12,14 +12,20 @@ function JoinRoom() {
     revalidateOnReconnect: true
   });
 
-  const handleJoin = useCallback(() => {
-    mutate();
-    if (collections.contains(roomKey)) {
-      console.log("MusicQ is running!");
-    } else {
-      console.log("MusicQ is not running!");
-    }
-  }, [roomKey]);
+  const handleJoin = useCallback(
+    async event => {
+      // get the list of currect collections on the MusicQ
+      await mutate();
+      console.log(collections);
+      console.log(roomKey);
+      if (collections.includes(roomKey)) {
+        console.log("There is a MusicQ is running on " + roomKey);
+      } else {
+        console.log("MusicQ ISN'T a MusicQ running! on " + roomKey);
+      }
+    },
+    [roomKey, collections]
+  );
 
   return (
     <Layout>
@@ -37,15 +43,12 @@ function JoinRoom() {
         <button
           className="form-control btn btn-outline-success"
           style={{ width: 200 }}
-          onClick={() => {
-            if (roomKey != "") {
-              handleJoin;
-            }
-          }}
+          onClick={() => handleJoin()}
         >
           Join MusicQ
         </button>
       </div>
+      <h1> {collections} </h1>
     </Layout>
   );
 }
