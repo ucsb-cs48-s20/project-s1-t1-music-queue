@@ -28,13 +28,13 @@ class Login extends Component {
     }
   };
 
-  // the purpose of this addition is to make sure that after the user logs in,
+  // The purpose of this addition is to make sure that after the user logs in,
   // the page that is displayed is CreateRoom.js and not the login page
   componentDidUpdate() {
     const { access_token } = this.state;
     if (access_token != "") {
       Router.push({
-        pathname: "/CreateRoom",
+        pathname: "/Rooms",
         query: { access_token }
       });
     }

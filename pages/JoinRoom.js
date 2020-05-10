@@ -1,6 +1,6 @@
 import React from "react";
 
-class CreateRoom extends React.Component {
+class JoinRoom extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -10,8 +10,8 @@ class CreateRoom extends React.Component {
   }
 
   render() {
-    return <div>create a room</div>;
+    return <div>join a room</div>;
   }
 }
 
-export default CreateRoom;
+export default JoinRoom;

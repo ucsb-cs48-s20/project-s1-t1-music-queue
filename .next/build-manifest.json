@@ -22,11 +22,19 @@
     ],
     "/CreateRoom": [
       "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/JoinRoom": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/Login": [
+      "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/Login": [
+    "/Rooms": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
