@@ -942,7 +942,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/lilyou/Desktop/project-s1-t1-music-queue/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/jenniferlo/cs/cs48/project-s1-t1-music-queue/.next");
       return error;
     }
   };
