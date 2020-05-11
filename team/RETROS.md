@@ -5,9 +5,16 @@
 
 ## Action item
 
-* a goal:
-* a change: 
-* a measurement:
+a goal: 
+* Look at Kanban and do non MVP items
+
+a change: 
+* better comments on code
+* organizing folders
+* speaking up if you want to work on something
+
+a measurement: 
+* discuss change whenever we make weekly updates to progess updates
 
 ## Brief description of how retro went
 
