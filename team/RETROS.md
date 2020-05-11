@@ -1,6 +1,6 @@
 # Retro 05/11/20
 * Led by: David
-* Present: Jennifer, Ori, Gautam, Lily, David 
+* Present: Jennifer, Ori, Gautam, Lily, Samhita
 * Absent: 
 
 ## Action item
