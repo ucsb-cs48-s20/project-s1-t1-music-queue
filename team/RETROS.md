@@ -3,6 +3,7 @@
 * Present: Jennifer, Ori, Gautam, Lily, Samhita
 * Absent: 
 
+link to things discussed in retro: https://docs.google.com/document/d/1vhFaDUPsoZFCfHqM3eFJq-CfdjbwReYKCOCJRqUMbdM/edit
 ## Action item
 
 a goal: 
@@ -14,10 +15,12 @@ a change:
 * speaking up if you want to work on something
 
 a measurement: 
-* discuss change whenever we make weekly updates to progess updates
+* discuss changes/progression from whenever we make weekly updates to when we do progess updates
 
 ## Brief description of how retro went
-
+* I combined start/stop/coninue, "Learned" from the 4Ls, and "Goal" from Sailboat.
+* I think it went well; everyone contributed a fair amount.
+* There are moments when there is silence, having your own suggestions or extra questions is probably a good idea.
 
 # Retro 04/20/20
 
