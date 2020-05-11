@@ -1,3 +1,17 @@
+# Retro 05/11/20
+* Led by: David
+* Present: Jennifer, Ori, Gautam, Lily, David 
+* Absent: 
+
+## Action item
+
+* a goal:
+* a change: 
+* a measurement:
+
+## Brief description of how retro went
+
+
 # Retro 04/20/20
 
 * Led by:Samhita
