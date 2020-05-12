@@ -17,7 +17,8 @@ class App extends Component {
     super(props);
     this.state = {
       search_term: "",
-      tracks: []
+      tracks: [],
+      collection: ""
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -27,8 +28,16 @@ class App extends Component {
   // When the component first renders you either render the music queue
   // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
-    if (window.location.href.indexOf("_token") == -1) {
+    let url = window.location.href;
+    if (url.indexOf("_token") == -1) {
       Router.push("/Login");
+    }
+    if (url.indexOf("roomKey") != -1) {
+      let c = url
+        .split("roomKey=")[1]
+        .split("&")[0]
+        .trim();
+      this.setState({ collection: c });
     }
     console.log("cdm ran");
   };
@@ -64,7 +73,8 @@ class App extends Component {
         name: song.name,
         score: 0,
         albumID: song.album.id,
-        imgURL: song.album.images[2].url
+        imgURL: song.album.images[2].url,
+        collection: this.state.collection
       })
     });
   };

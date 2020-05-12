@@ -14,11 +14,13 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      access_token: ""
+      access_token: "",
+      collection: ""
     };
   }
   componentDidMount = () => {
     let url = window.location.href;
+    console.log(url);
     if (url.indexOf("_token") > -1) {
       let access_token = url
         .split("_token=")[1]

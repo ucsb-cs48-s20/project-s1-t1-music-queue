@@ -35,7 +35,7 @@ function JoinRoom() {
       if (collections.includes(roomKey + "")) {
         Router.push({
           pathname: "/App",
-          query: { roomKey, access_token }
+          query: { roomKey: roomKey, access_token: access_token }
         });
       }
     },
