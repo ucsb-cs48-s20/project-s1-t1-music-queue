@@ -21,7 +21,8 @@ export default function TableRow(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name
+          name: props.name,
+          collection: props.collection
         })
       });
       // forces a call to the hook useSWR
@@ -33,14 +34,15 @@ export default function TableRow(props) {
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
     async event => {
-      await fetch("/api/decrement", {
+      await fetch("/api/decrementid=" + props.collection, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name
+          name: props.name,
+          collection: props.collection
         })
       });
       // forces a call to the hook useSWR

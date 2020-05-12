@@ -5,12 +5,12 @@ import { fetch } from "../../utils/fetch";
 import "../style.css";
 import Table from "./Table";
 
-function Database() {
+function Database(props) {
   // useSWR is like your own state that is backed by an API call
   // mutate w/out parameters just causes refetch of endpoint
   // you can change the arguments with a parameter see repo
   // for further documentation.
-  const { data, mutate } = useSWR("/api/all", fetch, {
+  const { data, mutate } = useSWR("/api/all?id=" + props.collection, fetch, {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
@@ -21,7 +21,9 @@ function Database() {
           name: "FETCHING DATA ... ",
           albumID: "FETCHING DATA ... ",
           score: "FETCHING DATA ... ",
-          rank: 0
+          rank: 0,
+          img: "",
+          collection: "loading"
         }
       ]
     }
@@ -38,7 +40,11 @@ function Database() {
   return (
     <div>
       {/* Display current queue of music */}
-      <Table data={data} mutate={async () => await mutate()} />
+      <Table
+        data={data}
+        collection={props.collection}
+        mutate={async () => await mutate()}
+      />
     </div>
   );
 }

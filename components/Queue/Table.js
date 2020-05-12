@@ -11,12 +11,15 @@ export default function Table(props) {
       albumID: item.albumID,
       name: item.name,
       score: item.score,
-      img: item.img
+      img: item.img,
+      collection: props.collection
     };
   });
 
   // sort array of songs; highest scores first and lowest scores last
+  console.log(songArr);
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
+  console.log(songArr);
 
   const tableComponents = songArr.map((item, index) => {
     return (
@@ -27,6 +30,7 @@ export default function Table(props) {
         img={item.img}
         mutate={props.mutate}
         rank={index}
+        collection={item.collection}
       />
     );
   });

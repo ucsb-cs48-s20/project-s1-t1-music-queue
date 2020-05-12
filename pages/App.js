@@ -87,6 +87,7 @@ class App extends Component {
       // index to allow current song to be added.
       tracks.forEach((track, index) => {
         if (track.album != undefined && track.album.images[0] != undefined) {
+          // console.log(track); Outputs the spotify object returned
           let hasImage = track.album.images[0];
           allResults.push(
             // push information about this song to a result component
@@ -111,6 +112,12 @@ class App extends Component {
     } else {
       return "";
     }
+  };
+
+  leaveMusicQ = () => {
+    Router.push({
+      pathname: "/Login"
+    });
   };
 
   render() {
@@ -141,6 +148,13 @@ class App extends Component {
           </form>
         </div>
         <div className="row mt-5">{this.renderSearchResults()}</div>
+        <button
+          type="submit"
+          className="form-control btn btn-outline-success"
+          onClick={() => this.leaveMusicQ()}
+        >
+          Leave Queue
+        </button>
       </Layout>
     );
   }
