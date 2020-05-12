@@ -1,3 +1,43 @@
+# Sprint Planning, 05/12/2020
+  
+* Leader: Ori
+* Present: all
+* Absent: none
+  
+## Sprint Goal for 05/12-05/21
+  
+Which of the 10 powerful questions did you ask?
+
+3. If we were paying for this Sprint with our own money, what work would give us the highest chance to get that money back?
+ - Sharing a "MusicQ" ature would make people use the app
+ - The upvote/downvote feature 
+
+8. What would need to happen while working on this Sprint Goal that would be cause for celebration?
+ - Have other students test our app and be able to use it correctly. Without us telling them what to do
+ - Getting two people synced into the same room
+ - Various parties at the same time
+
+6. If we suddenly have half the team available and we can do only half the work required for the Sprint Goal, what should absolutely be in there in order for us to still be okay with the outcome? What can we let go of for now and return to later?
+- Room sharing feature. Create, join, and delete a room
+- Playing a song automatically
+- CSS / Bootstrap can be cut ... not too much :(
+
+Describe your sprint goal here.
+- Generate and share a MusicQ key. People can join the queue using this key
+- Top song autoplays
+- Once a song starts playing don't sort that song and keep it at the top.
+- One vote per song per person
+
+- (thoughts for next sprint): Distinguish between admin and user to only play song on admin's device. The admin can choose if they want to make music play simultaneously for everyone
+  
+Describe briefly how you came up with that goal.
+- We discussed what was necessary and what was not. Also disscussed what we can leave out for the next sprint. These questions were helpful!
+  
+## Discussion of previous Sprint Goal
+  
+Briefly: was the sprint goal acheived?  Was it too ambitious?  Too modest?
+- The sprint goal was good. We acheived most of it!
+
 # Status, Monday 04/27/2020
 
 ## Sprint Goal for Monday 04/27 through Monday 05/04
