@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2529,7 +2529,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 81,
+                lineNumber: 85,
                 columnNumber: 13
               }
             }, __jsx("button", {
@@ -2542,7 +2542,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
               __self: this,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 83,
+                lineNumber: 87,
                 columnNumber: 15
               }
             }, "Add Song"))); // increment index of song being added
@@ -2567,6 +2567,10 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   // or you don't render anything if the user is NOT logged in!
 
 
+  exitQueue() {
+    next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push("/Login");
+  }
+
   render() {
     const {
       user
@@ -2575,14 +2579,46 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 110,
         columnNumber: 7
       }
-    }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, __jsx("div", {
+      style: {
+        textAlign: "right"
+      },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 107,
+        lineNumber: 111,
+        columnNumber: 9
+      }
+    }, __jsx("button", {
+      onClick: this.exitQueue,
+      style: {
+        color: "white",
+        backgroundColor: "#515251",
+        textAlign: "center",
+        fontSize: "15px",
+        padding: "10px 20px 10px 20px"
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112,
+        columnNumber: 11
+      }
+    }, "Exit Queue")), __jsx("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 125,
+        columnNumber: 9
+      }
+    }), __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 127,
         columnNumber: 9
       }
     }), __jsx("hr", {
@@ -2590,7 +2626,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108,
+        lineNumber: 128,
         columnNumber: 9
       }
     }), __jsx("div", {
@@ -2598,7 +2634,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 129,
         columnNumber: 9
       }
     }, __jsx("form", {
@@ -2606,7 +2642,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110,
+        lineNumber: 130,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -2617,7 +2653,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111,
+        lineNumber: 131,
         columnNumber: 13
       }
     }, __jsx("input", {
@@ -2629,7 +2665,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112,
+        lineNumber: 132,
         columnNumber: 15
       }
     })), __jsx("div", {
@@ -2640,7 +2676,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120,
+        lineNumber: 140,
         columnNumber: 13
       }
     }, __jsx("button", {
@@ -2649,7 +2685,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121,
+        lineNumber: 141,
         columnNumber: 15
       }
     }, "Search")))), __jsx("div", {
@@ -2657,7 +2693,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 130,
+        lineNumber: 150,
         columnNumber: 9
       }
     }, this.renderSearchResults()));
@@ -2711,7 +2747,7 @@ async function fetch(url, options) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!****************************!*\
   !*** multi ./pages/App.js ***!
   \****************************/

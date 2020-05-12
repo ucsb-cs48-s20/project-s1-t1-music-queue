@@ -67,6 +67,10 @@ class App extends Component {
     });
   };
 
+  exitQueue() { 
+    Router.push("/Login");
+  }
+
   renderSearchResults = () => {
     if (this.state.tracks.length > 1) {
       const { tracks } = this.state;
@@ -104,6 +108,22 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
+        <div style={{textAlign: "right"}}>
+          <button 
+            onClick={this.exitQueue}
+            style={{
+              color: "white",
+              backgroundColor: "#515251",
+              textAlign: "center",
+              fontSize: "15px",
+              padding: "10px 20px 10px 20px"
+            }}
+          >
+            Exit Queue
+          </button>
+        </div>
+        <br/>
+        
         <Input />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">

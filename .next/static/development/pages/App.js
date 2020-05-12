@@ -7004,7 +7004,7 @@ var App = /*#__PURE__*/function (_Component) {
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 81,
+                lineNumber: 85,
                 columnNumber: 13
               }
             }, __jsx("button", {
@@ -7018,7 +7018,7 @@ var App = /*#__PURE__*/function (_Component) {
               __self: Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 83,
+                lineNumber: 87,
                 columnNumber: 15
               }
             }, "Add Song"))); // increment index of song being added
@@ -7045,6 +7045,11 @@ var App = /*#__PURE__*/function (_Component) {
 
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(App, [{
+    key: "exitQueue",
+    value: function exitQueue() {
+      next_router__WEBPACK_IMPORTED_MODULE_10___default.a.push("/Login");
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -7054,14 +7059,46 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106,
+          lineNumber: 110,
           columnNumber: 7
         }
-      }, __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx("div", {
+        style: {
+          textAlign: "right"
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107,
+          lineNumber: 111,
+          columnNumber: 9
+        }
+      }, __jsx("button", {
+        onClick: this.exitQueue,
+        style: {
+          color: "white",
+          backgroundColor: "#515251",
+          textAlign: "center",
+          fontSize: "15px",
+          padding: "10px 20px 10px 20px"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112,
+          columnNumber: 11
+        }
+      }, "Exit Queue")), __jsx("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 125,
+          columnNumber: 9
+        }
+      }), __jsx(_components_Input__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 127,
           columnNumber: 9
         }
       }), __jsx("hr", {
@@ -7069,7 +7106,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108,
+          lineNumber: 128,
           columnNumber: 9
         }
       }), __jsx("div", {
@@ -7077,7 +7114,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109,
+          lineNumber: 129,
           columnNumber: 9
         }
       }, __jsx("form", {
@@ -7087,7 +7124,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110,
+          lineNumber: 130,
           columnNumber: 11
         }
       }, __jsx("div", {
@@ -7098,7 +7135,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111,
+          lineNumber: 131,
           columnNumber: 13
         }
       }, __jsx("input", {
@@ -7112,7 +7149,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 112,
+          lineNumber: 132,
           columnNumber: 15
         }
       })), __jsx("div", {
@@ -7123,7 +7160,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120,
+          lineNumber: 140,
           columnNumber: 13
         }
       }, __jsx("button", {
@@ -7132,7 +7169,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121,
+          lineNumber: 141,
           columnNumber: 15
         }
       }, "Search")))), __jsx("div", {
@@ -7140,7 +7177,7 @@ var App = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130,
+          lineNumber: 150,
           columnNumber: 9
         }
       }, this.renderSearchResults()));
@@ -7222,7 +7259,7 @@ function fetch(url, options) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 2:
 /*!********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FApp&absolutePagePath=%2FUsers%2Flilyou%2FDesktop%2Fproject-s1-t1-music-queue%2Fpages%2FApp.js ***!
   \********************************************************************************************************************************************/
@@ -7245,5 +7282,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=App.js.map
