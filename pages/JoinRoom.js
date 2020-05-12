@@ -1,30 +1,45 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
 import { fetch } from "../utils/fetch";
+import Router from "next/router";
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
-  const { collections, mutate } = useSWR("/api/collections", fetch, {
+  const [access_token, setAccessToken] = useState("");
+  const { data, mutate } = useSWR("/api/collections", fetch, {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true
+  });
+
+  useEffect(() => {
+    let url = window.location.href;
+    if (url.indexOf("_token") > -1) {
+      let access_token = url
+        .split("_token=")[1]
+        .split("&")[0]
+        .trim();
+      setAccessToken(access_token);
+    }
   });
 
   const handleJoin = useCallback(
     async event => {
       // get the list of currect collections on the MusicQ
       await mutate();
-      console.log(collections);
-      console.log(roomKey);
-      if (collections.includes(roomKey)) {
-        console.log("There is a MusicQ is running on " + roomKey);
-      } else {
-        console.log("MusicQ ISN'T a MusicQ running! on " + roomKey);
+      const collections = data.result;
+      console.log("roomKey " + roomKey);
+      console.log("collections: " + collections);
+      if (collections.includes(roomKey + "")) {
+        Router.push({
+          pathname: "/App",
+          query: { roomKey, access_token }
+        });
       }
     },
-    [roomKey, collections]
+    [roomKey, data]
   );
 
   return (
@@ -48,7 +63,7 @@ function JoinRoom() {
           Join MusicQ
         </button>
       </div>
-      <h1> {collections} </h1>
+      {/* <h1> {data} </h1> */}
     </Layout>
   );
 }
