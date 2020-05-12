@@ -87,7 +87,6 @@ class App extends Component {
       // index to allow current song to be added.
       tracks.forEach((track, index) => {
         if (track.album != undefined && track.album.images[0] != undefined) {
-          console.log(track);
           let hasImage = track.album.images[0];
           allResults.push(
             // push information about this song to a result component
@@ -118,7 +117,7 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
-        <Database />
+        <Database collection={this.state.collection} />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">
           <form onSubmit={event => this.submitTrackForm(event)}>
