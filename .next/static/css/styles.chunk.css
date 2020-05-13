@@ -5,7 +5,7 @@
 .button_upvote {
   display: inline-block;
   border-radius: 4px;
-  background-color: #00A024;
+  background-color: #00a024;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -20,7 +20,7 @@
 .button_downvote {
   display: inline-block;
   border-radius: 4px;
-  background-color: #A00000;
+  background-color: #a00000;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -99,19 +99,7 @@ tr:hover {
 }
 
 /*
- Styling for input form
-*/
-
-input[type="text"] {
-  width: 80%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-
-/*
- Styling for line break and making sure button and form
- on the same line
+ Styling for line break
 */
 .linebreak {
   margin-top: 50px;
@@ -129,6 +117,17 @@ input[type="text"] {
   margin-bottom: 50;
   width: 15%;
 }
+
+/*
+ Styling for line break and making sure button and form
+ on the same line
+*/
+.linebreak {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/
