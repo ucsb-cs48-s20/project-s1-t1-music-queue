@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       search_term: "",
       tracks: [],
-      collection: ""
+      collection: "loading"
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);

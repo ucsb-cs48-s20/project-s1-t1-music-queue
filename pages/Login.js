@@ -20,7 +20,6 @@ class Login extends Component {
   }
   componentDidMount = () => {
     let url = window.location.href;
-    console.log(url);
     if (url.indexOf("_token") > -1) {
       let access_token = url
         .split("_token=")[1]
