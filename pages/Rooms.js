@@ -6,7 +6,8 @@ class CreateRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      access_token: ""
+      access_token: "" ,
+      roomKey: 0
     };
   }
 
@@ -24,9 +25,10 @@ class CreateRoom extends React.Component {
   createRoom(event) {
     event.preventDefault();
     const { access_token } = this.state;
+    const { roomKey } = this.state;
     Router.push({
-      pathname: "/CreateRoom",
-      query: { access_token }
+      pathname: "/App",
+      query: {  roomKey,  access_token }
     });
   }
 

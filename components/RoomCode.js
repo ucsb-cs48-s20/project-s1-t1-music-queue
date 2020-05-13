@@ -7,12 +7,16 @@ class RoomCode extends React.Component {
       this.state = {
         min: 1000000,
         max: 9999999,
-        number: 1000000,
+        roomKey: this.props.roomKey,
       }
     }
   
     componentDidMount() {
-     this.setState({ number: this.generateNumber(this.state.min, this.state.max)})
+        console.log(this.state.roomKey);
+
+        if(this.state.roomKey == 0){
+            this.setState({ roomKey: this.generateNumber(this.state.min, this.state.max)})
+        }
     }
 
     generateNumber = (min, max) => {
@@ -21,10 +25,10 @@ class RoomCode extends React.Component {
       
      
 render(){
-    console.log(this.state.number);
+    console.log(this.state.roomKey);
   return (
     <div className="roomcode">
-      <h1>RoomCode: {this.state.number} </h1>
+      <h1>RoomCode: {this.state.roomKey} </h1>
     </div>
   ) }
 };

@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import "./style.css";
+import RoomCode from "../components/RoomCode"
 import { sign } from "crypto";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
@@ -124,6 +125,7 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Layout>
+        <RoomCode roomKey={this.props.url.query.roomKey}/>
         <Database collection={this.state.collection} />
         <hr className="linebreak" />
         <div className="row mt-5 justify-content-center">

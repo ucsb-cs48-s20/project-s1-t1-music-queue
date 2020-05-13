@@ -1,16 +1,21 @@
 import React from "react";
+import RoomCode from "../components/RoomCode"
+
 
 class CreateRoom extends React.Component {
   constructor() {
     super();
     this.state = {
-      roomKey: "",
+      roomKey: 0,
       loadingMessage: ""
     };
   }
 
-  render() {
-    return <div>create a room</div>;
+  render() { 
+    return(
+    < RoomCode />
+
+    )
   }
 }
 
