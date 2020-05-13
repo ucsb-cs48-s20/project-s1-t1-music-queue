@@ -130,16 +130,5 @@ input[type="text"] {
   width: 15%;
 }
 
-/*
- Styling for line break and making sure button and form
- on the same line
-*/
-.linebreak {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-
-
 
 /*# sourceMappingURL=styles.chunk.css.map*/

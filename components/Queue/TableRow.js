@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetch } from "../utils/fetch";
+import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
 
-export default function Table(props) {
+export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
 
   // this callback renders the score when intially
@@ -21,7 +21,8 @@ export default function Table(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name
+          name: props.name,
+          collection: props.collection
         })
       });
       // forces a call to the hook useSWR
@@ -33,14 +34,15 @@ export default function Table(props) {
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
     async event => {
-      await fetch("/api/decrement", {
+      await fetch("/api/decrementid=" + props.collection, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name
+          name: props.name,
+          collection: props.collection
         })
       });
       // forces a call to the hook useSWR
@@ -52,9 +54,24 @@ export default function Table(props) {
   return (
     <tr>
       {/* output name and score of song*/}
-      <td>
-        <Frame albumID={props.name} />
-      </td>
+      {props.rank == 0 ? (
+        <td>
+          <Frame albumID={props.albumID} />
+        </td>
+      ) : (
+        <td>
+          <div>
+            <h3>{props.name}</h3>{" "}
+            <img
+              src={props.img}
+              className="figure-img img-fluid rounded"
+              alt={props.name}
+              style={{ height: 100, width: 100 }}
+            />{" "}
+          </div>
+        </td>
+      )}
+
       <td>{score}</td>
       <td>
         {/* button to upvote*/}
@@ -73,8 +90,8 @@ export default function Table(props) {
           onClick={() => {
             if (score > 0) {
               setScore(score - 1);
+              decrement();
             }
-            decrement();
           }}
         >
           {" "}

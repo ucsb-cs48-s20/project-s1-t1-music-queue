@@ -10,19 +10,17 @@ const redirectUri = config.REDIRECT_URI;
 const scopes = ["user-read-currently-playing", "user-read-playback-state"];
 const spotifyWebApiURL = `https://accounts.spotify.com/authorize/?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
 
-console.log(clientId);
-console.log(redirectUri);
-console.log(spotifyWebApiURL);
-
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      access_token: ""
+      access_token: "",
+      collection: ""
     };
   }
   componentDidMount = () => {
     let url = window.location.href;
+    console.log(url);
     if (url.indexOf("_token") > -1) {
       let access_token = url
         .split("_token=")[1]
@@ -32,17 +30,32 @@ class Login extends Component {
     }
   };
 
-  makeSpotifyCall = event => {
-    event.preventDefault();
+  // The purpose of this addition is to make sure that after the user logs in,
+  // the page that is displayed is CreateRoom.js and not the login page
+  componentDidUpdate() {
     const { access_token } = this.state;
-    if (access_token === "") {
-      document.location = spotifyWebApiURL;
-    } else {
+    if (access_token != "") {
       Router.push({
-        pathname: "/App",
+        pathname: "/Rooms",
         query: { access_token }
       });
     }
+  }
+
+  makeSpotifyCall = event => {
+    event.preventDefault();
+    const { access_token } = this.state;
+    console.log(access_token);
+    if (access_token === "") {
+      document.location = spotifyWebApiURL;
+    }
+    // This is the code that I commented out
+    // else {
+    //   Router.push({
+    //     pathname: "/CreateRoom",
+    //     query: { access_token }
+    //   });
+    // }
   };
 
   render() {
@@ -53,6 +66,8 @@ class Login extends Component {
       transition: "all 0.25s ease"
     };
 
+    // you have logged in and are returning to the main page, move forward to creating
+    // a new page instead of displaying the login screen
     const { access_token } = this.state;
 
     return (
@@ -69,7 +84,7 @@ class Login extends Component {
                 className="btn btn--Login-link"
                 style={styles}
               >
-                {access_token !== "" ? "Make a Room" : "Login to Spotify"}
+                Login to Spotify
               </button>
             }
           </header>
