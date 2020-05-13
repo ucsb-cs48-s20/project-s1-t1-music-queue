@@ -14,7 +14,7 @@ async function incrementSong(req, res) {
   }
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
-  const users = client.collection("song_name");
+  const users = client.collection(song.collection + "");
 
   // find document with song name and decrement the score
   const result = await users.findOneAndUpdate(

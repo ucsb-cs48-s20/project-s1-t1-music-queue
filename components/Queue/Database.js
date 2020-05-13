@@ -1,31 +1,29 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
-import { fetch } from "../utils/fetch";
-import "./style.css";
-import Retrieve from "./Retrieve";
+import { fetch } from "../../utils/fetch";
+import "../style.css";
+import Table from "./Table";
 
-function Input() {
-  // set initial hooks to keep track of state
-  const [score, setScore] = useState(0);
-  const [name, setName] = useState("");
-  const [sentDatabase, setSent] = useState(false);
-
+function Database(props) {
   // useSWR is like your own state that is backed by an API call
   // mutate w/out parameters just causes refetch of endpoint
   // you can change the arguments with a parameter see repo
   // for further documentation.
-  const { data, mutate } = useSWR("/api/all", fetch, {
+  const { data, mutate } = useSWR("/api/all?id=" + props.collection, fetch, {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
-    refreshInterval: 1500,
+    refreshInterval: 1000,
     initialData: {
       result: [
         {
           name: "FETCHING DATA ... ",
-          id: "FETCHING DATA ... ",
-          score: "FETCHING DATA ... "
+          albumID: "FETCHING DATA ... ",
+          score: "FETCHING DATA ... ",
+          rank: 0,
+          img: "",
+          collection: "loading"
         }
       ]
     }
@@ -42,9 +40,13 @@ function Input() {
   return (
     <div>
       {/* Display current queue of music */}
-      <Retrieve data={data} mutate={async () => await mutate()} />
+      <Table
+        data={data}
+        collection={props.collection}
+        mutate={async () => await mutate()}
+      />
     </div>
   );
 }
 
-export default Input;
+export default Database;
