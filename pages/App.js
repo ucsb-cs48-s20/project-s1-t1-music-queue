@@ -39,7 +39,6 @@ class App extends Component {
         .trim();
       this.setState({ collection: c });
     }
-    console.log("cdm ran");
   };
 
   // Performs the query using the spotify api on the value in the form input
@@ -114,48 +113,54 @@ class App extends Component {
     }
   };
 
+  // Button to leave queue. Now links the props.url.query
   leaveMusicQ = () => {
     Router.push({
-      pathname: "/Login"
+      pathname: "/Rooms",
+      query: {
+        access_token: this.props.url.query
+      }
     });
   };
 
   render() {
     const { user } = this.props;
     return (
-      <Layout>
-        <Database collection={this.state.collection} />
-        <hr className="linebreak" />
-        <div className="row mt-5 justify-content-center">
-          <form onSubmit={event => this.submitTrackForm(event)}>
-            <div className="form-group" style={{ textAlign: "center" }}>
-              <input
-                type="text"
-                placeholder="enter track name"
-                onChange={event =>
-                  this.setState({ search_term: event.target.value })
-                }
-              />
-            </div>
-            <div className="form-group" style={{ textAlign: "center" }}>
-              <button
-                type="submit"
-                className="form-control btn btn-outline-success"
-              >
-                Search
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="row mt-5">{this.renderSearchResults()}</div>
+      <div>
+        <Layout>
+          <Database collection={this.state.collection} />
+          <hr className="linebreak" />
+          <div className="row mt-5 justify-content-center">
+            <form onSubmit={event => this.submitTrackForm(event)}>
+              <div className="form-group" style={{ textAlign: "center" }}>
+                <input
+                  type="text"
+                  placeholder="enter track name"
+                  onChange={event =>
+                    this.setState({ search_term: event.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group" style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  className="form-control btn btn-outline-success"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="row mt-5">{this.renderSearchResults()}</div>
+        </Layout>
         <button
           type="submit"
-          className="form-control btn btn-outline-success"
+          className="leaveQueue"
           onClick={() => this.leaveMusicQ()}
         >
           Leave Queue
         </button>
-      </Layout>
+      </div>
     );
   }
 }
