@@ -73,11 +73,12 @@ class App extends Component {
       body: JSON.stringify({
         name: song.name,
         score: 0,
-        albumID: song.album.id,
+        trackID: song.id,
         imgURL: song.album.images[2].url,
         collection: this.state.collection
       })
     });
+    
   };
 
   renderSearchResults = () => {
