@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import "./style.css";
+import RoomCode from "../components/RoomCode"
 import { sign } from "crypto";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
@@ -71,11 +72,12 @@ class App extends Component {
       body: JSON.stringify({
         name: song.name,
         score: 0,
-        albumID: song.album.id,
+        trackID: song.id,
         imgURL: song.album.images[2].url,
         collection: this.state.collection
       })
     });
+    
   };
 
   renderSearchResults = () => {
@@ -128,6 +130,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
+         <RoomCode roomKey={this.props.url.query.roomKey}/>
           <Database collection={this.state.collection} />
           <hr className="linebreak" />
           <div className="row mt-5 justify-content-center">

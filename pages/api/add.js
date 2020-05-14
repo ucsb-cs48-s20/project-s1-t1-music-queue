@@ -21,7 +21,7 @@ async function createSong(req, res) {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
       score: song.score,
-      albumID: song.albumID,
+      trackID: song.trackID,
       img: song.imgURL
     }
   };

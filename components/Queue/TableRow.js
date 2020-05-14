@@ -57,7 +57,7 @@ export default function TableRow(props) {
       {/* output name and score of song*/}
       {props.rank == 0 ? (
         <td>
-          <Frame albumID={props.albumID} />
+          <Frame trackID={props.trackID} />
         </td>
       ) : (
         <td>
