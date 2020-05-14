@@ -4,6 +4,7 @@ import "../style.css";
 
 export default function Table(props) {
   let obj = props.data.result;
+
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
     return {
@@ -11,26 +12,25 @@ export default function Table(props) {
       trackID: item.trackID,
       name: item.name,
       score: item.score,
-      img: item.img,
-      collection: props.collection
+      img: item.img
     };
   });
 
   // sort array of songs; highest scores first and lowest scores last
-  console.log(songArr);
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
   console.log(songArr);
 
   const tableComponents = songArr.map((item, index) => {
     return (
       <TableRow
+        key={item.key}
         name={item.name}
         trackID={item.trackID}
         score={item.score}
         img={item.img}
         mutate={props.mutate}
         rank={index}
-        collection={item.collection}
+        collection={props.collection}
       />
     );
   });

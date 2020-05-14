@@ -7,9 +7,6 @@ export default async function(req, res) {
   const collections = await db.listCollections().toArray();
   // map all names of collections to be returned
   const result = collections.map(item => item.name);
-
-  console.log("collections api endpoint respose: " + result);
-
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ result }));
