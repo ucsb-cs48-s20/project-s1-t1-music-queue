@@ -13,17 +13,17 @@ export default function TableRow(props) {
 
   // handles changes when upvoting score of each of song dynamically
   const increment = useCallback(
-    async event => {
+    async (event) => {
       await fetch("/api/increment", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         // the body of this song is built from state
         body: JSON.stringify({
           name: props.name,
-          collection: props.collection
-        })
+          collection: props.collection,
+        }),
       });
       // forces a call to the hook useSWR
       props.mutate();
@@ -33,17 +33,17 @@ export default function TableRow(props) {
 
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
-    async event => {
+    async (event) => {
       await fetch("/api/decrement", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         // the body of this song is built from state
         body: JSON.stringify({
           name: props.name,
-          collection: props.collection
-        })
+          collection: props.collection,
+        }),
       });
       // forces a call to the hook useSWR
       props.mutate();
@@ -65,7 +65,7 @@ export default function TableRow(props) {
             <h3>{props.name}</h3>{" "}
             <img
               src={props.img}
-              className="figure-img img-fluid rounded"
+              className='figure-img img-fluid rounded'
               alt={props.name}
               style={{ height: 100, width: 100 }}
             />{" "}
@@ -77,7 +77,7 @@ export default function TableRow(props) {
       <td>
         {/* button to upvote*/}
         <button
-          className="button_upvote"
+          className='button_upvote'
           onClick={() => {
             setScore(score + 1);
             increment();
@@ -87,7 +87,7 @@ export default function TableRow(props) {
         </button>
         {/* button to downvote. Cannot be < 0*/}
         <button
-          className="button_downvote"
+          className='button_downvote'
           onClick={() => {
             if (score > 0) {
               setScore(score - 1);
