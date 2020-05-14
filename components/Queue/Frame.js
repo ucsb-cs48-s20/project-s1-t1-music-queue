@@ -3,9 +3,8 @@ import React from "react";
 
 class Frame extends React.Component {
   render(props) {
-    console.log("https://open.spotify.com/embed/album/" + this.props.albumID);
     return (
-      <div align="center">
+      <div align="center" pointerEvents="none">
         <iframe
           src={"https://open.spotify.com/embed/album/" + this.props.albumID}
           width="800"

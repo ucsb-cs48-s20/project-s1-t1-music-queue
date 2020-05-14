@@ -7,4 +7,16 @@
   margin-bottom: 50px;
 }
 
-
+/*
+Styling for leaving Queue  button
+*/
+.leaveQueue {
+  padding: 16px;
+  display: block;
+  background-color: lightcoral;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

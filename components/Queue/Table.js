@@ -1,25 +1,38 @@
 import React from "react";
-import Table from "./Table";
-import "./style.css";
+import TableRow from "./TableRow";
+import "../style.css";
 
-export default function Retrieve(props) {
+export default function Table(props) {
   let obj = props.data.result;
-  console.log(obj);
+
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
     return {
       key: item._id,
       albumID: item.albumID,
       name: item.name,
-      score: item.score
+      score: item.score,
+      img: item.img
     };
   });
 
   // sort array of songs; highest scores first and lowest scores last
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
+  console.log(songArr);
 
-  const tableComponents = songArr.map(item => {
-    return <Table name={item.name} score={item.score} mutate={props.mutate} />;
+  const tableComponents = songArr.map((item, index) => {
+    return (
+      <TableRow
+        key={item.key}
+        name={item.name}
+        albumID={item.albumID}
+        score={item.score}
+        img={item.img}
+        mutate={props.mutate}
+        rank={index}
+        collection={props.collection}
+      />
+    );
   });
 
   return (

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import Link from "next/link";
 import Layout from "../components/Layout";
-import Results from "../components/Results";
-import Input from "../components/Input";
+import Results from "../components/Search/Results";
+import Database from "../components/Queue/Database";
 import "./style.css";
+import { sign } from "crypto";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -17,7 +17,8 @@ class App extends Component {
     super(props);
     this.state = {
       search_term: "",
-      tracks: []
+      tracks: [],
+      collection: "loading"
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -27,10 +28,17 @@ class App extends Component {
   // When the component first renders you either render the music queue
   // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
-    if (window.location.href.indexOf("_token") == -1) {
+    let url = window.location.href;
+    if (url.indexOf("_token") == -1) {
       Router.push("/Login");
     }
-    console.log("cdm ran");
+    if (url.indexOf("roomKey") != -1) {
+      let c = url
+        .split("roomKey=")[1]
+        .split("&")[0]
+        .trim();
+      this.setState({ collection: c });
+    }
   };
 
   // Performs the query using the spotify api on the value in the form input
@@ -53,7 +61,7 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
-    console.log(song.album.id);
+    console.log(song);
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -61,8 +69,11 @@ class App extends Component {
       },
       // the body of this song is built from state
       body: JSON.stringify({
-        name: song.album.id,
-        score: 0
+        name: song.name,
+        score: 0,
+        albumID: song.album.id,
+        imgURL: song.album.images[2].url,
+        collection: this.state.collection
       })
     });
   };
@@ -75,6 +86,7 @@ class App extends Component {
       // index to allow current song to be added.
       tracks.forEach((track, index) => {
         if (track.album != undefined && track.album.images[0] != undefined) {
+          // console.log(track); Outputs the spotify object returned
           let hasImage = track.album.images[0];
           allResults.push(
             // push information about this song to a result component
@@ -84,10 +96,11 @@ class App extends Component {
                 className="form-control btn btn-outline-success"
                 value="Add Song"
                 onClick={() => {
-                  console.log(track);
                   this.addSong(track);
                 }}
-              >Add Song</button>
+              >
+                Add Song
+              </button>
             </Results>
           );
           // increment index of song being added
@@ -100,35 +113,54 @@ class App extends Component {
     }
   };
 
+  // Button to leave queue. Now links the props.url.query
+  leaveMusicQ = () => {
+    Router.push({
+      pathname: "/Rooms",
+      query: {
+        access_token: this.props.url.query
+      }
+    });
+  };
+
   render() {
     const { user } = this.props;
     return (
-      <Layout>
-        <Input />
-        <hr className="linebreak" />
-        <div className="row mt-5 justify-content-center">
-          <form onSubmit={event => this.submitTrackForm(event)}>
-            <div className="form-group" style={{textAlign: "center"}}>
-              <input
-                type="text"
-                placeholder="enter track name"
-                onChange={event =>
-                  this.setState({ search_term: event.target.value })
-                }
-              />
-            </div>
-            <div className="form-group" style={{textAlign: "center"}}>
-              <button
-                type="submit"
-                className="form-control btn btn-outline-success"
-              >
-                Search
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="row mt-5">{this.renderSearchResults()}</div>
-      </Layout>
+      <div>
+        <Layout>
+          <Database collection={this.state.collection} />
+          <hr className="linebreak" />
+          <div className="row mt-5 justify-content-center">
+            <form onSubmit={event => this.submitTrackForm(event)}>
+              <div className="form-group" style={{ textAlign: "center" }}>
+                <input
+                  type="text"
+                  placeholder="enter track name"
+                  onChange={event =>
+                    this.setState({ search_term: event.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group" style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  className="form-control btn btn-outline-success"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="row mt-5">{this.renderSearchResults()}</div>
+        </Layout>
+        <button
+          type="submit"
+          className="leaveQueue"
+          onClick={() => this.leaveMusicQ()}
+        >
+          Leave Queue
+        </button>
+      </div>
     );
   }
 }

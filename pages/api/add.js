@@ -14,12 +14,15 @@ async function createSong(req, res) {
   }
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
-  const users = client.collection("song_name");
+  console.log(song.collection);
+  const users = client.collection(song.collection + "");
 
   const mutation = {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
-      score: song.score
+      score: song.score,
+      albumID: song.albumID,
+      img: song.imgURL
     }
   };
 
