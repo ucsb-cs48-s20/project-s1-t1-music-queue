@@ -116,6 +116,18 @@ class App extends Component {
 
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = () => {
+    console.log(this.state.collection);
+    await fetch("/api/deleteCollection", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        collection: this.state.collection,
+      }),
+    });
+    
     Router.push({
       pathname: "/Rooms",
       query: {
