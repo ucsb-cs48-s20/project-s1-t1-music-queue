@@ -19,7 +19,7 @@ function Database(props) {
       result: [
         {
           name: "FETCHING DATA ... ",
-          albumID: "FETCHING DATA ... ",
+          trackID: "FETCHING DATA ... ",
           score: "FETCHING DATA ... ",
           rank: 0,
           img: "",

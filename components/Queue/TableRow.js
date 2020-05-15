@@ -34,7 +34,7 @@ export default function TableRow(props) {
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
     async event => {
-      await fetch("/api/decrementid=" + props.collection, {
+      await fetch("/api/decrement", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -51,12 +51,13 @@ export default function TableRow(props) {
     [score]
   );
 
+  console.log(props);
   return (
     <tr>
       {/* output name and score of song*/}
       {props.rank == 0 ? (
         <td>
-          <Frame albumID={props.albumID} />
+          <Frame trackID={props.trackID} />
         </td>
       ) : (
         <td>

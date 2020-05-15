@@ -28,7 +28,7 @@ render(){
     console.log(this.state.roomKey);
   return (
     <div className="roomcode">
-      <h1>RoomCode: {this.state.roomKey} </h1>
+      <h1>MusicQ Code: {this.state.roomKey} </h1>
     </div>
   ) }
 };
