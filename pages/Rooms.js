@@ -2,7 +2,7 @@ import React from "react";
 import Router from "next/router";
 import Layout from "../components/Layout";
 
-class CreateRoom extends React.Component {
+class Rooms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +26,10 @@ class CreateRoom extends React.Component {
     event.preventDefault();
     const { access_token } = this.state;
     const { roomKey } = this.state;
+    console.log(this.state.collection);
     Router.push({
-      pathname: "/App",
-      query: {  roomKey,  access_token }
+      pathname: "/CreateRoom",
+      query: { roomKey,  access_token }
     });
   }
 
@@ -79,4 +80,4 @@ class CreateRoom extends React.Component {
   }
 }
 
-export default CreateRoom;
+export default Rooms;

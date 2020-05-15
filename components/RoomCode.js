@@ -14,7 +14,8 @@ class RoomCode extends React.Component {
     componentDidMount() {
         console.log(this.state.roomKey);
 
-        if(this.state.roomKey == 0){
+        if(this.state.roomKey == 0)
+        {
             this.setState({ roomKey: this.generateNumber(this.state.min, this.state.max)})
         }
     }
@@ -23,7 +24,6 @@ class RoomCode extends React.Component {
         return Math.floor(Math.random()*(max-min+1)+min)
     }
       
-     
 render(){
     console.log(this.state.roomKey);
   return (
@@ -31,6 +31,7 @@ render(){
       <h1>MusicQ Code: {this.state.roomKey} </h1>
     </div>
   ) }
+  //export const {key}  = this.state.roomKey;
 };
 
 export default RoomCode;
