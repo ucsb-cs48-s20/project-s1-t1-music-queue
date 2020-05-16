@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Layout from "../components/Layout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
+import "./style.css";
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
@@ -47,6 +48,7 @@ function JoinRoom() {
       {/*gather 7-digit MusicQ code*/}
       <div className="form-group" style={{ textAlign: "center" }}>
         <input
+          className="keyInput"
           type="text"
           placeholder="enter 7-digit room key"
           maxLength="7"

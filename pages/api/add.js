@@ -14,7 +14,6 @@ async function createSong(req, res) {
   }
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
-  console.log(song.collection);
   const users = client.collection(song.collection + "");
 
   const mutation = {
