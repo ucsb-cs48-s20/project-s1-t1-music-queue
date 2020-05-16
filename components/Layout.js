@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Icon from "./Icon";
+import Header from "./Page/Header";
+import Icon from "./Page/Icon";
 
 const Layout = props => (
   <div>

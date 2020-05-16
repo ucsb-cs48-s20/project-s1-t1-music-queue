@@ -5,8 +5,9 @@ import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import "./style.css";
-import RoomCode from "../components/RoomCode";
+import RoomCode from "../components/Page/RoomCode";
 import { sign } from "crypto";
+import { throws } from "assert";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -19,11 +20,13 @@ class App extends Component {
     this.state = {
       search_term: "",
       tracks: [],
-      collection: "loading"
+      collection: "loading",
+      isDeleting: false
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
+    this.leaveMusicQ = this.leaveMusicQ.bind(this);
   }
 
   // When the component first renders you either render the music queue
@@ -79,6 +82,8 @@ class App extends Component {
     });
   };
 
+  // Renders each of the components in the search results.
+  // it: The add song button, image, and title of song
   renderSearchResults = () => {
     if (this.state.tracks.length > 1) {
       const { tracks } = this.state;
@@ -116,7 +121,8 @@ class App extends Component {
 
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = async () => {
-    console.log(this.state.collection);
+    this.setState({ isDeleting: true });
+
     await fetch("/api/deleteCollection", {
       method: "DELETE",
       headers: {
@@ -127,6 +133,8 @@ class App extends Component {
         collection: this.state.collection
       })
     });
+
+    this.setState({ isDeleting: false });
 
     Router.push({
       pathname: "/Rooms",
@@ -141,6 +149,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
+          {this.state.isDeleting && <h1> deleting! </h1>}
           <Database collection={this.state.collection} />
           <hr className="linebreak" />
           <div className="row mt-5 justify-content-center">
