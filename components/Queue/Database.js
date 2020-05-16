@@ -44,6 +44,7 @@ function Database(props) {
         data={data}
         collection={props.collection}
         mutate={async () => await mutate()}
+        access_token={props.access_token}
       />
     </div>
   );

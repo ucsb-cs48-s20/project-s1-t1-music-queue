@@ -1,6 +1,5 @@
 import React from "react";
-import RoomCode from "../components/RoomCode"
-
+import RoomCode from "../components/RoomCode";
 
 class CreateRoom extends React.Component {
   constructor() {
@@ -11,11 +10,8 @@ class CreateRoom extends React.Component {
     };
   }
 
-  render() { 
-    return(
-    < RoomCode />
-
-    )
+  render() {
+    return <RoomCode />;
   }
 }
 

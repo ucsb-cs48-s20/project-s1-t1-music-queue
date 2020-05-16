@@ -28,8 +28,6 @@ async function createSong(req, res) {
   // This if condition is used to add a queue deleted flag to the other users
   // in the queue to leave safely!
   if (song.deleteMusicQ) {
-    console.log("end the queue!");
-    console.log(song.deleteMusicQ);
     mutation = {
       $set: {
         deleteMusicQ: song.deleteMusicQ

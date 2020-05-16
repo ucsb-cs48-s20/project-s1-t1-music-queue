@@ -51,7 +51,6 @@ export default function TableRow(props) {
     [score]
   );
 
-  console.log(props);
   return (
     <tr>
       {/* output name and score of song*/}

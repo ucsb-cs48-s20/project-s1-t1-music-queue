@@ -1,5 +1,6 @@
 import React from "react";
 import TableRow from "./TableRow";
+import Router from "next/router";
 import "../style.css";
 
 export default function Table(props) {
@@ -7,7 +8,12 @@ export default function Table(props) {
 
   let leaveQueue = obj.some(song => song["deleteMusicQ"] === true);
   if (leaveQueue) {
-    console.log("time to leave the queue!");
+    Router.push({
+      pathname: "/Closed",
+      query: {
+        access_token: props.access_token
+      }
+    });
   }
 
   // create another array of songs so that you can sort it later
