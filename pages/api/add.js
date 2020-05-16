@@ -16,7 +16,7 @@ async function createSong(req, res) {
   const client = await initDatabase();
   const users = client.collection(song.collection + "");
 
-  const mutation = {
+  let mutation = {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
       score: song.score,
@@ -24,6 +24,18 @@ async function createSong(req, res) {
       img: song.imgURL
     }
   };
+
+  // This if condition is used to add a queue deleted flag to the other users
+  // in the queue to leave safely!
+  if (song.deleteMusicQ) {
+    console.log("end the queue!");
+    console.log(song.deleteMusicQ);
+    mutation = {
+      $set: {
+        deleteMusicQ: song.deleteMusicQ
+      }
+    };
+  }
 
   // first search for document in MongoDB database that matches query.
   // If none is found, document with mutation is added as it is simply

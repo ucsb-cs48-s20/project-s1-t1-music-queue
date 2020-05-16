@@ -57,6 +57,7 @@ class App extends Component {
       )
         .then(response => response.json())
         .then(json => {
+          console.log(json.tracks);
           this.setState({ tracks: json.tracks.items });
           return json.tracks;
         });
@@ -131,6 +132,7 @@ class App extends Component {
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = async () => {
     this.setState({ isDeleting: true });
+
     // this post request kicks all of the users out of the room!
     await fetch("/api/add", {
       method: "POST",
@@ -139,13 +141,14 @@ class App extends Component {
       },
       // The field deleteMusicQ indicates to other users room is closed
       body: JSON.stringify({
-        deleteMuicQ: "yes"
+        deleteMusicQ: true,
+        collection: this.state.collection
       })
     });
 
     // Sleep for 5 seconds to allow users to leave the room safely. Edit state to render
     // transparent popup that shows that room is being deleted
-    this.sleep(4000);
+    this.sleep(3000);
 
     // await fetch("/api/deleteCollection", {
     //   method: "DELETE",
