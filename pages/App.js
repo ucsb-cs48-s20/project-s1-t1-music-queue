@@ -119,22 +119,44 @@ class App extends Component {
     }
   };
 
+  sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if (new Date().getTime() - start > milliseconds) {
+        break;
+      }
+    }
+  }
+
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = async () => {
     this.setState({ isDeleting: true });
-
-    await fetch("/api/deleteCollection", {
-      method: "DELETE",
+    // this post request kicks all of the users out of the room!
+    await fetch("/api/add", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      // the value of this collection is built by its state variable
+      // The field deleteMusicQ indicates to other users room is closed
       body: JSON.stringify({
-        collection: this.state.collection
+        deleteMuicQ: "yes"
       })
     });
 
-    this.setState({ isDeleting: false });
+    // Sleep for 5 seconds to allow users to leave the room safely. Edit state to render
+    // transparent popup that shows that room is being deleted
+    this.sleep(4000);
+
+    // await fetch("/api/deleteCollection", {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   // the value of this collection is built by its state variable
+    //   body: JSON.stringify({
+    //     collection: this.state.collection
+    //   })
+    // });
 
     Router.push({
       pathname: "/Rooms",
@@ -149,31 +171,42 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          {this.state.isDeleting && <h1> deleting! </h1>}
-          <Database collection={this.state.collection} />
-          <hr className="linebreak" />
-          <div className="row mt-5 justify-content-center">
-            <form onSubmit={event => this.submitTrackForm(event)}>
-              <div className="form-group" style={{ textAlign: "center" }}>
-                <input
-                  type="text"
-                  placeholder="enter track name"
-                  onChange={event =>
-                    this.setState({ search_term: event.target.value })
-                  }
-                />
+          {/*eueue is as normal*/}
+          {this.state.isDeleting == false && (
+            <div>
+              <Database collection={this.state.collection} />
+              <hr className="linebreak" />
+              <div className="row mt-5 justify-content-center">
+                <form onSubmit={event => this.submitTrackForm(event)}>
+                  <div className="form-group" style={{ textAlign: "center" }}>
+                    <input
+                      type="text"
+                      placeholder="enter track name"
+                      onChange={event =>
+                        this.setState({ search_term: event.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="form-group" style={{ textAlign: "center" }}>
+                    <button
+                      type="submit"
+                      className="form-control btn btn-outline-success"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div className="form-group" style={{ textAlign: "center" }}>
-                <button
-                  type="submit"
-                  className="form-control btn btn-outline-success"
-                >
-                  Search
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="row mt-5">{this.renderSearchResults()}</div>
+              <div className="row mt-5">{this.renderSearchResults()}</div>
+            </div>
+          )}
+
+          {/*If the queue is being deleted*/}
+          {this.state.isDeleting && (
+            <div>
+              <h1>Deleting ...</h1>{" "}
+            </div>
+          )}
         </Layout>
         <button
           type="submit"
@@ -182,6 +215,7 @@ class App extends Component {
         >
           Leave Queue
         </button>
+
         <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>
     );
