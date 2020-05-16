@@ -57,7 +57,6 @@ class App extends Component {
       )
         .then(response => response.json())
         .then(json => {
-          console.log(json.tracks);
           this.setState({ tracks: json.tracks.items });
           return json.tracks;
         });
