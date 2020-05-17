@@ -33,6 +33,7 @@ class App extends Component {
   // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
     let url = window.location.href;
+    console.log("url " + url);
     if (url.indexOf("_token") == -1) {
       Router.push("/Login");
     }
@@ -176,7 +177,10 @@ class App extends Component {
           {/*eueue is as normal*/}
           {this.state.isDeleting == false && (
             <div>
-              <Database collection={this.state.collection} access_token = {this.props.url.query}/>
+              <Database
+                collection={this.state.collection}
+                access_token={this.props.url.query.access_token}
+              />
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
                 <form onSubmit={event => this.submitTrackForm(event)}>

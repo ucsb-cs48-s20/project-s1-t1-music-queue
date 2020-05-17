@@ -7,6 +7,7 @@ export default function Table(props) {
   let obj = props.data.result;
 
   let leaveQueue = obj.some(song => song["deleteMusicQ"] === true);
+
   if (leaveQueue) {
     Router.push({
       pathname: "/Closed",

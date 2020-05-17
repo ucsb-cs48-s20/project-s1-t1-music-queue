@@ -11,28 +11,35 @@ class Closed extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    let hello = "test";
-    this.setState({ access_token: "nice" });
-  }
+  componentDidMount = () => {
+    let url = window.location.href;
+    if (url.indexOf("_token") > -1) {
+      let access_token = url
+        .split("_token=")[1]
+        .split("&")[0]
+        .trim();
+      this.setState({ access_token });
+    }
+  };
 
   handleClick() {
+    const { access_token } = this.state;
     Router.push({
-      pathname: "/App", // This needs to route to createRoom first
-      query: this.state.access_token
+      pathname: "/Rooms", // This needs to route to createRoom first
+      query: { access_token }
     });
   }
 
   render() {
     return (
       <div>
-        <img src="sad_note.png" alt="none" class="center" />
+        <img src="sad_note.png" alt="none" className="center" />
         <button
           className="form-control btn btn-outline-success"
           value="Add Song"
           onClick={this.handleClick}
         >
-          Continue
+          Back
         </button>
       </div>
     );
