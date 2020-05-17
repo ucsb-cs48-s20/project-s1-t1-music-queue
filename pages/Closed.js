@@ -5,9 +5,10 @@ import "./style.css";
 class Closed extends React.Component {
   constructor(props) {
     super(props);
-    this.setState = {
+    this.state = {
       access_token: ""
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,9 +30,7 @@ class Closed extends React.Component {
         <button
           className="form-control btn btn-outline-success"
           value="Add Song"
-          onClick={() => {
-            handleClick();
-          }}
+          onClick={this.handleClick}
         >
           Continue
         </button>
@@ -41,20 +40,3 @@ class Closed extends React.Component {
 }
 
 export default Closed;
-
-// render(){
-//     return (
-//                 <div>
-//                   <img src="sad_note.jpg" alt="none" class="center" />
-//                   <button
-//                     className="form-control btn btn-outline-success"
-//                     value="Add Song"
-//                     onClick={() => {
-//                       Router;
-//                     }}
-//                   >
-//                     Continue
-//                   </button>
-//                 </div>
-//         );
-// }

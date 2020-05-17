@@ -176,7 +176,7 @@ class App extends Component {
           {/*eueue is as normal*/}
           {this.state.isDeleting == false && (
             <div>
-              <Database collection={this.state.collection} />
+              <Database collection={this.state.collection} access_token = {this.props.url.query}/>
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
                 <form onSubmit={event => this.submitTrackForm(event)}>
