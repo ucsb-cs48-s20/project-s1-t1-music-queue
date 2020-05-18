@@ -34,22 +34,28 @@ function JoinRoom() {
       const collections = data.result;
       console.log("roomKey " + roomKey);
       console.log("collections: " + collections);
+      //for error message
+      var p = document.getElementById("errorMsg");
       if (collections.includes(roomKey + "")) {
+        //does not display error msg
+        p.style.display = "none";  
         Router.push({
           pathname: "/App",
           query: { roomKey: roomKey, access_token: access_token }
         });
       }else{
-        var p = document.getElementById("errorMsg");
+        //displays error msg
         p.style.display = "block";  
       }
+      console.log("error mssg =" + p.style.display)
     },
     [roomKey, data]
   );
 
   return (
     <Layout>
-        <p id="errorMsg">
+        <p id="errorMsg" style={{display:"none"}}>
+      
           Wrong Key, please enter a new Key
         </p>
       {/*gather 7-digit MusicQ code*/}

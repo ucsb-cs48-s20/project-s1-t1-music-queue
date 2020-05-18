@@ -128,7 +128,7 @@ class App extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className="App">
         <Layout>
          <RoomCode roomKey={this.props.url.query.roomKey}/>
           <Database collection={this.state.collection} />

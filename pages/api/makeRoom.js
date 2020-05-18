@@ -1,10 +1,11 @@
 import { initDatabase } from "../../utils/mongodb";
 
-export default async function (req, res) {
+export default async function makeRoom(req, res) {
+  const name = req.body.name;
     console.log("name" + name);
-    const client = await initDatabase();
+    const user = await initDatabase();
   //db.createCollection('test', function(err, collection) {});
-  client.createCollection((name) => {
+  user.createCollection((name) => {
     if (name) console.log("Collection added");
   });
   res.end();

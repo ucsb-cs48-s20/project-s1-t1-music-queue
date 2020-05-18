@@ -33,21 +33,22 @@ function CreateRoom() {
       console.log("roomKey " + roomKey);
       
      // console.log("collections: " + collections);
-     fetch("/api/makeRoom", {
-      method: "PUT",
+    await fetch("/api/makeRoom", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       // the body of this song is built from state
       body: JSON.stringify({
         name: roomKey
-      }),
-    });
+      })
+    })
+
       Router.push({
           pathname: "/App",
           query: { roomKey: roomKey, access_token: access_token }
-        });
-    },
+        }); 
+      },
     [roomKey,access_token]
   );
 
