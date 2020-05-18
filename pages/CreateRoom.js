@@ -1,5 +1,5 @@
 import React from "react";
-import RoomCode from "../components/RoomCode";
+import RoomCode from "../components/Page/RoomCode";
 
 class CreateRoom extends React.Component {
   constructor() {
