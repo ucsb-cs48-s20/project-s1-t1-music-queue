@@ -31,8 +31,6 @@ function JoinRoom() {
       // get the list of currect collections on the MusicQ
       await mutate();
       const collections = data.result;
-      console.log("roomKey " + roomKey);
-      console.log("collections: " + collections);
       if (collections.includes(roomKey + "")) {
         Router.push({
           pathname: "/App",

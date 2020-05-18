@@ -51,7 +51,7 @@ class CreateRoom extends React.Component {
       marginRight: 50
     };
     return (
-      <Layout isDeleting={false}>
+      <Layout>
         <div className="Login" style={{ textAlign: "center" }}>
           <header className="Login-header">
             <button

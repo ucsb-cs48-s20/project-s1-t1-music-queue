@@ -5,10 +5,9 @@ import "../style.css";
 
 export default function Table(props) {
   let obj = props.data.result;
-
   let leaveQueue = obj.some(song => song["deleteMusicQ"] === true);
-
   if (leaveQueue) {
+    console.log("leaving after finding kill document");
     Router.push({
       pathname: "/Closed",
       query: {

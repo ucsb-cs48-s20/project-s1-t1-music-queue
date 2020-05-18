@@ -24,22 +24,20 @@ class Closed extends React.Component {
 
   handleClick() {
     const { access_token } = this.state;
+    console.log("ACCESS_TOKEN " + access_token);
     Router.push({
-      pathname: "/Rooms", // This needs to route to createRoom first
+      pathname: "/Rooms",
       query: { access_token }
     });
   }
 
   render() {
     return (
-      <div>
-        <img src="sad_note.png" alt="none" className="center" />
-        <button
-          className="form-control btn btn-outline-success"
-          value="Add Song"
-          onClick={this.handleClick}
-        >
-          Back
+      <div className="center">
+        <img src="sad_note.png" alt="none" />
+        <h1> MusicQ Closed by Host </h1>
+        <button className="button" value="Add Song" onClick={this.handleClick}>
+          Back to Homepage
         </button>
       </div>
     );

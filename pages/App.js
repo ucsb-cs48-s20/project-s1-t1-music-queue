@@ -4,6 +4,7 @@ import Router from "next/router";
 import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
+import Loading from "../components/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
 import { sign } from "crypto";
@@ -133,7 +134,7 @@ class App extends Component {
   leaveMusicQ = async () => {
     this.setState({ isDeleting: true });
 
-    // this post request kicks all of the users out of the room!
+    //this post request kicks all of the users out of the room!
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -146,10 +147,9 @@ class App extends Component {
       })
     });
 
-    // Sleep for 5 seconds to allow users to leave the room safely. Edit state to render
-    // transparent popup that shows that room is being deleted
     this.sleep(3000);
 
+    // // Delete this collection
     // await fetch("/api/deleteCollection", {
     //   method: "DELETE",
     //   headers: {
@@ -161,10 +161,12 @@ class App extends Component {
     //   })
     // });
 
+    // Go back to the rooms screen
+    const { access_token } = this.props.url.query;
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token: this.props.url.query
+        access_token
       }
     });
   };
@@ -209,16 +211,10 @@ class App extends Component {
 
           {/*If the queue is being deleted*/}
           {this.state.isDeleting && (
-            <div>
-              <h1>Deleting ...</h1>{" "}
-            </div>
+            <Loading message={"Deleting MusicQ ... "} />
           )}
         </Layout>
-        <button
-          type="submit"
-          className="leaveQueue"
-          onClick={() => this.leaveMusicQ()}
-        >
+        <button type="submit" className="leaveQueue" onClick={this.leaveMusicQ}>
           Leave Queue
         </button>
 
