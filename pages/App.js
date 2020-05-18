@@ -147,19 +147,19 @@ class App extends Component {
       })
     });
 
-    this.sleep(3000);
+    await this.sleep(3000);
 
-    // // Delete this collection
-    // await fetch("/api/deleteCollection", {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   // the value of this collection is built by its state variable
-    //   body: JSON.stringify({
-    //     collection: this.state.collection
-    //   })
-    // });
+    // Delete this collection
+    await fetch("/api/deleteCollection", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the value of this collection is built by its state variable
+      body: JSON.stringify({
+        collection: this.state.collection
+      })
+    });
 
     // Go back to the rooms screen
     const { access_token } = this.props.url.query;
