@@ -11,16 +11,16 @@ class RoomCode extends React.Component {
     };
   }
 
-      if(this.state.roomKey == 0)
-      {
-            this.setState({ roomKey: this.generateNumber(this.state.min, this.state.max)})
+     componentDidMount() {
+        if (this.state.roomKey == 0) 
+        {
+          this.setState({
+          roomKey: this.generateNumber(this.state.min, this.state.max)
+          });
+         }
       }
 
-    if (this.state.roomKey == 0) {
-      this.setState({
-        roomKey: this.generateNumber(this.state.min, this.state.max)
-      });
-    }
+   
       
 render(){
     console.log(this.state.roomKey);
