@@ -4,7 +4,7 @@ import Router from "next/router";
 import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
-import Loading from "../components/Loading";
+import Loading from "../components/Page/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
 import Router from "next/router";
-import Loading from "../Loading";
+import Loading from "../Page/Loading";
 import "../style.css";
 
 export default function Table(props) {
@@ -53,7 +53,7 @@ export default function Table(props) {
       {loading && (
         <h1>
           {" "}
-          <Loading message={"Loading Songs"} />
+          <Loading message={"Loading Songs ... "} />
         </h1>
       )}
 

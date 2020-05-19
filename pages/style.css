@@ -8,9 +8,10 @@
 }
 
 /*
-Styling for leaving Queue  button
+Styling for leaving Queue button. Moved to inline styling. Double check
+this issue using storybook
 */
-.leaveQueue {
+/* .leaveQueue {
   padding: 16px;
   display: block;
   background-color: lightcoral;
@@ -19,7 +20,7 @@ Styling for leaving Queue  button
   position: absolute;
   top: 20px;
   right: 20px;
-}
+} */
 
 /*
 Styling for partioned input

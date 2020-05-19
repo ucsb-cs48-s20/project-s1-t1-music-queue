@@ -60,7 +60,7 @@ export default function TableRow(props) {
         </td>
       ) : (
         <td>
-          <div>
+          <span>
             <h3>{props.name}</h3>{" "}
             <img
               src={props.img}
@@ -68,14 +68,22 @@ export default function TableRow(props) {
               alt={props.name}
               style={{ height: 100, width: 100 }}
             />{" "}
-          </div>
+          </span>
         </td>
       )}
 
       <td>{score}</td>
       <td>
         {/* button to upvote*/}
-        <button
+        <input
+          type="radio"
+          name="buttonGroup"
+          value="one"
+          id="one"
+          onClick={() => increment()}
+        />
+        <label for="one">Upvote</label>
+        {/* <button
           className="button_upvote"
           onClick={() => {
             setScore(score + 1);
@@ -83,9 +91,17 @@ export default function TableRow(props) {
           }}
         >
           &uarr;
-        </button>
+        </button> */}
         {/* button to downvote. Cannot be < 0*/}
-        <button
+        <input
+          type="radio"
+          name="buttonGroup"
+          value="two"
+          id="two"
+          onClick={() => decrement()}
+        />
+        <label for="two">Downvote</label>
+        {/* <button
           className="button_downvote"
           onClick={() => {
             if (score > 0) {
@@ -96,7 +112,7 @@ export default function TableRow(props) {
         >
           {" "}
           &darr;
-        </button>
+        </button> */}
       </td>
     </tr>
   );

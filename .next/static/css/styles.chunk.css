@@ -32,6 +32,25 @@
   margin: 5px;
 }
 
+input[type="radio"][name="buttonGroup"] {
+  display: none;
+}
+label {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  width: 10em;
+  text-align: center;
+}
+
+/* Clicking a label will select its corresponding hidden radio button
+   We can select that radio buttons sibling label and style it. */
+input[type="radio"][name="buttonGroup"]:checked + label {
+  background-color: yellow;
+}
+
 /* submit button css from w3schools */
 
 .button {
@@ -128,9 +147,10 @@ tr:hover {
 }
 
 /*
-Styling for leaving Queue  button
+Styling for leaving Queue button. Moved to inline styling. Double check
+this issue using storybook
 */
-.leaveQueue {
+/* .leaveQueue {
   padding: 16px;
   display: block;
   background-color: lightcoral;
@@ -139,7 +159,7 @@ Styling for leaving Queue  button
   position: absolute;
   top: 20px;
   right: 20px;
-}
+} */
 
 /*
 Styling for partioned input
