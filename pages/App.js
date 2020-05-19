@@ -161,7 +161,7 @@ class App extends Component {
         >
           Leave Queue
         </button>
-        <RoomCode roomKey={this.props.url.query.roomKey} />
+        //<RoomCode roomKey={this.props.url.query.roomKey} />
       </div>
     );
   }
