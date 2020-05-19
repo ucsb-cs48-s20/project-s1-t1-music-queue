@@ -1,6 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
 import Router from "next/router";
+import Loading from "../Loading";
 import "../style.css";
 
 export default function Table(props) {
@@ -15,6 +16,8 @@ export default function Table(props) {
       }
     });
   }
+
+  let loading = obj.some(song => song["name"] === "FETCHING DATA ... ");
 
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
@@ -47,16 +50,27 @@ export default function Table(props) {
 
   return (
     <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>Song</th>
-            <th>Score</th>
-            <th>Vote</th>
-          </tr>
-          {tableComponents}
-        </tbody>
-      </table>
+      {loading && (
+        <h1>
+          {" "}
+          <Loading message={"Loading Songs"} />
+        </h1>
+      )}
+
+      {!loading && (
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Song</th>
+                <th>Score</th>
+                <th>Vote</th>
+              </tr>
+              {tableComponents}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }

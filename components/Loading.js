@@ -3,7 +3,7 @@ import "./style.css";
 
 function Loading(props) {
   return (
-    <div className="center">
+    <div>
       <h1>{props.message}</h1>
     </div>
   );

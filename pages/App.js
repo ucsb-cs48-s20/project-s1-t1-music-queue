@@ -7,8 +7,6 @@ import Database from "../components/Queue/Database";
 import Loading from "../components/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
-import { sign } from "crypto";
-import { throws } from "assert";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -176,7 +174,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          {/*eueue is as normal*/}
+          {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>
               <Database
@@ -214,10 +212,21 @@ class App extends Component {
             <Loading message={"Deleting MusicQ ... "} />
           )}
         </Layout>
-        <button type="submit" className="leaveQueue" onClick={this.leaveMusicQ}>
+        <button
+          style={{
+            padding: 16,
+            display: "block",
+            backgroundColor: "lightcoral",
+            color: "white",
+            textAlign: "center",
+            position: "absolute",
+            top: 20,
+            right: 20
+          }}
+          onClick={this.leaveMusicQ}
+        >
           Leave Queue
         </button>
-
         <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>
     );
