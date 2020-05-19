@@ -12,8 +12,6 @@ class RoomCode extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.roomKey);
-
     if (this.state.roomKey == 0) {
       this.setState({
         roomKey: this.generateNumber(this.state.min, this.state.max)

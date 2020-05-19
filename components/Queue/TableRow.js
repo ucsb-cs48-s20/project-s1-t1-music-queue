@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
+import "../style.css";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
@@ -81,7 +82,7 @@ export default function TableRow(props) {
           id="upvote"
           onClick={() => increment()}
         />
-        <label for="one">&uarr;</label>
+        <label for="upvote">&uarr;</label>
         {/* radio button to downvote. Score be < 0*/}
         <input
           type="radio"
@@ -94,7 +95,7 @@ export default function TableRow(props) {
             }
           }}
         />
-        <label for="two">&darr;</label>
+        <label for="downvote">&darr;</label>
       </td>
     </tr>
   );
