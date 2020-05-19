@@ -141,5 +141,12 @@ Styling for leaving Queue  button
   right: 20px;
 }
 
+#errorMsg
+{
+  display:none;
+  text-align: center;
+  color: lightcoral;
+}
+
 
 /*# sourceMappingURL=styles.chunk.css.map*/

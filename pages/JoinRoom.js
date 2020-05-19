@@ -1,9 +1,11 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
+import "./style.css";
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
@@ -32,18 +34,30 @@ function JoinRoom() {
       const collections = data.result;
       console.log("roomKey " + roomKey);
       console.log("collections: " + collections);
+      //for error message
+      var p = document.getElementById("errorMsg");
       if (collections.includes(roomKey + "")) {
+        //does not display error msg
+        p.style.display = "none";  
         Router.push({
           pathname: "/App",
           query: { roomKey: roomKey, access_token: access_token }
         });
+      }else{
+        //displays error msg
+        p.style.display = "block";  
       }
+      console.log("error mssg =" + p.style.display)
     },
     [roomKey, data]
   );
 
   return (
     <Layout>
+        <p id="errorMsg" style={{display:"none"}}>
+      
+          Wrong Key, please enter a new Key
+        </p>
       {/*gather 7-digit MusicQ code*/}
       <div className="form-group" style={{ textAlign: "center" }}>
         <input
@@ -55,6 +69,7 @@ function JoinRoom() {
       </div>
       {/*button to join MuiscQ*/}
       <div className="form-group" style={{ textAlign: "center" }}>
+        
         <button
           className="form-control btn btn-outline-success"
           style={{ width: 200 }}
@@ -62,6 +77,7 @@ function JoinRoom() {
         >
           Join MusicQ
         </button>
+        
       </div>
       {/* <h1> {data} </h1> */}
     </Layout>

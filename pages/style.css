@@ -20,3 +20,10 @@ Styling for leaving Queue  button
   top: 20px;
   right: 20px;
 }
+
+#errorMsg
+{
+  display:none;
+  text-align: center;
+  color: lightcoral;
+}

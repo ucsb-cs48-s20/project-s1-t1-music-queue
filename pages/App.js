@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       search_term: "",
       tracks: [],
-      collection: "loading"
+      collection: "loading",
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -34,16 +34,13 @@ class App extends Component {
       Router.push("/Login");
     }
     if (url.indexOf("roomKey") != -1) {
-      let c = url
-        .split("roomKey=")[1]
-        .split("&")[0]
-        .trim();
+      let c = url.split("roomKey=")[1].split("&")[0].trim();
       this.setState({ collection: c });
     }
   };
 
   // Performs the query using the spotify api on the value in the form input
-  submitTrackForm = event => {
+  submitTrackForm = (event) => {
     event.preventDefault();
     const { search_term } = this.state;
     const { access_token } = this.props.url.query;
@@ -52,8 +49,8 @@ class App extends Component {
       fetch(
         `${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`
       )
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           this.setState({ tracks: json.tracks.items });
           return json.tracks;
         });
@@ -61,12 +58,12 @@ class App extends Component {
   };
 
   // add song to the database. Song is the json object that is passed
-  addSong = async song => {
+  addSong = async (song) => {
     console.log(song);
     await fetch("/api/add", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       // the body of this song is built from state
       body: JSON.stringify({
@@ -74,8 +71,8 @@ class App extends Component {
         score: 0,
         trackID: song.id,
         imgURL: song.album.images[2].url,
-        collection: this.state.collection
-      })
+        collection: this.state.collection,
+      }),
     });
   };
 
@@ -94,8 +91,8 @@ class App extends Component {
             <Results key={index} imageURL={hasImage.url} name={track.name}>
               {/*Button that allows user to add song to database*/}
               <button
-                className="form-control btn btn-outline-success"
-                value="Add Song"
+                className='form-control btn btn-outline-success'
+                value='Add Song'
                 onClick={() => {
                   this.addSong(track);
                 }}
@@ -116,63 +113,65 @@ class App extends Component {
 
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = () => {
+    const { access_token, isAdmin } = this.props.url.query;
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token: this.props.url.query
-      }
+        access_token: access_token,
+      },
     });
+    console.log("access token! " + this.props.url.query);
   };
 
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className='App'>
         <Layout>
+          <RoomCode roomKey={this.props.url.query.roomKey} />
           <Database collection={this.state.collection} />
-          <hr className="linebreak" />
-          <div className="row mt-5 justify-content-center">
-            <form onSubmit={event => this.submitTrackForm(event)}>
-              <div className="form-group" style={{ textAlign: "center" }}>
+          <hr className='linebreak' />
+          <div className='row mt-5 justify-content-center'>
+            <form onSubmit={(event) => this.submitTrackForm(event)}>
+              <div className='form-group' style={{ textAlign: "center" }}>
                 <input
-                  type="text"
-                  placeholder="enter track name"
-                  onChange={event =>
+                  type='text'
+                  placeholder='enter track name'
+                  onChange={(event) =>
                     this.setState({ search_term: event.target.value })
                   }
                 />
               </div>
-              <div className="form-group" style={{ textAlign: "center" }}>
+              <div className='form-group' style={{ textAlign: "center" }}>
                 <button
-                  type="submit"
-                  className="form-control btn btn-outline-success"
+                  type='submit'
+                  className='form-control btn btn-outline-success'
                 >
                   Search
                 </button>
               </div>
             </form>
           </div>
-          <div className="row mt-5">{this.renderSearchResults()}</div>
+          <div className='row mt-5'>{this.renderSearchResults()}</div>
         </Layout>
         <button
-          type="submit"
-          className="leaveQueue"
+          type='submit'
+          className='leaveQueue'
           onClick={() => this.leaveMusicQ()}
         >
           Leave Queue
         </button>
-        <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>
     );
   }
 }
 
-App.getInitialProps = async function(context) {
+App.getInitialProps = async function (context) {
   const { access_token } = context.query;
   const res = await fetch(spotifyProfileURL + access_token);
   const user = await res.json();
   return {
-    user
+    user,
   };
 };
 
