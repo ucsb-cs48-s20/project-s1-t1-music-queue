@@ -117,12 +117,16 @@ class App extends Component {
 
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = () => {
+    const { access_token } = this.props.url.query;
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token: this.props.url.query
+        access_token: access_token,
       }
-    });
+      
+    }); 
+    console.log("access token! " + this.props.url.query)
+    
   };
 
   render() {
