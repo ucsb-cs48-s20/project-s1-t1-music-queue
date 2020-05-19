@@ -1,18 +1,16 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 //creates a random room code for each virtual room
 
 class RoomCode extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        min: 1000000,
-        max: 9999999,
-        roomKey: this.props.roomKey,
-      }
-    }
-  
-    componentDidMount() {
-        console.log(this.state.roomKey);
+  constructor(props) {
+    super(props);
+    this.state = {
+      min: 1000000,
+      max: 9999999,
+      roomKey: this.props.roomKey
+    };
+  }
+
 
         if(this.state.roomKey == 0)
         {
@@ -20,8 +18,10 @@ class RoomCode extends React.Component {
         }
     }
 
-    generateNumber = (min, max) => {
-        return Math.floor(Math.random()*(max-min+1)+min)
+    if (this.state.roomKey == 0) {
+      this.setState({
+        roomKey: this.generateNumber(this.state.min, this.state.max)
+      });
     }
       
 render(){

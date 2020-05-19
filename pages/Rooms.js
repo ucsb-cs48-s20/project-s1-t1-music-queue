@@ -6,7 +6,7 @@ class Rooms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      access_token: "" ,
+      access_token: "",
       roomKey: 0
     };
   }
