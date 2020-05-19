@@ -49,7 +49,7 @@ function CreateRoom() {
           query: { roomKey: roomKey, access_token: access_token }
         }); 
       },
-    [roomKey,access_token]
+    [roomKey, access_token]
   );
 
   return (
