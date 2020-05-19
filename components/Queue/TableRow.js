@@ -74,45 +74,27 @@ export default function TableRow(props) {
 
       <td>{score}</td>
       <td>
-        {/* button to upvote*/}
+        {/* radio button to upvote*/}
         <input
           type="radio"
-          name="buttonGroup"
-          value="one"
-          id="one"
+          name={props.trackID}
+          id="upvote"
           onClick={() => increment()}
         />
-        <label for="one">Upvote</label>
-        {/* <button
-          className="button_upvote"
-          onClick={() => {
-            setScore(score + 1);
-            increment();
-          }}
-        >
-          &uarr;
-        </button> */}
-        {/* button to downvote. Cannot be < 0*/}
+        <label for="one">&uarr;</label>
+        {/* radio button to downvote. Score be < 0*/}
         <input
           type="radio"
-          name="buttonGroup"
-          value="two"
-          id="two"
-          onClick={() => decrement()}
-        />
-        <label for="two">Downvote</label>
-        {/* <button
-          className="button_downvote"
+          name={props.trackID}
+          id="downvote"
           onClick={() => {
             if (score > 0) {
               setScore(score - 1);
               decrement();
             }
           }}
-        >
-          {" "}
-          &darr;
-        </button> */}
+        />
+        <label for="two">&darr;</label>
       </td>
     </tr>
   );
