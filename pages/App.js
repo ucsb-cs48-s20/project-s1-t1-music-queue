@@ -20,7 +20,8 @@ class App extends Component {
       search_term: "",
       tracks: [],
       collection: "loading",
-      isDeleting: false
+      isDeleting: false,
+      isAdmin: false
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -130,49 +131,58 @@ class App extends Component {
 
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = async () => {
-    this.setState({ isDeleting: true });
+    const { access_token, isAdmin } = this.props.url.query;
 
-    //this post request kicks all of the users out of the room!
-    await fetch("/api/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // The field deleteMusicQ indicates to other users room is closed
-      body: JSON.stringify({
-        deleteMusicQ: true,
-        collection: this.state.collection
-      })
-    });
+    // Delete this collection ONLY if user is the admin of the MusicQ and
+    // this post request kicks all of the users out of the room
+    if (isAdmin) {
+      this.setState({ isDeleting: true });
+      await fetch("/api/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // The field deleteMusicQ indicates to other users room is closed
+        body: JSON.stringify({
+          deleteMusicQ: true,
+          collection: this.state.collection
+        })
+      });
 
-    await this.sleep(3000);
+      // sleep to allow other users to leave the queue on time
+      await this.sleep(3000);
 
-    // Delete this collection
-    await fetch("/api/deleteCollection", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the value of this collection is built by its state variable
-      body: JSON.stringify({
-        collection: this.state.collection
-      })
-    });
+      await fetch("/api/deleteCollection", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // the value of this collection is built by its state variable
+        body: JSON.stringify({
+          collection: this.state.collection
+        })
+      });
+    }
 
     // Go back to the rooms screen
-    const { access_token } = this.props.url.query;
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token
+        access_token: access_token
       }
     });
   };
 
   render() {
-    const { user } = this.props;
+    const isAdmin = this.props.url.query.isAdmin;
+    // buttonMessage represents the message on the button
+    // located at the top right corner of the corner of the screen
+    let buttonMessage = "Leave MusicQ";
+    if (isAdmin) {
+      buttonMessage = "Delete MusicQ";
+    }
     return (
-      <div>
+      <div className="App">
         <Layout>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
@@ -225,7 +235,7 @@ class App extends Component {
           }}
           onClick={this.leaveMusicQ}
         >
-          Leave Queue
+          {buttonMessage}
         </button>
         <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>

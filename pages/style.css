@@ -80,3 +80,10 @@ Styling for Closed.js
   opacity: 1;
   right: 0;
 }
+
+#errorMsg
+{
+  display:none;
+  text-align: center;
+  color: lightcoral;
+}

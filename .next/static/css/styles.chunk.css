@@ -226,5 +226,12 @@ Styling for Closed.js
   right: 0;
 }
 
+#errorMsg
+{
+  display:none;
+  text-align: center;
+  color: lightcoral;
+}
+
 
 /*# sourceMappingURL=styles.chunk.css.map*/

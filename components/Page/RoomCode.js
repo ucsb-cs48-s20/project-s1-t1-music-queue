@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../style.css";
 //creates a random room code for each virtual room
 
 class RoomCode extends React.Component {
@@ -19,19 +20,16 @@ class RoomCode extends React.Component {
     }
   }
 
-  generateNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
   render() {
+    console.log(this.state.roomKey);
     return (
-      <div className="roomcode">
-        <h1 style={{ position: "absolute", top: 20, left: 20, color: "white" }}>
-          MusicQ Code: {this.state.roomKey}{" "}
-        </h1>
+      <div style={{ position: "absolute", top: 20, left: 20, color: "white" }}>
+        <h1>MusicQ Code:</h1>
+        <h1>{this.state.roomKey} </h1>
       </div>
     );
   }
+  //export const {key}  = this.state.roomKey;
 }
 
 export default RoomCode;
