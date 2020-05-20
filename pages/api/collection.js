@@ -10,7 +10,6 @@ export default async function(req, res) {
   let result = false;
   if (collectionArr.includes(req.query.id)) {
     result = true;
-    console.log("msuciQ on " + req.query.id + " found");
   }
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");

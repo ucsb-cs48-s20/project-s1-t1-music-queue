@@ -31,18 +31,14 @@ class App extends Component {
   // When the component first renders you either render the music queue
   // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
-    let url = window.location.href;
-    console.log("url " + url);
-    if (url.indexOf("_token") == -1) {
+    // checking access token
+    const acc = this.props.url.query.access_token;
+    if (!acc) {
       Router.push("/Login");
     }
-    if (url.indexOf("roomKey") != -1) {
-      let c = url
-        .split("roomKey=")[1]
-        .split("&")[0]
-        .trim();
-      this.setState({ collection: c });
-    }
+    // reading roomKey
+    const c = this.props.url.query.roomKey;
+    this.setState({ collection: c });
   };
 
   // Performs the query using the spotify api on the value in the form input
@@ -65,7 +61,6 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
-    console.log(song);
     await fetch("/api/add", {
       method: "POST",
       headers: {

@@ -1,6 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import { useCallback } from "react";
+import { useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
 import Router from "next/router";
@@ -18,24 +18,19 @@ function Table(props) {
     }
   );
 
-  const checkCollection = useCallback(
-    async event => {
-      await mutate();
-      if (!data) {
-        Router.push({
-          pathname: "/Closed",
-          query: {
-            access_token: props.access_token
-          }
-        });
-      }
-    },
-    [data]
-  );
-
   // does this collection exisit?. If it doesn't, data is false
   // and the user is kicked out of the room
-  checkCollection();
+  useEffect(() => {
+    if (data && !data.result) {
+      console.log(data);
+      // Router.push({
+      //   pathname: "/Closed",
+      //   query: {
+      //     access_token: props.access_token
+      //   }
+      // });
+    }
+  }, [data]);
 
   // room is not to be left, instead, the room is to be populated
   // with data from obj

@@ -40,12 +40,14 @@ function Database(props) {
   return (
     <div>
       {/* Display current queue of music */}
-      <Table
-        data={data}
-        collection={props.collection}
-        mutate={async () => await mutate()}
-        access_token={props.access_token}
-      />
+      {data.result.collection !== "loading" && (
+        <Table
+          data={data}
+          collection={props.collection}
+          mutate={async () => await mutate()}
+          access_token={props.access_token}
+        />
+      )}
     </div>
   );
 }
