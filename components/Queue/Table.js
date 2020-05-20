@@ -22,13 +22,12 @@ function Table(props) {
   // and the user is kicked out of the room
   useEffect(() => {
     if (data && !data.result) {
-      console.log(data);
-      // Router.push({
-      //   pathname: "/Closed",
-      //   query: {
-      //     access_token: props.access_token
-      //   }
-      // });
+      Router.push({
+        pathname: "/Closed",
+        query: {
+          access_token: props.access_token
+        }
+      });
     }
   }, [data]);
 

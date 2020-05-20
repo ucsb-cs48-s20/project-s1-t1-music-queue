@@ -128,7 +128,7 @@ class App extends Component {
         },
         // the value of this collection is built by its state variable
         body: JSON.stringify({
-          collection: roomKey
+          collection: this.state.collection
         })
       });
       // sleep to show admin that you are deleting the queue. This isn't
@@ -143,6 +143,16 @@ class App extends Component {
       }
     });
   };
+
+  // sleep timer used when deleting the MusicQ
+  sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if (new Date().getTime() - start > milliseconds) {
+        break;
+      }
+    }
+  }
 
   render() {
     const isAdmin = this.props.url.query.isAdmin;

@@ -15,6 +15,7 @@ function JoinRoom() {
     revalidateOnReconnect: true
   });
 
+  // save the access_token provided by Rooms.js
   useEffect(() => {
     let url = window.location.href;
     if (url.indexOf("_token") > -1) {

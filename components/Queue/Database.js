@@ -39,8 +39,8 @@ function Database(props) {
 
   return (
     <div>
-      {/* Display current queue of music */}
-      {data.result.collection !== "loading" && (
+      {/* Display current queue of music. Only after data has been correctly loaded into props.collection */}
+      {props.collection !== "loading" && (
         <Table
           data={data}
           collection={props.collection}
