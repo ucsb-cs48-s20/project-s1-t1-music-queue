@@ -20,8 +20,7 @@ class App extends Component {
       search_term: "",
       tracks: [],
       collection: "loading",
-      isDeleting: false,
-      isAdmin: false
+      isDeleting: false
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -120,38 +119,13 @@ class App extends Component {
     }
   };
 
-  sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if (new Date().getTime() - start > milliseconds) {
-        break;
-      }
-    }
-  }
-
   // Button to leave queue. Now links the props.url.query
   leaveMusicQ = async () => {
     const { access_token, isAdmin } = this.props.url.query;
-
     // Delete this collection ONLY if user is the admin of the MusicQ and
     // this post request kicks all of the users out of the room
     if (isAdmin) {
       this.setState({ isDeleting: true });
-      await fetch("/api/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        // The field deleteMusicQ indicates to other users room is closed
-        body: JSON.stringify({
-          deleteMusicQ: true,
-          collection: this.state.collection
-        })
-      });
-
-      // sleep to allow other users to leave the queue on time
-      await this.sleep(3000);
-
       await fetch("/api/deleteCollection", {
         method: "DELETE",
         headers: {
@@ -159,11 +133,13 @@ class App extends Component {
         },
         // the value of this collection is built by its state variable
         body: JSON.stringify({
-          collection: this.state.collection
+          collection: roomKey
         })
       });
+      // sleep to show admin that you are deleting the queue. This isn't
+      // required to be here. But it makes more sense in terms of user experience
+      await this.sleep(4000);
     }
-
     // Go back to the rooms screen
     Router.push({
       pathname: "/Rooms",

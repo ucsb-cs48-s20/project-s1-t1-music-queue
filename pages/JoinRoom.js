@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
@@ -10,7 +9,7 @@ import "./style.css";
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
   const [access_token, setAccessToken] = useState("");
-  const { data, mutate } = useSWR("/api/collections", fetch, {
+  const { data, mutate } = useSWR("/api/collection?id=" + roomKey, fetch, {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true
@@ -31,21 +30,21 @@ function JoinRoom() {
     async event => {
       // get the list of currect collections on the MusicQ
       await mutate();
-      const collections = data.result;
-      //for error message
-      var p = document.getElementById("errorMsg");
-      if (collections.includes(roomKey + "")) {
-        //does not display error msg
-        p.style.display = "none";
-        Router.push({
-          pathname: "/App",
-          query: { roomKey: roomKey, access_token: access_token }
-        });
-      } else {
-        //displays error msg
-        p.style.display = "block";
+      if (data) {
+        const collectionExists = data.result;
+        var p = document.getElementById("errorMsg"); //for error message
+        if (collectionExists) {
+          //does not display error msg
+          p.style.display = "none";
+          Router.push({
+            pathname: "/App",
+            query: { roomKey: roomKey, access_token: access_token }
+          });
+        } else {
+          //displays error msg
+          p.style.display = "block";
+        }
       }
-      console.log("error mssg =" + p.style.display);
     },
     [roomKey, data]
   );

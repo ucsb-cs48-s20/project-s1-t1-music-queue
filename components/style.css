@@ -32,11 +32,22 @@
   margin: 5px;
 }
 
-/* input[type="radio"][name="buttonGroup"] {
-  display: none;
+/* Clicking a label will select its corresponding hidden radio button
+   We can select that radio buttons sibling label and style it. */
+
+/* input[type="radio"][id]:checked ~ .upvote {
+  background-color: lightgreen;
+}
+
+input[type="radio"]:checked ~ .downvote {
+  background-color: coral;
 } */
 
-label {
+input[type="radio"] {
+  display: none;
+}
+
+.label {
   display: inline-block;
   padding: 3px;
   border: 1px solid #e0e0e0;
@@ -46,14 +57,24 @@ label {
   text-align: center;
 }
 
-/* Clicking a label will select its corresponding hidden radio button
-   We can select that radio buttons sibling label and style it. */
-input[type="radio"][id="upvote"]:checked + label {
+.upvote_selected {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
   background-color: lightgreen;
+  width: 10em;
+  text-align: center;
 }
 
-input[type="radio"][id="downvote"]:checked + label {
-  background-color: lightcoral;
+.downvote_selected {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: coral;
+  width: 10em;
+  text-align: center;
 }
 
 /* submit button css from w3schools */

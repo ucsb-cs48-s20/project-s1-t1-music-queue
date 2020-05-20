@@ -1,22 +1,45 @@
 import React from "react";
+import useSWR from "swr";
+import { useCallback } from "react";
+import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
 import Router from "next/router";
 import Loading from "../Page/Loading";
 import "../style.css";
 
-export default function Table(props) {
-  let obj = props.data.result;
-  let leaveQueue = obj.some(song => song["deleteMusicQ"] === true);
-  if (leaveQueue) {
-    console.log("leaving after finding kill document");
-    Router.push({
-      pathname: "/Closed",
-      query: {
-        access_token: props.access_token
-      }
-    });
-  }
+function Table(props) {
+  const { data, mutate } = useSWR(
+    "/api/collection?id=" + props.collection,
+    fetch,
+    {
+      // see example repo for explination about booleans
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true
+    }
+  );
 
+  const checkCollection = useCallback(
+    async event => {
+      await mutate();
+      if (!data) {
+        Router.push({
+          pathname: "/Closed",
+          query: {
+            access_token: props.access_token
+          }
+        });
+      }
+    },
+    [data]
+  );
+
+  // does this collection exisit?. If it doesn't, data is false
+  // and the user is kicked out of the room
+  checkCollection();
+
+  // room is not to be left, instead, the room is to be populated
+  // with data from obj
+  let obj = props.data.result;
   let loading = obj.some(song => song["name"] === "FETCHING DATA ... ");
 
   // create another array of songs so that you can sort it later
@@ -74,3 +97,5 @@ export default function Table(props) {
     </div>
   );
 }
+
+export default Table;

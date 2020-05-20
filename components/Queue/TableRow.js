@@ -5,6 +5,8 @@ import "../style.css";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
+  const [upvoteState, setUpvoteState] = useState("label");
+  const [downvoteState, setDownvoteState] = useState("label");
 
   // this callback renders the score when intially
   // rendered
@@ -52,6 +54,8 @@ export default function TableRow(props) {
     [score]
   );
 
+  const upvote_label = props.trackID + "upvote";
+  const downvote_label = props.trackID + "downvote";
   return (
     <tr>
       {/* output name and score of song*/}
@@ -78,25 +82,45 @@ export default function TableRow(props) {
         {/* radio button to upvote*/}
         <input
           type="radio"
+          id={upvote_label}
           name={props.trackID}
-          id="upvote"
-          onChange={() => increment()}
+          onChange={() => {
+            increment();
+            setUpvoteState("upvote_selected");
+            setDownvoteState("label");
+          }}
         />
-        <label for="upvote">&uarr;</label>
+        <label className={upvoteState} id={upvote_label} htmlFor={upvote_label}>
+          &uarr;
+        </label>
         {/* radio button to downvote. Score be < 0*/}
         <input
           type="radio"
+          id={downvote_label}
           name={props.trackID}
-          id="downvote"
           onChange={() => {
             if (score > 0) {
               setScore(score - 1);
+              setDownvoteState("downvote_selected");
+              setUpvoteState("label");
               decrement();
             }
           }}
         />
-        <label for="downvote">&darr;</label>
+        <label
+          className={downvoteState}
+          id={downvote_label}
+          htmlFor={downvote_label}
+        >
+          &darr;
+        </label>
       </td>
     </tr>
   );
 }
+
+/*
+
+
+
+*/

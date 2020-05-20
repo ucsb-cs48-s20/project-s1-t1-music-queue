@@ -24,6 +24,8 @@ class Rooms extends React.Component {
     }
   };
 
+  // creates a MusicQ (a collection in the MongoDB database) and assigns
+  // a randomized code to this queue
   async createRoom(event) {
     this.setState({ isLoadingQ: true });
     // first, generate the random, 7 digit room key
@@ -44,13 +46,13 @@ class Rooms extends React.Component {
 
     // push to the new MusicQ
     const { access_token } = this.state;
-    console.log(this.state.collection);
     Router.push({
       pathname: "/App",
       query: { roomKey: roomKey, access_token: access_token, isAdmin: true }
     });
   }
 
+  // joins a room using the
   joinRoom() {
     event.preventDefault();
     const { access_token } = this.state;
