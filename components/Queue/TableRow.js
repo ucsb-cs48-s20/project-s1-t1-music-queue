@@ -80,7 +80,7 @@ export default function TableRow(props) {
           type="radio"
           name={props.trackID}
           id="upvote"
-          onClick={() => increment()}
+          onChange={() => increment()}
         />
         <label for="upvote">&uarr;</label>
         {/* radio button to downvote. Score be < 0*/}
@@ -88,7 +88,7 @@ export default function TableRow(props) {
           type="radio"
           name={props.trackID}
           id="downvote"
-          onClick={() => {
+          onChange={() => {
             if (score > 0) {
               setScore(score - 1);
               decrement();

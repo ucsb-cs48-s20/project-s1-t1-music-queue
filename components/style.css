@@ -32,9 +32,9 @@
   margin: 5px;
 }
 
-input[type="radio"][id="buttonGroup"] {
+/* input[type="radio"][name="buttonGroup"] {
   display: none;
-}
+} */
 
 label {
   display: inline-block;
@@ -49,12 +49,11 @@ label {
 /* Clicking a label will select its corresponding hidden radio button
    We can select that radio buttons sibling label and style it. */
 input[type="radio"][id="upvote"]:checked + label {
-  background-color: yellow;
+  background-color: lightgreen;
 }
-/* Clicking a label will select its corresponding hidden radio button
-   We can select that radio buttons sibling label and style it. */
+
 input[type="radio"][id="downvote"]:checked + label {
-  background-color: yellow;
+  background-color: lightcoral;
 }
 
 /* submit button css from w3schools */
