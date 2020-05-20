@@ -15,15 +15,10 @@ function JoinRoom() {
     revalidateOnReconnect: true
   });
 
+  // save access_token to state
   useEffect(() => {
-    let url = window.location.href;
-    if (url.indexOf("_token") > -1) {
-      let access_token = url
-        .split("_token=")[1]
-        .split("&")[0]
-        .trim();
-      setAccessToken(access_token);
-    }
+    let access_token = url.query.roomKey;
+    setAccessToken(access_token);
   });
 
   const handleJoin = useCallback(
