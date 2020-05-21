@@ -14,12 +14,6 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/App": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
     "/JoinRoom": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -54,10 +48,6 @@
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
-    "/next/dist/pages/_error": [
-      "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
   }

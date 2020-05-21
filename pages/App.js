@@ -103,13 +103,17 @@ class App extends Component {
                 Add Song
               </button>
             </Results>
+            
           );
+          
           // increment index of song being added
           index++;
         }
+        
       });
-      return allResults;
-    } else {
+        return allResults;
+    } 
+    else {
       return "";
     }
   };
