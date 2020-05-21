@@ -1,14 +1,17 @@
 import React from "react";
 import Router from "next/router";
 import Layout from "../components/Layout";
+import Logout from "../components/Logout";
 
 class Rooms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       access_token: "",
-      roomKey: 0
+      roomKey: 0,
+      isLoadingQ: false
     };
+    this.createRoom = this.createRoom.bind(this);
   }
 
   componentDidMount = () => {
@@ -22,17 +25,35 @@ class Rooms extends React.Component {
     }
   };
 
-  createRoom(event) {
-    event.preventDefault();
+  // creates a MusicQ (a collection in the MongoDB database) and assigns
+  // a randomized code to this queue
+  async createRoom(event) {
+    this.setState({ isLoadingQ: true });
+    // first, generate the random, 7 digit room key
+    const min = 1000000;
+    const max = 9999999;
+    const roomKey = Math.floor(Math.random() * (max - min + 1) + min);
+
+    await fetch("/api/makeRoom", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        name: roomKey
+      })
+    });
+
+    // push to the new MusicQ
     const { access_token } = this.state;
-    const { roomKey } = this.state;
-    console.log(this.state.collection);
     Router.push({
-      pathname: "/CreateRoom",
-      query: { roomKey,  access_token }
+      pathname: "/App",
+      query: { roomKey: roomKey, access_token: access_token, isAdmin: true }
     });
   }
 
+  // joins a room using the
   joinRoom() {
     event.preventDefault();
     const { access_token } = this.state;
@@ -52,8 +73,9 @@ class Rooms extends React.Component {
       marginRight: 50
     };
     return (
-      <Layout>
+      
         <div className="Login" style={{ textAlign: "center" }}>
+          <Layout>
           <header className="Login-header">
             <button
               onClick={() => {
@@ -74,8 +96,10 @@ class Rooms extends React.Component {
               Join a MusicQ
             </button>
           </header>
+          {this.state.isLoadingQ && <h1> Creating Your MusicQ ... </h1>}
+          </Layout>
+          <Logout/>
         </div>
-      </Layout>
     );
   }
 }
