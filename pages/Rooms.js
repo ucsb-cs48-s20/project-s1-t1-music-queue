@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import Layout from "../components/Layout";
+import Logout from "../components/Logout";
 
 class Rooms extends React.Component {
   constructor(props) {
@@ -72,8 +73,9 @@ class Rooms extends React.Component {
       marginRight: 50
     };
     return (
-      <Layout>
+      
         <div className="Login" style={{ textAlign: "center" }}>
+          <Layout>
           <header className="Login-header">
             <button
               onClick={() => {
@@ -95,8 +97,9 @@ class Rooms extends React.Component {
             </button>
           </header>
           {this.state.isLoadingQ && <h1> Creating Your MusicQ ... </h1>}
+          </Layout>
+          <Logout/>
         </div>
-      </Layout>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
+import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
 import "./style.css";
@@ -51,6 +52,7 @@ function JoinRoom() {
   );
 
   return (
+    <div>
     <Layout>
       <p id="errorMsg" style={{ display: "none" }}>
         Wrong Key, please enter a new Key
@@ -77,6 +79,8 @@ function JoinRoom() {
       </div>
       {/* <h1> {data} </h1> */}
     </Layout>
+    <Logout/>
+    </div>
   );
 }
 

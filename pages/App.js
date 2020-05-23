@@ -104,6 +104,7 @@ class App extends Component {
               </button>
             </Results>
           );
+
           // increment index of song being added
           index++;
         }
@@ -131,9 +132,6 @@ class App extends Component {
           collection: this.state.collection
         })
       });
-      // sleep to show admin that you are deleting the queue. This isn't
-      // required to be here. But it makes more sense in terms of user experience
-      await this.sleep(4000);
     }
     // Go back to the rooms screen
     Router.push({
@@ -143,16 +141,6 @@ class App extends Component {
       }
     });
   };
-
-  // sleep timer used when deleting the MusicQ
-  sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if (new Date().getTime() - start > milliseconds) {
-        break;
-      }
-    }
-  }
 
   render() {
     const isAdmin = this.props.url.query.isAdmin;
