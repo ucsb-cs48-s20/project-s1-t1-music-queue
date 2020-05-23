@@ -28,6 +28,11 @@ class App extends Component {
     this.leaveMusicQ = this.leaveMusicQ.bind(this);
   }
 
+  onUnload = async event => {
+    event.returnValue = "";
+    await this.leaveMusicQ();
+  };
+
   // When the component first renders you either render the music queue
   // or you don't render anything if the user is NOT logged in!
   componentDidMount = () => {
@@ -39,15 +44,15 @@ class App extends Component {
     // reading roomKey
     const c = this.props.url.query.roomKey;
     this.setState({ collection: c });
+    window.addEventListener("beforeunload", this.onUnload);
   };
 
   // this lifecycle method ensures that if the admin closes their tab, the queue
   // will be deleted
   componentWillUnmount() {
-    this.leaveMusicQ();
     // the unmount process is already occuring, therefore we pass
     // true to leaveMusicQ
-    // window.removeEventListener("beforeunload", this.onUnload);
+    window.removeEventListener("beforeunload", this.onUnload);
   }
 
   // Performs the query using the spotify api on the value in the form input
