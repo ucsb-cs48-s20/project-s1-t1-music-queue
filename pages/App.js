@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   onUnload = async event => {
+    console.log("unloading!");
     event.returnValue = "";
     await this.leaveMusicQ();
   };
@@ -47,12 +48,14 @@ class App extends Component {
     window.addEventListener("beforeunload", this.onUnload);
   };
 
-  // this lifecycle method ensures that if the admin closes their tab, the queue
-  // will be deleted
+  // this lifecycle method ensures that if the admin closes their tab,
+  // or hits the back bytton the queue will be deleted and all users kicked out
   componentWillUnmount() {
-    // the unmount process is already occuring, therefore we pass
-    // true to leaveMusicQ
     window.removeEventListener("beforeunload", this.onUnload);
+    const isAdmin = this.props.url.query.isAdmin;
+    if (isAdmin) {
+      this.leaveMusicQ();
+    }
   }
 
   // Performs the query using the spotify api on the value in the form input
