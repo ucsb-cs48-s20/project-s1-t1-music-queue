@@ -73,9 +73,8 @@ class Rooms extends React.Component {
       marginRight: 50
     };
     return (
-      
-        <div className="Login" style={{ textAlign: "center" }}>
-          <Layout>
+      <div className="Login" style={{ textAlign: "center" }}>
+        <Layout>
           <header className="Login-header">
             <button
               onClick={() => {
@@ -97,9 +96,9 @@ class Rooms extends React.Component {
             </button>
           </header>
           {this.state.isLoadingQ && <h1> Creating Your MusicQ ... </h1>}
-          </Layout>
-          <Logout/>
-        </div>
+        </Layout>
+        <Logout />
+      </div>
     );
   }
 }
