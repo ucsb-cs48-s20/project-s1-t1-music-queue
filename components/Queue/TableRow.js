@@ -65,7 +65,7 @@ export default function TableRow(props) {
         </td>
       ) : (
         <td>
-          <span>
+          <span style={{ display: "inline" }}>
             <h3>{props.name}</h3>{" "}
             <img
               src={props.img}
@@ -118,9 +118,3 @@ export default function TableRow(props) {
     </tr>
   );
 }
-
-/*
-
-
-
-*/

@@ -44,17 +44,9 @@ class Login extends Component {
   makeSpotifyCall = event => {
     event.preventDefault();
     const { access_token } = this.state;
-    console.log(access_token);
     if (access_token === "") {
       document.location = spotifyWebApiURL;
     }
-    // This is the code that I commented out
-    // else {
-    //   Router.push({
-    //     pathname: "/CreateRoom",
-    //     query: { access_token }
-    //   });
-    // }
   };
 
   render() {

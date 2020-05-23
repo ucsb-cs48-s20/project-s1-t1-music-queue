@@ -7,7 +7,6 @@ const Layout = props => (
     <Header />
     {/* Icon renders MusicQ icon */}
     <Icon />
-
     {/* Render search functionality */}
     <div className="container">
       <div className="col-md-12 mt-5">{props.children}</div>

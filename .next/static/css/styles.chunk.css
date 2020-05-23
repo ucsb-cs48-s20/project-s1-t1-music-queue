@@ -2,36 +2,6 @@
  upvote and downvote button css from w3schools.com
 */
 
-.button_upvote {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #00a024;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 25px;
-  padding: 0px 10px 0px 10px;
-  width: fill;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button_downvote {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #a00000;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 25px;
-  padding: 0px 10px 0px 10px;
-  width: fill;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
 /* Clicking a label will select its corresponding hidden radio button
    We can select that radio buttons sibling label and style it. */
 
