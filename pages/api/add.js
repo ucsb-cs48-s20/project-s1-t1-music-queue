@@ -19,29 +19,23 @@ async function createSong(req, res) {
   let mutation = {
     // The $set operator replaces the value of a field with the specified value.
     $set: {
+      name: song.name,
       score: song.score,
-      trackID: song.trackID,
       img: song.imgURL
     }
   };
 
-  // This if condition is used to add a queue deleted flag to the other users
-  // in the queue to leave safely!
-  if (song.deleteMusicQ) {
-    mutation = {
-      $set: {
-        deleteMusicQ: song.deleteMusicQ
-      }
-    };
-  }
-
-  // first search for document in MongoDB database that matches query.
+  // first search for document in MongoDB database that matches the trackID.
   // If none is found, document with mutation is added as it is simply
   // either adding a tag to an exisiting document or creating a new one.
-  const result = await users.findOneAndUpdate({ name: song.name }, mutation, {
-    upsert: true, // allows for insertion of new document
-    returnOriginal: false
-  });
+  const result = await users.findOneAndUpdate(
+    { trackID: song.trackID },
+    mutation,
+    {
+      upsert: true, // allows for insertion of new document
+      returnOriginal: false
+    }
+  );
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
