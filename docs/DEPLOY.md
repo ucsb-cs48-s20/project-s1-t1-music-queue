@@ -5,6 +5,9 @@ Have a working:
 * Heroku account 
 * Mongo DB account 
     
+#Video instructions: 
+The following link is a video tutorial to help you through the instructions given below.
+https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
 
 # Instructions:
 
