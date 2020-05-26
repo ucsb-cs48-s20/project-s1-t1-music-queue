@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "dev": "next dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +25,10 @@
     "swr": "^0.2.0",
     "spotify-web-api-node": "^4.0.0",
     "heroku-dotenv": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@storybook/html": "^5.3.19",
+    "babel-loader": "^8.1.0"
   }
 }
