@@ -1,6 +1,6 @@
 # project-s1-t1-music-queue
 
-MusicQ
+## MusicQ
 
 Tech-stack: next.js
 
@@ -24,6 +24,10 @@ Members:
 * Ori Mizrahi- omizrahi99
 * David Farias-Llerena - dfariasllerenas
 
+To deploy MusicQ yourself click the link below:
+* [Deployment Instructions](./docs/DEPLOY.md)
+
+
 | Command                   | Description                                           |
 | ------------------------- | ----------------------------------------------------- |
 | `npm install`             | Install Dependencies                                  |
@@ -37,3 +41,4 @@ Members:
 | `npm run build-storybook` | Create static react storybook for GitHub Pages        |
 
 Note that while no environment variables are required to run `npm run dev`, running `npm run start` requires that the `PORT` environment
+
