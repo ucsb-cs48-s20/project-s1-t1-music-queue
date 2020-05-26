@@ -23,3 +23,17 @@ Members:
 * Gautam Mundewadi- gmundewadi
 * Ori Mizrahi- omizrahi99
 * David Farias-Llerena - dfariasllerenas
+
+| Command                   | Description                                           |
+| ------------------------- | ----------------------------------------------------- |
+| `npm install`             | Install Dependencies                                  |
+| `npm run dev`             | Runs locally in development mode                      |
+| `npm run start`           | Runs in production mode (requires `PORT` env var)     |
+| `npm run test`            | Runs entire test suite                                |
+| `npm run test:cypress`    | Runs Cypress integration tests                        |
+| `npm run test:cypress`    | Runs `prettier` format tests                          |
+| `npm run fix:format`      | Reformats all project files using `prettier`          |
+| `npm run storybook`       | Run React Storybook (made available at localhost:6006 |
+| `npm run build-storybook` | Create static react storybook for GitHub Pages        |
+
+Note that while no environment variables are required to run `npm run dev`, running `npm run start` requires that the `PORT` environment
