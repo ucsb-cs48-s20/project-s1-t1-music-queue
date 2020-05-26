@@ -1,7 +1,11 @@
 import Head from "next/head";
+import Icon from "./Icon";
 
-const Header = () => (
+const Layout = props => (
   <div>
+
+    {/*imports css from bootstrap */}
+    <div>
     <Head>
       <meta charSet="utf-8" />
       <meta
@@ -17,6 +21,14 @@ const Header = () => (
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
     </Head>
   </div>
+    {/* Icon renders MusicQ icon */}
+    <Icon />
+
+    {/* Render search functionality */}
+    <div className="container">
+      <div className="col-md-12 mt-5">{props.children}</div>
+    </div>
+  </div>
 );
 
-export default Header;
+export default Layout;
