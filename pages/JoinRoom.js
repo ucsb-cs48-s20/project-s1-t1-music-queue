@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
 import Layout from "../components/Layout";
+import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
 import "./style.css";
@@ -10,12 +10,13 @@ import "./style.css";
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
   const [access_token, setAccessToken] = useState("");
-  const { data, mutate } = useSWR("/api/collections", fetch, {
+  const { data, mutate } = useSWR("/api/collection?id=" + roomKey, fetch, {
     // see example repo for explination about booleans
     revalidateOnFocus: true,
     revalidateOnReconnect: true
   });
 
+  // save the access_token provided by Rooms.js
   useEffect(() => {
     let url = window.location.href;
     if (url.indexOf("_token") > -1) {
@@ -31,36 +32,35 @@ function JoinRoom() {
     async event => {
       // get the list of currect collections on the MusicQ
       await mutate();
-      const collections = data.result;
-      console.log("roomKey " + roomKey);
-      console.log("collections: " + collections);
-      //for error message
-      var p = document.getElementById("errorMsg");
-      if (collections.includes(roomKey + "")) {
-        //does not display error msg
-        p.style.display = "none";  
-        Router.push({
-          pathname: "/App",
-          query: { roomKey: roomKey, access_token: access_token }
-        });
-      }else{
-        //displays error msg
-        p.style.display = "block";  
+      if (data) {
+        const collectionExists = data.result;
+        var p = document.getElementById("errorMsg"); //for error message
+        if (collectionExists) {
+          //does not display error msg
+          p.style.display = "none";
+          Router.push({
+            pathname: "/App",
+            query: { roomKey: roomKey, access_token: access_token }
+          });
+        } else {
+          //displays error msg
+          p.style.display = "block";
+        }
       }
-      console.log("error mssg =" + p.style.display)
     },
     [roomKey, data]
   );
 
   return (
+    <div>
     <Layout>
-        <p id="errorMsg" style={{display:"none"}}>
-      
-          Wrong Key, please enter a new Key
-        </p>
+      <p id="errorMsg" style={{ display: "none" }}>
+        Wrong Key, please enter a new Key
+      </p>
       {/*gather 7-digit MusicQ code*/}
       <div className="form-group" style={{ textAlign: "center" }}>
         <input
+          className="keyInput"
           type="text"
           placeholder="enter 7-digit room key"
           maxLength="7"
@@ -69,7 +69,6 @@ function JoinRoom() {
       </div>
       {/*button to join MuiscQ*/}
       <div className="form-group" style={{ textAlign: "center" }}>
-        
         <button
           className="form-control btn btn-outline-success"
           style={{ width: 200 }}
@@ -77,10 +76,11 @@ function JoinRoom() {
         >
           Join MusicQ
         </button>
-        
       </div>
       {/* <h1> {data} </h1> */}
     </Layout>
+    <Logout/>
+    </div>
   );
 }
 

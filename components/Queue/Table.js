@@ -1,9 +1,40 @@
 import React from "react";
+import useSWR from "swr";
+import { useEffect } from "react";
+import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
+import Router from "next/router";
+import Loading from "../Page/Loading";
 import "../style.css";
 
-export default function Table(props) {
+function Table(props) {
+  const { data, mutate } = useSWR(
+    "/api/collection?id=" + props.collection,
+    fetch,
+    {
+      // see example repo for explination about booleans
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true
+    }
+  );
+
+  // does this collection exisit?. If it doesn't, data is false
+  // and the user is kicked out of the room
+  useEffect(() => {
+    if (data && !data.result) {
+      Router.push({
+        pathname: "/Closed",
+        query: {
+          access_token: props.access_token
+        }
+      });
+    }
+  }, [data]);
+
+  // room is not to be left, instead, the room is to be populated
+  // with data from obj
   let obj = props.data.result;
+  let loading = obj.some(song => song["name"] === "FETCHING DATA ... ");
 
   // create another array of songs so that you can sort it later
   const songArr = obj.map(item => {
@@ -18,7 +49,6 @@ export default function Table(props) {
 
   // sort array of songs; highest scores first and lowest scores last
   songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
-  console.log(songArr);
 
   const tableComponents = songArr.map((item, index) => {
     return (
@@ -37,16 +67,29 @@ export default function Table(props) {
 
   return (
     <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>Song</th>
-            <th>Score</th>
-            <th>Vote</th>
-          </tr>
-          {tableComponents}
-        </tbody>
-      </table>
+      {loading && (
+        <h1>
+          {" "}
+          <Loading message={"Loading Songs ... "} />
+        </h1>
+      )}
+
+      {!loading && (
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Song</th>
+                <th>Score</th>
+                <th>Vote</th>
+              </tr>
+              {tableComponents}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
+
+export default Table;

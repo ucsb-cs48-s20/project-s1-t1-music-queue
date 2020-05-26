@@ -32,6 +32,51 @@
   margin: 5px;
 }
 
+/* Clicking a label will select its corresponding hidden radio button
+   We can select that radio buttons sibling label and style it. */
+
+/* input[type="radio"][id]:checked ~ .upvote {
+  background-color: lightgreen;
+}
+
+input[type="radio"]:checked ~ .downvote {
+  background-color: coral;
+} */
+
+input[type="radio"] {
+  display: none;
+}
+
+.label {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  width: 10em;
+  text-align: center;
+}
+
+.upvote_selected {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: lightgreen;
+  width: 10em;
+  text-align: center;
+}
+
+.downvote_selected {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: coral;
+  width: 10em;
+  text-align: center;
+}
+
 /* submit button css from w3schools */
 
 .button {
@@ -128,9 +173,10 @@ tr:hover {
 }
 
 /*
-Styling for leaving Queue  button
+Styling for leaving Queue button. Moved to inline styling. Double check
+this issue using storybook
 */
-.leaveQueue {
+/* .leaveQueue {
   padding: 16px;
   display: block;
   background-color: lightcoral;
@@ -139,6 +185,65 @@ Styling for leaving Queue  button
   position: absolute;
   top: 20px;
   right: 20px;
+} */
+
+/*
+Styling for partioned input
+This is what ima work on ... 
+*/
+
+/*
+Styling for Closed.js 
+*/
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  width: 15%;
+}
+
+/* Styling for submit button css from w3schools */
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: lightblue;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 5px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\BB";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 #errorMsg

@@ -9,12 +9,15 @@
   ],
   "pages": {
     "/": [
+<<<<<<< HEAD
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
     "/App": [
+=======
+>>>>>>> fe79818cc1fc756d4da99b47667d1f80f3bf72d2
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
