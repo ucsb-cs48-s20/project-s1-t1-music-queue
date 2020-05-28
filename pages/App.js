@@ -83,6 +83,7 @@ class App extends Component {
     // change the text of the button that has been clicked reflect that the current
     // song is being added to the queue
     document.getElementById(song.id).innerHTML = "Adding song ... ";
+    document.getElementById(song.id).disabled = true;
 
     await fetch("/api/add", {
       method: "POST",
