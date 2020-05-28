@@ -7,6 +7,7 @@ import Database from "../components/Queue/Database";
 import Loading from "../components/Page/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
+import Player from "../components/Player";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -72,6 +73,7 @@ class App extends Component {
         score: 0,
         trackID: song.id,
         imgURL: song.album.images[2].url,
+        trackURI: song.uri,
         collection: this.state.collection
       })
     });

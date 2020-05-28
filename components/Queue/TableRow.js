@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
+import Player from "../Player";
 import "../style.css";
 
 export default function TableRow(props) {
@@ -61,6 +62,12 @@ export default function TableRow(props) {
       {/* output name and score of song*/}
       {props.rank == 0 ? (
         <td>
+          <Player 
+            access_token = {props.access_token}
+            name = {props.name}
+            trackID={props.trackID}
+            trackURI={props.trackURI}
+          />
           <Frame trackID={props.trackID} />
         </td>
       ) : (

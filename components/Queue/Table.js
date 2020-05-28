@@ -43,7 +43,8 @@ function Table(props) {
       trackID: item.trackID,
       name: item.name,
       score: item.score,
-      img: item.img
+      img: item.img,
+      trackURI: item.trackURI
     };
   });
 
@@ -58,6 +59,7 @@ function Table(props) {
         trackID={item.trackID}
         score={item.score}
         img={item.img}
+        trackURI={item.trackURI}
         mutate={props.mutate}
         rank={index}
         collection={props.collection}
