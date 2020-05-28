@@ -7,6 +7,17 @@ import Router from "next/router";
 import Loading from "../Page/Loading";
 import "../style.css";
 
+// partialSort method from Tim Down. on
+// https://stackoverflow.com/questions/7426563/in-javascript-how-do-you-sort-a-subset-of-an-array
+function partialSort(arr, start, end) {
+  var preSorted = arr.slice(0, start),
+    postSorted = arr.slice(end);
+  var sorted = arr.slice(start, end).sort();
+  arr.length = 0;
+  arr.push.apply(arr, preSorted.concat(sorted).concat(postSorted));
+  return arr;
+}
+
 function Table(props) {
   const { data, mutate } = useSWR(
     "/api/collection?id=" + props.collection,
@@ -50,24 +61,16 @@ function Table(props) {
   // ie: sortFirst == true, then you should sort the first song. Score IS 0.
   // If sortFirst == false then you should not sort the first song as the
   // score is NOT zero.
-  if (songArr) {
+  if (songArr.length > 0) {
     let sortFirst = songArr[0].score == 0;
-    let firstSong;
     if (!sortFirst) {
-      // do not sort the first son, therefore remove it from the sorting
-      // process entirely and add it after.
-      firstSong = songArr.shift();
+      // do not sort the first song
+      songArr = partialSort(songArr, 1, songArr.length - 1);
+      console.log(songArr);
+    } else {
+      // sort array of songs; highest scores first and lowest scores last
+      songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
     }
-
-    // // sort array of songs; highest scores first and lowest scores last
-    songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
-
-    // now that you have sorted the list of songs. We need to make sure to add the topmost song
-    // back to the queue.
-    if (!sortFirst) {
-      songArr.unshift(firstSong);
-    }
-    console.log(songArr);
   }
 
   const tableComponents = songArr.map((item, index) => {

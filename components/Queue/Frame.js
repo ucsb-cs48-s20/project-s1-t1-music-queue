@@ -15,6 +15,7 @@ class Frame extends React.Component {
           allowtransparency="true"
           allow="encrypted-media"
         ></iframe>
+        <button>delete</button>
       </div>
     );
   }

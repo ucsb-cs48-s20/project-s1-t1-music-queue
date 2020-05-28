@@ -20,7 +20,8 @@ class App extends Component {
       search_term: "",
       tracks: [],
       collection: "loading",
-      isDeleting: false
+      isDeleting: false,
+      isAdding: false
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -78,6 +79,8 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
+    this.setState({ isAdding: true });
+
     await fetch("/api/add", {
       method: "POST",
       headers: {
