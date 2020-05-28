@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   onUnload = async event => {
-    console.log("unloading!");
     event.returnValue = "";
     await this.leaveMusicQ();
   };
@@ -80,6 +79,9 @@ class App extends Component {
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
     this.setState({ isAdding: true });
+    // change the text of the button that has been clicked reflect that the current
+    // song is being added to the queue
+    document.getElementById(song.id).innerHTML = "Adding song ... ";
 
     await fetch("/api/add", {
       method: "POST",
@@ -95,11 +97,13 @@ class App extends Component {
         collection: this.state.collection
       })
     });
+    document.getElementById(song.id).innerHTML = "Song Added";
+    this.setState({ isAdding: false });
   };
 
   // Renders each of the components in the search results.
   // it: The add song button, image, and title of song
-  renderSearchResults = () => {
+  renderSearchResults = buttonMessage => {
     if (this.state.tracks.length > 1) {
       const { tracks } = this.state;
       const { access_token } = this.props.url.query;
@@ -110,19 +114,14 @@ class App extends Component {
           // console.log(track); Outputs the spotify object returned
           let hasImage = track.album.images[0];
           allResults.push(
-            // push information about this song to a result component
-            <Results key={index} imageURL={hasImage.url} name={track.name}>
-              {/*Button that allows user to add song to database*/}
-              <button
-                className="form-control btn btn-outline-success"
-                value="Add Song"
-                onClick={() => {
-                  this.addSong(track);
-                }}
-              >
-                Add Song
-              </button>
-            </Results>
+            // push information about this song to a Result component
+            <Results
+              key={index}
+              imageURL={hasImage.url}
+              name={track.name}
+              id={track.id}
+              onClick={() => this.addSong(track)}
+            />
           );
 
           // increment index of song being added
@@ -157,6 +156,7 @@ class App extends Component {
       });
     }
 
+    // push user back to the Rooms page
     Router.push({
       pathname: "/Rooms",
       query: {
@@ -169,9 +169,9 @@ class App extends Component {
     const isAdmin = this.props.url.query.isAdmin;
     // buttonMessage represents the message on the button
     // located at the top right corner of the corner of the screen
-    let buttonMessage = "Leave MusicQ";
+    let leaveQueueButtonMessage = "Leave MusicQ";
     if (isAdmin) {
-      buttonMessage = "Delete MusicQ";
+      leaveQueueButtonMessage = "Delete MusicQ";
     }
     return (
       <div className="App">
@@ -227,7 +227,7 @@ class App extends Component {
           }}
           onClick={this.leaveMusicQ}
         >
-          {buttonMessage}
+          {leaveQueueButtonMessage}
         </button>
         <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>
