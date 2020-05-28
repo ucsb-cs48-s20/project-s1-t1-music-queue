@@ -21,7 +21,8 @@ class App extends Component {
       tracks: [],
       collection: "loading",
       isDeleting: false,
-      isAdding: false
+      isAdding: false,
+      results: []
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -103,35 +104,81 @@ class App extends Component {
 
   // Renders each of the components in the search results.
   // it: The add song button, image, and title of song
-  renderSearchResults = buttonMessage => {
-    if (this.state.tracks.length > 1) {
-      const { tracks } = this.state;
-      const { access_token } = this.props.url.query;
-      let allResults = [];
-      // index to allow current song to be added.
-      tracks.forEach((track, index) => {
-        if (track.album != undefined && track.album.images[0] != undefined) {
-          // console.log(track); Outputs the spotify object returned
-          let hasImage = track.album.images[0];
-          allResults.push(
-            // push information about this song to a Result component
-            <Results
-              key={index}
-              imageURL={hasImage.url}
-              name={track.name}
-              id={track.id}
-              onClick={() => this.addSong(track)}
-            />
-          );
-
-          // increment index of song being added
-          index++;
+  renderSearchResults = () => {
+    // now we need to figure out which songs are currently in the queue
+    // and mark any song that is displayed from search results as already added
+    fetch("/api/all?id=" + this.state.collection)
+      .then(res => res.json())
+      .then(songsInQueue => {
+        songsInQueue = songsInQueue.result;
+        if (this.state.tracks.length > 1) {
+          const { tracks } = this.state;
+          const { access_token } = this.props.url.query;
+          let allResults = [];
+          // index to allow current song to be added.
+          tracks.forEach((track, index) => {
+            // if the song already exists within the queue, push a different component to
+            // show the user that this is the case
+            if (songsInQueue.some(song => song["trackID"] === track.id)) {
+              // console.log(track); Outputs the spotify object returned
+              let hasImage = track.album.images[0];
+              allResults.push(
+                // push information about this song to a result component
+                <Results
+                  key={index}
+                  imageURL={hasImage.url}
+                  name={track.name}
+                  inQueue={true}
+                >
+                  {/*Button that allows user to add song to database now DISABLED*/}
+                  <button
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
+                    disabled
+                  >
+                    Song Already in Queue
+                  </button>
+                </Results>
+              );
+            }
+            // the track does not exisit in the queue ...
+            else if (
+              track.album != undefined &&
+              track.album.images[0] != undefined
+            ) {
+              // console.log(track); Outputs the spotify object returned
+              let hasImage = track.album.images[0];
+              allResults.push(
+                // push information about this song to a result component
+                <Results
+                  key={index}
+                  imageURL={hasImage.url}
+                  name={track.name}
+                  inQueue={false}
+                >
+                  {/*Button that allows user to add song to database*/}
+                  <button
+                    id={track.id}
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
+                    onClick={() => {
+                      this.addSong(track);
+                    }}
+                  >
+                    Add Song
+                  </button>
+                </Results>
+              );
+              // increment index of song being added
+              index++;
+            }
+          });
+          // setting the state of the songs that are returned by the search
+          this.setState({ results: allResults });
+        } else {
+          return "";
         }
       });
-      return allResults;
-    } else {
-      return "";
-    }
   };
 
   // Button to leave queue. Now links the props.url.query
@@ -199,13 +246,14 @@ class App extends Component {
                     <button
                       type="submit"
                       className="form-control btn btn-outline-success"
+                      onClick={this.renderSearchResults}
                     >
                       Search
                     </button>
                   </div>
                 </form>
               </div>
-              <div className="row mt-5">{this.renderSearchResults()}</div>
+              <div className="row mt-5">{this.state.results}</div>
             </div>
           )}
 
