@@ -7,7 +7,8 @@ Have a working:
     
 # Video instructions: 
 
-The following link is a video tutorial to help you through the instructions given below.
+The following link is a video tutorial to help you through the instructions given below. 
+# Please note, an additional instruction is included in the written instructions titled: ADDITIONAL INSTRUCTION
 https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
 
 # Instructions:
@@ -35,6 +36,7 @@ https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
 * Click on the “Connect” button and select: “Connect your application”. Select the Node.js driver and version number 3.0 or later. 
 * Copy the Mongo URI that is provided below. Replace the <username> and <password> field in the URI with your username and password that you previously entered
 * If you want to access or change your password, select “Database access” on the left hand panel.
+* ADDITIONAL INSTRUCTION: navigate to network access and make the network access open to all. Or add 0.0.0.0/0 to the whitelist.
 
 4. To get it running on localhost: 
 * Clone the forked repo to your local computer 
