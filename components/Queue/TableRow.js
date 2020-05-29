@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
 import "../style.css";
+import SpotifyPlayer from "react-spotify-web-playback";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
@@ -55,13 +56,18 @@ export default function TableRow(props) {
   );
 
   const upvote_label = props.trackID + "upvote";
+  console.log(props.access_token);
   const downvote_label = props.trackID + "downvote";
   return (
     <tr>
       {/* output name*/}
       {props.rank == 0 ? (
         <td>
-          <Frame trackID={props.trackID} access_token={props.access_token} />
+          <SpotifyPlayer
+            token={props.access_token}
+            uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
+          />
+          {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
         </td>
       ) : (
         <td>
