@@ -215,6 +215,7 @@ class App extends Component {
 
   render() {
     const isAdmin = this.props.url.query.isAdmin;
+    const { user } = this.props;
     // buttonMessage represents the message on the button
     // located at the top right corner of the corner of the screen
     let leaveQueueButtonMessage = "Leave MusicQ";
@@ -230,6 +231,7 @@ class App extends Component {
               <Database
                 collection={this.state.collection}
                 access_token={this.props.url.query.access_token}
+                userID = {user.ID}
               />
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
