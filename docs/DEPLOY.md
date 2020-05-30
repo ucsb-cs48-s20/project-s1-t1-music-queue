@@ -8,7 +8,7 @@ Have a working:
 # Video instructions: 
 
 The following link is a video tutorial to help you through the instructions given below.Please note, an additional instruction is included in the written instructions titled: Additional Instruction
-https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
+https://www.youtube.com/watch?v=Y1xZC-AiD3c&feature=youtu.be
 
 # Instructions:
 
