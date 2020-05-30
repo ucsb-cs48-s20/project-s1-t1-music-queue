@@ -7,8 +7,8 @@ Have a working:
     
 # Video instructions: 
 
-The following link is a video tutorial to help you through the instructions given below.
-https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
+The following link is a video tutorial to help you through the instructions given below. Please note, an additional instruction is included in the written instructions titled "Additional Instruction" if you wish to allow multiple users to access your database.
+https://www.youtube.com/watch?v=Y1xZC-AiD3c&feature=youtu.be
 
 # Instructions:
 
@@ -35,6 +35,10 @@ https://www.youtube.com/watch?v=gtWa-XweB_0&feature=youtu.be
 * Click on the “Connect” button and select: “Connect your application”. Select the Node.js driver and version number 3.0 or later. 
 * Copy the Mongo URI that is provided below. Replace the <username> and <password> field in the URI with your username and password that you previously entered
 * If you want to access or change your password, select “Database access” on the left hand panel.
+* Additional instruction to allow for multiple users to connect: navigate to network access and make the network access open to all. Or add 0.0.0.0/0 to the whitelist.
+* Next click on collections on Cluster0 and click "Add My Own Dataset". Enter a "Database" for the database name and "1234567" for a collection name
+* Navigate to ./utils/mongodb.js and on line 15 change "Title" to "Database". Your database is now connected.
+   
 
 4. To get it running on localhost: 
 * Clone the forked repo to your local computer 

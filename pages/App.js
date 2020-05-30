@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import Loading from "../components/Page/Loading";
