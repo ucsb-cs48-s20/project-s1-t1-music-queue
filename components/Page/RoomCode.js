@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import generateNumber from "../../utils/generateNumber"
+import {generateNumber} from "../../utils/generateNumber"
 //creates a random room code for each virtual room
 
 class RoomCode extends React.Component {
