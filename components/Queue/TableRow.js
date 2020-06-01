@@ -17,17 +17,17 @@ export default function TableRow(props) {
 
   // handles changes when upvoting score of each of song dynamically
   const increment = useCallback(
-    async (event) => {
+    async event => {
       await fetch("/api/increment", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         // the body of this song is built from state
         body: JSON.stringify({
           name: props.name,
-          collection: props.collection,
-        }),
+          collection: props.collection
+        })
       });
       // forces a call to the hook useSWR
       props.mutate();
@@ -37,17 +37,17 @@ export default function TableRow(props) {
 
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
-    async (event) => {
+    async event => {
       await fetch("/api/decrement", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         // the body of this song is built from state
         body: JSON.stringify({
           name: props.name,
-          collection: props.collection,
-        }),
+          collection: props.collection
+        })
       });
       // forces a call to the hook useSWR
       props.mutate();
@@ -56,7 +56,6 @@ export default function TableRow(props) {
   );
 
   const upvote_label = props.trackID + "upvote";
-  console.log(props.trackID);
   const downvote_label = props.trackID + "downvote";
   return (
     <tr>
@@ -76,7 +75,7 @@ export default function TableRow(props) {
             &emsp;
             <img
               src={props.img}
-              className='figure-img img-fluid rounded'
+              className="figure-img img-fluid rounded"
               alt={props.name}
               style={{ height: 100, width: 100 }}
             />{" "}
@@ -90,7 +89,7 @@ export default function TableRow(props) {
         {/* radio button to upvote*/}
         <div>
           <input
-            type='radio'
+            type="radio"
             id={upvote_label}
             name={props.trackID}
             onChange={() => {
@@ -110,7 +109,7 @@ export default function TableRow(props) {
         {/* radio button to downvote. Score be < 0*/}
         <div>
           <input
-            type='radio'
+            type="radio"
             id={downvote_label}
             name={props.trackID}
             onChange={() => {
