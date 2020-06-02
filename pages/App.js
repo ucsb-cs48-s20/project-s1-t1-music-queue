@@ -225,7 +225,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Layout>
+        <Layout access_token={this.props.url.query.access_token}>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>

@@ -17,11 +17,13 @@ const Header = () => (
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
       <script src="https://sdk.scdn.co/spotify-player.js"></script>
       <script>
-        window.onSpotifyWebPlaybackSDKReady = () =>{" "}
-        {
-          // You can now initialize Spotify.Player and use the SDK
-        }
-        ;
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const access_token = props.access_token;
+            const player = new Spotify.Player({
+              name: 'Web Playback SDK Quick Start Player',
+              getOAuthToken: cb => { cb(access_token); }
+            });
+        };
       </script>
     </Head>
   </div>
