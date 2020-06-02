@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Router from "next/router";
 import Layout from "../components/Page/Layout";
 import config from "../utils/config";
+import {getAccessToken} from "../utils/getAccesToken"
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes
@@ -19,21 +20,15 @@ class Login extends Component {
     };
   }
   componentDidMount = () => {
-    let url = window.location.href;
-    if (url.indexOf("_token") > -1) {
-      let access_token = url
-        .split("_token=")[1]
-        .split("&")[0]
-        .trim();
+    let access_token = getAccessToken()
       this.setState({ access_token });
-    }
   };
 
   // The purpose of this addition is to make sure that after the user logs in,
-  // the page that is displayed is CreateRoom.js and not the login page
+  // the page that is displayed is Room.js and not the login page
   componentDidUpdate() {
     const { access_token } = this.state;
-    if (access_token != "") {
+    if (access_token != "" && access_token) {
       Router.push({
         pathname: "/Rooms",
         query: { access_token }
@@ -45,7 +40,7 @@ class Login extends Component {
     event.preventDefault();
     const { access_token } = this.state;
     console.log(access_token);
-    if (access_token === "") {
+    if (access_token === "" || access_token === undefined) {
       document.location = spotifyWebApiURL;
     }
     // This is the code that I commented out
