@@ -25,8 +25,9 @@ export default function TableRow(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name,
-          collection: props.collection
+          trackID: props.trackID,
+          collection: props.collection,
+          userID: props.userID
         })
       });
       // forces a call to the hook useSWR
@@ -45,8 +46,9 @@ export default function TableRow(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name,
-          collection: props.collection
+          trackID: props.trackID,
+          collection: props.collection,
+          userID: props.userID
         })
       });
       // forces a call to the hook useSWR

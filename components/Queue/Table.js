@@ -81,6 +81,7 @@ function Table(props) {
         rank={index}
         collection={props.collection}
         access_token={props.access_token}
+        userID={props.userID}
       />
     );
   });
