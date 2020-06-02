@@ -21,7 +21,9 @@ async function createSong(req, res) {
     $set: {
       name: song.name,
       score: song.score,
-      img: song.imgURL
+      img: song.imgURL,
+      upvote: song.upvote,
+      downote: song.downote
     }
   };
 

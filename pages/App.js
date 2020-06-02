@@ -84,7 +84,6 @@ class App extends Component {
     // song is being added to the queue
     document.getElementById(song.id).innerHTML = "Adding song ... ";
     document.getElementById(song.id).disabled = true;
-
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -96,7 +95,9 @@ class App extends Component {
         score: 0,
         trackID: song.id,
         imgURL: song.album.images[2].url,
-        collection: this.state.collection
+        collection: this.state.collection,
+        upvote: [],
+        downote: []
       })
     });
     document.getElementById(song.id).innerHTML = "Song Added";
@@ -231,7 +232,7 @@ class App extends Component {
               <Database
                 collection={this.state.collection}
                 access_token={this.props.url.query.access_token}
-                userID = {user.ID}
+                userID={user.id}
               />
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
