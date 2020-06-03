@@ -38,12 +38,17 @@ function Table(props) {
 
   // create another array of songs so that you can sort it later
   let songArr = obj.map(item => {
+    // if is particular song has been upvoted/downvoted by the CURRENT user
+    const isUpvote = item.upvote.includes(props.userID);
+    const isDownvote = item.downvote.includes(props.userID);
     return {
       key: item._id,
       trackID: item.trackID,
       name: item.name,
       score: item.score,
-      img: item.img
+      img: item.img,
+      isUpvote: isUpvote,
+      isDownvote: isDownvote
     };
   });
 
@@ -81,6 +86,8 @@ function Table(props) {
         rank={index}
         collection={props.collection}
         access_token={props.access_token}
+        isUpvote={item.isUpvote}
+        isDownvote={item.isDownvote}
         userID={props.userID}
       />
     );

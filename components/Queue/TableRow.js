@@ -15,6 +15,19 @@ export default function TableRow(props) {
     setScore(props.score);
   }, [props.score]);
 
+  // on intial load. Check if the user had previouly voted on this
+  // song. If the user has upvoted or downvoted in the past, these changes
+  // are reflected here
+  useEffect(() => {
+    if (props.isUpvote) {
+      setUpvoteState("upvote_selected");
+      setDownvoteState("label");
+    } else if (props.isDownvote) {
+      setDownvoteState("downvote_selected");
+      setUpvoteState("label");
+    }
+  }, []);
+
   // handles changes when upvoting score of each of song dynamically
   const increment = useCallback(
     async event => {
@@ -59,6 +72,10 @@ export default function TableRow(props) {
 
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
+
+  console.log(props.isDownvote);
+  console.log(props.isUpvote);
+
   return (
     <tr>
       {/* output name*/}
@@ -95,10 +112,12 @@ export default function TableRow(props) {
             id={upvote_label}
             name={props.trackID}
             onChange={() => {
+              setScore(score + 1);
               increment();
               setUpvoteState("upvote_selected");
               setDownvoteState("label");
             }}
+            checked={props.isUpvote ? "checked" : ""}
           />
           <label
             className={upvoteState}
@@ -122,6 +141,7 @@ export default function TableRow(props) {
                 decrement();
               }
             }}
+            checked={props.isDownvote ? "checked" : ""}
           />
           <label
             className={downvoteState}

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Header = () => (
+const Header = props => (
   <div>
     <Head>
       <meta charSet="utf-8" />
@@ -17,13 +17,11 @@ const Header = () => (
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
       <script src="https://sdk.scdn.co/spotify-player.js"></script>
       <script>
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const access_token = props.access_token;
-            const player = new Spotify.Player({
-              name: 'Web Playback SDK Quick Start Player',
-              getOAuthToken: cb => { cb(access_token); }
-            });
-        };
+        {/* window.onSpotifyWebPlaybackSDKReady = () =>{" "}
+        {
+          // You can now initialize Spotify.Player and use the SDK
+        }
+        ; */}
       </script>
     </Head>
   </div>

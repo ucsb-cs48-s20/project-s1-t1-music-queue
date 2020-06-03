@@ -4,7 +4,7 @@ import Icon from "./Page/Icon";
 const Layout = props => (
   <div>
     {/* Header imports css from bootstrap */}
-    <Header access_token = {this.props.access_token}/>
+    <Header access_token={props.access_token} />
     {/* Icon renders MusicQ icon */}
     <Icon />
     {/* Render search functionality */}

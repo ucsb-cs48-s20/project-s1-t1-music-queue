@@ -23,7 +23,7 @@ async function createSong(req, res) {
       score: song.score,
       img: song.imgURL,
       upvote: song.upvote,
-      downvote: song.downote
+      downvote: song.downvote
     }
   };
 

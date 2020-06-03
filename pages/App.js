@@ -97,7 +97,7 @@ class App extends Component {
         imgURL: song.album.images[2].url,
         collection: this.state.collection,
         upvote: [],
-        downote: []
+        downvote: []
       })
     });
     document.getElementById(song.id).innerHTML = "Song Added";

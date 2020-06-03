@@ -24,7 +24,9 @@ function Database(props) {
           score: "FETCHING DATA ... ",
           rank: 0,
           img: "",
-          collection: "loading"
+          collection: "loading",
+          upvote: ["FETCHING DATA ... "],
+          downvote: ["FETCHING DATA ... "]
         }
       ]
     }
