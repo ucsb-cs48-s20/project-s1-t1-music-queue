@@ -6,7 +6,7 @@ import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
 import "./style.css";
-import {getAccessToken} from "../utils/getAccesToken"
+import {getAccessToken} from "../utils/getAccessToken"
 
 
 function JoinRoom() {
