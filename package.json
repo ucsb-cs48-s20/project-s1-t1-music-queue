@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "dev": "next dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:jest": "jest",
+    "test": "npm-run-all test:*",
+    "cy:run": "cypress run",
+    "test:cypress": "start-server-and-test dev 3000 cy:run",
     "danger": "danger",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ../project-s1-t1-music-queue-storybook/docs"
@@ -40,7 +43,13 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
     "babel-loader": "^8.1.0",
+    "jest": "^25.4.0",
+    "npm-run-all": "^4.1.5",
     "start-server-and-test": "^1.10.11",
-    "terser-webpack-plugin": "^2.3.5"
+    "terser-webpack-plugin": "^2.3.5",
+    "@rckeller/cypress-unfetch": "^1.0.1",
+    "cypress": "^4.2.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
   }
 }
