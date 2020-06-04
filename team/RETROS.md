@@ -1,4 +1,30 @@
 # Retro 05/11/20
+* Led by: Jennifer
+* Present: David, Ori, Gautam, Lily, Samhita
+* Absent: 
+
+link to things discussed in retro: https://funretro.io/publicboard/fLjumOzSKEeJKepM53ZjGsHJE4R2/323742fc-d7cc-40ab-b602-829ac518cf02
+## Action item
+
+a goal: 
+* Focus on project and QA testing
+
+a change: 
+* first person who does the lab should let the team know on slack how many other people are needed to complete the lab
+* deploy to QA often and share on slack so other people can test
+* having people who aren't working on labs focus on the project
+
+a measurement: 
+* having more QA deploys and giving more feedback 
+
+## Brief description of how retro went
+* I used the "went well, to improve, and action items" format 
+* I was glad that everyone had the chance to talk and shared something that they wanted to improve
+* I should have gone over what the goal of the previous sprint was before asking about the previous sprint. 
+
+
+
+# Retro 05/11/20
 * Led by: David
 * Present: Jennifer, Ori, Gautam, Lily, Samhita
 * Absent: 

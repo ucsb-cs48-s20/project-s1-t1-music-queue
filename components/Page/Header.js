@@ -1,7 +1,10 @@
 import Head from "next/head";
+import Icon from "./Icon";
 
 const Header = props => (
   <div>
+    {/*imports css from bootstrap */}
+    <div>
     <Head>
       <meta charSet="utf-8" />
       <meta
@@ -25,6 +28,14 @@ const Header = props => (
       </script>
     </Head>
   </div>
+    {/* Icon renders MusicQ icon */}
+    <Icon />
+
+    {/* Render search functionality */}
+    <div className="container">
+      <div className="col-md-12 mt-5">{props.children}</div>
+    </div>
+  </div>
 );
 
-export default Header;
+export default Layout;

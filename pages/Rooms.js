@@ -1,7 +1,8 @@
 import React from "react";
 import Router from "next/router";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import Logout from "../components/Logout";
+import {getAccessToken} from "../utils/getAccessToken"
 
 class Rooms extends React.Component {
   constructor(props) {
@@ -15,11 +16,14 @@ class Rooms extends React.Component {
   }
 
   componentDidMount = () => {
+<<<<<<< HEAD
     let url = window.location.href;
     if (url.indexOf("_token") > -1) {
       let access_token = url.split("_token=")[1].split("&")[0].trim();
+=======
+    let access_token = getAccessToken()
+>>>>>>> master
       this.setState({ access_token });
-    }
   };
 
   // creates a MusicQ (a collection in the MongoDB database) and assigns

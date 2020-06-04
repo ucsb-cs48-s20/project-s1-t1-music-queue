@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import "./style.css";
+import {getAccessToken} from "../utils/getAccessToken"
 
 class Closed extends React.Component {
   constructor(props) {
@@ -12,14 +13,8 @@ class Closed extends React.Component {
   }
 
   componentDidMount = () => {
-    let url = window.location.href;
-    if (url.indexOf("_token") > -1) {
-      let access_token = url
-        .split("_token=")[1]
-        .split("&")[0]
-        .trim();
-      this.setState({ access_token });
-    }
+    let access_token = getAccessToken()
+    this.setState({ access_token });
   };
 
   handleClick() {

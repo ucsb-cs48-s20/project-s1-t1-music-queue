@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
 import "./style.css";
+import {getAccessToken} from "../utils/getAccessToken"
+
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
@@ -18,14 +20,9 @@ function JoinRoom() {
 
   // save the access_token provided by Rooms.js
   useEffect(() => {
-    let url = window.location.href;
-    if (url.indexOf("_token") > -1) {
-      let access_token = url
-        .split("_token=")[1]
-        .split("&")[0]
-        .trim();
+      let access_token = getAccessToken()
       setAccessToken(access_token);
-    }
+
   });
 
   const handleJoin = useCallback(
