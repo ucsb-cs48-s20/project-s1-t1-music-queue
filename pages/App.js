@@ -8,6 +8,8 @@ import Loading from "../components/Page/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
 import Player from "../components/Player";
+import SpotifyPlayer from "react-spotify-web-playback";
+
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -225,10 +227,18 @@ class App extends Component {
     let leaveQueueButtonMessage = "Leave MusicQ";
     if (isAdmin) {
       leaveQueueButtonMessage = "Delete MusicQ";
+    
     }
     return (
       <div className="App">
         <Layout access_token={this.props.url.query.access_token}>
+        <SpotifyPlayer
+            token={this.props.url.query.access_token}
+            // uris={["spotify:track:" + props.trackID]}
+            uris={["spotify:track:0nZM4IIWCx8iDLf9LgEG9W" ]}
+          />
+          { console.log(SpotifyPlayer.props) }        
+
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>

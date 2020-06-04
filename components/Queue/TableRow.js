@@ -89,10 +89,7 @@ export default function TableRow(props) {
             trackURI={props.trackURI}
           />
           <Frame trackID={props.trackID} />
-          <SpotifyPlayer
-            token={props.access_token}
-            uris={["spotify:track:" + props.trackID]}
-          />
+          
           {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
         </td>
       ) : (
