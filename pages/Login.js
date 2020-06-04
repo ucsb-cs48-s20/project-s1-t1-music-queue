@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Router from "next/router";
 import Layout from "../components/Page/Layout";
 import config from "../utils/config";
-import {getAccessToken} from "../utils/getAccesToken"
+import {getAccessToken} from "../utils/getAccessToken"
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes

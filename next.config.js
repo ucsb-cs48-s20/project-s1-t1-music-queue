@@ -2,6 +2,7 @@
 require("dotenv").config();
 // These two lines allow for css imports directly to js files
 const withCSS = require("@zeit/next-css");
+
 module.exports = withCSS({
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
@@ -18,6 +19,7 @@ module.exports = withCSS({
       "viloxyf_z2GW6K4CT-KQD_MoLEA2wqv5jWuq4Jd0P7ymgG5GJGMpvMneXZzhK3sL",
     CLIENT_ID: process.env.CLIENT_ID,
     SESSION_COOKIE_LIFETIME: 7200, // 2 hours
-    MONGODB_URI: process.env.MONGODB_URI // mongodb_uri()
+    MONGODB_URI: process.env.MONGODB_URI, // mongodb_uri()
+    USE_TEST_AUTH: process.env.USE_TEST_AUTH //for cypress testing authentication
   }
 });

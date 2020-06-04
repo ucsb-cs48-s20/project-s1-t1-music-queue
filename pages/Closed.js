@@ -1,7 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import "./style.css";
-import {getAccessToken} from "../utils/getAccesToken"
+import {getAccessToken} from "../utils/getAccessToken"
 
 class Closed extends React.Component {
   constructor(props) {

@@ -1,4 +1,4 @@
-import { getAccessToken } from "../utils/getAccesToken.js";
+import { getAccessToken } from "../utils/getAccessToken.js";
 
 
 describe("utils/getAccessToken", () => {
