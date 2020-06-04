@@ -14,7 +14,17 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
+<<<<<<< HEAD
     "/Closed": [
+=======
+    "/App": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/Login": [
+>>>>>>> 7779491fbfb0198e111e814fa01b2fbbf9d4b574
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
@@ -37,6 +47,19 @@
     "/_polyfills": [
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
+<<<<<<< HEAD
+=======
+    ],
+    "/index": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+>>>>>>> 7779491fbfb0198e111e814fa01b2fbbf9d4b574
     ]
   }
 }

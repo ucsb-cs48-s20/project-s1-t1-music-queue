@@ -21,13 +21,20 @@ class App extends Component {
       search_term: "",
       tracks: [],
       collection: "loading",
-      isDeleting: false
+      isDeleting: false,
+      isAdding: false,
+      results: []
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
     this.leaveMusicQ = this.leaveMusicQ.bind(this);
   }
+
+  onUnload = async event => {
+    event.returnValue = "";
+    await this.leaveMusicQ();
+  };
 
   // When the component first renders you either render the music queue
   // or you don't render anything if the user is NOT logged in!
@@ -40,7 +47,18 @@ class App extends Component {
     // reading roomKey
     const c = this.props.url.query.roomKey;
     this.setState({ collection: c });
+    window.addEventListener("beforeunload", this.onUnload);
   };
+
+  // this lifecycle method ensures that if the admin closes their tab,
+  // or hits the back bytton the queue will be deleted and all users kicked out
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.onUnload);
+    const isAdmin = this.props.url.query.isAdmin;
+    if (isAdmin) {
+      this.leaveMusicQ();
+    }
+  }
 
   // Performs the query using the spotify api on the value in the form input
   submitTrackForm = event => {
@@ -62,6 +80,11 @@ class App extends Component {
 
   // add song to the database. Song is the json object that is passed
   addSong = async song => {
+    this.setState({ isAdding: true });
+    // change the text of the button that has been clicked reflect that the current
+    // song is being added to the queue
+    document.getElementById(song.id).innerHTML = "Adding song ... ";
+    document.getElementById(song.id).disabled = true;
     await fetch("/api/add", {
       method: "POST",
       headers: {
@@ -74,53 +97,99 @@ class App extends Component {
         trackID: song.id,
         imgURL: song.album.images[2].url,
         trackURI: song.uri,
-        collection: this.state.collection
+        collection: this.state.collection,
+        collection: this.state.collection,
+        upvote: [],
+        downvote: []
       })
     });
+    document.getElementById(song.id).innerHTML = "Song Added";
+    this.setState({ isAdding: false });
   };
 
   // Renders each of the components in the search results.
   // it: The add song button, image, and title of song
   renderSearchResults = () => {
-    if (this.state.tracks.length > 1) {
-      const { tracks } = this.state;
-      const { access_token } = this.props.url.query;
-      let allResults = [];
-      // index to allow current song to be added.
-      tracks.forEach((track, index) => {
-        if (track.album != undefined && track.album.images[0] != undefined) {
-          // console.log(track); Outputs the spotify object returned
-          let hasImage = track.album.images[0];
-          allResults.push(
-            // push information about this song to a result component
-            <Results key={index} imageURL={hasImage.url} name={track.name}>
-              {/*Button that allows user to add song to database*/}
-              <button
-                className="form-control btn btn-outline-success"
-                value="Add Song"
-                onClick={() => {
-                  this.addSong(track);
-                }}
-              >
-                Add Song
-              </button>
-            </Results>
-            
-          );
-          
-          // increment index of song being added
-          index++;
+    // now we need to figure out which songs are currently in the queue
+    // and mark any song that is displayed from search results as already added
+    fetch("/api/all?id=" + this.state.collection)
+      .then(res => res.json())
+      .then(songsInQueue => {
+        songsInQueue = songsInQueue.result;
+        if (this.state.tracks.length > 1) {
+          const { tracks } = this.state;
+          const { access_token } = this.props.url.query;
+          let allResults = [];
+          // index to allow current song to be added.
+          tracks.forEach((track, index) => {
+            // if the song already exists within the queue, push a different component to
+            // show the user that this is the case
+            if (songsInQueue.some(song => song["trackID"] === track.id)) {
+              // console.log(track); Outputs the spotify object returned
+              let hasImage = track.album.images[0];
+              allResults.push(
+                // push information about this song to a result component
+                <Results
+                  key={index}
+                  imageURL={hasImage.url}
+                  name={track.name}
+                  inQueue={true}
+                >
+                  {/*Button that allows user to add song to database now DISABLED*/}
+                  <button
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
+                    disabled
+                  >
+                    Song Already in Queue
+                  </button>
+                </Results>
+              );
+            }
+            // the track does not exisit in the queue ...
+            else if (
+              track.album != undefined &&
+              track.album.images[0] != undefined
+            ) {
+              // console.log(track); Outputs the spotify object returned
+              let hasImage = track.album.images[0];
+              allResults.push(
+                // push information about this song to a result component
+                <Results
+                  key={index}
+                  imageURL={hasImage.url}
+                  name={track.name}
+                  inQueue={false}
+                >
+                  {/*Button that allows user to add song to database*/}
+                  <button
+                    id={track.id}
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
+                    onClick={() => {
+                      this.addSong(track);
+                    }}
+                  >
+                    Add Song
+                  </button>
+                </Results>
+              );
+              // increment index of song being added
+              index++;
+            }
+          });
+          // setting the state of the songs that are returned by the search
+          this.setState({ results: allResults });
+        } else {
+          return "";
         }
-        
       });
-        return allResults;
-    } 
-    else {
-      return "";
-    }
   };
 
   // Button to leave queue. Now links the props.url.query
+  // if willUnmount, then the component will already be unMounted automatically
+  // this covers the case that this function is called when the user is already
+  // leaving the room. Therefore, we do not need to perform any routing.
   leaveMusicQ = async () => {
     const { access_token, isAdmin } = this.props.url.query;
     // Delete this collection ONLY if user is the admin of the MusicQ and
@@ -137,11 +206,9 @@ class App extends Component {
           collection: this.state.collection
         })
       });
-      // sleep to show admin that you are deleting the queue. This isn't
-      // required to be here. But it makes more sense in terms of user experience
-      await this.sleep(4000);
     }
-    // Go back to the rooms screen
+
+    // push user back to the Rooms page
     Router.push({
       pathname: "/Rooms",
       query: {
@@ -150,33 +217,25 @@ class App extends Component {
     });
   };
 
-  // sleep timer used when deleting the MusicQ
-  sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if (new Date().getTime() - start > milliseconds) {
-        break;
-      }
-    }
-  }
-
   render() {
     const isAdmin = this.props.url.query.isAdmin;
+    const { user } = this.props;
     // buttonMessage represents the message on the button
     // located at the top right corner of the corner of the screen
-    let buttonMessage = "Leave MusicQ";
+    let leaveQueueButtonMessage = "Leave MusicQ";
     if (isAdmin) {
-      buttonMessage = "Delete MusicQ";
+      leaveQueueButtonMessage = "Delete MusicQ";
     }
     return (
       <div className="App">
-        <Layout>
+        <Layout access_token={this.props.url.query.access_token}>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>
               <Database
                 collection={this.state.collection}
                 access_token={this.props.url.query.access_token}
+                userID={user.id}
               />
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
@@ -194,13 +253,14 @@ class App extends Component {
                     <button
                       type="submit"
                       className="form-control btn btn-outline-success"
+                      onClick={this.renderSearchResults}
                     >
                       Search
                     </button>
                   </div>
                 </form>
               </div>
-              <div className="row mt-5">{this.renderSearchResults()}</div>
+              <div className="row mt-5">{this.state.results}</div>
             </div>
           )}
 
@@ -222,7 +282,7 @@ class App extends Component {
           }}
           onClick={this.leaveMusicQ}
         >
-          {buttonMessage}
+          {leaveQueueButtonMessage}
         </button>
         <RoomCode roomKey={this.props.url.query.roomKey} />
       </div>

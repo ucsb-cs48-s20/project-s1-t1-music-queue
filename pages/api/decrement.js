@@ -12,14 +12,29 @@ async function decrementSong(req, res) {
       message: "song was not found"
     };
   }
+
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
   const users = client.collection(song.collection + "");
 
+  // let doc = await users.find({ trackID: song.trackID });
+  // console.log(doc);
+  // upvoteArr = doc.upvoteArr;
+  // downvoteArr = doc.downvoteArr;
+  // console.log(upvoteArr);
+  // console.log(downvoteArr);
+
+  // var index = array.indexOf(song.userID);
+  // if (index !== -1) array.splice(index, 1);
+
   // find document with song name and decrement the score
   const result = await users.findOneAndUpdate(
-    { name: song.name },
-    { $inc: { score: -1 } }
+    { trackID: song.trackID },
+    {
+      $inc: { score: -1 },
+      $pull: { upvote: { $in: [song.userID] } }, // pull userID from upvoteArray
+      $push: { downvote: song.userID }
+    }
   );
 
   res.statusCode = 200;

@@ -18,12 +18,15 @@ function Database(props) {
     initialData: {
       result: [
         {
+          key: "FETCHING DATA ... ",
           name: "FETCHING DATA ... ",
           trackID: "FETCHING DATA ... ",
           score: "FETCHING DATA ... ",
           rank: 0,
           img: "",
-          collection: "loading"
+          collection: "loading",
+          upvote: ["FETCHING DATA ... "],
+          downvote: ["FETCHING DATA ... "]
         }
       ]
     }
@@ -46,6 +49,7 @@ function Database(props) {
           collection={props.collection}
           mutate={async () => await mutate()}
           access_token={props.access_token}
+          userID={props.userID}
         />
       )}
     </div>
