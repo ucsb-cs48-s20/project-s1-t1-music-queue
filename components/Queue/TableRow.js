@@ -73,6 +73,7 @@ export default function TableRow(props) {
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
 
+  console.log(props.trackID);
   console.log(props.isDownvote);
   console.log(props.isUpvote);
 
@@ -136,10 +137,10 @@ export default function TableRow(props) {
             onChange={() => {
               if (score > 0) {
                 setScore(score - 1);
-                setDownvoteState("downvote_selected");
-                setUpvoteState("label");
                 decrement();
               }
+              setDownvoteState("downvote_selected");
+              setUpvoteState("label");
             }}
             checked={props.isDownvote ? "checked" : ""}
           />
