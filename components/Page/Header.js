@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Icon from "./Icon";
 
-const Layout = props => (
+const Header = props => (
   <div>
-
     {/*imports css from bootstrap */}
     <div>
     <Head>
@@ -19,6 +18,14 @@ const Layout = props => (
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
+      <script src="https://sdk.scdn.co/spotify-player.js"></script>
+      <script>
+        {/* window.onSpotifyWebPlaybackSDKReady = () =>{" "}
+        {
+          // You can now initialize Spotify.Player and use the SDK
+        }
+        ; */}
+      </script>
     </Head>
   </div>
     {/* Icon renders MusicQ icon */}

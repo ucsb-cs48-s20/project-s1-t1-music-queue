@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import Frame from "./Frame";
 import "../style.css";
+import SpotifyPlayer from "react-spotify-web-playback";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
@@ -14,6 +15,19 @@ export default function TableRow(props) {
     setScore(props.score);
   }, [props.score]);
 
+  // on intial load. Check if the user had previouly voted on this
+  // song. If the user has upvoted or downvoted in the past, these changes
+  // are reflected here
+  useEffect(() => {
+    if (props.isUpvote) {
+      setUpvoteState("upvote_selected");
+      setDownvoteState("label");
+    } else if (props.isDownvote) {
+      setDownvoteState("downvote_selected");
+      setUpvoteState("label");
+    }
+  }, []);
+
   // handles changes when upvoting score of each of song dynamically
   const increment = useCallback(
     async event => {
@@ -24,8 +38,9 @@ export default function TableRow(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name,
-          collection: props.collection
+          trackID: props.trackID,
+          collection: props.collection,
+          userID: props.userID
         })
       });
       // forces a call to the hook useSWR
@@ -44,8 +59,9 @@ export default function TableRow(props) {
         },
         // the body of this song is built from state
         body: JSON.stringify({
-          name: props.name,
-          collection: props.collection
+          trackID: props.trackID,
+          collection: props.collection,
+          userID: props.userID
         })
       });
       // forces a call to the hook useSWR
@@ -56,70 +72,87 @@ export default function TableRow(props) {
 
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
+
+  console.log(props.trackID);
+  console.log(props.isDownvote);
+  console.log(props.isUpvote);
+
   return (
     <tr>
-      {/* output name and score of song*/}
+      {/* output name*/}
       {props.rank == 0 ? (
         <td>
-          <Frame trackID={props.trackID} />
+          <SpotifyPlayer
+            token={props.access_token}
+            uris={["spotify:track:" + props.trackID]}
+          />
+          {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
         </td>
       ) : (
         <td>
-          <span>
-            <h3>{props.name}</h3>{" "}
+          <h3>
+            {props.name}
+            &emsp;
             <img
               src={props.img}
               className="figure-img img-fluid rounded"
               alt={props.name}
               style={{ height: 100, width: 100 }}
             />{" "}
-          </span>
+          </h3>{" "}
         </td>
       )}
-
+      {/* output score */}
       <td>{score}</td>
+
       <td>
         {/* radio button to upvote*/}
-        <input
-          type="radio"
-          id={upvote_label}
-          name={props.trackID}
-          onChange={() => {
-            increment();
-            setUpvoteState("upvote_selected");
-            setDownvoteState("label");
-          }}
-        />
-        <label className={upvoteState} id={upvote_label} htmlFor={upvote_label}>
-          &uarr;
-        </label>
+        <div>
+          <input
+            type="radio"
+            id={upvote_label}
+            name={props.trackID}
+            onChange={() => {
+              setScore(score + 1);
+              increment();
+              setUpvoteState("upvote_selected");
+              setDownvoteState("label");
+            }}
+            checked={props.isUpvote ? "checked" : ""}
+          />
+          <label
+            className={upvoteState}
+            id={upvote_label}
+            htmlFor={upvote_label}
+          >
+            &uarr;
+          </label>
+        </div>
         {/* radio button to downvote. Score be < 0*/}
-        <input
-          type="radio"
-          id={downvote_label}
-          name={props.trackID}
-          onChange={() => {
-            if (score > 0) {
-              setScore(score - 1);
+        <div>
+          <input
+            type="radio"
+            id={downvote_label}
+            name={props.trackID}
+            onChange={() => {
+              if (score > 0) {
+                setScore(score - 1);
+                decrement();
+              }
               setDownvoteState("downvote_selected");
               setUpvoteState("label");
-              decrement();
-            }
-          }}
-        />
-        <label
-          className={downvoteState}
-          id={downvote_label}
-          htmlFor={downvote_label}
-        >
-          &darr;
-        </label>
+            }}
+            checked={props.isDownvote ? "checked" : ""}
+          />
+          <label
+            className={downvoteState}
+            id={downvote_label}
+            htmlFor={downvote_label}
+          >
+            &darr;
+          </label>
+        </div>
       </td>
     </tr>
   );
 }
-
-/*
-
-
-*/

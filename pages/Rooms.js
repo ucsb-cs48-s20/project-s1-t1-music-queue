@@ -10,7 +10,7 @@ class Rooms extends React.Component {
     this.state = {
       access_token: "",
       roomKey: 0,
-      isLoadingQ: false
+      isLoadingQ: false,
     };
     this.createRoom = this.createRoom.bind(this);
   }
@@ -32,19 +32,23 @@ class Rooms extends React.Component {
     await fetch("/api/makeRoom", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       // the body of this song is built from state
       body: JSON.stringify({
-        name: roomKey
-      })
+        name: roomKey,
+      }),
     });
 
     // push to the new MusicQ
     const { access_token } = this.state;
     Router.push({
       pathname: "/App",
-      query: { roomKey: roomKey, access_token: access_token, isAdmin: true }
+      query: {
+        roomKey: roomKey,
+        access_token: access_token,
+        isAdmin: Math.floor(Math.random() * 10000),
+      },
     });
   }
 
@@ -54,7 +58,7 @@ class Rooms extends React.Component {
     const { access_token } = this.state;
     Router.push({
       pathname: "/JoinRoom",
-      query: { access_token }
+      query: { access_token },
     });
   }
 
@@ -65,13 +69,12 @@ class Rooms extends React.Component {
       fontSize: "25px",
       transition: "all 0.25s ease",
       marginLeft: 50,
-      marginRight: 50
+      marginRight: 50,
     };
     return (
-      
-        <div className="Login" style={{ textAlign: "center" }}>
-          <Layout>
-          <header className="Login-header">
+      <div className='Login' style={{ textAlign: "center" }}>
+        <Layout>
+          <header className='Login-header'>
             <button
               onClick={() => {
                 this.createRoom(event);
@@ -92,9 +95,9 @@ class Rooms extends React.Component {
             </button>
           </header>
           {this.state.isLoadingQ && <h1> Creating Your MusicQ ... </h1>}
-          </Layout>
-          <Logout/>
-        </div>
+        </Layout>
+        <Logout />
+      </div>
     );
   }
 }

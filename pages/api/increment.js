@@ -16,10 +16,14 @@ async function incrementSong(req, res) {
   const client = await initDatabase();
   const users = client.collection(song.collection + "");
 
-  // find document with song name and decrement the score
+  // find document with song name and increment the score
   const result = await users.findOneAndUpdate(
-    { name: song.name },
-    { $inc: { score: 1 } }
+    { trackID: song.trackID },
+    {
+      $inc: { score: 1 },
+      $push: { upvote: song.userID },
+      $pull: { downvote: { $in: [song.userID] } } // // pull userID from downvoteArray
+    }
   );
 
   res.statusCode = 200;

@@ -21,7 +21,6 @@ class RoomCode extends React.Component {
   }
 
   render() {
-    console.log(this.state.roomKey);
     return (
       <div style={{ position: "absolute", top: 20, left: 20, color: "white"}}>
         <h1>MusicQ Code: {this.state.roomKey}</h1>
