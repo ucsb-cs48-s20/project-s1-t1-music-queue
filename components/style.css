@@ -1,6 +1,11 @@
 /*
  upvote and downvote button css from w3schools.com
 */
+.table{
+  background-color: #232423;
+  color: #fafffb
+}
+
 
 .button_upvote {
   display: inline-block;

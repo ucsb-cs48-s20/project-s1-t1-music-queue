@@ -49,7 +49,7 @@ function JoinRoom() {
   );
 
   return (
-    <div>
+    <div className = "login">
     <Layout>
       <p id="errorMsg" style={{ display: "none" }}>
         Wrong Key, please enter a new Key

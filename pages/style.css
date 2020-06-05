@@ -7,6 +7,7 @@
   margin-bottom: 50px;
 }
 
+
 /*
 Styling for leaving Queue button. Moved to inline styling. Double check
 this issue using storybook
@@ -39,12 +40,19 @@ Styling for Closed.js
   width: 15%;
 }
 
-/* Styling for submit button css from w3schools */
+html{
+  background-color: rgb(46, 48, 46);
+}
 
+.login{
+  background-color: rgb(46, 48, 46);
+}
+
+/* Styling for submit button css from w3schools */
 .button {
   display: inline-block;
   border-radius: 4px;
-  background-color: lightblue;
+  background-color: rgb(154, 212, 147);
   border: none;
   color: #ffffff;
   text-align: center;
@@ -85,5 +93,5 @@ Styling for Closed.js
 {
   display:none;
   text-align: center;
-  color: lightcoral;
+  color: rgb(218, 160, 160);
 }

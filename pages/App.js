@@ -167,7 +167,7 @@ class App extends Component {
       buttonMessage = "Delete MusicQ";
     }
     return (
-      <div className="App">
+      <div className="App login">
         <Layout>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (

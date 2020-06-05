@@ -78,7 +78,7 @@ function Table(props) {
         <div>
           <table>
             <tbody>
-              <tr>
+              <tr className = "table">
                 <th>Song</th>
                 <th>Score</th>
                 <th>Vote</th>

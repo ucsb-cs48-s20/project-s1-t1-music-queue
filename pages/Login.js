@@ -54,7 +54,6 @@ class Login extends Component {
 
   render() {
     const styles = {
-      border: "0.2em solid black",
       textAlign: "center",
       fontSize: "25px",
       transition: "all 0.25s ease"
@@ -65,8 +64,8 @@ class Login extends Component {
     const { access_token } = this.state;
 
     return (
-      <Layout>
-        <div className="Login" style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", backgroundColor: "rgb(46, 48, 46)"}}>
+          <Layout>
           <br />
           <br />
           <header className="Login-header">
@@ -75,15 +74,16 @@ class Login extends Component {
                 onClick={() => {
                   this.makeSpotifyCall(event);
                 }}
-                className="btn btn--Login-link"
+                className="btn btn-outline-success"
                 style={styles}
               >
                 Login to Spotify
               </button>
             }
           </header>
+          </Layout>
         </div>
-      </Layout>
+      
     );
   }
 }

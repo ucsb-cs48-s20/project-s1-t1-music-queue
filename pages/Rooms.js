@@ -69,7 +69,7 @@ class Rooms extends React.Component {
     };
     return (
       
-        <div className="Login" style={{ textAlign: "center" }}>
+        <div className="login" style={{ textAlign: "center" }}>
           <Layout>
           <header className="Login-header">
             <button

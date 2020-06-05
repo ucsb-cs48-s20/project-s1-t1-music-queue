@@ -4,7 +4,7 @@ import Login from "./Login";
 
 function Homepage() {
   return (
-    <div>
+    <div style = {{backgroundColor: "#232423"}}>
       <Login />
     </div>
   );
