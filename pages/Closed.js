@@ -19,7 +19,6 @@ class Closed extends React.Component {
 
   handleClick() {
     const { access_token } = this.state;
-    console.log("ACCESS_TOKEN " + access_token);
     Router.push({
       pathname: "/Rooms",
       query: { access_token }

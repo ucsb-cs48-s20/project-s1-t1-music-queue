@@ -29,7 +29,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
+            injectCss(link, link.href.split("?")[0] + "?unix=1591298387107");
+=======
             injectCss(link, link.href.split("?")[0] + "?unix=1591129040101");
+>>>>>>> master
           });
       }
     }
@@ -66,7 +70,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
+            injectCss(link, link.href.split("?")[0] + "?unix=1591298394796");
+=======
             injectCss(link, link.href.split("?")[0] + "?unix=1591130017927");
+>>>>>>> master
           });
       }
     }
