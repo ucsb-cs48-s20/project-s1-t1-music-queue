@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import Layout from "../components/Page/Layout";
+import Layout from "../components/Layout";
 import Results from "../components/Search/Results";
 import Database from "../components/Queue/Database";
 import Loading from "../components/Page/Loading";
@@ -287,7 +287,7 @@ class App extends Component {
   }
 }
 
-App.getInitialProps = async function(context) {
+App.getInitialProps = async function (context) {
   const { access_token } = context.query;
   const res = await fetch(spotifyProfileURL + access_token);
   const user = await res.json();
