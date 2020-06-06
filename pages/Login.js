@@ -64,7 +64,7 @@ class Login extends Component {
     const { access_token } = this.state;
 
     return (
-        <div style={{ textAlign: "center", backgroundColor: "rgb(46, 48, 46)"}}>
+        <div className = "login" style={{ textAlign: "center"}}>
           <Layout>
           <br />
           <br />

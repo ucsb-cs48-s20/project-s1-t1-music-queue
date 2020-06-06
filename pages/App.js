@@ -192,6 +192,7 @@ class App extends Component {
                     <button
                       type="submit"
                       className="form-control btn btn-outline-success"
+                      //className = "btn btn-outline-success"
                     >
                       Search
                     </button>
@@ -207,12 +208,12 @@ class App extends Component {
             <Loading message={"Deleting MusicQ ... "} />
           )}
         </Layout>
-        <button
+        <button className = "btn btn-outline-success"
           style={{
             padding: 16,
             display: "block",
-            backgroundColor: "lightcoral",
-            color: "white",
+            //backgroundColor: "lightcoral",
+            //color: "white",
             textAlign: "center",
             position: "absolute",
             top: 20,

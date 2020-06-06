@@ -11,12 +11,12 @@ function Logout()
     };
 
 return(
-    <button
+    <button className = "btn btn-outline-success"
           style={{
             padding: 16,
             display: "block",
-            backgroundColor: "lightcoral",
-            color: "white",
+            // backgroundColor: "lightcoral",
+            // color: "white",
             textAlign: "center",
             position: "absolute",
             top: 20,

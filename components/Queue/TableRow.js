@@ -77,7 +77,7 @@ export default function TableRow(props) {
         </td>
       )}
 
-      <td>{score}</td>
+      <td style = {{color: "white"}}>{score}</td>
       <td>
         {/* radio button to upvote*/}
         <input

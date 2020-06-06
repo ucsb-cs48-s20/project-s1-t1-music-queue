@@ -4,7 +4,8 @@ import Login from "./Login";
 
 function Homepage() {
   return (
-    <div style = {{backgroundColor: "#232423"}}>
+    // <div style = {{backgroundColor: "#232423"}}>
+    <div>
       <Login />
     </div>
   );

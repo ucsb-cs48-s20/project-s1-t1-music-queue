@@ -6,6 +6,11 @@
   color: #fafffb
 }
 
+h1{
+  color: white;
+  font-size: 25px;
+
+}
 
 .button_upvote {
   display: inline-block;
@@ -52,6 +57,8 @@ input[type="radio"] {
   display: none;
 }
 
+
+
 .label {
   display: inline-block;
   padding: 3px;
@@ -71,6 +78,10 @@ input[type="radio"] {
   width: 10em;
   text-align: center;
 }
+.upvote_selected:hover span:after{
+  background-color: #0e0e0d
+}
+
 
 .downvote_selected {
   display: inline-block;
@@ -142,10 +153,10 @@ th {
   width: 25%;
 }
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #52524c;
 }
 tr:hover {
-  background-color: #ffff99;
+  background-color: #52524c;
 }
 
 /*
