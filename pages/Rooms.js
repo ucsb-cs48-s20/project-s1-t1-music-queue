@@ -1,8 +1,8 @@
 import React from "react";
 import Router from "next/router";
-import Layout from "../components/Page/Layout";
+import Layout from "../components/Layout";
 import Logout from "../components/Logout";
-import {getAccessToken} from "../utils/getAccessToken"
+import { getAccessToken } from "../utils/getAccessToken";
 
 class Rooms extends React.Component {
   constructor(props) {
@@ -10,20 +10,14 @@ class Rooms extends React.Component {
     this.state = {
       access_token: "",
       roomKey: 0,
-      isLoadingQ: false,
+      isLoadingQ: false
     };
     this.createRoom = this.createRoom.bind(this);
   }
 
   componentDidMount = () => {
-<<<<<<< HEAD
-    let url = window.location.href;
-    if (url.indexOf("_token") > -1) {
-      let access_token = url.split("_token=")[1].split("&")[0].trim();
-=======
-    let access_token = getAccessToken()
->>>>>>> master
-      this.setState({ access_token });
+    let access_token = getAccessToken();
+    this.setState({ access_token });
   };
 
   // creates a MusicQ (a collection in the MongoDB database) and assigns
@@ -38,12 +32,12 @@ class Rooms extends React.Component {
     await fetch("/api/makeRoom", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       // the body of this song is built from state
       body: JSON.stringify({
-        name: roomKey,
-      }),
+        name: roomKey
+      })
     });
 
     // push to the new MusicQ
@@ -53,8 +47,8 @@ class Rooms extends React.Component {
       query: {
         roomKey: roomKey,
         access_token: access_token,
-        isAdmin: Math.floor(Math.random() * 10000),
-      },
+        isAdmin: Math.floor(Math.random() * 10000)
+      }
     });
   }
 
@@ -64,7 +58,7 @@ class Rooms extends React.Component {
     const { access_token } = this.state;
     Router.push({
       pathname: "/JoinRoom",
-      query: { access_token },
+      query: { access_token }
     });
   }
 
@@ -75,17 +69,17 @@ class Rooms extends React.Component {
       fontSize: "25px",
       transition: "all 0.25s ease",
       marginLeft: 50,
-      marginRight: 50,
+      marginRight: 50
     };
     return (
-      <div className='Login' style={{ textAlign: "center" }}>
+      <div className="Login" style={{ textAlign: "center" }}>
         <Layout>
-          <header className='Login-header'>
+          <header className="Login-header">
             <button
               onClick={() => {
                 this.createRoom(event);
               }}
-              className='btn btn--Login-link'
+              className="btn btn--Login-link"
               style={styles}
             >
               Create a MusiqQ
@@ -94,7 +88,7 @@ class Rooms extends React.Component {
               onClick={() => {
                 this.joinRoom(event);
               }}
-              className='btn btn--Login-link'
+              className="btn btn--Login-link"
               style={styles}
             >
               Join a MusicQ
