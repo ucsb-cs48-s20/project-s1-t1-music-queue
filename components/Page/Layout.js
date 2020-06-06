@@ -38,4 +38,4 @@ const Layout = props => (
   </div>
 );
 
-export default Header;
+export default Layout;

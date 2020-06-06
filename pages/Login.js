@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Router from "next/router";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import config from "../utils/config";
 import { getAccessToken } from "../utils/getAccessToken";
 

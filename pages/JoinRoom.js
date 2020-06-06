@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";

@@ -1,6 +1,6 @@
 import React from "react";
 import Router from "next/router";
-import Layout from "../components/Layout";
+import Layout from "../components/Page/Layout";
 import Logout from "../components/Logout";
 import { getAccessToken } from "../utils/getAccessToken";
 
