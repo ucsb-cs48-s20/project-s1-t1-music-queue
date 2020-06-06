@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Router from "next/router";
-import Layout from "../components/Page/Layout";
+import Layout from "../components/Layout";
 import config from "../utils/config";
-import {getAccessToken} from "../utils/getAccessToken"
+import { getAccessToken } from "../utils/getAccessToken";
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes
@@ -29,8 +29,8 @@ class Login extends Component {
     };
   }
   componentDidMount = () => {
-    let access_token = getAccessToken()
-      this.setState({ access_token });
+    let access_token = getAccessToken();
+    this.setState({ access_token });
   };
 
   // The purpose of this addition is to make sure that after the user logs in,

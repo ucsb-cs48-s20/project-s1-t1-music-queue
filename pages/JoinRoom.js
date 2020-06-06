@@ -1,13 +1,12 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import useSWR from "swr";
-import Layout from "../components/Page/Layout";
+import Layout from "../components/Layout";
 import Logout from "../components/Logout";
 import { fetch } from "../utils/fetch";
 import Router from "next/router";
 import "./style.css";
-import {getAccessToken} from "../utils/getAccessToken"
-
+import { getAccessToken } from "../utils/getAccessToken";
 
 function JoinRoom() {
   const [roomKey, setRoomKey] = useState("");
@@ -20,9 +19,8 @@ function JoinRoom() {
 
   // save the access_token provided by Rooms.js
   useEffect(() => {
-      let access_token = getAccessToken()
-      setAccessToken(access_token);
-
+    let access_token = getAccessToken();
+    setAccessToken(access_token);
   });
 
   const handleJoin = useCallback(
@@ -50,33 +48,33 @@ function JoinRoom() {
 
   return (
     <div>
-    <Layout>
-      <p id="errorMsg" style={{ display: "none" }}>
-        Wrong Key, please enter a new Key
-      </p>
-      {/*gather 7-digit MusicQ code*/}
-      <div className="form-group" style={{ textAlign: "center" }}>
-        <input
-          className="keyInput"
-          type="text"
-          placeholder="enter 7-digit room key"
-          maxLength="7"
-          onChange={() => setRoomKey(event.target.value)}
-        />
-      </div>
-      {/*button to join MuiscQ*/}
-      <div className="form-group" style={{ textAlign: "center" }}>
-        <button
-          className="form-control btn btn-outline-success"
-          style={{ width: 200 }}
-          onClick={() => handleJoin()}
-        >
-          Join MusicQ
-        </button>
-      </div>
-      {/* <h1> {data} </h1> */}
-    </Layout>
-    <Logout/>
+      <Layout>
+        <p id="errorMsg" style={{ display: "none" }}>
+          Wrong Key, please enter a new Key
+        </p>
+        {/*gather 7-digit MusicQ code*/}
+        <div className="form-group" style={{ textAlign: "center" }}>
+          <input
+            className="keyInput"
+            type="text"
+            placeholder="enter 7-digit room key"
+            maxLength="7"
+            onChange={() => setRoomKey(event.target.value)}
+          />
+        </div>
+        {/*button to join MuiscQ*/}
+        <div className="form-group" style={{ textAlign: "center" }}>
+          <button
+            className="form-control btn btn-outline-success"
+            style={{ width: 200 }}
+            onClick={() => handleJoin()}
+          >
+            Join MusicQ
+          </button>
+        </div>
+        {/* <h1> {data} </h1> */}
+      </Layout>
+      <Logout />
     </div>
   );
 }

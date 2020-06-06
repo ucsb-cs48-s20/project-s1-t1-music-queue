@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
-import Frame from "./Frame";
 import "../style.css";
 import SpotifyPlayer from "react-spotify-web-playback";
 
