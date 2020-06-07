@@ -70,7 +70,7 @@ export default function TableRow(props) {
   );
 
   const deleteSong = useCallback(async event => {
-    await fetch("/api/delete", {
+    await fetch("/api/deleteSong", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
