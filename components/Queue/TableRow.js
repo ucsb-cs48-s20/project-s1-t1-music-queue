@@ -69,13 +69,24 @@ export default function TableRow(props) {
     [score]
   );
 
+  const deleteSong = useCallback(async event => {
+    await fetch("/api/delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        trackID: props.trackID,
+        collection: props.collection
+      })
+    });
+    // forces a call to the hook useSWR
+    props.mutate();
+  }, []);
+
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
-
-  console.log(props.trackID);
-  console.log(props.isDownvote);
-  console.log(props.isUpvote);
-
   return (
     <tr>
       {/* output name*/}
@@ -101,8 +112,12 @@ export default function TableRow(props) {
           </h3>{" "}
         </td>
       )}
-      {/* output score */}
-      <td>{score}</td>
+
+      {/* output required number of downvotes to stop playing topmost song*/}
+      {props.rank == 0 && <td>Downvotes to stop playing: {score}</td>}
+
+      {/* output just the score for everything but the playing song*/}
+      {props.rank != 0 && <td>{score}</td>}
 
       <td>
         {/* radio button to upvote*/}
@@ -152,6 +167,9 @@ export default function TableRow(props) {
           </label>
         </div>
       </td>
+      {props.rank == 0 && (
+        <button onClick={() => deleteSong()}> simulate delete </button>
+      )}
     </tr>
   );
 }
