@@ -11,7 +11,7 @@ function Logout()
     };
 
 return(
-    <button
+    <button className="btnLogout" 
           style={{
             padding: 16,
             display: "block",
