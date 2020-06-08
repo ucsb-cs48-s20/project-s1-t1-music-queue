@@ -72,14 +72,15 @@ class Rooms extends React.Component {
       marginRight: 50
     };
     return (
-      <div className="Login" style={{ textAlign: "center" }}>
-        <Layout>
+      
+        <div className= "login" style={{ textAlign: "center" }}>
+          <Layout>
           <header className="Login-header">
             <button
               onClick={() => {
                 this.createRoom(event);
               }}
-              className="btn btn--Login-link createBtn"
+              className="btn btn--Login-link createBtn btn-outline-success"
               style={styles}
             >
               Create a MusicQ
@@ -88,7 +89,7 @@ class Rooms extends React.Component {
               onClick={() => {
                 this.joinRoom(event);
               }}
-              className="btn btn--Login-link joinBtn"
+              className="btn btn--Login-link joinBtn btn-outline-success"
               style={styles}
             >
               Join a MusicQ

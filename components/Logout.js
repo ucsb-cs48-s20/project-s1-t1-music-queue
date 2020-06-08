@@ -11,12 +11,10 @@ function Logout()
     };
 
 return(
-    <button className="btnLogout" 
+    <button className = "btn btn-outline-success btnLogout"
           style={{
             padding: 16,
             display: "block",
-            backgroundColor: "lightcoral",
-            color: "white",
             textAlign: "center",
             position: "absolute",
             top: 20,

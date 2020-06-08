@@ -224,7 +224,7 @@ class App extends Component {
       leaveQueueButtonMessage = "Delete MusicQ";
     }
     return (
-      <div className="App">
+      <div className="App login">
         <Layout access_token={this.props.url.query.access_token}>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
@@ -266,12 +266,12 @@ class App extends Component {
             <Loading message={"Deleting MusicQ ... "} />
           )}
         </Layout>
-        <button
+        <button className = "btn btn-outline-success"
           style={{
             padding: 16,
             display: "block",
-            backgroundColor: "lightcoral",
-            color: "white",
+            //backgroundColor: "lightcoral",
+            //color: "white",
             textAlign: "center",
             position: "absolute",
             top: 20,

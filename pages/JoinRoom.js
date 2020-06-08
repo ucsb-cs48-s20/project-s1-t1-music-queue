@@ -47,34 +47,34 @@ function JoinRoom() {
   );
 
   return (
-    <div>
-      <Layout>
-        <p id="errorMsg" style={{ display: "none" }}>
-          Wrong Key, please enter a new Key
-        </p>
-        {/*gather 7-digit MusicQ code*/}
-        <div className="form-group" style={{ textAlign: "center" }}>
-          <input
-            className="keyInput"
-            type="text"
-            placeholder="enter 7-digit room key"
-            maxLength="7"
-            onChange={() => setRoomKey(event.target.value)}
-          />
-        </div>
-        {/*button to join MuiscQ*/}
-        <div className="form-group" style={{ textAlign: "center" }}>
-          <button
-            className="form-control btn btn-outline-success"
-            style={{ width: 200 }}
-            onClick={() => handleJoin()}
-          >
-            Join MusicQ
-          </button>
-        </div>
-        {/* <h1> {data} </h1> */}
-      </Layout>
-      <Logout />
+    <div className = "login">
+    <Layout>
+      <p id="errorMsg" style={{ display: "none" }}>
+        Wrong Key, please enter a new Key
+      </p>
+      {/*gather 7-digit MusicQ code*/}
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <input
+          className="keyInput"
+          type="text"
+          placeholder="enter 7-digit room key"
+          maxLength="7"
+          onChange={() => setRoomKey(event.target.value)}
+        />
+      </div>
+      {/*button to join MuiscQ*/}
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <button
+          className="form-control btn btn-outline-success"
+          style={{ width: 200 }}
+          onClick={() => handleJoin()}
+        >
+          Join MusicQ
+        </button>
+      </div>
+      {/* <h1> {data} </h1> */}
+    </Layout>
+    <Logout/>
     </div>
   );
 }
