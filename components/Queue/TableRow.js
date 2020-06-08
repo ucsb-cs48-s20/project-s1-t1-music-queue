@@ -87,6 +87,7 @@ export default function TableRow(props) {
 
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
+
   return (
     <tr>
       {/* output name*/}
@@ -127,10 +128,12 @@ export default function TableRow(props) {
             id={upvote_label}
             name={props.trackID}
             onChange={() => {
-              setScore(score + 1);
-              increment();
-              setUpvoteState("upvote_selected");
-              setDownvoteState("label");
+              if (!props.isUpvote) {
+                setScore(score + 1);
+                increment();
+                setUpvoteState("upvote_selected");
+                setDownvoteState("label");
+              }
             }}
             checked={props.isUpvote ? "checked" : ""}
           />
@@ -149,12 +152,14 @@ export default function TableRow(props) {
             id={downvote_label}
             name={props.trackID}
             onChange={() => {
-              if (score > 0) {
-                setScore(score - 1);
-                decrement();
+              if (!props.isDownvote) {
+                if (score > 0) {
+                  setScore(score - 1);
+                  decrement();
+                }
+                setDownvoteState("downvote_selected");
+                setUpvoteState("label");
               }
-              setDownvoteState("downvote_selected");
-              setUpvoteState("label");
             }}
             checked={props.isDownvote ? "checked" : ""}
           />
@@ -167,9 +172,10 @@ export default function TableRow(props) {
           </label>
         </div>
       </td>
-      {props.rank == 0 && (
-        <button onClick={() => deleteSong()}> simulate delete </button>
-      )}
+
+      {/* {props.rank == 0 && (
+       <td> <button onClick={() => deleteSong()}> simulate delete </button> </td>
+      )} */}
     </tr>
   );
 }
