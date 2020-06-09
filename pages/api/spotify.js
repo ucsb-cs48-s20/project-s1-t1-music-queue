@@ -12,10 +12,7 @@ export default async function (req, res) {
 
   const body = {
     // req.body.trackID is the trackID of the song we now want to play
-    uris: [
-      "spotify:track:" + req.body.trackID,
-      "spotify:track:" + req.body.trackID
-    ]
+    uris: ["spotify:track:" + req.body.trackID]
   };
 
   const options = {
