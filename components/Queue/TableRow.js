@@ -88,15 +88,55 @@ export default function TableRow(props) {
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
 
+​
+const changeTracks = useCallback(async event => {
+  console.log("magicc button clciked");
+  //setTracks(["spotify:track:7Jg80rSKiEVhmGE8sVEYf2", ""]);
+​  console.log("trackID:" + props.trackID);
+  await fetch("/api/spotify", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    // the body of this song is built from state
+    body: JSON.stringify({
+      access_token: props.access_token,
+      trackID: props.trackID
+    })
+  });
+​
+  // call to delete the song from the database
+​
+  // Spotify Player
+});
+
+  
+  if (props.rank == 0)
+  {
+    changeTracks();
+   
+  }
+
+
   return (
     <tr>
       {/* output name*/}
       {props.rank == 0 ? (
         <td>
-          <SpotifyPlayer
+          {/* <SpotifyPlayer
             token={props.access_token}
             uris={["spotify:track:" + props.trackID]}
-          />
+          /> */}
+          <h3>
+            {props.name}
+            &emsp;
+            <img
+              src={props.img}
+              className="figure-img img-fluid rounded"
+              alt={props.name}
+              style={{ height: 100, width: 100 }}
+            />{" "}
+          </h3>{" "}
           {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
         </td>
       ) : (

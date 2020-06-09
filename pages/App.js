@@ -7,6 +7,7 @@ import Database from "../components/Queue/Database";
 import Loading from "../components/Page/Loading";
 import "./style.css";
 import RoomCode from "../components/Page/RoomCode";
+import SpotifyPlayer from "react-spotify-web-playback";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?q=";
 const spotifyProfileURL = "https://api.spotify.com/v1/me?access_token=";
@@ -226,6 +227,12 @@ class App extends Component {
     return (
       <div className="App">
         <Layout access_token={this.props.url.query.access_token}>
+        <SpotifyPlayer
+        token={this.props.url.query.access_token}
+        // uris={tracks}
+        autoplay={true}
+        play={true}
+      />
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>
