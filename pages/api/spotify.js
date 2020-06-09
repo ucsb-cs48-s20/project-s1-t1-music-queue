@@ -15,7 +15,7 @@ export default async function (req, res) {
     // req.query.id is the trackID of the song we now want to play
     uris: [
       "spotify:track:" + req.body.trackID,
-      "spotify:track:" + req.body.trackID
+      ""
     ]
     // offset: {
     //     position: 3,

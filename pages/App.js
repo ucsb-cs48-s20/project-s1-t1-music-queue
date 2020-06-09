@@ -233,10 +233,9 @@ class App extends Component {
         <Layout access_token={this.props.url.query.access_token}>
           <SpotifyPlayer
             token={this.props.url.query.access_token}
-            uris={[]}
+            uris={"spotify:playlist:0NUtHPgeWm833NU14csQZi"}
             autoplay={true}
             play={true}
-            callback={this.test}
           />
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
