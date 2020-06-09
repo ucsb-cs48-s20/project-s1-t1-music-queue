@@ -105,7 +105,7 @@ function Table(props) {
       {!loading && (
         <div>
           <table>
-            <tbody>
+            <tbody> 
               <tr className = "table">
                 <th>Song</th>
                 <th>Score</th>
