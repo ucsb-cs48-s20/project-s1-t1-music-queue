@@ -1,6 +1,7 @@
 import { fetch } from "../../utils/fetch";
 
-export default async function(req, res) {
+export default async function (req, res) {
+  console.log(req.body.trackID);
   // authCode is the access token
   const authCode = req.body.access_token;
 

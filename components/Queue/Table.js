@@ -1,11 +1,13 @@
 import React from "react";
 import useSWR from "swr";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
 import Router from "next/router";
 import Loading from "../Page/Loading";
 import "../style.css";
+// import SpotifyWebPlayer from "react-spotify-web-playback";
+import SpotifyPlayer from "react-spotify-web-playback";
 
 function Table(props) {
   const { data, mutate } = useSWR(
@@ -29,6 +31,8 @@ function Table(props) {
         }
       });
     }
+
+    // now we want to see if we should update the SDK
   }, [data]);
 
   // room is not to be left, instead, the room is to be populated
@@ -74,7 +78,30 @@ function Table(props) {
     }
   }
 
+  // changeSDK exisits in order to change the SDK playback
+  const changeSDK = useCallback(async event => {
+    await fetch("/api/spotify", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        access_token: props.access_token,
+        trackID: props.trackID
+      })
+    });
+  });
+
+  // update the SDK with the topmost song by calling the correct web endpoint
+  // specified by spotify documentation
+  if (props.rank == 0) {
+    console.log("updating SDK ...");
+    changeSDK();
+  }
+
   const tableComponents = songArr.map((item, index) => {
+    // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (
       <TableRow
         key={item.key}

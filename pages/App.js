@@ -215,6 +215,10 @@ class App extends Component {
     });
   };
 
+  test = state => {
+    console.log(state);
+  };
+
   render() {
     const isAdmin = this.props.url.query.isAdmin;
     const { user } = this.props;
@@ -227,12 +231,13 @@ class App extends Component {
     return (
       <div className="App">
         <Layout access_token={this.props.url.query.access_token}>
-        <SpotifyPlayer
-        token={this.props.url.query.access_token}
-        // uris={tracks}
-        autoplay={true}
-        play={true}
-      />
+          <SpotifyPlayer
+            token={this.props.url.query.access_token}
+            uris={[]}
+            autoplay={true}
+            play={true}
+            callback={this.test}
+          />
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>

@@ -5,6 +5,7 @@ import SpotifyPlayer from "react-spotify-web-playback";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);
+  const [vote, updateVote] = useState("");
   const [upvoteState, setUpvoteState] = useState("label");
   const [downvoteState, setDownvoteState] = useState("label");
 
@@ -13,6 +14,27 @@ export default function TableRow(props) {
   useEffect(() => {
     setScore(props.score);
   }, [props.score]);
+
+  // when the user updates their vote. ONLY used for client-side changes
+  // and not the backend
+  useEffect(() => {
+    // user has upvoted
+    if (vote == "upvote") {
+      setScore(score + 1);
+      increment();
+      setUpvoteState("upvote_selected");
+      setDownvoteState("label");
+    }
+    // user has downvoted
+    else if (vote == "downvote") {
+      if (score > 0) {
+        setScore(score - 1);
+        decrement();
+      }
+      setDownvoteState("downvote_selected");
+      setUpvoteState("label");
+    }
+  }, [vote]);
 
   // on intial load. Check if the user had previouly voted on this
   // song. If the user has upvoted or downvoted in the past, these changes
@@ -51,6 +73,7 @@ export default function TableRow(props) {
   // handles changes when downvoting score of each of song dynamically
   const decrement = useCallback(
     async event => {
+      props.mutate();
       await fetch("/api/decrement", {
         method: "PUT",
         headers: {
@@ -85,44 +108,38 @@ export default function TableRow(props) {
     props.mutate();
   }, []);
 
-  const changeTracks = useCallback(async event => {
-    console.log("magicc button clciked");
-    //setTracks(["spotify:track:7Jg80rSKiEVhmGE8sVEYf2", ""]);
-    console.log(props.trackID);
-    await fetch("/api/spotify", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        access_token: props.access_token,
-        trackID: props.trackID
-      })
-    });
-    // call to delete the song from the database
-    // Spotify Player
-  },);
+  // update the SDK with the topmost song by calling the correct web endpoint
+  // specified by spotify documentation. The if condition inside useEffect
+  // avoids calling fetch when you don't need to
+  useEffect(() => {
+    // future: add additional conditions
+    if (props.rank == 0) {
+      fetch("/api/spotify", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // the body of this song is built from state
+        body: JSON.stringify({
+          access_token: props.access_token,
+          trackID: props.trackID
+        })
+      });
+    }
+  }, [props.rank]);
 
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
 
-   
-  if (props.rank == 0)
-  {
-    changeTracks();
-  }
-
-
   return (
     <tr>
       {/* output name*/}
-      {props.rank == 0 ? (
+      {/* {props.rank == 0 ? (
         <td>
-          {/* <SpotifyPlayer
+          <SpotifyPlayer
             token={props.access_token}
             uris={["spotify:track:" + props.trackID]}
-          /> */}
+          />
           <h3>
             {props.name}
             &emsp;
@@ -134,28 +151,24 @@ export default function TableRow(props) {
             />{" "}
           </h3>{" "}
           {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
-        </td>
-      ) : (
-        <td>
-          <h3>
-            {props.name}
-            &emsp;
-            <img
-              src={props.img}
-              className="figure-img img-fluid rounded"
-              alt={props.name}
-              style={{ height: 100, width: 100 }}
-            />{" "}
-          </h3>{" "}
-        </td>
-      )}
-
+      {/* </td>
+      ) : ( */}
+      <td>
+        <h3>
+          {props.name}
+          &emsp;
+          <img
+            src={props.img}
+            className="figure-img img-fluid rounded"
+            alt={props.name}
+            style={{ height: 100, width: 100 }}
+          />{" "}
+        </h3>{" "}
+      </td>
       {/* output required number of downvotes to stop playing topmost song*/}
       {props.rank == 0 && <td>Downvotes to stop playing: {score}</td>}
-
       {/* output just the score for everything but the playing song*/}
-      {props.rank != 0 && <td>{score}</td>}
-
+      {props.rank != 0 && <td>{props.score}</td>}
       <td>
         {/* radio button to upvote*/}
         <div>
@@ -164,12 +177,7 @@ export default function TableRow(props) {
             id={upvote_label}
             name={props.trackID}
             onChange={() => {
-              if (!props.isUpvote) {
-                setScore(score + 1);
-                increment();
-                setUpvoteState("upvote_selected");
-                setDownvoteState("label");
-              }
+              updateVote("upvote");
             }}
             checked={props.isUpvote ? "checked" : ""}
           />
@@ -188,14 +196,7 @@ export default function TableRow(props) {
             id={downvote_label}
             name={props.trackID}
             onChange={() => {
-              if (!props.isDownvote) {
-                if (score > 0) {
-                  setScore(score - 1);
-                  decrement();
-                }
-                setDownvoteState("downvote_selected");
-                setUpvoteState("label");
-              }
+              updateVote("downvote");
             }}
             checked={props.isDownvote ? "checked" : ""}
           />
@@ -208,7 +209,6 @@ export default function TableRow(props) {
           </label>
         </div>
       </td>
-
       {/* {props.rank == 0 && (
        <td> <button onClick={() => deleteSong()}> simulate delete </button> </td>
       )} */}
