@@ -43,9 +43,11 @@ export default function TableRow(props) {
     if (props.isUpvote) {
       setUpvoteState("upvote_selected");
       setDownvoteState("label");
+      document.getElementById(props.trackID + "upvote").checked = true;
     } else if (props.isDownvote) {
       setDownvoteState("downvote_selected");
       setUpvoteState("label");
+      document.getElementById(props.trackID + "downvote").checked = true;
     }
   }, []);
 
@@ -114,6 +116,7 @@ export default function TableRow(props) {
   useEffect(() => {
     // future: add additional conditions
     if (props.rank == 0) {
+      console.log("updating SDK with " + props.name);
       fetch("/api/spotify", {
         method: "PUT",
         headers: {
@@ -179,7 +182,6 @@ export default function TableRow(props) {
             onChange={() => {
               updateVote("upvote");
             }}
-            checked={props.isUpvote ? "checked" : ""}
           />
           <label
             className={upvoteState}
@@ -198,7 +200,6 @@ export default function TableRow(props) {
             onChange={() => {
               updateVote("downvote");
             }}
-            checked={props.isDownvote ? "checked" : ""}
           />
           <label
             className={downvoteState}

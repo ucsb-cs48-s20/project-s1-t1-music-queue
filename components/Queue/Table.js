@@ -78,27 +78,7 @@ function Table(props) {
     }
   }
 
-  // changeSDK exisits in order to change the SDK playback
-  const changeSDK = useCallback(async event => {
-    await fetch("/api/spotify", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // the body of this song is built from state
-      body: JSON.stringify({
-        access_token: props.access_token,
-        trackID: props.trackID
-      })
-    });
-  });
-
-  // update the SDK with the topmost song by calling the correct web endpoint
-  // specified by spotify documentation
-  if (props.rank == 0) {
-    console.log("updating SDK ...");
-    changeSDK();
-  }
+  
 
   const tableComponents = songArr.map((item, index) => {
     // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY

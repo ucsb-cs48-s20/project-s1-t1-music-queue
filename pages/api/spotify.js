@@ -1,7 +1,6 @@
 import { fetch } from "../../utils/fetch";
 
 export default async function (req, res) {
-  console.log(req.body.trackID);
   // authCode is the access token
   const authCode = req.body.access_token;
 
@@ -12,14 +11,11 @@ export default async function (req, res) {
   };
 
   const body = {
-    // req.query.id is the trackID of the song we now want to play
+    // req.body.trackID is the trackID of the song we now want to play
     uris: [
       "spotify:track:" + req.body.trackID,
-      ""
+      "spotify:track:" + req.body.trackID
     ]
-    // offset: {
-    //     position: 3,
-    // },
   };
 
   const options = {
@@ -34,6 +30,7 @@ export default async function (req, res) {
   );
 
   const output = { status: "Success" };
+  console.log(output);
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");

@@ -233,7 +233,7 @@ class App extends Component {
         <Layout access_token={this.props.url.query.access_token}>
           <SpotifyPlayer
             token={this.props.url.query.access_token}
-            uris={"spotify:playlist:0NUtHPgeWm833NU14csQZi"}
+            uris={["spotify:artist:3mvkWMe6swnknwscwvGCHO"]}
             autoplay={true}
             play={true}
           />
