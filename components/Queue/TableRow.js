@@ -85,36 +85,32 @@ export default function TableRow(props) {
     props.mutate();
   }, []);
 
+  const changeTracks = useCallback(async event => {
+    console.log("magicc button clciked");
+    //setTracks(["spotify:track:7Jg80rSKiEVhmGE8sVEYf2", ""]);
+    console.log(props.trackID);
+    await fetch("/api/spotify", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the body of this song is built from state
+      body: JSON.stringify({
+        access_token: props.access_token,
+        trackID: props.trackID
+      })
+    });
+    // call to delete the song from the database
+    // Spotify Player
+  },);
+
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
 
-​
-const changeTracks = useCallback(async event => {
-  console.log("magicc button clciked");
-  //setTracks(["spotify:track:7Jg80rSKiEVhmGE8sVEYf2", ""]);
-​  console.log("trackID:" + props.trackID);
-  await fetch("/api/spotify", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    // the body of this song is built from state
-    body: JSON.stringify({
-      access_token: props.access_token,
-      trackID: props.trackID
-    })
-  });
-​
-  // call to delete the song from the database
-​
-  // Spotify Player
-});
-
-  
+   
   if (props.rank == 0)
   {
     changeTracks();
-   
   }
 
 
