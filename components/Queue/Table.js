@@ -108,14 +108,13 @@ function Table(props) {
   });
 
   // checks whether it is the end of the song
-  const checkStatus = ((status) => {
-    console.log(status)
-    console.log(status.position)
+  const checkStatus = status => {
+    console.log(status);
+    console.log(status.position);
     if (status.position >= 99.9) {
-      console.log("end of song")
-      removeSong()
+      removeSong();
     }
-  });
+  };
 
   const removeSong = async () => {
     await fetch("/api/deleteSong", {

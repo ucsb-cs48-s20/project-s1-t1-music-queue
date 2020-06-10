@@ -5,9 +5,9 @@ import { reject } from "q";
 // handles the case where a dupicate song is attempted to be added
 export default async function (req, res) {
   const song = req.body.song;
-  const collection = req.body.collection
-  console.log(song)
-  console.log(collection)
+  const collection = req.body.collection;
+  console.log(song);
+  console.log(collection);
   // if the song passed is null
   // deal with this edge case
   if (!song) {
