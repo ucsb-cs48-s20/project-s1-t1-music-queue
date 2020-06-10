@@ -8,6 +8,7 @@ import Loading from "../Page/Loading";
 import "../style.css";
 // import SpotifyWebPlayer from "react-spotify-web-playback";
 import SpotifyPlayer from "@gmundewadi/react-spotify-web-playback";
+import { CHECKBOX_STATUS_INDETERMINATE } from "react-bootstrap-table-next";
 
 function Table(props) {
   const { data, mutate } = useSWR(
@@ -110,8 +111,10 @@ function Table(props) {
   // checks whether it is the end of the song
   const checkStatus = status => {
     console.log(status);
+    console.log(status.isPlaying)
     console.log(status.position);
-    if (status.position >= 99.9) {
+    status.needsUpdate = true;
+    if (status.position >= 99.9 && !status.isPlaying) {
       removeSong();
     }
   };
