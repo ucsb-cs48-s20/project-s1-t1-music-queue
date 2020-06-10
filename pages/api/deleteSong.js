@@ -4,7 +4,10 @@ import { reject } from "q";
 // async api endpoint to create a new song
 // handles the case where a dupicate song is attempted to be added
 export default async function (req, res) {
-  const song = req.body;
+  const song = req.body.song;
+  const collection = req.body.collection
+  console.log(song)
+  console.log(collection)
   // if the song passed is null
   // deal with this edge case
   if (!song) {
@@ -15,7 +18,7 @@ export default async function (req, res) {
   }
   // create MongoDB client as well as reference to MongoDB collection
   const client = await initDatabase();
-  const users = client.collection(song.collection + "");
+  const users = client.collection(collection + "");
 
   // delete the song from the database
   try {
