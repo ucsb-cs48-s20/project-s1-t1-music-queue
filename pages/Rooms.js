@@ -95,7 +95,7 @@ class Rooms extends React.Component {
               Join a MusicQ
             </button>
           </header>
-          {this.state.isLoadingQ && <h1> Creating Your MusicQ ... </h1>}
+          {this.state.isLoadingQ && <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
         </Layout>
         <Logout />
       </div>

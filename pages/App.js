@@ -262,8 +262,7 @@ class App extends Component {
           )}
 
           {/*If the queue is being deleted*/}
-          {this.state.isDeleting && (
-            <Loading message={"Deleting MusicQ ... "} />
+          {this.state.isDeleting && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
           )}
         </Layout>
         <button className = "btn btn-outline-success"

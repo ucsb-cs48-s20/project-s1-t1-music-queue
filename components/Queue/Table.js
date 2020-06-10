@@ -95,11 +95,8 @@ function Table(props) {
 
   return (
     <div>
-      {loading && (
-        <h1>
-          {" "}
-          <Loading message={"Loading Songs ... "} />
-        </h1>
+      {loading
+        && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       )}
 
       {!loading && (
