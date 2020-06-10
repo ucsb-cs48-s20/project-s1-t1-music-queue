@@ -86,8 +86,8 @@ function Table(props) {
     // save topmostSong trackID
     if (index == 0) {
       currentlyPlayingSong = item.trackID;
+      console.log(currentlyPlayingSong);
     }
-
     // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (
       <TableRow
@@ -115,7 +115,6 @@ function Table(props) {
           <Loading message={"Loading Songs ... "} />
         </h1>
       )}
-
       {!loading && (
         <div>
           <SpotifyPlayer
