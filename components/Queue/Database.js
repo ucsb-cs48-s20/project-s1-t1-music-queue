@@ -44,13 +44,15 @@ function Database(props) {
     <div>
       {/* Display current queue of music. Only after data has been correctly loaded into props.collection */}
       {props.collection !== "loading" && (
-        <Table
-          data={data}
-          collection={props.collection}
-          mutate={async () => await mutate()}
-          access_token={props.access_token}
-          userID={props.userID}
-        />
+        <div>
+          <Table
+            data={data}
+            collection={props.collection}
+            mutate={async () => await mutate()}
+            access_token={props.access_token}
+            userID={props.userID}
+          />
+        </div>
       )}
     </div>
   );

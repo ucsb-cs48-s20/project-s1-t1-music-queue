@@ -78,9 +78,16 @@ function Table(props) {
     }
   }
 
-  
+  // song that is currently playing. If there is no song currently playing,
+  // the trackID will be set to a default (TBA)
+  let currentlyPlayingSong = "";
 
   const tableComponents = songArr.map((item, index) => {
+    // save topmostSong trackID
+    if (index == 0) {
+      currentlyPlayingSong = item.trackID;
+    }
+
     // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (
       <TableRow
@@ -111,6 +118,12 @@ function Table(props) {
 
       {!loading && (
         <div>
+          <SpotifyPlayer
+            token={props.access_token}
+            uris={["spotify:track:" + currentlyPlayingSong, ""]}
+            autoplay={true}
+            play={true}
+          />
           <table>
             <tbody>
               <tr>

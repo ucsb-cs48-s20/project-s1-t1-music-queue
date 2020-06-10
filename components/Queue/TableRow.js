@@ -136,26 +136,6 @@ export default function TableRow(props) {
 
   return (
     <tr>
-      {/* output name*/}
-      {/* {props.rank == 0 ? (
-        <td>
-          <SpotifyPlayer
-            token={props.access_token}
-            uris={["spotify:track:" + props.trackID]}
-          />
-          <h3>
-            {props.name}
-            &emsp;
-            <img
-              src={props.img}
-              className="figure-img img-fluid rounded"
-              alt={props.name}
-              style={{ height: 100, width: 100 }}
-            />{" "}
-          </h3>{" "}
-          {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
-      {/* </td>
-      ) : ( */}
       <td>
         <h3>
           {props.name}
