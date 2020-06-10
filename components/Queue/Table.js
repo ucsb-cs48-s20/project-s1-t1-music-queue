@@ -88,6 +88,7 @@ function Table(props) {
       currentlyPlayingSong = item.trackID;
       console.log(currentlyPlayingSong);
     }
+
     // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (
       <TableRow
@@ -107,6 +108,30 @@ function Table(props) {
     );
   });
 
+  // checks whether it is the end of the song
+  const checkStatus = ((status) => {
+    console.log(status)
+    console.log(status.position)
+    if (status.position >= 99.9) {
+      console.log("end of song")
+      removeSong()
+    }
+  });
+
+  const removeSong = async () => {
+    await fetch("/api/deleteSong", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the value of this collection is built by its state variable
+      body: JSON.stringify({
+        song: songArr[0],
+        collection: props.collection
+      })
+    });
+  };
+
   return (
     <div>
       {loading && (
@@ -122,6 +147,7 @@ function Table(props) {
             uris={["spotify:track:" + currentlyPlayingSong, ""]}
             autoplay={true}
             play={true}
+            callback={checkStatus}
           />
           <table>
             <tbody>
