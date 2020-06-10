@@ -1,13 +1,13 @@
 import React from "react";
 import useSWR from "swr";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
 import Router from "next/router";
 import Loading from "../Page/Loading";
 import "../style.css";
 // import SpotifyWebPlayer from "react-spotify-web-playback";
-import SpotifyPlayer from "react-spotify-web-playback";
+import SpotifyPlayer from "@gmundewadi/react-spotify-web-playback";
 
 function Table(props) {
   const { data, mutate } = useSWR(
@@ -86,7 +86,6 @@ function Table(props) {
     // save topmostSong trackID
     if (index == 0) {
       currentlyPlayingSong = item.trackID;
-      console.log(currentlyPlayingSong);
     }
     // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (

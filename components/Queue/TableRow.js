@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { fetch } from "../../utils/fetch";
 import "../style.css";
-import SpotifyPlayer from "react-spotify-web-playback";
+import SpotifyPlayer from "@gmundewadi/react-spotify-web-playback";
 
 export default function TableRow(props) {
   const [score, setScore] = useState(props.score);

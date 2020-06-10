@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@gmundewadi/react-spotify-web-playback": "^0.6.0",
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "^4.5.0",
     "heroku-dotenv": "^0.4.1",
@@ -29,7 +30,6 @@
     "react": "16.13.1",
     "react-bootstrap-table-next": "^4.0.2",
     "react-dom": "16.13.1",
-    "react-spotify-web-playback": "^0.6.0",
     "spotify-web-api-node": "^4.0.0",
     "swr": "^0.2.0"
   },
