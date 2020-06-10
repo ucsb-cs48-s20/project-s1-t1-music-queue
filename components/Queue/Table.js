@@ -115,7 +115,7 @@ function Table(props) {
           <Loading message={"Loading Songs ... "} />
         </h1>
       )}
-      {!loading && (
+      {!loading && currentlyPlayingSong && (
         <div>
           <SpotifyPlayer
             token={props.access_token}
