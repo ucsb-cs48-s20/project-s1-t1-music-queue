@@ -124,7 +124,11 @@ function Table(props) {
     // ) {
     //   removeSong();
     // }
-    if(!status.isPlaying && status.track.id != "" && (status.position >= 99.9 || status.position == 0)){
+    if (
+      !status.isPlaying &&
+      status.track.id != "" &&
+      (status.position >= 99.9 || status.position == 0)
+    ) {
       removeSong();
     }
   };
