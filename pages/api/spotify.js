@@ -21,10 +21,12 @@ export default async function (req, res) {
     headers: headers
   };
 
-  const response = await fetch(
-    "https://api.spotify.com/v1/me/player/play",
-    options
-  );
+  try {
+    const response = await fetch(
+      "https://api.spotify.com/v1/me/player/play",
+      options
+    );
+  } catch (err) {}
 
   const output = { status: "Success" };
   console.log(output);

@@ -64,7 +64,6 @@ class App extends Component {
     event.preventDefault();
     const { search_term } = this.state;
     const { access_token } = this.props.url.query;
-
     if (search_term != "") {
       await fetch(
         `${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`
@@ -83,7 +82,6 @@ class App extends Component {
     this.setState({ isAdding: true });
     // change the text of the button that has been clicked reflect that the current
     // song is being added to the queue
-    console.log("setting" + song.id + "to adding song ...");
     document.getElementById(song.id).innerHTML = "Adding song ... ";
     document.getElementById(song.id).disabled = true;
     await fetch("/api/add", {
@@ -129,7 +127,7 @@ class App extends Component {
               allResults.push(
                 // push information about this song to a result component
                 <Results
-                  key={index}
+                  key={track.id + "saiq"}
                   imageURL={hasImage.url}
                   name={track.name}
                   inQueue={true}
@@ -158,7 +156,7 @@ class App extends Component {
               allResults.push(
                 // push information about this song to a result component
                 <Results
-                  key={index}
+                  key={track.id + "niq"}
                   imageURL={hasImage.url}
                   name={track.name}
                   inQueue={false}
@@ -176,16 +174,6 @@ class App extends Component {
                   </button>
                 </Results>
               );
-              // if the song is NOT in the queue, and the old button is set to disabled
-              // we want to fix this change! this only happens for the first X songs where
-              // X is the number of songs stored in the queue
-              if (
-                document.getElementById(track.id) &&
-                document.getElementById(track.id).disabled == true
-              ) {
-                document.getElementById(track.id).disabled = "Add Song";
-                document.getElementById(track.id).disabled = false;
-              }
               // increment index of song being added
               index++;
             }
