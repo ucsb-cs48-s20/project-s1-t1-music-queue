@@ -4,6 +4,8 @@ Have a working:
 * Spotify Premium account 
 * Heroku account 
 * Mongo DB account 
+
+![Screen Shot 2020-06-10 at 6 41 23 PM](https://user-images.githubusercontent.com/43687816/84338094-0baf6980-ab50-11ea-8d94-9d61c9c66faf.png)
     
 # Video instructions: 
 

@@ -1,11 +1,14 @@
 import React from "react";
 import useSWR from "swr";
-import { useEffect } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { fetch } from "../../utils/fetch";
 import TableRow from "./TableRow";
 import Router from "next/router";
 import Loading from "../Page/Loading";
 import "../style.css";
+// import SpotifyWebPlayer from "react-spotify-web-playback";
+import SpotifyPlayer from "@gmundewadi/react-spotify-web-playback";
+import { CHECKBOX_STATUS_INDETERMINATE } from "react-bootstrap-table-next";
 
 function Table(props) {
   const { data, mutate } = useSWR(
@@ -29,6 +32,8 @@ function Table(props) {
         }
       });
     }
+
+    // now we want to see if we should update the SDK
   }, [data]);
 
   // room is not to be left, instead, the room is to be populated
@@ -52,29 +57,19 @@ function Table(props) {
     };
   });
 
-  // ie: sortFirst == true, then you should sort the first song. Score IS 0.
-  // If sortFirst == false then you should not sort the first song as the
-  // score is NOT zero.
-  if (songArr.length > 0) {
-    let sortFirst = songArr[0].score == 0;
-    let firstSong;
-    if (!sortFirst) {
-      // do not sort the first son, therefore remove it from the sorting
-      // process entirely and add it after.
-      firstSong = songArr.shift();
-    }
+  songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
 
-    // // sort array of songs; highest scores first and lowest scores last
-    songArr.sort((a, b) => (a.score > b.score ? -1 : 1));
-
-    // now that you have sorted the list of songs. We need to make sure to add the topmost song
-    // back to the queue.
-    if (!sortFirst) {
-      songArr.unshift(firstSong);
-    }
-  }
+  // song that is currently playing. If there is no song currently playing,
+  // the trackID will be set to a default (TBA)
+  let currentlyPlayingSong = "";
 
   const tableComponents = songArr.map((item, index) => {
+    // save topmostSong trackID
+    if (index == 0) {
+      currentlyPlayingSong = item.trackID;
+    }
+
+    // the non-topmost songs will be added to the queue. rank == 1 indicates 1st in line TO PLAY
     return (
       <TableRow
         key={item.key}
@@ -93,14 +88,59 @@ function Table(props) {
     );
   });
 
+  // checks whether it is the end of the song
+  const checkStatus = status => {
+    console.log(status);
+    console.log(status.isPlaying);
+    console.log(status.position);
+    status.needsUpdate = true;
+    // if the song's position is > 99.99% of the way and the trackID is not null delete
+    // OR
+    // if the song's position = 0 and is currently not playing and trackID not null delete
+    // if (
+    //   (status.position >= 99.9 ||
+    //     (status.position == 0 && !status.isPlaying)) &&
+    //   status.track.id != "" && status.track.id != songAr
+    // ) {
+    //   removeSong();
+    // }
+    if (
+      !status.isPlaying &&
+      status.track.id != "" &&
+      (status.position >= 99.9 || status.position == 0)
+    ) {
+      removeSong();
+    }
+  };
+
+  const removeSong = async () => {
+    await fetch("/api/deleteSong", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // the value of this collection is built by its state variable
+      body: JSON.stringify({
+        song: songArr[0],
+        collection: props.collection
+      })
+    });
+  };
+
   return (
     <div>
       {loading
         && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       )}
-
-      {!loading && (
+      {!loading && currentlyPlayingSong && (
         <div>
+          <SpotifyPlayer
+            token={props.access_token}
+            uris={["spotify:track:" + currentlyPlayingSong, ""]}
+            autoplay={true}
+            play={true}
+            callback={checkStatus}
+          />
           <table>
             <tbody> 
               <tr className = "table">

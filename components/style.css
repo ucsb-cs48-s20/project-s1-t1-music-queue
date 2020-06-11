@@ -127,6 +127,7 @@ th {
 tr:nth-child(even) {
   background-color: #52524c;
 }
+
 tr:hover {
   background-color: #52524c;
 }
