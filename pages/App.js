@@ -22,7 +22,7 @@ class App extends Component {
       collection: "loading",
       isDeleting: false,
       isAdding: false,
-      results: [],
+      results: []
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -30,7 +30,7 @@ class App extends Component {
     this.leaveMusicQ = this.leaveMusicQ.bind(this);
   }
 
-  onUnload = async (event) => {
+  onUnload = async event => {
     event.returnValue = "";
     await this.leaveMusicQ();
   };
@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   // Performs the query using the spotify api on the value in the form input
-  submitTrackForm = async (event) => {
+  submitTrackForm = async event => {
     event.preventDefault();
     const { search_term } = this.state;
     const { access_token } = this.props.url.query;
@@ -69,8 +69,8 @@ class App extends Component {
       await fetch(
         `${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`
       )
-        .then((response) => response.json())
-        .then((json) => {
+        .then(response => response.json())
+        .then(json => {
           this.setState({ tracks: json.tracks.items });
           this.renderSearchResults();
           return json.tracks;
@@ -79,16 +79,17 @@ class App extends Component {
   };
 
   // add song to the database. Song is the json object that is passed
-  addSong = async (song) => {
+  addSong = async song => {
     this.setState({ isAdding: true });
     // change the text of the button that has been clicked reflect that the current
     // song is being added to the queue
+    console.log("setting" + song.id + "to adding song ...");
     document.getElementById(song.id).innerHTML = "Adding song ... ";
     document.getElementById(song.id).disabled = true;
     await fetch("/api/add", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       // the body of this song is built from state
       body: JSON.stringify({
@@ -98,8 +99,8 @@ class App extends Component {
         imgURL: song.album.images[2].url,
         collection: this.state.collection,
         upvote: [],
-        downvote: [],
-      }),
+        downvote: []
+      })
     });
     document.getElementById(song.id).innerHTML = "Song Added";
     this.setState({ isAdding: false });
@@ -111,8 +112,8 @@ class App extends Component {
     // now we need to figure out which songs are currently in the queue
     // and mark any song that is displayed from search results as already added
     fetch("/api/all?id=" + this.state.collection)
-      .then((res) => res.json())
-      .then((songsInQueue) => {
+      .then(res => res.json())
+      .then(songsInQueue => {
         songsInQueue = songsInQueue.result;
         if (this.state.tracks.length > 1) {
           const { tracks } = this.state;
@@ -122,7 +123,7 @@ class App extends Component {
           tracks.forEach((track, index) => {
             // if the song already exists within the queue, push a different component to
             // show the user that this is the case
-            if (songsInQueue.some((song) => song["trackID"] === track.id)) {
+            if (songsInQueue.some(song => song["trackID"] === track.id)) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
               allResults.push(
@@ -135,8 +136,8 @@ class App extends Component {
                 >
                   {/*Button that allows user to add song to database now DISABLED*/}
                   <button
-                    className='form-control btn btn-outline-success'
-                    value='Add Song'
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
                     disabled
                   >
                     Song Already in Queue
@@ -151,9 +152,9 @@ class App extends Component {
             ) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
-              if (document.getElementById(track.id)) {
-                document.getElementById(track.id).disabled = false;
-              }
+              console.log(
+                index + "th song not in queue. Rendering as Add Song" + track.id
+              );
               allResults.push(
                 // push information about this song to a result component
                 <Results
@@ -165,8 +166,8 @@ class App extends Component {
                   {/*Button that allows user to add song to database*/}
                   <button
                     id={track.id}
-                    className='form-control btn btn-outline-success'
-                    value='Add Song'
+                    className="form-control btn btn-outline-success"
+                    value="Add Song"
                     onClick={() => {
                       this.addSong(track);
                     }}
@@ -175,6 +176,16 @@ class App extends Component {
                   </button>
                 </Results>
               );
+              // if the song is NOT in the queue, and the old button is set to disabled
+              // we want to fix this change! this only happens for the first X songs where
+              // X is the number of songs stored in the queue
+              if (
+                document.getElementById(track.id) &&
+                document.getElementById(track.id).disabled == true
+              ) {
+                document.getElementById(track.id).disabled = "Add Song";
+                document.getElementById(track.id).disabled = false;
+              }
               // increment index of song being added
               index++;
             }
@@ -200,12 +211,12 @@ class App extends Component {
       await fetch("/api/deleteCollection", {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         // the value of this collection is built by its state variable
         body: JSON.stringify({
-          collection: this.state.collection,
-        }),
+          collection: this.state.collection
+        })
       });
     }
 
@@ -213,8 +224,8 @@ class App extends Component {
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token: access_token,
-      },
+        access_token: access_token
+      }
     });
   };
 
@@ -245,27 +256,27 @@ class App extends Component {
                 access_token={this.props.url.query.access_token}
                 userID={user.id}
               />
-              <hr className='linebreak' />
-              <div className='row mt-5 justify-content-center'>
+              <hr className="linebreak" />
+              <div className="row mt-5 justify-content-center">
                 <form
-                  onSubmit={(event) => {
+                  onSubmit={event => {
                     this.submitTrackForm(event);
                   }}
                 >
-                  <div className='form-group' style={{ textAlign: "center" }}>
+                  <div className="form-group" style={{ textAlign: "center" }}>
                     <input
-                      type='text'
-                      placeholder='enter track name'
-                      onChange={(event) =>
+                      type="text"
+                      placeholder="enter track name"
+                      onChange={event =>
                         this.setState({ search_term: event.target.value })
                       }
                       onKeyPress={this.enterPressed.bind(this)}
                     />
                   </div>
-                  <div className='form-group' style={{ textAlign: "center" }}>
+                  <div className="form-group" style={{ textAlign: "center" }}>
                     <button
-                      type='submit'
-                      className='form-control btn btn-outline-success'
+                      type="submit"
+                      className="form-control btn btn-outline-success"
                       onClick={() => {
                         // this.renderSearchResults();
                       }}
@@ -275,15 +286,27 @@ class App extends Component {
                   </div>
                 </form>
               </div>
-              <div className='row mt-5'>{this.state.results}</div>
+              <div className="row mt-5">{this.state.results}</div>
             </div>
           )}
 
           {/*If the queue is being deleted*/}
-          {this.state.isDeleting && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          {this.state.isDeleting && (
+            <div class="lds-grid">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           )}
         </Layout>
-        <button className = "btn btn-outline-success"
+        <button
+          className="btn btn-outline-success"
           style={{
             padding: 16,
             display: "block",
@@ -292,7 +315,7 @@ class App extends Component {
             textAlign: "center",
             position: "absolute",
             top: 20,
-            right: 20,
+            right: 20
           }}
           onClick={this.leaveMusicQ}
         >
@@ -309,7 +332,7 @@ App.getInitialProps = async function (context) {
   const res = await fetch(spotifyProfileURL + access_token);
   const user = await res.json();
   return {
-    user,
+    user
   };
 };
 

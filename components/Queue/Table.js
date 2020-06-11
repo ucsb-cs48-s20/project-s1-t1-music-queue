@@ -90,20 +90,7 @@ function Table(props) {
 
   // checks whether it is the end of the song
   const checkStatus = status => {
-    console.log(status);
-    console.log(status.isPlaying);
-    console.log(status.position);
     status.needsUpdate = true;
-    // if the song's position is > 99.99% of the way and the trackID is not null delete
-    // OR
-    // if the song's position = 0 and is currently not playing and trackID not null delete
-    // if (
-    //   (status.position >= 99.9 ||
-    //     (status.position == 0 && !status.isPlaying)) &&
-    //   status.track.id != "" && status.track.id != songAr
-    // ) {
-    //   removeSong();
-    // }
     if (
       !status.isPlaying &&
       status.track.id != "" &&
@@ -129,8 +116,18 @@ function Table(props) {
 
   return (
     <div>
-      {loading
-        && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      {loading && (
+        <div class="lds-grid">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       )}
       {!loading && currentlyPlayingSong && (
         <div>
@@ -142,11 +139,11 @@ function Table(props) {
             callback={checkStatus}
           />
           <table>
-            <tbody> 
-              <tr className = "table">
-                <th style={{width:"700px"}}>Song</th>
-                <th style={{width:"70px"}}>Score</th>
-                <th style={{width:"70px"}}>Vote</th>
+            <tbody>
+              <tr className="table">
+                <th style={{ width: "700px" }}>Song</th>
+                <th style={{ width: "70px" }}>Score</th>
+                <th style={{ width: "70px" }}>Vote</th>
               </tr>
               {tableComponents}
             </tbody>
