@@ -150,6 +150,9 @@ class App extends Component {
             ) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
+              if(document.getElementById(track.id)) { 
+                document.getElementById(track.id).disabled = false;
+              };
               allResults.push(
                 // push information about this song to a result component
                 <Results
