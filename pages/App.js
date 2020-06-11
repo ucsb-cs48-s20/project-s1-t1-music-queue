@@ -60,18 +60,19 @@ class App extends Component {
   }
 
   // Performs the query using the spotify api on the value in the form input
-  submitTrackForm = event => {
+  submitTrackForm = async event => {
     event.preventDefault();
     const { search_term } = this.state;
     const { access_token } = this.props.url.query;
 
     if (search_term != "") {
-      fetch(
+      await fetch(
         `${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`
       )
         .then(response => response.json())
         .then(json => {
           this.setState({ tracks: json.tracks.items });
+          this.renderSearchResults();
           return json.tracks;
         });
     }
@@ -150,9 +151,9 @@ class App extends Component {
             ) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
-              if(document.getElementById(track.id)) { 
+              if (document.getElementById(track.id)) {
                 document.getElementById(track.id).disabled = false;
-              };
+              }
               allResults.push(
                 // push information about this song to a result component
                 <Results
@@ -217,10 +218,6 @@ class App extends Component {
     });
   };
 
-  test = state => {
-    console.log(state);
-  };
-
   render() {
     const isAdmin = this.props.url.query.isAdmin;
     const { user } = this.props;
@@ -233,12 +230,6 @@ class App extends Component {
     return (
       <div className="App">
         <Layout access_token={this.props.url.query.access_token}>
-          {/* <SpotifyPlayer
-            token={this.props.url.query.access_token}
-            uris={["spotify:artist:3mvkWMe6swnknwscwvGCHO"]}
-            autoplay={true}
-            play={true}
-          /> */}
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
             <div>
@@ -249,7 +240,11 @@ class App extends Component {
               />
               <hr className="linebreak" />
               <div className="row mt-5 justify-content-center">
-                <form onSubmit={event => this.submitTrackForm(event)}>
+                <form
+                  onSubmit={event => {
+                    this.submitTrackForm(event);
+                  }}
+                >
                   <div className="form-group" style={{ textAlign: "center" }}>
                     <input
                       type="text"
@@ -263,7 +258,9 @@ class App extends Component {
                     <button
                       type="submit"
                       className="form-control btn btn-outline-success"
-                      onClick={this.renderSearchResults}
+                      onClick={() => {
+                        // this.renderSearchResults();
+                      }}
                     >
                       Search
                     </button>
