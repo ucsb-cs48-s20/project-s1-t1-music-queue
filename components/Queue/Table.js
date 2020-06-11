@@ -111,10 +111,17 @@ function Table(props) {
   // checks whether it is the end of the song
   const checkStatus = status => {
     console.log(status);
-    console.log(status.isPlaying)
+    console.log(status.isPlaying);
     console.log(status.position);
     status.needsUpdate = true;
-    if (status.position >= 99.9 && !status.isPlaying) {
+    // if the song's position is > 99.99% of the way and the trackID is not null delete
+    // OR
+    // if the song's position = 0 and is currently not playing and trackID not null delete
+    if (
+      (status.position >= 99.9 ||
+        (status.position == 0 && !status.isPlaying)) &&
+      status.track.id != ""
+    ) {
       removeSong();
     }
   };

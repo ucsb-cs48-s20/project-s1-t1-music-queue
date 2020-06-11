@@ -6,8 +6,6 @@ import { reject } from "q";
 export default async function (req, res) {
   const song = req.body.song;
   const collection = req.body.collection;
-  console.log(song);
-  console.log(collection);
   // if the song passed is null
   // deal with this edge case
   if (!song) {
