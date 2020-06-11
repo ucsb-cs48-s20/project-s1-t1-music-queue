@@ -76,6 +76,14 @@ export default function TableRow(props) {
   console.log(props.isDownvote);
   console.log(props.isUpvote);
 
+    const styles = {
+      textAlign: "center",
+      fontSize: "20px",
+      color: "white",
+    };
+  
+  
+
   return (
     <tr>
       {/* output name*/}
@@ -88,8 +96,8 @@ export default function TableRow(props) {
           {/* <Frame trackID={props.trackID} access_token={props.access_token} /> */}
         </td>
       ) : (
-        <td>
-          <h3>
+        <td >
+          <h3 style = {styles} >
             {props.name}
             &emsp;
             <img

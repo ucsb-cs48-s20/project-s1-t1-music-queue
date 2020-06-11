@@ -104,9 +104,9 @@ function Table(props) {
           <table>
             <tbody> 
               <tr className = "table">
-                <th>Song</th>
-                <th>Score</th>
-                <th>Vote</th>
+                <th style={{width:"700px"}}>Song</th>
+                <th style={{width:"70px"}}>Score</th>
+                <th style={{width:"70px"}}>Vote</th>
               </tr>
               {tableComponents}
             </tbody>
