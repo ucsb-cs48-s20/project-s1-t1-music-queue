@@ -149,9 +149,7 @@ export default function TableRow(props) {
         </h3>{" "}
       </td>
       {/* output required number of downvotes to stop playing topmost song*/}
-      {props.rank == 0 && <td>Downvotes to stop playing: {score}</td>}
-      {/* output just the score for everything but the playing song*/}
-      {props.rank != 0 && <td>{props.score}</td>}
+      <td>{score}</td>
       <td>
         {/* radio button to upvote*/}
         <div>
@@ -190,9 +188,6 @@ export default function TableRow(props) {
           </label>
         </div>
       </td>
-      {/* {props.rank == 0 && (
-       <td> <button onClick={() => deleteSong()}> simulate delete </button> </td>
-      )} */}
     </tr>
   );
 }
