@@ -22,7 +22,7 @@ class App extends Component {
       collection: "loading",
       isDeleting: false,
       isAdding: false,
-      results: []
+      results: [],
     };
     this.submitTrackForm = this.submitTrackForm.bind(this);
     this.addSong = this.addSong.bind(this);
@@ -30,7 +30,7 @@ class App extends Component {
     this.leaveMusicQ = this.leaveMusicQ.bind(this);
   }
 
-  onUnload = async event => {
+  onUnload = async (event) => {
     event.returnValue = "";
     await this.leaveMusicQ();
   };
@@ -60,25 +60,26 @@ class App extends Component {
   }
 
   // Performs the query using the spotify api on the value in the form input
-  submitTrackForm = event => {
+  submitTrackForm = async (event) => {
     event.preventDefault();
     const { search_term } = this.state;
     const { access_token } = this.props.url.query;
 
     if (search_term != "") {
-      fetch(
+      await fetch(
         `${spotifySearchURL}${search_term}&type=track&access_token=${access_token}`
       )
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           this.setState({ tracks: json.tracks.items });
+          this.renderSearchResults();
           return json.tracks;
         });
     }
   };
 
   // add song to the database. Song is the json object that is passed
-  addSong = async song => {
+  addSong = async (song) => {
     this.setState({ isAdding: true });
     // change the text of the button that has been clicked reflect that the current
     // song is being added to the queue
@@ -87,7 +88,7 @@ class App extends Component {
     await fetch("/api/add", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       // the body of this song is built from state
       body: JSON.stringify({
@@ -97,8 +98,8 @@ class App extends Component {
         imgURL: song.album.images[2].url,
         collection: this.state.collection,
         upvote: [],
-        downvote: []
-      })
+        downvote: [],
+      }),
     });
     document.getElementById(song.id).innerHTML = "Song Added";
     this.setState({ isAdding: false });
@@ -110,8 +111,8 @@ class App extends Component {
     // now we need to figure out which songs are currently in the queue
     // and mark any song that is displayed from search results as already added
     fetch("/api/all?id=" + this.state.collection)
-      .then(res => res.json())
-      .then(songsInQueue => {
+      .then((res) => res.json())
+      .then((songsInQueue) => {
         songsInQueue = songsInQueue.result;
         if (this.state.tracks.length > 1) {
           const { tracks } = this.state;
@@ -121,7 +122,7 @@ class App extends Component {
           tracks.forEach((track, index) => {
             // if the song already exists within the queue, push a different component to
             // show the user that this is the case
-            if (songsInQueue.some(song => song["trackID"] === track.id)) {
+            if (songsInQueue.some((song) => song["trackID"] === track.id)) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
               allResults.push(
@@ -134,8 +135,8 @@ class App extends Component {
                 >
                   {/*Button that allows user to add song to database now DISABLED*/}
                   <button
-                    className="form-control btn btn-outline-success"
-                    value="Add Song"
+                    className='form-control btn btn-outline-success'
+                    value='Add Song'
                     disabled
                   >
                     Song Already in Queue
@@ -150,6 +151,9 @@ class App extends Component {
             ) {
               // console.log(track); Outputs the spotify object returned
               let hasImage = track.album.images[0];
+              if (document.getElementById(track.id)) {
+                document.getElementById(track.id).disabled = false;
+              }
               allResults.push(
                 // push information about this song to a result component
                 <Results
@@ -161,8 +165,8 @@ class App extends Component {
                   {/*Button that allows user to add song to database*/}
                   <button
                     id={track.id}
-                    className="form-control btn btn-outline-success"
-                    value="Add Song"
+                    className='form-control btn btn-outline-success'
+                    value='Add Song'
                     onClick={() => {
                       this.addSong(track);
                     }}
@@ -196,12 +200,12 @@ class App extends Component {
       await fetch("/api/deleteCollection", {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         // the value of this collection is built by its state variable
         body: JSON.stringify({
-          collection: this.state.collection
-        })
+          collection: this.state.collection,
+        }),
       });
     }
 
@@ -209,10 +213,17 @@ class App extends Component {
     Router.push({
       pathname: "/Rooms",
       query: {
-        access_token: access_token
-      }
+        access_token: access_token,
+      },
     });
   };
+
+  enterPressed(event) {
+    var code = event.keyCode || event.which;
+    if (code === 13) {
+      this.submitTrackForm(event);
+    }
+  }
 
   render() {
     const isAdmin = this.props.url.query.isAdmin;
@@ -224,7 +235,7 @@ class App extends Component {
       leaveQueueButtonMessage = "Delete MusicQ";
     }
     return (
-      <div className="App">
+      <div className='App'>
         <Layout access_token={this.props.url.query.access_token}>
           {/*render queue as normal*/}
           {this.state.isDeleting == false && (
@@ -234,30 +245,37 @@ class App extends Component {
                 access_token={this.props.url.query.access_token}
                 userID={user.id}
               />
-              <hr className="linebreak" />
-              <div className="row mt-5 justify-content-center">
-                <form onSubmit={event => this.submitTrackForm(event)}>
-                  <div className="form-group" style={{ textAlign: "center" }}>
+              <hr className='linebreak' />
+              <div className='row mt-5 justify-content-center'>
+                <form
+                  onSubmit={(event) => {
+                    this.submitTrackForm(event);
+                  }}
+                >
+                  <div className='form-group' style={{ textAlign: "center" }}>
                     <input
-                      type="text"
-                      placeholder="enter track name"
-                      onChange={event =>
+                      type='text'
+                      placeholder='enter track name'
+                      onChange={(event) =>
                         this.setState({ search_term: event.target.value })
                       }
+                      onKeyPress={this.enterPressed.bind(this)}
                     />
                   </div>
-                  <div className="form-group" style={{ textAlign: "center" }}>
+                  <div className='form-group' style={{ textAlign: "center" }}>
                     <button
-                      type="submit"
-                      className="form-control btn btn-outline-success"
-                      onClick={this.renderSearchResults}
+                      type='submit'
+                      className='form-control btn btn-outline-success'
+                      onClick={() => {
+                        // this.renderSearchResults();
+                      }}
                     >
                       Search
                     </button>
                   </div>
                 </form>
               </div>
-              <div className="row mt-5">{this.state.results}</div>
+              <div className='row mt-5'>{this.state.results}</div>
             </div>
           )}
 
@@ -275,7 +293,7 @@ class App extends Component {
             textAlign: "center",
             position: "absolute",
             top: 20,
-            right: 20
+            right: 20,
           }}
           onClick={this.leaveMusicQ}
         >
@@ -292,7 +310,7 @@ App.getInitialProps = async function (context) {
   const res = await fetch(spotifyProfileURL + access_token);
   const user = await res.json();
   return {
-    user
+    user,
   };
 };
 
