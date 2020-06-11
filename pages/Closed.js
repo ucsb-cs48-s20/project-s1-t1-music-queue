@@ -31,7 +31,7 @@ class Closed extends React.Component {
     <div className = "login">
       <Layout>
         <div className = "center">
-        <img src="sad_note.png" alt="none" />
+        <img src="sad_note2.png" alt="none" />
         <h1> MusicQ Closed by Host </h1>
         <button className = "btn btn-outline-success" value="Add Song" onClick={this.handleClick}>
           Back to Homepage
