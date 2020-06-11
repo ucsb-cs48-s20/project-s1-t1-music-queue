@@ -129,11 +129,8 @@ function Table(props) {
 
   return (
     <div>
-      {loading && (
-        <h1>
-          {" "}
-          <Loading message={"Loading Songs ... "} />
-        </h1>
+      {loading
+        && (<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       )}
       {!loading && currentlyPlayingSong && (
         <div>
@@ -145,11 +142,11 @@ function Table(props) {
             callback={checkStatus}
           />
           <table>
-            <tbody>
-              <tr>
-                <th>Song</th>
-                <th>Score</th>
-                <th>Vote</th>
+            <tbody> 
+              <tr className = "table">
+                <th style={{width:"700px"}}>Song</th>
+                <th style={{width:"70px"}}>Score</th>
+                <th style={{width:"70px"}}>Vote</th>
               </tr>
               {tableComponents}
             </tbody>

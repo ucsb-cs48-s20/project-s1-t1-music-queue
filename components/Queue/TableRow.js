@@ -134,10 +134,15 @@ export default function TableRow(props) {
   const upvote_label = props.trackID + "upvote";
   const downvote_label = props.trackID + "downvote";
 
+const styles = {
+      textAlign: "center",
+      fontSize: "20px",
+      color: "white",
+    };
   return (
     <tr>
       <td>
-        <h3>
+        <h3 style = {styles}>
           {props.name}
           &emsp;
           <img
@@ -149,7 +154,7 @@ export default function TableRow(props) {
         </h3>{" "}
       </td>
       {/* output required number of downvotes to stop playing topmost song*/}
-      <td>{score}</td>
+      <td style = {{color: "white"}}>{score}</td>
       <td>
         {/* radio button to upvote*/}
         <div>

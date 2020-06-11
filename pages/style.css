@@ -7,6 +7,7 @@
   margin-bottom: 50px;
 }
 
+
 /*
 Styling for leaving Queue button. Moved to inline styling. Double check
 this issue using storybook
@@ -39,12 +40,24 @@ Styling for Closed.js
   width: 15%;
 }
 
-/* Styling for submit button css from w3schools */
+html{
+  background-color: #333333;
+  width: 100%;
+  height: 100%;
+}
 
+.login{
+  background-color: #333333;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgb(65, 66, 65); */
+}
+
+/* Styling for submit button css from w3schools */
 .button {
   display: inline-block;
   border-radius: 4px;
-  background-color: lightblue;
+  background-color: rgb(154, 212, 147);
   border: none;
   color: #ffffff;
   text-align: center;
@@ -85,5 +98,77 @@ Styling for Closed.js
 {
   display:none;
   text-align: center;
-  color: lightcoral;
+  color: rgb(218, 160, 160);
+}
+
+
+/*For loading screen*/
+.lds-grid {
+  position: absolute; 
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+.lds-grid div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Router from "next/router";
 import "./style.css";
 import {getAccessToken} from "../utils/getAccessToken"
+import Layout from "../components/Page/Layout"
 
 class Closed extends React.Component {
   constructor(props) {
@@ -27,13 +28,17 @@ class Closed extends React.Component {
 
   render() {
     return (
-      <div className="center">
-        <img src="sad_note.png" alt="none" />
+    <div className = "login">
+      <Layout>
+        <div className = "center">
+        <img src="sad_note2.png" alt="none" />
         <h1> MusicQ Closed by Host </h1>
-        <button className="button" value="Add Song" onClick={this.handleClick}>
+        <button className = "btn btn-outline-success" value="Add Song" onClick={this.handleClick}>
           Back to Homepage
         </button>
-      </div>
+        </div>
+      </Layout>
+    </div>
     );
   }
 }
