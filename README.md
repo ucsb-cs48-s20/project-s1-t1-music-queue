@@ -2,6 +2,9 @@
 
 ## MusicQ
 
+MusicQ on Production: [https://cs48-s20-s1-t1-prod.herokuapp.com/](https://cs48-s20-s1-t1-prod.herokuapp.com/) </br>
+MusicQ on QA: [https://cs48-s20-s1-t1-qa.herokuapp.com/](https://cs48-s20-s1-t1-qa.herokuapp.com/)
+
 Tech-stack: next.js
 
 Description: This app will allow multiple people to queue songs to a group queue instead of having only one person play the music. It wouldn't be first in first out though, there will be a voting/ranking system that allows people to up/agree with other suggestions. The user who creates the room has the ability to share a code or link that allows other users to join. 
